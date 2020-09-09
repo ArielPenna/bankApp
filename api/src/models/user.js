@@ -1,0 +1,1 @@
+const Users = (sequelize, S) => {}
