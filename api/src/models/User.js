@@ -13,7 +13,8 @@ module.exports = (sequelize) => {
       },
       email: {
         type: S.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       documentType: {
         type: S.ENUM('DNI', 'Pasaporte'),
@@ -24,8 +25,7 @@ module.exports = (sequelize) => {
         allowNull: false
       },
       birth: {
-        type: S.DATE,
-        allowNull: false
+        type: S.DATE
       },
       phoneNumber: {
         type: S.TEXT,// S.INTEGER(11).UNSIGNED | numero de telefono sin +54
@@ -34,6 +34,10 @@ module.exports = (sequelize) => {
       password: {
         type: S.STRING,
         allowNull: false,
+      },
+      address: {
+        type: S.TEXT,
+        allowNull: false
       },
       access: {
         type: S.ENUM('User', 'Admin'),
