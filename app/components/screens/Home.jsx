@@ -4,7 +4,7 @@ import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-nativ
 export default ({ navigation }) => {
   return (
     <View styles={styles.container}>
-      <Button title="LOGIN" color="#ea94a0" onPress={() => navigation.navigate('Login')} />
+      {/*<Button title="LOGIN" color="#ea94a0" onPress={() => navigation.navigate('Login')} />*/}
       <Button title="REGISTER" color="#ea94a0" onPress={() => navigation.navigate('Register')} />
     </View>
   )
