@@ -27,3 +27,4 @@ conn.sync({ force: true }).then(() => {
     console.log('bankapp" at 3001'); // eslint-disable-line no-console
   });
 });
+
