@@ -1,21 +1,44 @@
-const Users = (sequelize, S) => {
-  const U = sequelize.define(
+const S = require('sequelize').DataTypes 
+
+module.exports = (sequelize) => {
+  sequelize.define( 'user',
     {
       firstName: {
         type: S.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       lastName: {
         type: S.STRING,
-        allowNull: true,
+        allowNull: false,
+      },
+      email: {
+        type: S.STRING,
+        allowNull: false
+      },
+      documentType: {
+        type: S.ENUM('DNI', 'Pasaporte'),
+        allowNull: false
+      },
+      documentNumber: {
+        type: S.INTEGER,
+        allowNull: false
+      },
+      birth: {
+        type: S.DATE,
+        allowNull: false
+      },
+      phoneNumber: {
+        type: S.TEXT,// S.INTEGER(11).UNSIGNED | numero de telefono sin +54
+        allowNull: false
       },
       password: {
         type: S.STRING,
         allowNull: false,
       },
+      access: {
+        type: S.ENUM('User', 'Admin'),
+        defaultValue: 'User'
+      }
     },
   );
-  return U;
 };
-
-module.exports = Users;
