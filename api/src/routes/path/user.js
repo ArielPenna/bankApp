@@ -6,9 +6,25 @@ const { User, Wallet } = require("../../db.js");
 
 server.get("/users", (req, res) => {
     User.findAll()
-      .then((users) => res.send(users))
-      .catch((err) => res.send(err));
-  });
+        .then((users) => res.send(users))
+        .catch((err) => res.send(err));
+});
+
+server.get("/search", (req, res) => {
+    User.findAll({
+            where: {
+                // [Op.or]: [
+                email: {
+                    [Sequelize.Op.iLike]: `%${req.params.id}%`
+                }
+            }
+        })
+        .then(usuarioEncontrado => {
+            res.json(usuarioEncontrado);
+        })
+        .catch((err) => res.send(err));
+});
+
 
 server.post('/login', (req, res) => {
 
@@ -17,13 +33,14 @@ server.post('/login', (req, res) => {
 
 server.post('/register', (req, res) => {
     const { //me traigo todos los valores del usuario
-        firstName, 
+        firstName,
         lastName,
         email,
         documentType,
         documentNumber,
         birth,
         phoneNumber,
+        address,
         password,
         access,
         //--VVVVVVV---------Wallet
@@ -33,28 +50,28 @@ server.post('/register', (req, res) => {
     } = req.body;
 
     User.create({
-        firstName, 
-        lastName,
-        email,
-        documentType,
-        documentNumber,
-        birth,
-        phoneNumber,
-        password,
-        access
-    })
+            firstName,
+            lastName,
+            email,
+            documentType,
+            documentNumber,
+            birth,
+            phoneNumber,
+            address,
+            password,
+            access
+        })
         .then(user => {
-            console.log(user)
             Wallet.create({
                 type,
                 balance,
                 currency,
                 userId: user.getDataValue('id')
-            }).catch(err=>res.send(err))
+            }).catch(err => res.send(err))
             res.send(user)
         })
         .catch(err => {
-            if(err.parent && err.parent.code === "23505") res.send('el usuario ya existe')
+            if (err.parent && err.parent.code === "23505") res.send('el usuario ya existe')
             res.send(err)
         })
 })
