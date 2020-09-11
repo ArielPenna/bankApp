@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         width:"94%",
         marginLeft:"5px",
         padding:"10px",
-        height:"155%",
+        height:"auto",
         borderRadius:"15px",
         backgroundColor:"white",
         marginBottom:"10px",
@@ -38,7 +38,14 @@ const styles = StyleSheet.create({
 
     btn:{
         marginTop:"15px",
-        
+        width: "80px",
+        borderRadius: "10px"
+
+    },
+    error:{
+        marginLeft:"15px",
+        color:"red",
+        fontSize:"25px"  
     }
    
   });

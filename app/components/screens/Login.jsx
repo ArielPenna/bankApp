@@ -13,9 +13,9 @@ export default () => {
           source={require('../../assets/logo.png')} />
         <View >
             <Text style={style.label}> E-mail </Text>
-            <TextInput style={style.inputR} editable name='e-mail' />
+            <TextInput style={style.inputR} placeholder= 'E-mail' editable name='email' />
             <Text style={style.label}> Contraseña </Text>
-            <TextInput style={style.inputR} editable name='password' />
+            <TextInput style={style.inputR} placeholder= 'Contraseña' editable name='password' secureTextEntry= 'true' />
             <Button style={style.btn} title='Enviar' />
         </View>
       </View>      
