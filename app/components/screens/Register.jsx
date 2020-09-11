@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {View, Text, TextInput, Button} from 'react-native'
 import {useDispatch, useSelector} from 'react-redux'
 
+import style from './styles/RegisterStyle'
 import { register_user__post } from '../../redux/actions'
 
 //----------Leyenda--------
@@ -53,6 +54,7 @@ export default ()=>{
 
     return(
         <View style={style.container}>
+            {console.log(users)}
             {/*//////////////->FIRST NAME<-//////////////*/}
             <Text style={style.label}>Nombre</Text>
             <TextInput style={style.inputR} editable name='firstName' onChange={hOnCh_NewUser}/>

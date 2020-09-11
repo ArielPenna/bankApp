@@ -3,30 +3,21 @@ import axios from 'axios'
 
 const url = "http://localhost:9000/";
 
-export const register_user__post = (user) => {
-    console.log(user)
-    const extra_url = url + 'user/register'
-    return function(dispatch){
-        return fetch(extra_url, {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'include'
-        }).then(res => {
-            console.log(res)
-            dispatch({type: cons.REGISTER_USER__POST, payload: res})
-        }).catch(err => console.error(err))
-    }
-}
+//Llamar en lugar de axios
+//en baseURL ya esta cargada el localhost
+//al llamarla hay que hacer Ej.: instance.post('user/register')
+const instance = axios.create({
+    withCredentials: true,
+    baseURL: url,
+  });
 
-/*export const register_user__post = (user) => {
-    console.log(user)
-    const extra_url = url + 'user/register'
+export const register_user__post = (user) => {
+
+    const extra_url = 'user/register'
+
     return function (dispatch) {
-        axios.post(extra_url, user).then((res) => {
+        instance.post(extra_url, user).then((res) => {
           dispatch({ type: cons.REGISTER_USER__POST, payload: res.data });
         });
       };
-}*/
+}

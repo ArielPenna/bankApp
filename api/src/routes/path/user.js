@@ -4,15 +4,11 @@ const server = require("express").Router();
 /* const LocalStrategy = require("passport-local").Strategy; */
 const { User, Wallet } = require("../../db.js");
 
-server.get('/users', (req, res)=>{
+server.get("/users", (req, res) => {
     User.findAll()
-    .then(res => {
-        res.send(res)
-    })
-    .catch(err => {
-        res.status(500).send(err)
-    })
-})
+      .then((users) => res.send(users))
+      .catch((err) => res.send(err));
+  });
 
 server.post('/login', (req, res) => {
 
@@ -48,6 +44,7 @@ server.post('/register', (req, res) => {
         access
     })
         .then(user => {
+            console.log(user)
             Wallet.create({
                 type,
                 balance,
