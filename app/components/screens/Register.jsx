@@ -52,37 +52,40 @@ export default ()=>{
     }
 
     return(
-        <View>
-            {console.log(users)}
+        <View style={style.container}>
             {/*//////////////->FIRST NAME<-//////////////*/}
-            <Text>Nombre</Text>
-            <TextInput editable name='firstName' onChange={hOnCh_NewUser}/>
+            <Text style={style.label}>Nombre</Text>
+            <TextInput style={style.inputR} editable name='firstName' onChange={hOnCh_NewUser}/>
             {/*//////////////->LAST NAME<-//////////////*/}
-            <Text>Apellido</Text>
-            <TextInput editable name='lastName' onChange={hOnCh_NewUser}/>
+            <Text style={style.label}>Apellido</Text>
+            <TextInput style={style.inputR} editable name='lastName' onChange={hOnCh_NewUser}/>
             {/*//////////////->EMAIL<-//////////////*/}
-            <Text>Email</Text>
-            <TextInput editable name='email' onChange={hOnCh_NewUser}/>
+            <Text style={style.label}>Email</Text>
+            <TextInput style={style.inputR} editable name='email' onChange={hOnCh_NewUser}/>
             {/*//////////////->DOCUMENT TYPE<-//////////////*/}
-            <Text>Tipo de documento</Text>
-            <TextInput editable name='documentType' onChange={hOnCh_NewUser}/>
+            <Text style={style.label}>Tipo de documento</Text>
+            <TextInput style={style.inputR} editable name='documentType' onChange={hOnCh_NewUser}/>
             {/*//////////////->DOCUMENT NUMBER<-//////////////*/}
-            <Text>Numero</Text>
-            <TextInput editable name='documentNumber' onChange={hOnCh_NewUser}/>
+            <Text style={style.label}>Numero</Text>
+            <TextInput style={style.inputR} editable name='documentNumber' onChange={hOnCh_NewUser}/>
             {/*//////////////->BIRTH<-//////////////*/}
-            <Text>Fecha de nacimiento</Text>
-            <TextInput editable name='birth' onChange={hOnCh_NewUser}/>
+            <Text style={style.label}>Fecha de nacimiento</Text>
+            <TextInput style={style.inputR} editable name='birth' onChange={hOnCh_NewUser}/>
             {/*//////////////->PHONE NUMBER<-//////////////*/}
-            <Text>Tel/Cel</Text>
-            <TextInput editable name='phoneNumber' onChange={hOnCh_NewUser}/>
+            <Text style={style.label}>Tel/Cel</Text>
+            <TextInput style={style.inputR} editable name='phoneNumber' onChange={hOnCh_NewUser}/>
             {/*//////////////->ADRESS<-//////////////*/}
-            <Text>Direccion</Text>
-            <TextInput editable name='address' onChange={hOnCh_NewUser}/>
+            <Text style={style.label}>Direccion</Text>
+            <TextInput style={style.inputR} editable name='address' onChange={hOnCh_NewUser}/>
             {/*//////////////->PASSWORD<-//////////////*/}
-            <Text>Contraseña</Text>
-            <TextInput editable name='password' onChange={hOnCh_NewUser}/>
+            <Text style={style.label}>Contraseña</Text>
+            <TextInput style={style.inputR} editable name='password' onChange={hOnCh_NewUser}/>
+            {/* /////////////->CONFIRM PASSWORD<-/////////// */}
+            <Text style={style.label}>Confirmar Contraseña</Text>
+            <TextInput style={style.inputR} editable name='password' onChange={hOnCh_NewUser}/>
 
-            <Button title='Enviar' onPress={register}/>
+            <Button  style={style.btn} title='Enviar' onPress={register}/>
         </View>
     )
 }
+
