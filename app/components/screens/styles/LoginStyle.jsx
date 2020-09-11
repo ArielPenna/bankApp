@@ -38,8 +38,6 @@ const styles = StyleSheet.create({
 
     btn:{
         marginTop:"15px",
-        width: "80px",
-        borderRadius: "10px"
 
     },
     error:{

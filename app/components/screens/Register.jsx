@@ -63,7 +63,7 @@ export default ()=>{
 
     const register = async ()=>{
         try{
-            console.log(newUser)
+            
             dispatch(register_user__post(newUser))
         }
         catch(err){
@@ -124,10 +124,10 @@ export default ()=>{
 {/*///////////////////////////////////>>> PASSWORD <<<///////////////////////////////////*/}
             {/*//////////////->PASSWORD<-//////////////*/}
             <Text style={error.password ? style.error : style.label}>Contraseña</Text>
-            <TextInput style={style.inputR} secureTextEntry={true} editable name='password' secureTextEntry= 'true' onChange={hOnCh_NewUser}/>
+            <TextInput style={style.inputR} secureTextEntry={true} editable name='password' onChange={hOnCh_NewUser}/>
             {/* /////////////->CONFIRM PASSWORD<-/////////// */}
             <Text style={error.confirmPassword ? style.error : style.label}>Confirmar Contraseña</Text>
-            <TextInput style={style.inputR} secureTextEntry={true} editable name='confirmPassword' secureTextEntry= 'true' onChange={hOnCh_NewUser}/>
+            <TextInput style={style.inputR} secureTextEntry={true} editable name='confirmPassword' onChange={hOnCh_NewUser}/>
 
 {/*//////////////////////////////////////////////////////////////////////////////////////*/}
 
