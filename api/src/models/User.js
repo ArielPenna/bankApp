@@ -1,4 +1,4 @@
-const S = require('sequelize').DataTypes 
+const S = require('sequelize').DataTypes
 
 module.exports = (sequelize) => {
   sequelize.define( 'user',
@@ -13,19 +13,19 @@ module.exports = (sequelize) => {
       },
       email: {
         type: S.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       documentType: {
         type: S.ENUM('DNI', 'Pasaporte'),
         allowNull: false
       },
       documentNumber: {
-        type: S.INTEGER,
+        type: S.TEXT,
         allowNull: false
       },
       birth: {
-        type: S.DATE,
-        allowNull: false
+        type: S.DATE
       },
       phoneNumber: {
         type: S.TEXT,// S.INTEGER(11).UNSIGNED | numero de telefono sin +54
