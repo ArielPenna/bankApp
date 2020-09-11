@@ -1,14 +1,16 @@
 const server = require("express").Router();
-/* const bcrypt = require("bcryptjs"); */
-/* const passport = require("passport"); */
+const bcrypt = require("bcrypt");
+const passport = require("passport");
 /* const LocalStrategy = require("passport-local").Strategy; */
 const { User, Wallet } = require("../../db.js");
 
-server.post('/login', (req, res) => {
+//----------------------------------------------------------
+//-------------------------USUARIO--------------------------
+//----------------------------------------------------------
 
-    res.send('hola')
-})
-
+//-------------------------------------
+//           CREAR USUARIO            |
+//-------------------------------------
 server.post('/register', (req, res) => {
     const { //me traigo todos los valores del usuario
         firstName, 
@@ -25,6 +27,9 @@ server.post('/register', (req, res) => {
         balance,
         currency
     } = req.body;
+    // enctriptar contraseña
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
 
     User.create({
         firstName, 
@@ -34,7 +39,7 @@ server.post('/register', (req, res) => {
         documentNumber,
         birth,
         phoneNumber,
-        password,
+        password: hash,
         access
     })
         .then(user => {
@@ -52,4 +57,38 @@ server.post('/register', (req, res) => {
         })
 })
 
-module.exports = server;
+//-------------------------------------
+//           RUTA LOGIN               |
+//-------------------------------------
+server.post('/login', passport.authenticate("local"), (req, res) => {
+    res.send(req.user.id);
+})
+
+//-------------------------------------
+//           RUTA LOGOUT               |
+//-------------------------------------
+server.get("/logout", estaAutenticado, (req, res) => {
+    req.logout();
+    res.send("se deslogueo");
+});
+
+//-------------------------------------
+//       RUTA GET USER LOGUEADO       |
+//-------------------------------------
+server.get("/me", estaAutenticado, function (req, res) {
+    res.json(req.user);
+});
+
+
+//-------------------------------------
+//      FUNCION AUTENTICAR USUARIO    |
+//-------------------------------------
+function estaAutenticado(req, res, next) {
+    if (req.isAuthenticated()) {
+        next();
+    } else {
+        res.status(401).send("no esta autenticado");
+    }
+}
+
+module.exports = server, estaAutenticado;
