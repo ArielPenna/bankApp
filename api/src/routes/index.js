@@ -1,12 +1,11 @@
 const { Router } = require("express");
-const bodyParser = require("body-parser");
 
 const { Account } = require("../db")
 
 //----------------------------------------------------------------------------//
 //---------------------------MODULES-IMPORTS----------------------------------//
 //----------------------------------------------------------------------------//
-
+const userPath = require("./path/user")
 
 //----------------------------------------------------------------------------//
 //-----------------------MIDDLEWARES-FUNCIONAL--------------------------------//
@@ -17,10 +16,15 @@ const router = Router();
 //-----------------------MIDDLEWARES-ROUTES-----------------------------------//
 //----------------------------------------------------------------------------//
 
-router.use('/home', () => {})
+
+router.use('/user', userPath)
+
+
+
+
 
 //invalidar rutas, es solo de prueba
-router.get('/create/account', (req, res) => {
+/* router.get('/create/account',(req, res) => {
     Account.create()
         .then(
             account => res.send(account),
@@ -42,7 +46,7 @@ router.get('/create/user', (req, res) => {
             account => res.send(account),
             err => res.send(err)
         )
-})
+}) */
 
 
 module.exports = router;
