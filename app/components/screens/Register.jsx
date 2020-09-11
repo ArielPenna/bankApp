@@ -63,7 +63,7 @@ export default ()=>{
 
     const register = async ()=>{
         try{
-            console.log(newUser)
+            
             dispatch(register_user__post(newUser))
         }
         catch(err){

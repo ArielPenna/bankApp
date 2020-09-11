@@ -2,10 +2,10 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
     container:{
-       flex:1,
-        backgroundColor:"#02C39A"
-    },
-    inputR:{
+      flex:1,
+      backgroundColor:"#02C39A"
+   },
+   inputR:{
       width:"94%",
       marginLeft:"5px",
       padding:"10px",
@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
       borderRadius:"15px",
       backgroundColor:"white",
       marginBottom:"10px"      
-    },
-    inputDoc:{
+   },
+   inputDoc:{
       width:"80%",
       height:"300%",
       marginLeft:"15px",
@@ -23,31 +23,31 @@ const styles = StyleSheet.create({
       borderRadius:"15px",
       backgroundColor:"white",
       marginBottom:"10px"  
-    },
-    docContainer:{
+   },
+   docContainer:{
       width:'94%',
       height: 'auto',
       flex:1,
       flexDirection: 'row',
       marginBottom:"65px"
-    },
-    doc:{
+   },
+   doc:{
       flex:1,
       flexDirection:'column'
-    },
-    label:{
-       marginLeft:"15px",
-       color:"#f0f3bd",
-       fontSize:"25px"
-    },
-    btn:{
-       marginTop:"15px"
-    },
-    error:{
+   },
+   label:{
+      marginLeft:"15px",
+      color:"#f0f3bd",
+      fontSize:"25px"
+   },
+   btn:{
+      marginTop:"15px"
+   },
+   error:{
       marginLeft:"15px",
       color:"red",
       fontSize:"25px"  
-    }
+   }
 })
 
 export default styles
