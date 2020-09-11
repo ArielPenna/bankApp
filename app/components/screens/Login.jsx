@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {View, Text, TextInput, Button, Image} from 'react-native'
+import {View, Text, TextInput, Button, Image, ImageBackground} from 'react-native'
 import {useDispatch} from 'react-redux'
 import {login_user__post} from '../../redux/actions'
 import style from './styles/LoginStyle'
@@ -27,7 +27,7 @@ export default () => {
 
 
     return (
-    <View style={style.container}>
+    <ImageBackground source={require('../../assets/background.png')} style={style.container}>
       <View>
         <Text style={style.mainTitle}>Login</Text>
         <Image 
@@ -41,6 +41,6 @@ export default () => {
             <Button style={style.btn} color="#ea94a0" title='Enviar' onPress= {onLogin} />
         </View>
       </View>      
-    </View>
+    </ImageBackground>
   )
 }
