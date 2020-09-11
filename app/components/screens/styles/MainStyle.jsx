@@ -8,21 +8,31 @@ const styles = StyleSheet.create({
     alignContent:"center",    
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor:"#79d8aa",
+    
   },
   img:{    
     alignSelf:"center",
-    width:200,
-    height:200,
-    marginTop: 50,
-    marginBottom:80,
+    width:70,
+    height:70,    
   },
   mainTitle:{
-    fontSize: 24,
+    fontSize: 12,
+    color:"white",    
+    textAlign:"left",
+  },
+  row:{
+    flexDirection:"row",
+    justifyContent:"center",
+    alignItems:"center",
+  }, 
+  money:{
     color:"white",
-    fontWeight: 8,
-    textAlign:"center",
-  } 
+    marginHorizontal:25,
+    fontSize:30,
+  },
+  generalView:{
+    backgroundColor:"white",
+  },
 });
 
 export default styles
