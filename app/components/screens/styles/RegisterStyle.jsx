@@ -12,8 +12,28 @@ const styles = StyleSheet.create({
       height:"155%",
       borderRadius:"15px",
       backgroundColor:"white",
-      marginBottom:"10px",
-      
+      marginBottom:"10px"      
+    },
+    inputDoc:{
+      width:"80%",
+      height:"300%",
+      marginLeft:"15px",
+      padding:"10px",
+      height:"155%",
+      borderRadius:"15px",
+      backgroundColor:"white",
+      marginBottom:"10px"  
+    },
+    docContainer:{
+      width:'94%',
+      height: 'auto',
+      flex:1,
+      flexDirection: 'row',
+      marginBottom:"65px"
+    },
+    doc:{
+      flex:1,
+      flexDirection:'column'
     },
     label:{
        marginLeft:"15px",
@@ -22,6 +42,11 @@ const styles = StyleSheet.create({
     },
     btn:{
        marginTop:"15px"
+    },
+    error:{
+      marginLeft:"15px",
+      color:"red",
+      fontSize:"25px"  
     }
 })
 
