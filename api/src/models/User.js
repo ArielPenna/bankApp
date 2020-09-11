@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
         },
         password: {
             type: S.STRING,
-            allowNull: false,
+            allowNull: false
         },
         address: {
             type: S.TEXT,
