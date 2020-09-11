@@ -19,7 +19,11 @@ server.post('/register', (req, res) => {
         birth,
         phoneNumber,
         password,
-        access
+        access,
+        //--VVVVVVV---------Wallet
+        type,
+        balance,
+        currency
     } = req.body;
 
     User.create({
@@ -34,14 +38,12 @@ server.post('/register', (req, res) => {
         access
     })
         .then(user => {
-            console.log(user.dataValues)
-            /* user.setWallet().then(
-                wallet => console.log(wallet),
-                err => {
-                    console.log('estoy en el error')
-                    res.send(err)
-                }
-            ) */
+            Wallet.create({
+                type,
+                balance,
+                currency,
+                userId: user.getDataValue('id')
+            }).catch(err=>res.send(err))
             res.send(user)
         })
         .catch(err => {
