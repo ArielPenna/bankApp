@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
         allowNull: false
       },
       documentNumber: {
-        type: S.INTEGER,
+        type: S.TEXT,
         allowNull: false
       },
       birth: {
@@ -34,10 +34,6 @@ module.exports = (sequelize) => {
       password: {
         type: S.STRING,
         allowNull: false,
-      },
-      address: {
-        type: S.TEXT,
-        allowNull: false
       },
       access: {
         type: S.ENUM('User', 'Admin'),
