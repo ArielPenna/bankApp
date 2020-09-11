@@ -1,10 +1,20 @@
 import React, {useState} from 'react'
 import {View, Text, TextInput, Button} from 'react-native'
+import {useDispatch, useSelector} from 'react-redux'
+
 import style from './styles/RegisterStyle'
+import { register_user__post } from '../../redux/actions'
+
 //----------Leyenda--------
 //hOnCh == handlerOnChange
 
-export default ()=>{
+
+//dispatch(actions)
+//const users = useSelector(state => state.users)
+
+export default ()=>{ 
+    const dispatch = useDispatch()
+    const users = useSelector(state => state.users)   
     const [newUser, setNewUser] = useState({
         firstName: '',
         lastName: '',
@@ -18,14 +28,33 @@ export default ()=>{
     })
 
     const hOnCh_NewUser = (e) =>{
+        if(e.target.name === 'birth'){
+            var fecha = e.target.value.split('-')
+            setNewUser({
+                ...newUser,
+                birth: new Date(parseInt(fecha[0]), parseInt(fecha[1]), parseInt(fecha[2]))
+            })
+            return
+        }
         setNewUser({
             ...newUser,
             [e.target.name]: e.target.value
         })
     }
 
+    const register = async ()=>{
+        try{
+            console.log(newUser)
+            dispatch(register_user__post(newUser))
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+
     return(
         <View style={style.container}>
+            {console.log(users)}
             {/*//////////////->FIRST NAME<-//////////////*/}
             <Text style={style.label}>Nombre</Text>
             <TextInput style={style.inputR} editable name='firstName' onChange={hOnCh_NewUser}/>
@@ -57,7 +86,7 @@ export default ()=>{
             <Text style={style.label}>Confirmar Contraseña</Text>
             <TextInput style={style.inputR} editable name='password' onChange={hOnCh_NewUser}/>
 
-            <Button  style={style.btn} title='Enviar' onPress={()=> console.log('subido')}/>
+            <Button  style={style.btn} title='Enviar' onPress={register}/>
         </View>
     )
 }
