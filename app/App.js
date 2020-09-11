@@ -1,26 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
+import {Provider} from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-
-// importo los componentes screens
-
-import Start from "./components/screens/Start"
-import Login from "./components/screens/Login"
-// import Register from "./components/screens/Register"
-import Main from "./components/screens/Main"
+import store from './redux/store'
+import * as render from './components/imports/AppImpots'
 
 const Stack = createStackNavigator()
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Start' component={Start} />
-        {/* <Stack.Screen name='Register' component={Register} /> */}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name='Home' component={render.Home}/>
+          <Stack.Screen name='Register' component={render.Register}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

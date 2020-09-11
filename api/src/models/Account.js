@@ -1,10 +1,9 @@
-const S = require('sequelize').DataTypes 
+const S = require('sequelize').DataTypes
 const seedrandom = require("seedrandom")
 
 
 module.exports = (sequelize) => {
-    sequelize.define( 'account',
-    {
+    sequelize.define('account', {
         id: {
             type: S.INTEGER,
             primaryKey: true,
@@ -16,8 +15,7 @@ module.exports = (sequelize) => {
         numCard: {
             type: S.BIGINT
         },
-    },
-    { // HOOKS
+    }, { // HOOKS
         hooks: {
             afterCreate: (account) => {
                 GenCVU(account);

@@ -8,18 +8,20 @@ const { User, Wallet } = require("../../db.js");
 //-------------------------USUARIO--------------------------
 //----------------------------------------------------------
 
+
 //-------------------------------------
 //           CREAR USUARIO            |
 //-------------------------------------
 server.post('/register', (req, res) => {
     const { //me traigo todos los valores del usuario
-        firstName, 
+        firstName,
         lastName,
         email,
         documentType,
         documentNumber,
         birth,
         phoneNumber,
+        address,
         password,
         access,
         //--VVVVVVV---------Wallet
@@ -40,6 +42,7 @@ server.post('/register', (req, res) => {
         birth,
         phoneNumber,
         password: hash,
+        address,
         access
     })
         .then(user => {
@@ -48,12 +51,15 @@ server.post('/register', (req, res) => {
                 balance,
                 currency,
                 userId: user.getDataValue('id')
-            }).catch(err=>res.send(err))
+            }).catch(err => res.send(err))
             res.send(user)
         })
         .catch(err => {
-            if(err.parent && err.parent.code === "23505") res.send('el usuario ya existe')
-            res.send(err)
+            if (err.parent && err.parent.code === "23505") 
+                return res.send('el usuario ya existe')
+            if (err.name === 'SequelizeValidationError') 
+                return res.send('el usuario tiene que ser mayor de 16')
+            return res.send(err)
         })
 })
 
@@ -90,5 +96,26 @@ function estaAutenticado(req, res, next) {
         res.status(401).send("no esta autenticado");
     }
 }
+
+server.get("/all", (req, res) => {
+    User.findAll()
+        .then((users) => res.send(users))
+        .catch((err) => res.send(err));
+});
+
+server.get("/search", (req, res) => {
+    User.findAll({
+            where: {
+                // [Op.or]: [
+                email: {
+                    [Sequelize.Op.iLike]: `%${req.params.id}%`
+                }
+            }
+        })
+        .then(usuarioEncontrado => {
+            res.json(usuarioEncontrado);
+        })
+        .catch((err) => res.send(err));
+});
 
 module.exports = server, estaAutenticado;
