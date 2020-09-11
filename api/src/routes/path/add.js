@@ -19,7 +19,6 @@ server.put('/money/:idWallet', (req, res) => {
 })
 
 server.post('/friend/:id', (req, res) => {
-
     const { id } = req.params;
     const { idFriend } = req.body;
     
