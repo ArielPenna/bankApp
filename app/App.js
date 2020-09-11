@@ -15,6 +15,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen name='Home' component={render.Home}/>
           <Stack.Screen name='Register' component={render.Register}/>
+          <Stack.Screen name='Login' component={render.Login}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

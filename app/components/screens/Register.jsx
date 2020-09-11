@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {View, Text, TextInput, Button} from 'react-native'
 import {useDispatch, useSelector} from 'react-redux'
-
 import style from './styles/RegisterStyle'
 import { register_user__post } from '../../redux/actions'
 
