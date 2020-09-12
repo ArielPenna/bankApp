@@ -1,7 +1,8 @@
 import * as cons from './constants'
 
 const initialState = {
-    users: []
+    users: [],
+    user: undefined
 }
 
 export default (state = initialState, action)=>{
@@ -11,6 +12,13 @@ export default (state = initialState, action)=>{
                 ...state,
                 users: action.payload
             }
+        case cons.LOGIN_USER__POST:
+            return {
+                ...state,
+                user: action.payload
+            }
     }
+
     return state
 }
+

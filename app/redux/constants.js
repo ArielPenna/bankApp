@@ -1,1 +1,2 @@
 export const REGISTER_USER__POST = 'REGISTER_USER__POST'
+export const LOGIN_USER__POST = 'LOGIN_USER__POST'
