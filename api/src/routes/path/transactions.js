@@ -1,6 +1,6 @@
 const server = require("express").Router();
 /* const bcrypt = require("bcryptjs"); */
-const { User, Wallet } = require("../../db.js");
+const { User } = require("../../db.js");
 
 server.post("/:idFrom/:idTo", (req, res) => {
     const { idFrom, idTo } = req.params
