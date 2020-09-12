@@ -8,6 +8,7 @@ import style from './styles/RegisterStyle'
 import { register_user__post } from '../../redux/actions'
 import validate from './supports/Register/Validation_Register'
 import * as D from './supports/Register/Date_Register' //Functions to Date Register
+import api_adress from './supports/Register/Api_Adress_Register'
 
 ///////////////////>> IMAGES <<///////////////////
 import Background from '../../assets/background.png'
@@ -44,6 +45,7 @@ export default ()=>{
         firstName: '*',
         lastName:'*',
         documentNumber:'*',
+        adress:'*',
         phoneNumber:'*',
         email:'*',
         confirmEmail:'*',
@@ -58,6 +60,12 @@ export default ()=>{
         year: new Date().getFullYear() - 16
     })
 
+//THIS STATE IS TO HELP US IN THE ADRESS
+    const [adress, setAdress] = useState({
+        street_1: '',
+        street_2: ''
+    })
+
 ////////////////////>> SUPPORTS <<////////////////////
 
     //////////--> FUNCTIONS <--//////////
@@ -66,9 +74,14 @@ export default ()=>{
         if(error.firstName || error.lastName || error.phoneNumber 
         || error.documentNumber || error.email  || error.password) return true
         else return false
-    }    
+    } 
+    
+    const searchDirection = ()=>{
+        const street = adress.street_1 + ' y ' + adress.street_2
+        api_adress(street, newUser, setNewUser)
+    }
 
-//////////////////////////////////////////////////
+///////////////////>> HANDLER ON CHAGES <<///////////////////
 
     const hOnCh_NewUser = (e) =>{
         setError(
@@ -112,7 +125,14 @@ export default ()=>{
         })
     }
 
-//DISPATCH TO REGISTER THE NEW USER
+    const hOnCh_Adress = (e)=>{
+        setAdress({
+            ...adress,
+            [e.target.name]: e.target.value
+        })
+    }
+
+//////////>> DISPATCH TO REGISTER THE NEW USER <<//////////
     const register = ()=>{
         try{            
             dispatch(register_user__post(newUser))
@@ -127,10 +147,10 @@ export default ()=>{
         <View style={style.container}>
 {/*///////////////////////////////////>>> NAME <<<///////////////////////////////////*/}
             {/*//////////////->FIRST NAME<-//////////////*/}
-            <Text style={error.firstName ? style.error : style.label}>Nombre</Text>
+            <Text style={error.firstName ? style.error : style.label}>Name</Text>
             <TextInput style={style.inputR} editable name='firstName' onChange={hOnCh_NewUser}/>
             {/*//////////////->LAST NAME<-//////////////*/}
-            <Text style={error.lastName ? style.error : style.label}>Apellido</Text>
+            <Text style={error.lastName ? style.error : style.label}>Surname</Text>
             <TextInput style={style.inputR} editable name='lastName' onChange={hOnCh_NewUser}/>         
             
 
@@ -138,54 +158,62 @@ export default ()=>{
             <View style={style.docContainer}>
                 {/*//////////////->DOCUMENT TYPE<-//////////////*/}
                 <View style={style.doc}>
-                    <Text style={style.label}>Tipo de doc</Text>
+                    <Text style={style.label}>Type doc</Text>
                     <Picker style={style.inputDoc}
                     name='documentType' onValueChange={hOnCh_NewUser}>
-                        <Picker.Item label='DNI' value='DNI'/>
-                        <Picker.Item label='Pas' value='Pasaporte'/>
+                        <Picker.Item key={1} label='DNI' value='DNI'/>
+                        <Picker.Item key={2} label='Pas' value='Pasaporte'/>
                     </Picker>
                 </View>
                 {/*//////////////->DOCUMENT NUMBER<-//////////////*/}
-                <View style={style.doc}>
+                <View style={style.docN}>
                     <Text style={error.documentNumber ? style.error : style.label}>Numero</Text>
-                    <TextInput style={style.inputR} keyboardType='numeric' editable name='documentNumber' onChange={hOnCh_NewUser}/>
+                    <TextInput style={style.inputDocNum} keyboardType='numeric' editable name='documentNumber' onChange={hOnCh_NewUser}/>
                 </View>
             </View>
 
 {/*///////////////////////////////////>>> BIRTH <<<///////////////////////////////////*/}
             <Text style={style.label}>Fecha de nacimiento</Text>
-            <View>
+            <View style={style.birth}>
                 {/*//////--> DAY <--//////*/}
-                <Picker name='day' onValueChange={hOnCh_Birth}>
+                <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.daysTotal(date.month).map(day =>{
-                        return <Picker.Item label={day.toString()} value={'1-' + day}/>
+                        return <Picker.Item key={day} label={day.toString()} value={'1-' + day}/>
                     })}
                 </Picker>
                 {/*//////--> MONTH <--//////*/}
-                <Picker name='month' onValueChange={hOnCh_Birth}>
+                <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.months.map(month => {
                         return(
                             //month[0] name's month
                             //month[1] position's month 
-                            <Picker.Item label={month[0]} value={'2-' + month[1]}/>
+                            <Picker.Item key={month[1]} label={month[0]} value={'2-' + month[1]}/>
                         )
                     })}
                 </Picker>
                 {/*//////--> YEAR <--//////*/}
-                <Picker name='year' onValueChange={hOnCh_Birth}>
+                <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.yearTotal().map(year => {
-                        return <Picker.Item label={year.toString()} value={'3-' + year}/>
+                        return <Picker.Item key={year} label={year.toString()} value={'3-' + year}/>
                     })}
                 </Picker>
             </View>
 
-{/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
-            <Text style={style.label}>Tel/Cel</Text>
-            <TextInput style={style.inputR} keyboardType='numeric' editable name='phoneNumber' onChange={hOnCh_NewUser}/>
-
 {/*///////////////////////////////////>>> ADRESS <<<///////////////////////////////////*/}
-            <Text style={style.label}>Direccion</Text>
-            <TextInput style={style.inputR} editable name='address' onChange={hOnCh_NewUser}/>
+            <Text style={error.adress ? style.error : style.label}>Adress</Text>
+            <View>
+                <Text style={style.label}>Street 1</Text>
+                <TextInput style={style.inputR} editable name='street_1' onChange={hOnCh_Adress}/>
+            </View>
+            <View>
+                <Text style={style.label}>Street 2</Text>
+                <TextInput style={style.inputR} editable name='street_2' onChange={hOnCh_Adress}/>
+            </View>
+            <Button title='Search' onPress={searchDirection}/>
+
+{/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
+            <Text style={error.phoneNumber ? style.error : style.label}>Tel/Cel</Text>
+            <TextInput style={style.inputR} keyboardType='numeric' editable name='phoneNumber' onChange={hOnCh_NewUser}/>
 
 {/*///////////////////////////////////>>> EMAIL <<<///////////////////////////////////*/}
             {/*//////////////->EMAIL<-//////////////*/}

@@ -8,31 +8,40 @@ const styles = StyleSheet.create({
       width:"94%",
       marginLeft:"5px",
       padding:"10px",
-      height:"155%",
-      borderRadius:"15px",
+      height:"40px",
+      borderRadius:"5px",
       backgroundColor:"white",
       marginBottom:"10px"      
    },
    inputDoc:{
-      width:"80%",
-      height:"300%",
-      marginLeft:"15px",
+      width:"66%",
+      height:'40px',
+      paddingVertical: '10px',
       padding:"10px",
-      height:"155%",
-      borderRadius:"15px",
+      borderRadius:"5px",
       backgroundColor:"white",
-      marginBottom:"10px"  
+      marginLeft:'15px' 
+   },
+   inputDocNum:{
+      width:"120%",
+      height: '40px',
+      paddingVertical:"20px",
+      padding:"10px",
+      borderRadius:"5px",     
+      backgroundColor:"white"    
    },
    docContainer:{
       width:'94%',
-      height: 'auto',
       flex:1,
       flexDirection: 'row',
-      marginBottom:"65px"
+      marginBottom:"10px"
    },
    doc:{
       flex:1,
       flexDirection:'column'
+   },
+   docN:{
+      marginRight:'25px'
    },
    label:{
       marginLeft:"15px",
@@ -40,7 +49,7 @@ const styles = StyleSheet.create({
       fontSize:"25px"
    },
    btn:{
-      marginTop:"15px",
+      marginTop:"50px",
       width:'100%',
       height: '60px',
       backgroundColor: "#DDDDDD"
@@ -49,6 +58,18 @@ const styles = StyleSheet.create({
       marginLeft:"15px",
       color:"red",
       fontSize:"25px"  
+   },
+   birth:{
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      marginBottom: '10px'
+   },
+   date:{
+      width:'25%',
+      height: '40px',
+      paddingVertical: '10px',
+      borderRadius: '5px'
    }
 })
 
