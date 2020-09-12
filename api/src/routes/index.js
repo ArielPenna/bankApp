@@ -1,10 +1,10 @@
 const { Router } = require("express");
 
-const { Account } = require("../db")
 
 //----------------------------------------------------------------------------//
 //---------------------------MODULES-IMPORTS----------------------------------//
 //----------------------------------------------------------------------------//
+const transactionsPath = require("./path/transactions")
 const userPath = require("./path/user")
 const addPath = require("./path/add")
 const authUserPath = require("./path/auth")
@@ -21,6 +21,7 @@ const router = Router();
 router.use('/user/auth', authUserPath)
 router.use('/user', userPath)
 router.use('/add', addPath)
+router.use('/transactions', transactionsPath)
 
 
 module.exports = router;
