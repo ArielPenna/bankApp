@@ -44,9 +44,9 @@ passport.serializeUser((user, done) => {
     return done(null, user.id)
 })
 
-  //-------------------------------------
-  //        DESERIALIZAR USUARIO        |
-  //-------------------------------------
+//-------------------------------------
+//        DESERIALIZAR USUARIO        |
+//-------------------------------------
 passport.deserializeUser((id, done) => {
     User.findByPk(id)
         .then((user) => {

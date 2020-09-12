@@ -25,20 +25,20 @@ server.post('/sendMail', (req, res) => {
                 <body>
                 <img src="logo" />
                 <h1>¡Hola ${req.body.name}, para continuar enviar el siguiente codigo! </h1>
-                       <h2>Codigo: ${req.body.codigo} </h2>
+                        <h2>Codigo: ${req.body.codigo} </h2>
                 <h2>Gracias por elegirnos como tu billetera personal </h2>   
                 <h2>Team BankApp </h2>   
                 </body>
-    	       </head>
-       </html>`
+    	        </head>
+        </html>`
     }
 
     transporter.sendMail(mailOptions, (error, info) => {
         if(error) {
-           res.status(500).send(error.message)
+            res.status(500).send(error.message)
         } else {
-           console.log("¡Email enviado con éxito!")
-           res.status(200).json(req.body)
+            console.log("¡Email enviado con éxito!")
+            res.status(200).json(req.body)
         }
     })
 })
