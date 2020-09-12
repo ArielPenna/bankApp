@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {View, Text, TextInput, Button, Picker} from 'react-native'
+import {View, Text, TextInput, Button, Picker, ImageBackground} from 'react-native'
 import {useDispatch} from 'react-redux'
 
 import style from './styles/RegisterStyle'
@@ -42,8 +42,8 @@ export default ()=>{
     const hOnCh_NewUser = (e) =>{
         setError(
             validate({
-              ...newUser,
-              [e.target.name]: e.target.value,
+            ...newUser,
+            [e.target.name]: e.target.value,
         }));
         if (e.target.name != "confirmEmail" || e.target.name != "confirmPassword"){
         setNewUser({
@@ -72,7 +72,7 @@ export default ()=>{
     }
 
     return(
-        <View style={style.container}>
+        <ImageBackground source={require('../../assets/background.png')} style={style.container}>
 {/*///////////////////////////////////>>> NAME <<<///////////////////////////////////*/}
             {/*//////////////->FIRST NAME<-//////////////*/}
             <Text style={error.firstName ? style.error : style.label}>Nombre</Text>
@@ -132,7 +132,7 @@ export default ()=>{
 {/*//////////////////////////////////////////////////////////////////////////////////////*/}
 
             <Button  style={style.btn} title='Enviar' onPress={register} disabled={WithoutError()}/>
-        </View>
+        </ImageBackground>
     )
 }
 
