@@ -22,10 +22,11 @@ server.name = "API";
 //-----------------------------------------------
 passport.use(new LocalStrategy({
     usernameField: 'email',
-    passwordField: 'password',
     passReqToCallback: true
     },(req, email, password, done) => {
-        User.findOne({ email })
+        console.log(email)
+        console.log(password)
+        User.findOne({ where:{ email } })
             .then(user => {
                 if(!user) 
                     return done(null, false, { message: `usuario ${email} no encontrado` })
