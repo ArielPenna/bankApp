@@ -1,16 +1,13 @@
 ///////////////////>> MODULS <<///////////////////
 import React from 'react';
-import { Button, View, Text, Image, ImageBackground} from 'react-native';
+import { Button, View, SafeAreaView, Text, Alert, Image, ImageBackground, TouchableHighlight} from 'react-native';
 import { useSelector } from 'react-redux'
-
-///////////////////>> SCRIPTS <<///////////////////
 import styles from './styles/MainStyle'
+import Background from "../../assets/background.png"
 
-///////////////////>> IMAGES <<///////////////////
-import Background from '../../assets/background.png'
-import Avatar from '../../assets/avatar.jpg'
-
-//////////////////////////////////////////////////
+const Separator = () => (
+  <View style={styles.separator} />
+);
 
 export default ({ navigation }) => {
   const user = useSelector(state => state.user)
@@ -19,36 +16,82 @@ export default ({ navigation }) => {
     <ImageBackground source={Background} style={styles.container}>
       {console.log(user)}
       <View>
-        <View>
-          <Text style={styles.mainTitle} >Nombre Usuario</Text>
+        <View style={styles.top}>
+          
           <View style={styles.row}>
-            <Image style={styles.img} source={Avatar}/>
-            <Text style={styles.money} >$584652</Text>          
+            <View>
+            <Text style={styles.mainTitle} >Hola, Usuario</Text>
+            <Image style={styles.img} source={require('../../assets/avatar.jpg')}/>
+            </View>
+            <Text style={styles.money} >$584652</Text>        
           </View>
         </View>
+
+        <Separator/>
+
         <View style={styles.generalView}>
-          <Text>General</Text>
+          <Text style={styles.centerText}>General</Text>
           <View style={styles.row}>
-            <View>
-              <Text>Ingresos</Text>
-              <Text>$5400</Text>
+            <View style={styles.margin}>
+              <Text style={styles.centerText}>Ingresos</Text>
+              <Text style={styles.bigText}>$5400</Text>
             </View>
-            <View>
-              <Text>Gastos</Text>
-              <Text>$5400</Text>
+            <View style={styles.margin}>
+              <Text style={styles.centerText}>Gastos</Text>
+              <Text style={styles.bigText}>$5400</Text>
             </View>
-          </View>
-          <Text>Selector de periodo</Text>  
+          </View>          
+          <Text style={styles.centerText}>1 Día    7 Días    30 Días</Text>  
         </View>  
+
+        <Separator/>
+
         <View style={styles.row}>
-          <Button title="LOGIN" color="lightgrey" onPress={() => navigation.navigate('Login')} />
-          <Button title="LOGIN" color="lightgrey" onPress={() => navigation.navigate('Login')} />
-          <Button title="LOGIN" color="lightgrey" onPress={() => navigation.navigate('Login')} />  
-          <Button title="LOGIN" color="lightgrey" onPress={() => navigation.navigate('Login')} />
-        </View>      
+          <TouchableHighlight onPress={() => navigation.navigate('Login')}>
+            <View style={styles.touch}>
+              <Image style={styles.ico} source={require('../../assets/transacciones.png')}/>
+              <Text style={styles.small}>Transacciones</Text>
+            </View>
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={() => navigation.navigate('Login')}>
+            <View style={styles.touch}>
+              <Image style={styles.ico} source={require('../../assets/estadisticas.png')}/>
+              <Text style={styles.small}>Estadisticas</Text>
+            </View>
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={() => navigation.navigate('Login')}>
+            <View style={styles.touch}>
+              <Image style={styles.ico} source={require('../../assets/datos.png')}/>
+              <Text style={styles.small}>Mis Datos</Text>
+            </View>
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={() => navigation.navigate('Login')}>
+            <View style={styles.touch}>
+              <Image style={styles.ico} source={require('../../assets/productos.png')}/>
+              <Text style={styles.small}>Mis Productos</Text>
+            </View>
+          </TouchableHighlight>          
+        </View>  
+
+        <Separator/>    
+
         <View style={styles.row}>
-          <Button title="LOGIN" color="lightgrey" onPress={() => navigation.navigate('Login')} />
-          <Button title="LOGIN" color="lightgrey" onPress={() => navigation.navigate('Login')} />        
+        <TouchableHighlight onPress={() => navigation.navigate('Login')}>
+            <View style={styles.touch}>
+              <Image style={styles.ico} source={require('../../assets/saldo.png')}/>
+              <Text style={styles.small}>Cargar Saldo</Text>
+            </View>
+          </TouchableHighlight>          
+
+          <TouchableHighlight onPress={() => navigation.navigate('Login')}>
+            <View style={styles.touch}>
+              <Image style={styles.ico} source={require('../../assets/enviarDinero.png')}/>
+              <Text style={styles.small}>Enviar Dinero</Text>
+            </View>
+          </TouchableHighlight>       
         </View>      
       </View>      
     </ImageBackground>
