@@ -2,8 +2,7 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
     container:{
-      flex:1,
-      backgroundColor:"#02C39A"
+      flex:1
    },
    inputR:{
       width:"94%",
@@ -41,7 +40,10 @@ const styles = StyleSheet.create({
       fontSize:"25px"
    },
    btn:{
-      marginTop:"15px"
+      marginTop:"15px",
+      width:'100%',
+      height: '60px',
+      backgroundColor: "#DDDDDD"
    },
    error:{
       marginLeft:"15px",
