@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     },
     mainTitle:{
       fontSize: 24,
-      fontWeight: "8",
+      fontWeight: 8,
       textAlign:"center",
     },
     inputR:{
