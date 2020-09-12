@@ -1,12 +1,22 @@
+///////////////////>> MODULS <<///////////////////
 import React, {useState} from 'react'
-import {View, Text, TextInput, Button, Picker} from 'react-native'
+import {View, Text, TextInput, Button, Picker, ImageBackground} from 'react-native'
 import {useDispatch} from 'react-redux'
 
+///////////////////>> SCRIPTS <<///////////////////
 import style from './styles/RegisterStyle'
 import { register_user__post } from '../../redux/actions'
-import validate from './supports/Validation_Register'
+import validate from './supports/Register/Validation_Register'
+import * as D from './supports/Register/Date_Register' //Functions to Date Register
+
+///////////////////>> IMAGES <<///////////////////
+import Background from '../../assets/background.png'
+
+//////////////////////////////////////////////////
 
 //----------Leyenda--------
+// >> << === TITULO
+// --> <-- === SUBTITULO
 //hOnCh === handlerOnChange
 //secureTextEntry={true} === no mostrar el texto
 //keyboardType === darle el un type a los inputs
@@ -16,54 +26,95 @@ import validate from './supports/Validation_Register'
 
 export default ()=>{ 
     const dispatch = useDispatch()
-    const [error, setError] = useState({
-        firstName: '*',
-        lastName:'*',
-        email:'*',
-        password:'*'
-    })
+
+//////////>> STATES <<//////////
     const [newUser, setNewUser] = useState({
         firstName: '',
         lastName: '',
         email: '',
-        documentType: '',
+        documentType: 'DNI',
         documentNumber: 0,
-        birth: '',
+        birth: new Date((new Date().getFullYear() - 16), 0, 1),
         phoneNumber: 0,
         password:'',
         address:''
     })
+//THIS STATE IS TO HELP US VALIDATE THE INPUTS OF THE USERS
+    const [error, setError] = useState({
+        firstName: '*',
+        lastName:'*',
+        documentNumber:'*',
+        phoneNumber:'*',
+        email:'*',
+        confirmEmail:'*',
+        password:'*',
+        confirmPassword:'*'
+    })
 
-    const WithoutError = ()=>{
-        if(error.firstName || error.lastName || error.phoneNumber || error.email  || error.password) return true
+//THIS STATE IS TO HELP US IN THE DATES
+    const [date, setDate] = useState({
+        day: 1,
+        month: 0,
+        year: new Date().getFullYear() - 16
+    })
+
+////////////////////>> SUPPORTS <<////////////////////
+
+    //////////--> FUNCTIONS <--//////////
+    ////--> VERIFY IF HAS A ERROR <--////
+    const withoutError = ()=>{
+        if(error.firstName || error.lastName || error.phoneNumber 
+        || error.documentNumber || error.email  || error.password) return true
         else return false
-    }
+    }    
+
+//////////////////////////////////////////////////
 
     const hOnCh_NewUser = (e) =>{
         setError(
             validate({
-              ...newUser,
-              [e.target.name]: e.target.value,
+            ...newUser,
+            [e.target.name]: e.target.value,
         }));
+        
         if (e.target.name != "confirmEmail" || e.target.name != "confirmPassword"){
         setNewUser({
             ...newUser,
             [e.target.name]: e.target.value
         })
-        }        
+        } 
+        console.log(newUser)       
     }
 
     const hOnCh_Birth = (e) =>{
-        var date = e.target.value.split('-')
+        const id = e.split('-')
+        var type
+        switch(parseInt(id[0])){
+            case 1:
+                type = 'day';
+                break;
+            case 2:
+                type = 'month';
+                break;
+            case 3:
+                type = 'year';
+                break;
+        }
+
+        setDate({
+            ...date,
+            [type]: parseInt(id[1])
+        })
+            
         setNewUser({
             ...newUser,
-            birth: new Date(parseInt(date[0]), parseInt(date[1]), parseInt(date[2]))
+            birth: new Date(date.year, date.month, date.day)
         })
     }
 
-    const register = async ()=>{
-        try{
-            console.log(newUser)
+//DISPATCH TO REGISTER THE NEW USER
+    const register = ()=>{
+        try{            
             dispatch(register_user__post(newUser))
         }
         catch(err){
@@ -72,6 +123,7 @@ export default ()=>{
     }
 
     return(
+        <ImageBackground source={Background} style={style.container}>
         <View style={style.container}>
 {/*///////////////////////////////////>>> NAME <<<///////////////////////////////////*/}
             {/*//////////////->FIRST NAME<-//////////////*/}
@@ -88,22 +140,44 @@ export default ()=>{
                 <View style={style.doc}>
                     <Text style={style.label}>Tipo de doc</Text>
                     <Picker style={style.inputDoc}
-                    selectedValue='Select...' 
-                    name='documentType' onChange={hOnCh_NewUser}>
+                    name='documentType' onValueChange={hOnCh_NewUser}>
                         <Picker.Item label='DNI' value='DNI'/>
                         <Picker.Item label='Pas' value='Pasaporte'/>
                     </Picker>
                 </View>
                 {/*//////////////->DOCUMENT NUMBER<-//////////////*/}
                 <View style={style.doc}>
-                    <Text style={style.label}>Numero</Text>
+                    <Text style={error.documentNumber ? style.error : style.label}>Numero</Text>
                     <TextInput style={style.inputR} keyboardType='numeric' editable name='documentNumber' onChange={hOnCh_NewUser}/>
                 </View>
             </View>
 
 {/*///////////////////////////////////>>> BIRTH <<<///////////////////////////////////*/}
             <Text style={style.label}>Fecha de nacimiento</Text>
-            <TextInput style={style.inputR} editable name='birth' onChange={hOnCh_Birth}/>
+            <View>
+                {/*//////--> DAY <--//////*/}
+                <Picker name='day' onValueChange={hOnCh_Birth}>
+                    {D.daysTotal(date.month).map(day =>{
+                        return <Picker.Item label={day.toString()} value={'1-' + day}/>
+                    })}
+                </Picker>
+                {/*//////--> MONTH <--//////*/}
+                <Picker name='month' onValueChange={hOnCh_Birth}>
+                    {D.months.map(month => {
+                        return(
+                            //month[0] name's month
+                            //month[1] position's month 
+                            <Picker.Item label={month[0]} value={'2-' + month[1]}/>
+                        )
+                    })}
+                </Picker>
+                {/*//////--> YEAR <--//////*/}
+                <Picker name='year' onValueChange={hOnCh_Birth}>
+                    {D.yearTotal().map(year => {
+                        return <Picker.Item label={year.toString()} value={'3-' + year}/>
+                    })}
+                </Picker>
+            </View>
 
 {/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
             <Text style={style.label}>Tel/Cel</Text>
@@ -131,8 +205,9 @@ export default ()=>{
 
 {/*//////////////////////////////////////////////////////////////////////////////////////*/}
 
-            <Button  style={style.btn} title='Enviar' onPress={register} disabled={WithoutError()}/>
+            <Button  style={style.btn} title='Enviar' onPress={register} disabled={withoutError()}/>
         </View>
+        </ImageBackground>
     )
 }
 

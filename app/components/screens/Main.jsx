@@ -1,15 +1,28 @@
+///////////////////>> MODULS <<///////////////////
 import React from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, Alert, Image, ImageBackground} from 'react-native';
+import { Button, View, Text, Image, ImageBackground} from 'react-native';
+import { useSelector } from 'react-redux'
+
+///////////////////>> SCRIPTS <<///////////////////
 import styles from './styles/MainStyle'
 
+///////////////////>> IMAGES <<///////////////////
+import Background from '../../assets/background.png'
+import Avatar from '../../assets/avatar.jpg'
+
+//////////////////////////////////////////////////
+
 export default ({ navigation }) => {
+  const user = useSelector(state => state.user)
+
   return (
-    <ImageBackground source={require('../../assets/background.png')} style={styles.container}>
+    <ImageBackground source={Background} style={styles.container}>
+      {console.log(user)}
       <View>
         <View>
           <Text style={styles.mainTitle} >Nombre Usuario</Text>
           <View style={styles.row}>
-            <Image style={styles.img} source={require('../../assets/avatar.jpg')}/>
+            <Image style={styles.img} source={Avatar}/>
             <Text style={styles.money} >$584652</Text>          
           </View>
         </View>
