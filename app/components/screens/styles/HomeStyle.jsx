@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   mainTitle:{
     fontSize: 24,
     color:"white",
-    fontWeight: 8,
+    fontWeight: '8',
     textAlign:"center",
   } 
 });

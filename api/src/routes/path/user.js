@@ -67,7 +67,8 @@ server.post('/register', (req, res) => {
 //           RUTA LOGIN               |
 //-------------------------------------
 server.post('/login', passport.authenticate("local"), (req, res) => {
-    res.send(req.user.id);
+    console.log(req.user.id)
+    res.send(req.user);
 })
 
 //-------------------------------------
