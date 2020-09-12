@@ -6,32 +6,41 @@ server.post("/:idFrom/:idTo", (req, res) => {
     const { idFrom, idTo } = req.params
     const { transaction } = req.body
 
+    const floatTransaction = parseFloat(transaction) // convierto el numero a decimal
 
-    User.findByPk(idFrom).then(
-        from => from.getWallet().then(
-            (wallet)=>{
-                console.log('wallet from ',wallet)
-                wallet.update({
-                    balance:(parseFloat(wallet.dataValues.balance) - parseFloat(transaction))
-                })
-                    .then(up => console.log(up.dataValues))
-                    .catch(err => res.send('ocurrio un error en el update de la wallet'))
-            }
-        ).catch(err => res.send('ocurrio un error en la Wallet de from'))
-    ).catch(err => res.send('ocurrio un error en from'))
+    let nuevoSaldo;
 
-    User.findByPk(idTo).then(
-        to => to.getWallet().then(
-            (wallet)=>{
-                console.log('wallet to ',wallet.dataValues)
-                wallet.update({
-                    balance:(parseFloat(wallet.dataValues.balance) + parseFloat(transaction))
-                })
-                    .then(up => res.send(up.dataValues))
-                    .catch(err => res.send('ocurrio un error en el update de la wallet de to'))
-            }
-        ).catch(err => res.send('ocurrio un error en la Wallet de to'))
-    ).catch(err => res.send('ocurrio un error en to'))
+    if(!Number(idFrom))         res.send('usuario from invalido')
+    else if(!Number(idTo))      res.send('usuario to invalido')
+    else if(idFrom === idTo)    res.send('los usuarios son iguales')
+    else if(!floatTransaction)  res.send('transaccion invalida')
+    
+    //-----------------------------------
+    //     SI PASA TODOS LOS FILTROS
+    //-----------------------------------
+    else {
+        //  usuario FROM
+        User.findByPk(idFrom) // id del usuario que va a pagar
+        .then(from => from.getWallet()) // cuando lo encuentro busco su billetera
+        .then(async (wallet)=> {
+            nuevoSaldo = await wallet.update({ // descuento el saldo de la transaccion
+                balance:(parseFloat(wallet.dataValues.balance) - floatTransaction)
+            })})
+
+        //  usuario TO
+        .then(() => User.findByPk(idTo)) // busco el usuario a acreditar
+        .then(to => to.getWallet()) // cuando lo encuentro busco su billetera
+        .then(wallet => wallet.update({ // acredito el saldo de la transaccion
+            balance:(parseFloat(wallet.dataValues.balance) + floatTransaction)
+            }))
+            
+        .then(() => res.send(nuevoSaldo.dataValues)) // envio el saldo actual del usuario
+
+        // ----------- ERRORES ----------------//
+        .catch(err => {
+            if(err.name === 'SequelizeValidationError') res.send('Saldo insuficiente')
+            res.send(err)
+        })}
 })
 
 module.exports = server;
