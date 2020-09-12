@@ -44,9 +44,13 @@ server.get("/get/:id", (req, res) => {
 server.delete("/delete/:id", (req, res) =>{
     const { id } = req.params
 
-    User.destroy(Number(id))
-    .then(user => res.send("Usuario eliminado"))
-    .catch(err=> res.send(err))
+    User.destroy({
+        where: {id: Number(id)}
+    })
+    .then(user => { 
+        if (user === 1) {res.status(200).json({ message: "User deleted successfully" })}
+        else {res.status(404).json({ message: "User not found" })}
+    }).catch(err=> res.send(err))
 })
 
 

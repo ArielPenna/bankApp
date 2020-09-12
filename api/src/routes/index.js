@@ -18,7 +18,7 @@ const router = Router();
 //-----------------------MIDDLEWARES-ROUTES-----------------------------------//
 //----------------------------------------------------------------------------//
 
-// router.use('/user/auth', authUserPath)
+router.use('/user/auth', authUserPath)
 router.use('/user', userPath)
 router.use('/add', addPath)
 
