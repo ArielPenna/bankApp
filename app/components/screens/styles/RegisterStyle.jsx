@@ -2,11 +2,16 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
     container:{
-      flex:1
+      flex:1,
+      width:"100%",
+      heigth:"100%",
+      justifyContent:"center",
+      alignContent:"center",
    },
    inputR:{
-      width:"94%",
-      marginLeft:"5px",
+      width:"90%",
+      marginLeft:"20px",
+      marginRight:"15px",
       padding:"10px",
       height:"40px",
       borderRadius:"5px",
@@ -44,7 +49,7 @@ const styles = StyleSheet.create({
       marginRight:'25px'
    },
    label:{
-      marginLeft:"15px",
+      marginLeft:"20px",
       color:"#f0f3bd",
       fontSize:"25px"
    },
@@ -55,7 +60,7 @@ const styles = StyleSheet.create({
       backgroundColor: "#DDDDDD"
    },
    error:{
-      marginLeft:"15px",
+      marginLeft:"20px",
       color:"red",
       fontSize:"25px"  
    },

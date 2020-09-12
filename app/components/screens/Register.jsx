@@ -143,8 +143,7 @@ export default ()=>{
     }
 
     return(
-        <ImageBackground source={Background} style={style.container}>
-        <View style={style.container}>
+        <ImageBackground source={require('../../assets/background.png')} style={style.container}>
 {/*///////////////////////////////////>>> NAME <<<///////////////////////////////////*/}
             {/*//////////////->FIRST NAME<-//////////////*/}
             <Text style={error.firstName ? style.error : style.label}>Name</Text>
@@ -233,8 +232,7 @@ export default ()=>{
 
 {/*//////////////////////////////////////////////////////////////////////////////////////*/}
 
-            <Button  style={style.btn} title='Enviar' onPress={register} disabled={withoutError()}/>
-        </View>
+            <Button  style={style.btn} title='Enviar' onPress={register} disabled={WithoutError()}/>
         </ImageBackground>
     )
 }
