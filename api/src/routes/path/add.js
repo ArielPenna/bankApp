@@ -1,6 +1,9 @@
 const server = require("express").Router();
 const { User, Wallet } = require("../../db.js");
 
+//-------------------------------------
+//           AGREGAR DINERO           |
+//-------------------------------------
 server.put('/money/:idWallet', (req, res) => {
     const { balance } = req.body
     const { idWallet } = req.params
@@ -17,6 +20,10 @@ server.put('/money/:idWallet', (req, res) => {
         })
     })
 })
+
+//-------------------------------------
+//           AGREGAR AMIGO           |
+//-------------------------------------
 
 server.post('/friend/:id', (req, res) => {
     const { id } = req.params;

@@ -97,11 +97,19 @@ function estaAutenticado(req, res, next) {
     }
 }
 
+//-----------------------------------------------
+//      Ruta para retornar todos los usuarios  |
+//-----------------------------------------------
+
 server.get("/all", (req, res) => {
     User.findAll()
         .then((users) => res.send(users))
         .catch((err) => res.send(err));
 });
+
+//-------------------------------------
+//      Ruta buscar usuario            |
+//-------------------------------------
 
 server.get("/search", (req, res) => {
     User.findAll({
