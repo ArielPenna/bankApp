@@ -1,14 +1,20 @@
+///////////////////>> MODULS <<///////////////////
 import React from 'react';
 import { Button, View, SafeAreaView, Text, Alert, Image, ImageBackground, TouchableHighlight} from 'react-native';
+import { useSelector } from 'react-redux'
 import styles from './styles/MainStyle'
+import Background from "../../assets/background.png"
 
 const Separator = () => (
   <View style={styles.separator} />
 );
 
 export default ({ navigation }) => {
+  const user = useSelector(state => state.user)
+
   return (
-    <ImageBackground source={require('../../assets/background.png')} style={styles.container}>
+    <ImageBackground source={Background} style={styles.container}>
+      {console.log(user)}
       <View>
         <View style={styles.top}>
           

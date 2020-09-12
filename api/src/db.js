@@ -67,6 +67,11 @@ User.belongsToMany(User, { as: "friend", foreignKey: "friended", through: "conta
 User.belongsToMany(User, { as: "friended", foreignKey: "friend", through: "contacts" })
 
 
+// un usuario tiene muchas transacciones 
+User.belongsToMany(User, { as: "debit", foreignKey: "deposit", through: "transactions" })
+User.belongsToMany(User, { as: "deposit", foreignKey: "debit", through: "transactions" })
+
+
 //----------------------------------------------------------------------------//
 module.exports = {
     ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

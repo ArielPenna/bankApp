@@ -45,7 +45,10 @@ const styles = StyleSheet.create({
       fontSize:"25px"
    },
    btn:{
-      marginTop:"15px"
+      marginTop:"15px",
+      width:'100%',
+      height: '60px',
+      backgroundColor: "#DDDDDD"
    },
    error:{
       marginLeft:"20px",
