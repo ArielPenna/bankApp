@@ -1,22 +1,23 @@
-///////////////////>> MODULS <<///////////////////
-import React from 'react';
+import React from 'react'
 import { Button, View, SafeAreaView, Text, Alert, Image, ImageBackground, TouchableHighlight} from 'react-native';
 import { useSelector } from 'react-redux'
 import styles from './styles/MainStyle'
 import Background from "../../assets/background.png"
+
 
 const Separator = () => (
   <View style={styles.separator} />
 );
 
 export default ({ navigation }) => {
-  const user = useSelector(state => state.user)
+  const user = useSelector(state => state.user)      
+
+    {console.log(user)}
+ 
+
   
-
-
   return (
     <ImageBackground source={Background} style={styles.container}>
-      {console.log(user)}
       
       <View>
         <View style={styles.top}>
@@ -26,7 +27,7 @@ export default ({ navigation }) => {
             <Text style={styles.mainTitle} >Hola, {user.firstName}</Text>
             <Image style={styles.img} source={require('../../assets/avatar.jpg')}/>
             </View>
-            <Text style={styles.money} >$584652</Text>        
+            <Text style={styles.money} >$ </Text>        
           </View>
         </View>
 
@@ -57,7 +58,7 @@ export default ({ navigation }) => {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => navigation.navigate('Statics')}>
+          <TouchableHighlight onPress={() => navigation.navigate('Statistics')}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={require('../../assets/estadisticas.png')}/>
               <Text style={styles.small}>Estadisticas</Text>

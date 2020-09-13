@@ -16,7 +16,7 @@ import style from './styles/LoginStyle'
 //hOnCh === handlerOnChange
 
 
-export default () => {
+export default ({navigation}) => {
     const dispatch = useDispatch()
     const [login, setLogin]= useState ({
         email:'',
@@ -34,9 +34,9 @@ export default () => {
     const onLogin = () => {
         try{ 
             dispatch(login_user__post(login));
-            console.log("usuarioLogueado");                 
+            console.log("usuarioLogueado");                        
         } 
-        catch(err){console.log(error)}
+        catch(err){console.log(err)}
     }
 
 
@@ -60,6 +60,8 @@ export default () => {
             <Button style={style.btn} color="#ea94a0" title='Enviar' onPress= {onLogin}/>
             
           {/*//////////////////////////////////////////////////////////*/}
+
+          <Button title="MAIN" color="purple" onPress={() => navigation.navigate('Main')} />
         </View>
       </View>      
     </ImageBackground>

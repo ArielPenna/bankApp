@@ -22,9 +22,9 @@ export default function App() {
           <Stack.Screen name='Account' component={render.Account} />
           <Stack.Screen name='Recharge' component={render.Recharge} />
           <Stack.Screen name='SendMoney' component={render.SendMoney} />
-          <Stack.Screen name='Statics' component={render.Statics} />
+          <Stack.Screen name='Statistics' component={render.Statistics} />
           <Stack.Screen name='Transactions' component={render.Transactions} />
-          <Stack.Screen name='Code' component={render.Code}/>
+          <Stack.Screen name='Code' component={render.Code} />
 
         </Stack.Navigator>
       </NavigationContainer>

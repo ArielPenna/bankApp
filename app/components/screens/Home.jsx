@@ -24,7 +24,7 @@ export default ({ navigation }) => {
           <Button title="REGISTER" color="purple" onPress={() => navigation.navigate('Register')} />
 
           <Text>Botones de testeo de componentes</Text>
-          <Button title="MAIN" color="purple" onPress={() => navigation.navigate('Main')} />
+          
           <Button title="Validation" color="purple" onPress={() => navigation.navigate('Code')} />
         </View>
       </View>      

@@ -5,7 +5,7 @@ import Main from '../screens/Main'
 import Account from '../screens/Account'
 import Recharge from '../screens/Recharge'
 import SendMoney from '../screens/SendMoney'
-import Statics from '../screens/Statics'
+import Statistics from '../screens/Statistics'
 import Transactions from '../screens/Transactions'
 import Code from '../screens/CodeValidation'
 
@@ -18,6 +18,6 @@ export {Main}
 export {Account}
 export {Recharge}
 export {SendMoney}
-export {Statics}
+export {Statistics}
 export {Transactions}
 export {Code}
