@@ -30,3 +30,17 @@ export const login_user__post = (user) => {
     }); 
   };
 }
+
+export const send_mail__post = (user) => {
+  return function (dispatch) {
+    instance.post('mail/sendMail', user).then((res)=>{
+      dispatch({type: cons.SEND_MAIL__POST, payload: res.data})
+    })
+  }
+}
+
+export const save_user = (user) => {
+  return function (dispatch) {
+   dispatch({type: cons.SAVE_USER, payload: user})
+  }
+}

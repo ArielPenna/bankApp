@@ -1,2 +1,4 @@
 export const REGISTER_USER__POST = 'REGISTER_USER__POST'
 export const LOGIN_USER__POST = 'LOGIN_USER__POST'
+export const SEND_MAIL__POST = 'SEND_MAIL__POST'
+export const SAVE_USER = 'SAVE_USER'
