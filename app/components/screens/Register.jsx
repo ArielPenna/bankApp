@@ -204,7 +204,7 @@ export default ()=>{
 
 {/*//////////////////////////////////////////////////////////////////////////////////////*/}
 
-            <Button  style={style.btn} title='Enviar' onPress={register} disabled={WithoutError()}/>
+            <Button  style={style.btn} title='Enviar' onPress={register} disabled={withoutError()}/>
         </ImageBackground>
     )
 }
