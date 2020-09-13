@@ -6,7 +6,8 @@ import { Button, View, SafeAreaView, Text, Image, ImageBackground} from 'react-n
 import styles from './styles/HomeStyle'
 
 ///////////////////>> IMAGES <<///////////////////
-import Background from '../../assets/background.png'
+import Background from '../../../assets/background.png'
+import Logo from '../../../assets/logo.png'
 
 //////////////////////////////////////////////////
 
@@ -17,7 +18,7 @@ export default ({ navigation }) => {
         <Text style={styles.mainTitle} >BankApp Me!</Text>
         <Image 
           style={styles.img}
-          source={require('../../assets/logo.png')} />
+          source={Logo} />
         <View >
           <Button title="LOGIN" color="purple" onPress={() => navigation.navigate('Login')} />
           <br/>
@@ -25,6 +26,7 @@ export default ({ navigation }) => {
 
           <Text>Botones de testeo de componentes</Text>
           <Button title="MAIN" color="purple" onPress={() => navigation.navigate('Main')} />
+          <Button title="Validation" color="purple" onPress={() => navigation.navigate('Code')} />
         </View>
       </View>      
     </ImageBackground>
