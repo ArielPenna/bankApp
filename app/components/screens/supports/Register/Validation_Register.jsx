@@ -29,6 +29,16 @@ const validate = (input)=>{
         errors.lastName = '*';
     }
 
+/////////////>>ADRESS<</////////////
+    if(!input.adress){
+      errors.adress = '*'
+    }
+
+/////////////>>TEL/CEL<</////////////
+    if(!input.phoneNumber){
+      errors.phoneNumber = '*'
+    }
+
 /////////////>>DOCUMENT NUMBER<</////////////   
     if(!regex_dni.test(input.documentNumber)){
       errors.documentNumber='*'
