@@ -8,12 +8,14 @@ const { User, Wallet } = require("../../db.js");
 //-------------------------USUARIO--------------------------
 //----------------------------------------------------------
 
+// TRAE TODOS LOS USUARIOS
 server.get("/all", (req, res) => {
     User.findAll()
         .then((users) => res.send(users))
         .catch((err) => res.send(err));
 });
 
+// BUSCA UN USARIO POR EMAIL
 server.get("/search", (req, res) => {
     User.findAll({
             where: {
@@ -33,7 +35,6 @@ server.get("/search", (req, res) => {
 //        GET USER BY ID        |
 //-------------------------------
 server.get("/get/:id", (req, res) => {
-
     const { id } = req.params   //todo lo que viaja llega como string
 
     User.findByPk(Number(id))   //busca por id
@@ -41,9 +42,7 @@ server.get("/get/:id", (req, res) => {
         .catch(err => res.send(err))    // error que llega lo envia
 })
 
-//-------------------------------
-//       DELETE USER BY ID      |
-//-------------------------------
+// ELIMINAR USUARIO
 server.delete("/delete/:id", (req, res) =>{
     const { id } = req.params
 

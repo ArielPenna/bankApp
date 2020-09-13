@@ -45,7 +45,7 @@ server.post('/register', (req, res) => {
                 type,
                 balance,
                 currency,
-                userId: user.getDataValue('id')
+                userId: user.dataValues.id
             }).catch(err => res.send(err))
             res.send(user)
         })
@@ -62,7 +62,7 @@ server.post('/register', (req, res) => {
 //           RUTA LOGIN               |
 //-------------------------------------
 server.post('/login', passport.authenticate("local"), (req, res) => {
-    res.send(req.user.id);
+    res.send(req.user);
 })
 
 //-------------------------------------
@@ -85,11 +85,10 @@ server.get("/me", estaAutenticado, function (req, res) {
 //      FUNCION AUTENTICAR USUARIO    |
 //-------------------------------------
 function estaAutenticado(req, res, next) {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated())
         next();
-    } else {
+    else 
         res.status(401).send("no esta autenticado");
-    }
 }
 
 

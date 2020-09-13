@@ -34,8 +34,9 @@ server.post('/sendmail', (req, res) => {
         html:  `   <html>
             <head>
                 <body>
+
                 <h1>¡Hola ${name}, para continuar enviar el siguiente codigo! </h1>
-                       <h2>Codigo: ${codig.codigo} </h2>
+                <h2>Codigo: ${codig.codigo} </h2>
                 <h2>Gracias por elegirnos como tu billetera personal </h2>   
                 <h2>Team BankApp </h2>   
                 </body>
@@ -47,10 +48,10 @@ server.post('/sendmail', (req, res) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if(error) {
-           res.status(500).send(error.message)
+            res.status(500).send(error.message)
         } else {
-           console.log("¡Email enviado con éxito!")
-           res.status(200).json(req.body)
+            console.log("¡Email enviado con éxito!")
+            res.status(200).json(req.body)
         }
     })
     console.log('cod:',codToCreateUser);
