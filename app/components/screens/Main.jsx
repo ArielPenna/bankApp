@@ -11,10 +11,13 @@ const Separator = () => (
 
 export default ({ navigation }) => {
   const user = useSelector(state => state.user)
+  
+
 
   return (
     <ImageBackground source={Background} style={styles.container}>
       {console.log(user)}
+      
       <View>
         <View style={styles.top}>
           
