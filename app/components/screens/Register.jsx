@@ -1,6 +1,6 @@
 ///////////////////>> MODULS <<///////////////////
 import React, {useState} from 'react'
-import {View, Text, TextInput, Button, Picker, ImageBackground} from 'react-native'
+import {View, Text, TextInput, Button, Picker, ImageBackground, TouchableHighlight} from 'react-native'
 import {useDispatch} from 'react-redux'
 
 ///////////////////>> SCRIPTS <<///////////////////
@@ -8,6 +8,7 @@ import style from './styles/RegisterStyle'
 import { register_user__post } from '../../redux/actions'
 import validate from './supports/Register/Validation_Register'
 import * as D from './supports/Register/Date_Register' //Functions to Date Register
+import api_adress from './supports/Register/Api_Adress_Register' //Function to Api Adress
 
 ///////////////////>> IMAGES <<///////////////////
 import Background from '../../assets/background.png'
@@ -44,6 +45,7 @@ export default ()=>{
         firstName: '*',
         lastName:'*',
         documentNumber:'*',
+        adress:'*',
         phoneNumber:'*',
         email:'*',
         confirmEmail:'*',
@@ -58,6 +60,12 @@ export default ()=>{
         year: new Date().getFullYear() - 16
     })
 
+//THIS STATE IS TO HELP US IN THE ADRESS
+    const [address, setAddress] = useState({
+        street_1: '',
+        street_2: ''
+    })
+
 ////////////////////>> SUPPORTS <<////////////////////
 
     //////////--> FUNCTIONS <--//////////
@@ -66,9 +74,14 @@ export default ()=>{
         if(error.firstName || error.lastName || error.phoneNumber 
         || error.documentNumber || error.email  || error.password) return true
         else return false
-    }    
+    } 
+    
+    const searchDirection = ()=>{
+        const street = address.street_1 + ' y ' + address.street_2
+        api_adress(street, newUser, setNewUser)
+    }
 
-//////////////////////////////////////////////////
+///////////////////>> HANDLER ON CHAGES <<///////////////////
 
     const hOnCh_NewUser = (e) =>{
         setError(
@@ -112,7 +125,14 @@ export default ()=>{
         })
     }
 
-//DISPATCH TO REGISTER THE NEW USER
+    const hOnCh_Adress = (e)=>{
+        setAddress({
+            ...address,
+            [e.target.name]: e.target.value
+        })
+    }
+
+//////////>> DISPATCH TO REGISTER THE NEW USER <<//////////
     const register = ()=>{
         try{            
             dispatch(register_user__post(newUser))
@@ -123,13 +143,13 @@ export default ()=>{
     }
 
     return(
-        <ImageBackground source={require('../../assets/background.png')} style={style.container}>
+        <ImageBackground source={Background} style={style.container}>
 {/*///////////////////////////////////>>> NAME <<<///////////////////////////////////*/}
             {/*//////////////->FIRST NAME<-//////////////*/}
-            <Text style={error.firstName ? style.error : style.label}>Nombre</Text>
+            <Text style={error.firstName ? style.error : style.label}>Name</Text>
             <TextInput style={style.inputR} editable name='firstName' onChange={hOnCh_NewUser}/>
             {/*//////////////->LAST NAME<-//////////////*/}
-            <Text style={error.lastName ? style.error : style.label}>Apellido</Text>
+            <Text style={error.lastName ? style.error : style.label}>Surname</Text>
             <TextInput style={style.inputR} editable name='lastName' onChange={hOnCh_NewUser}/>         
             
 
@@ -137,54 +157,66 @@ export default ()=>{
             <View style={style.docContainer}>
                 {/*//////////////->DOCUMENT TYPE<-//////////////*/}
                 <View style={style.doc}>
-                    <Text style={style.label}>Tipo de doc</Text>
+                    <Text style={style.label}>Doc. Type</Text>
                     <Picker style={style.inputDoc}
                     name='documentType' onValueChange={hOnCh_NewUser}>
-                        <Picker.Item label='DNI' value='DNI'/>
-                        <Picker.Item label='Pas' value='Pasaporte'/>
+                        <Picker.Item key={1} label='DNI' value='DNI'/>
+                        <Picker.Item key={2} label='Pas' value='Pasaporte'/>
                     </Picker>
                 </View>
                 {/*//////////////->DOCUMENT NUMBER<-//////////////*/}
-                <View style={style.doc}>
-                    <Text style={error.documentNumber ? style.error : style.label}>Numero</Text>
-                    <TextInput style={style.inputR} keyboardType='numeric' editable name='documentNumber' onChange={hOnCh_NewUser}/>
+                <View style={style.docN}>
+                    <Text style={error.documentNumber ? style.error : style.label}>Number</Text>
+                    <TextInput style={style.inputDocNum} keyboardType='numeric' editable name='documentNumber' onChange={hOnCh_NewUser}/>
                 </View>
             </View>
 
 {/*///////////////////////////////////>>> BIRTH <<<///////////////////////////////////*/}
-            <Text style={style.label}>Fecha de nacimiento</Text>
-            <View>
+            <Text style={style.label}>Birth date</Text>
+            <View style={style.birth}>
                 {/*//////--> DAY <--//////*/}
-                <Picker name='day' onValueChange={hOnCh_Birth}>
+                <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.daysTotal(date.month).map(day =>{
-                        return <Picker.Item label={day.toString()} value={'1-' + day}/>
+                        return <Picker.Item key={day} label={day.toString()} value={'1-' + day}/>
                     })}
                 </Picker>
                 {/*//////--> MONTH <--//////*/}
-                <Picker name='month' onValueChange={hOnCh_Birth}>
+                <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.months.map(month => {
                         return(
                             //month[0] name's month
                             //month[1] position's month 
-                            <Picker.Item label={month[0]} value={'2-' + month[1]}/>
+                            <Picker.Item key={month[1]} label={month[0]} value={'2-' + month[1]}/>
                         )
                     })}
                 </Picker>
                 {/*//////--> YEAR <--//////*/}
-                <Picker name='year' onValueChange={hOnCh_Birth}>
+                <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.yearTotal().map(year => {
-                        return <Picker.Item label={year.toString()} value={'3-' + year}/>
+                        return <Picker.Item key={year} label={year.toString()} value={'3-' + year}/>
                     })}
                 </Picker>
             </View>
 
-{/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
-            <Text style={style.label}>Tel/Cel</Text>
-            <TextInput style={style.inputR} keyboardType='numeric' editable name='phoneNumber' onChange={hOnCh_NewUser}/>
+{/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}
+            <Text style={error.adress ? style.error : style.label}>Address</Text>
+            <View style={style.adressContainer}>
+                <View>
+                    <Text style={style.subLabel}>Street 1</Text>
+                    <TextInput style={style.inputStreet} editable name='street_1' onChange={hOnCh_Adress}/>
+                </View>
+                <View>
+                    <Text style={style.subLabel}>Street 2</Text>
+                    <TextInput style={style.inputStreet} editable name='street_2' onChange={hOnCh_Adress}/>
+                </View>
+            </View>
+            <TouchableHighlight onPress={searchDirection} style={style.appButtonContainer}>
+                <Text style={style.appButtonText}>SEARCH</Text>
+            </TouchableHighlight>
 
-{/*///////////////////////////////////>>> ADRESS <<<///////////////////////////////////*/}
-            <Text style={style.label}>Direccion</Text>
-            <TextInput style={style.inputR} editable name='address' onChange={hOnCh_NewUser}/>
+{/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
+            <Text style={error.phoneNumber ? style.error : style.label}>Tel/Cel</Text>
+            <TextInput style={style.inputR} keyboardType='numeric' editable name='phoneNumber' onChange={hOnCh_NewUser}/>
 
 {/*///////////////////////////////////>>> EMAIL <<<///////////////////////////////////*/}
             {/*//////////////->EMAIL<-//////////////*/}
@@ -196,15 +228,17 @@ export default ()=>{
 
 {/*///////////////////////////////////>>> PASSWORD <<<///////////////////////////////////*/}
             {/*//////////////->PASSWORD<-//////////////*/}
-            <Text style={error.password ? style.error : style.label}>Contraseña</Text>
+            <Text style={error.password ? style.error : style.label}>Password</Text>
             <TextInput style={style.inputR} secureTextEntry={true} editable name='password' onChange={hOnCh_NewUser}/>
             {/* /////////////->CONFIRM PASSWORD<-/////////// */}
-            <Text style={error.confirmPassword ? style.error : style.label}>Confirmar Contraseña</Text>
+            <Text style={error.confirmPassword ? style.error : style.label}>Confirm Password</Text>
             <TextInput style={style.inputR} secureTextEntry={true} editable name='confirmPassword' onChange={hOnCh_NewUser}/>
 
 {/*//////////////////////////////////////////////////////////////////////////////////////*/}
-
-            <Button  style={style.btn} title='Enviar' onPress={register} disabled={WithoutError()}/>
+            
+            <TouchableHighlight onPress={searchDirection} style={style.appButtonContainer} disabled={withoutError()}>
+                <Text style={style.appButtonText}>Send</Text>
+            </TouchableHighlight>
         </ImageBackground>
     )
 }
