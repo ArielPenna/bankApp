@@ -16,11 +16,12 @@ export default (state = initialState, action)=>{
                 users: action.payload
             }
         case cons.LOGIN_USER__POST:
+        case cons.GET_USER__ME:
+        case cons.LOGOUT__GET:
             return {
                 ...state,
                 user: action.payload
             }
-
         case cons.SEND_MAIL__POST:
         return{
             ...state,
