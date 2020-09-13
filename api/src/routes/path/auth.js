@@ -77,7 +77,12 @@ server.get("/logout", estaAutenticado, (req, res) => {
 //       RUTA GET USER LOGUEADO       |
 //-------------------------------------
 server.get("/me", estaAutenticado, function (req, res) {
-    res.json(req.user);
+    User.findByPk(req.user.id,
+        {include: [
+            { model: Wallet }
+        ]})
+        .then(user => res.send(user))
+        .catch(err => res.send(err))
 });
 
 
