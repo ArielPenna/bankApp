@@ -8,6 +8,7 @@ const transactionsPath = require("./path/transactions")
 const userPath = require("./path/user")
 const addPath = require("./path/add")
 const authUserPath = require("./path/auth")
+const emailPath = require("./path/email")
 
 //----------------------------------------------------------------------------//
 //-----------------------MIDDLEWARES-FUNCIONAL--------------------------------//
@@ -22,6 +23,7 @@ router.use('/user/auth', authUserPath)
 router.use('/user', userPath)
 router.use('/add', addPath)
 router.use('/transactions', transactionsPath)
+router.use('/email', emailPath)
 
 
 module.exports = router;

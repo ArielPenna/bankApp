@@ -29,7 +29,7 @@ server.post('/register', (req, res) => {
     const hash = bcrypt.hashSync(password, salt);
 
     User.create({
-        firstName, 
+        firstName,
         lastName,
         email,
         documentType,
@@ -45,14 +45,14 @@ server.post('/register', (req, res) => {
                 type,
                 balance,
                 currency,
-                userId: user.getDataValue('id')
+                userId: user.dataValues.id
             }).catch(err => res.send(err))
             res.send(user)
         })
         .catch(err => {
-            if (err.parent && err.parent.code === "23505") 
+            if (err.parent && err.parent.code === "23505")
                 return res.send('el usuario ya existe')
-            if (err.name === 'SequelizeValidationError') 
+            if (err.name === 'SequelizeValidationError')
                 return res.send('el usuario tiene que ser mayor de 16')
             return res.send(err)
         })
@@ -62,7 +62,7 @@ server.post('/register', (req, res) => {
 //           RUTA LOGIN               |
 //-------------------------------------
 server.post('/login', passport.authenticate("local"), (req, res) => {
-    res.send(req.user.id);
+    res.send(req.user);
 })
 
 //-------------------------------------
@@ -77,7 +77,12 @@ server.get("/logout", estaAutenticado, (req, res) => {
 //       RUTA GET USER LOGUEADO       |
 //-------------------------------------
 server.get("/me", estaAutenticado, function (req, res) {
-    res.json(req.user);
+    User.findByPk(req.user.id,
+        {include: [
+            { model: Wallet }
+        ]})
+        .then(user => res.send(user))
+        .catch(err => res.send(err))
 });
 
 
@@ -85,11 +90,10 @@ server.get("/me", estaAutenticado, function (req, res) {
 //      FUNCION AUTENTICAR USUARIO    |
 //-------------------------------------
 function estaAutenticado(req, res, next) {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated())
         next();
-    } else {
+    else 
         res.status(401).send("no esta autenticado");
-    }
 }
 
 
