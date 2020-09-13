@@ -1,6 +1,6 @@
 ///////////////////>> MODULS <<///////////////////
 import React, {useState} from 'react'
-import {View, Text, TextInput, Button, Picker, ImageBackground} from 'react-native'
+import {View, Text, TextInput, Button, Picker, ImageBackground, TouchableHighlight} from 'react-native'
 import {useDispatch} from 'react-redux'
 
 ///////////////////>> SCRIPTS <<///////////////////
@@ -8,7 +8,7 @@ import style from './styles/RegisterStyle'
 import { register_user__post } from '../../redux/actions'
 import validate from './supports/Register/Validation_Register'
 import * as D from './supports/Register/Date_Register' //Functions to Date Register
-import api_adress from './supports/Register/Api_Adress_Register'
+import api_adress from './supports/Register/Api_Adress_Register' //Function to Api Adress
 
 ///////////////////>> IMAGES <<///////////////////
 import Background from '../../assets/background.png'
@@ -61,7 +61,7 @@ export default ()=>{
     })
 
 //THIS STATE IS TO HELP US IN THE ADRESS
-    const [adress, setAdress] = useState({
+    const [address, setAddress] = useState({
         street_1: '',
         street_2: ''
     })
@@ -77,7 +77,7 @@ export default ()=>{
     } 
     
     const searchDirection = ()=>{
-        const street = adress.street_1 + ' y ' + adress.street_2
+        const street = address.street_1 + ' y ' + address.street_2
         api_adress(street, newUser, setNewUser)
     }
 
@@ -126,8 +126,8 @@ export default ()=>{
     }
 
     const hOnCh_Adress = (e)=>{
-        setAdress({
-            ...adress,
+        setAddress({
+            ...address,
             [e.target.name]: e.target.value
         })
     }
@@ -143,7 +143,7 @@ export default ()=>{
     }
 
     return(
-        <ImageBackground source={require('../../assets/background.png')} style={style.container}>
+        <ImageBackground source={Background} style={style.container}>
 {/*///////////////////////////////////>>> NAME <<<///////////////////////////////////*/}
             {/*//////////////->FIRST NAME<-//////////////*/}
             <Text style={error.firstName ? style.error : style.label}>Name</Text>
@@ -157,7 +157,7 @@ export default ()=>{
             <View style={style.docContainer}>
                 {/*//////////////->DOCUMENT TYPE<-//////////////*/}
                 <View style={style.doc}>
-                    <Text style={style.label}>Type doc</Text>
+                    <Text style={style.label}>Doc. Type</Text>
                     <Picker style={style.inputDoc}
                     name='documentType' onValueChange={hOnCh_NewUser}>
                         <Picker.Item key={1} label='DNI' value='DNI'/>
@@ -166,13 +166,13 @@ export default ()=>{
                 </View>
                 {/*//////////////->DOCUMENT NUMBER<-//////////////*/}
                 <View style={style.docN}>
-                    <Text style={error.documentNumber ? style.error : style.label}>Numero</Text>
+                    <Text style={error.documentNumber ? style.error : style.label}>Number</Text>
                     <TextInput style={style.inputDocNum} keyboardType='numeric' editable name='documentNumber' onChange={hOnCh_NewUser}/>
                 </View>
             </View>
 
 {/*///////////////////////////////////>>> BIRTH <<<///////////////////////////////////*/}
-            <Text style={style.label}>Fecha de nacimiento</Text>
+            <Text style={style.label}>Birth date</Text>
             <View style={style.birth}>
                 {/*//////--> DAY <--//////*/}
                 <Picker style={style.date} onValueChange={hOnCh_Birth}>
@@ -198,17 +198,21 @@ export default ()=>{
                 </Picker>
             </View>
 
-{/*///////////////////////////////////>>> ADRESS <<<///////////////////////////////////*/}
-            <Text style={error.adress ? style.error : style.label}>Adress</Text>
-            <View>
-                <Text style={style.label}>Street 1</Text>
-                <TextInput style={style.inputR} editable name='street_1' onChange={hOnCh_Adress}/>
+{/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}
+            <Text style={error.adress ? style.error : style.label}>Address</Text>
+            <View style={style.adressContainer}>
+                <View>
+                    <Text style={style.subLabel}>Street 1</Text>
+                    <TextInput style={style.inputStreet} editable name='street_1' onChange={hOnCh_Adress}/>
+                </View>
+                <View>
+                    <Text style={style.subLabel}>Street 2</Text>
+                    <TextInput style={style.inputStreet} editable name='street_2' onChange={hOnCh_Adress}/>
+                </View>
             </View>
-            <View>
-                <Text style={style.label}>Street 2</Text>
-                <TextInput style={style.inputR} editable name='street_2' onChange={hOnCh_Adress}/>
-            </View>
-            <Button title='Search' onPress={searchDirection}/>
+            <TouchableHighlight onPress={searchDirection} style={style.appButtonContainer}>
+                <Text style={style.appButtonText}>SEARCH</Text>
+            </TouchableHighlight>
 
 {/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
             <Text style={error.phoneNumber ? style.error : style.label}>Tel/Cel</Text>
@@ -224,15 +228,17 @@ export default ()=>{
 
 {/*///////////////////////////////////>>> PASSWORD <<<///////////////////////////////////*/}
             {/*//////////////->PASSWORD<-//////////////*/}
-            <Text style={error.password ? style.error : style.label}>Contraseña</Text>
+            <Text style={error.password ? style.error : style.label}>Password</Text>
             <TextInput style={style.inputR} secureTextEntry={true} editable name='password' onChange={hOnCh_NewUser}/>
             {/* /////////////->CONFIRM PASSWORD<-/////////// */}
-            <Text style={error.confirmPassword ? style.error : style.label}>Confirmar Contraseña</Text>
+            <Text style={error.confirmPassword ? style.error : style.label}>Confirm Password</Text>
             <TextInput style={style.inputR} secureTextEntry={true} editable name='confirmPassword' onChange={hOnCh_NewUser}/>
 
 {/*//////////////////////////////////////////////////////////////////////////////////////*/}
-
-            <Button  style={style.btn} title='Enviar' onPress={register} disabled={WithoutError()}/>
+            
+            <TouchableHighlight onPress={searchDirection} style={style.appButtonContainer} disabled={withoutError()}>
+                <Text style={style.appButtonText}>Send</Text>
+            </TouchableHighlight>
         </ImageBackground>
     )
 }

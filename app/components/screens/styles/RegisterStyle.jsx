@@ -75,7 +75,40 @@ const styles = StyleSheet.create({
       height: '40px',
       paddingVertical: '10px',
       borderRadius: '5px'
-   }
+   },
+   adressContainer:{
+      flex:1,
+      flexDirection: 'row',
+      justifyContent: 'space-around'
+   },
+   inputStreet:{
+      width: '100%',
+      height: '40px',
+      backgroundColor: 'white',
+      borderRadius: '5px'
+   },
+   appButtonContainer: {
+      width: '90%',
+      marginLeft: '20px',
+      marginBottom: '10px',
+      marginTop: '20px',
+      elevation: 8,
+      backgroundColor: "#009688",
+      borderRadius: 5,
+      paddingVertical: 10,
+      paddingHorizontal: 12
+    },
+    appButtonText: {
+      fontSize: 18,
+      color: "#fff",
+      fontWeight: "bold",
+      alignSelf: "center",
+      textTransform: "uppercase"
+    },
+    subLabel:{
+      color:"#f0f3bd",
+      fontSize:"20px"
+    }
 })
 
 export default styles
