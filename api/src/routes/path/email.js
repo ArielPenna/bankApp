@@ -1,6 +1,6 @@
 const server = require("express").Router();
 const nodemailer = require("nodemailer");
-import logo from '../../../../app/asstes/logo.png';
+//import logo from '../../../../app/asstes/logo.png';
 
 //-------------------------------------
 //         VALIDAR USUARIO            |
@@ -16,6 +16,7 @@ server.post('/sendMail', (req, res) => {
         } 
     }) 
 
+    //<img src="logo" />
     const mailOptions = {
         from: "BankApp <BankApp.team@gmail.com>",
         to: req.body.email,
@@ -23,7 +24,7 @@ server.post('/sendMail', (req, res) => {
         html:  `   <html>
             <head>
                 <body>
-                <img src="logo" />
+                
                 <h1>¡Hola ${req.body.name}, para continuar enviar el siguiente codigo! </h1>
                         <h2>Codigo: ${req.body.codigo} </h2>
                 <h2>Gracias por elegirnos como tu billetera personal </h2>   
