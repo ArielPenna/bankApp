@@ -29,7 +29,7 @@ server.post('/register', (req, res) => {
     const hash = bcrypt.hashSync(password, salt);
 
     User.create({
-        firstName, 
+        firstName,
         lastName,
         email,
         documentType,
@@ -50,9 +50,9 @@ server.post('/register', (req, res) => {
             res.send(user)
         })
         .catch(err => {
-            if (err.parent && err.parent.code === "23505") 
+            if (err.parent && err.parent.code === "23505")
                 return res.send('el usuario ya existe')
-            if (err.name === 'SequelizeValidationError') 
+            if (err.name === 'SequelizeValidationError')
                 return res.send('el usuario tiene que ser mayor de 16')
             return res.send(err)
         })

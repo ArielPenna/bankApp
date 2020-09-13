@@ -33,7 +33,8 @@ export default () => {
 //DISPATCH TO LOG IN THE USER
     const onLogin = () => {
         try{ 
-            dispatch(login_user__post(login))
+            dispatch(login_user__post(login));
+            console.log("usuarioLogueado");                 
         } 
         catch(err){console.log(error)}
     }
