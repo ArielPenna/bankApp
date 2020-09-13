@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         marginLeft:"5px",
         padding:"10px",
         height:"auto",
-        borderRadius:"15px",
+        borderRadius:"7px",
         backgroundColor:"white",
         marginBottom:"10px",
         
@@ -38,10 +38,29 @@ const styles = StyleSheet.create({
         fontSize:"25px"
     },
 
-    btn:{
-        marginTop:"15px",
-
+    appButtonContainer: {
+      width: '90%',
+      marginLeft: '10px',
+      marginBottom: '20px',
+      borderColor: 'black',
+      borderStyle: "solid",
+      borderWidth: '2px',
+      marginTop: '20px',
+      backgroundColor: 'purple',
+      elevation: 8,
+      borderRadius: 5,
+      paddingVertical: 10,
+      paddingHorizontal: 12
     },
+
+    appButtonText: {
+      fontSize: 18,
+      color: "#fff",
+      fontWeight: "bold",
+      alignSelf: "center",
+      textTransform: "uppercase"
+    },
+
     error:{
         marginLeft:"15px",
         color:"red",

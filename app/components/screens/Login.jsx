@@ -1,6 +1,6 @@
-///////////////////>> MODULS <<///////////////////
+///////////////////>> MODULES <<///////////////////
 import React, {useState} from 'react'
-import {View, Text, TextInput, Button, Image, ImageBackground} from 'react-native'
+import {View, Text, TextInput, TouchableHighlight, Image, ImageBackground} from 'react-native'
 import {useDispatch} from 'react-redux'
 
 ///////////////////>> SCRIPTS <<///////////////////
@@ -48,17 +48,19 @@ export default () => {
           source={require('../../assets/logo.png')} />
         <View >
           {/*///////////////////////>> EMAIL <<///////////////////////*/}
-            <Text style={style.label}>Email</Text>
-            <TextInput style={style.inputR} placeholder= 'E-mail' editable name='email' onChange= {hOnCh_Login}/>
+            <Text style={style.label}>E-mail</Text>
+            <TextInput style={style.inputR} placeholder= 'Type in here' editable name='email' onChange= {hOnCh_Login}/>
 
           {/*///////////////////////>> PASSWORD <<///////////////////////*/}  
-            <Text style={style.label}> Contraseña </Text>
-            <TextInput style={style.inputR} secureTextEntry={true} editable placeholder='Contraseña' name='password' onChange={hOnCh_Login}/>
+            <Text style={style.label}> Password </Text>
+            <TextInput style={style.inputR} secureTextEntry={true} editable placeholder='Type in here' editable name='password' onChange={hOnCh_Login}/>
 
           {/*///////////////////////>> LOGIN <<///////////////////////*/}
-            <Button style={style.btn} color="#ea94a0" title='Enviar' onPress= {() => navigation.navigate('Main')}/>
-            
+          <TouchableHighlight onPress={onLogin} style={style.appButtonContainer}>
+            <Text style={style.appButtonText}>Send</Text>  
+          </TouchableHighlight>          
           {/*//////////////////////////////////////////////////////////*/}
+
         </View>
       </View>      
     </ImageBackground>
