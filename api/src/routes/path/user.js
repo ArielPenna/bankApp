@@ -41,6 +41,9 @@ server.get("/get/:id", (req, res) => {
         .catch(err => res.send(err))    // error que llega lo envia
 })
 
+//-------------------------------
+//       DELETE USER BY ID      |
+//-------------------------------
 server.delete("/delete/:id", (req, res) =>{
     const { id } = req.params
 
@@ -53,6 +56,18 @@ server.delete("/delete/:id", (req, res) =>{
     }).catch(err=> res.send(err))
 })
 
+//-------------------------------
+//     GET WALLET BY USERID     |
+//-------------------------------
+server.get("/:id/wallet", (req, res) => {
 
+    const { id } = req.params   //todo lo que viaja llega como string
+
+    Wallet.findOne({
+        where: { userId: Number(id)}        //busca por userId
+    })   
+    .then(wallet => res.send(wallet))   // envia wallet de ese user
+    .catch(err => res.send(err))    // error 
+})
 
 module.exports = server;
