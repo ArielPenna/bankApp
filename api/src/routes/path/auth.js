@@ -1,7 +1,7 @@
 const server = require("express").Router();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-const { User, Wallet } = require("../../db.js");
+const { User, Wallet, Account, Location } = require("../../db.js");
 
 
 //-------------------------------------
@@ -16,14 +16,16 @@ server.post('/register', (req, res) => {
         documentNumber,
         birth,
         phoneNumber,
-        address,
         password,
         access,
         //--VVVVVVV---------Wallet
         type,
         balance,
-        currency
+        currency,
+        //--VVVVVVV---------Location
+        address,
     } = req.body;
+
     // enctriptar contraseña
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
@@ -41,16 +43,23 @@ server.post('/register', (req, res) => {
         access
     })
         .then(user => {
-            Wallet.create({
+            Account.create({  // creacion de cuenta bancaria
+                userId: user.dataValues.id 
+            })
+            return user // pasamanos de usuario
+        })
+        .then(user => {
+            Wallet.create({ // creacion de billetera
                 type,
                 balance,
                 currency,
                 userId: user.dataValues.id
-            }).catch(err => res.send(err))
-            res.send(user)
+            })
+            return user // pasamanos de usuario
         })
+        .then(user => res.send(user))
         .catch(err => {
-            if (err.parent && err.parent.code === "23505") 
+            if (err.name === "SequelizeUniqueConstraintError") 
                 return res.send('el usuario ya existe')
             if (err.name === 'SequelizeValidationError') 
                 return res.send('el usuario tiene que ser mayor de 16')
@@ -68,7 +77,7 @@ server.post('/login', passport.authenticate("local"), (req, res) => {
 //-------------------------------------
 //           RUTA LOGOUT               |
 //-------------------------------------
-server.get("/logout", estaAutenticado, (req, res) => {
+server.post("/logout", estaAutenticado, (req, res) => {
     req.logout();
     res.send("se deslogueo");
 });
@@ -79,7 +88,8 @@ server.get("/logout", estaAutenticado, (req, res) => {
 server.get("/me", estaAutenticado, function (req, res) {
     User.findByPk(req.user.id,
         {include: [
-            { model: Wallet }
+            { model: Wallet },
+            { model: Account }
         ]})
         .then(user => res.send(user))
         .catch(err => res.send(err))
