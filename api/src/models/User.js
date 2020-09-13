@@ -52,6 +52,7 @@ module.exports = (sequelize) => {
         access: {
             type: S.ENUM('User', 'Admin'),
             defaultValue: 'User'
-        }
+        }/* ,
+        */
     }, );
 };
