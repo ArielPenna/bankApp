@@ -66,9 +66,10 @@ server.post('/searchcod', (req, res) => {
 //-------------------------------------------------
 //            BUSCAR CODIGO
 function searchCod( codigo ){
-    for( i = 0 ; i < codToCreateUser.length ; i++){
-        if( codToCreateUser[i].codigo === codigo) return true
+    for(var i in codToCreateUser){
+        if(codToCreateUser[i].codigo === codigo) return true        
     }
+    console.log('is false')
     return false
 }
 //-------------------------------------------------

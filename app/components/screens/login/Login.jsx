@@ -4,11 +4,12 @@ import {View, Text, TextInput, Button, Image, ImageBackground} from 'react-nativ
 import {useDispatch} from 'react-redux'
 
 ///////////////////>> SCRIPTS <<///////////////////
-import {login_user__post} from '../../redux/actions'
+import {login_user__post} from '../../../redux/actions'
+import style from './styles/LoginStyle'
 
 ///////////////////>> IMAGES <<///////////////////
-import Background from '../../assets/background.png'
-import style from './styles/LoginStyle'
+import Background from '../../../assets/background.png'
+import Logo from '../../../assets/logo.png'
 
 //////////////////////////////////////////////////
 
@@ -46,7 +47,7 @@ export default ({navigation}) => {
         <Text style={style.mainTitle}>Login</Text>
         <Image 
           style={style.img}
-          source={require('../../assets/logo.png')} />
+          source={Logo} />
         <View >
           {/*///////////////////////>> EMAIL <<///////////////////////*/}
             <Text style={style.label}>Email</Text>
