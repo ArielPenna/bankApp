@@ -18,6 +18,7 @@ export default function App() {
           <Stack.Screen name='Register' component={render.Register} />
           <Stack.Screen name='Main' component={render.Main} />
           <Stack.Screen name='Login' component={render.Login}/>
+           <Stack.Screen name='Code' component={render.Code}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
