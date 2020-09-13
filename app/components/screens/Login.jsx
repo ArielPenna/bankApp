@@ -56,7 +56,7 @@ export default () => {
             <TextInput style={style.inputR} secureTextEntry={true} editable placeholder='Contraseña' name='password' onChange={hOnCh_Login}/>
 
           {/*///////////////////////>> LOGIN <<///////////////////////*/}
-            <Button style={style.btn} color="#ea94a0" title='Enviar' onPress= {onLogin}/>
+            <Button style={style.btn} color="#ea94a0" title='Enviar' onPress= {() => navigation.navigate('Main')}/>
             
           {/*//////////////////////////////////////////////////////////*/}
         </View>

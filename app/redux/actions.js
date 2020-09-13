@@ -13,7 +13,7 @@ const instance = axios.create({
 
 export const register_user__post = (user) => {
 
-    const extra_url = 'user/register'
+    const extra_url = 'user/auth/register'
 
     return function (dispatch) {
         instance.post(extra_url, user).then((res) => {
@@ -25,7 +25,7 @@ export const register_user__post = (user) => {
 export const login_user__post = (user) => {
   
   return function (dispatch) {
-    instance.post ('user/login', user).then((res)=>{
+    instance.post ('user/auth/login', user).then((res)=>{
       dispatch({type: cons.LOGIN_USER__POST, payload: res.data});
     }); 
   };
