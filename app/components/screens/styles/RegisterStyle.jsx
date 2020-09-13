@@ -13,31 +13,40 @@ const styles = StyleSheet.create({
       marginLeft:"20px",
       marginRight:"15px",
       padding:"10px",
-      height:"155%",
-      borderRadius:"15px",
+      height:"40px",
+      borderRadius:"5px",
       backgroundColor:"white",
       marginBottom:"10px"      
    },
    inputDoc:{
-      width:"80%",
-      height:"300%",
-      marginLeft:"15px",
+      width:"66%",
+      height:'40px',
+      paddingVertical: '10px',
       padding:"10px",
-      height:"155%",
-      borderRadius:"15px",
+      borderRadius:"5px",
       backgroundColor:"white",
-      marginBottom:"10px"  
+      marginLeft:'15px' 
+   },
+   inputDocNum:{
+      width:"120%",
+      height: '40px',
+      paddingVertical:"20px",
+      padding:"10px",
+      borderRadius:"5px",     
+      backgroundColor:"white"    
    },
    docContainer:{
       width:'94%',
-      height: 'auto',
       flex:1,
       flexDirection: 'row',
-      marginBottom:"65px",      
+      marginBottom:"10px"
    },
    doc:{
       flex:1,
       flexDirection:'column'
+   },
+   docN:{
+      marginRight:'25px'
    },
    label:{
       marginLeft:"20px",
@@ -45,7 +54,7 @@ const styles = StyleSheet.create({
       fontSize:"25px"
    },
    btn:{
-      marginTop:"15px",
+      marginTop:"50px",
       width:'100%',
       height: '60px',
       backgroundColor: "#DDDDDD"
@@ -54,7 +63,52 @@ const styles = StyleSheet.create({
       marginLeft:"20px",
       color:"red",
       fontSize:"25px"  
-   }
+   },
+   birth:{
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      marginBottom: '10px'
+   },
+   date:{
+      width:'25%',
+      height: '40px',
+      paddingVertical: '10px',
+      borderRadius: '5px'
+   },
+   adressContainer:{
+      flex:1,
+      flexDirection: 'row',
+      justifyContent: 'space-around'
+   },
+   inputStreet:{
+      width: '100%',
+      height: '40px',
+      backgroundColor: 'white',
+      borderRadius: '5px'
+   },
+   appButtonContainer: {
+      width: '90%',
+      marginLeft: '20px',
+      marginBottom: '10px',
+      marginTop: '20px',
+      elevation: 8,
+      backgroundColor: "#009688",
+      borderRadius: 5,
+      paddingVertical: 10,
+      paddingHorizontal: 12
+    },
+    appButtonText: {
+      fontSize: 18,
+      color: "#fff",
+      fontWeight: "bold",
+      alignSelf: "center",
+      textTransform: "uppercase"
+    },
+    subLabel:{
+      color:"#f0f3bd",
+      fontSize:"20px"
+    }
 })
 
 export default styles
