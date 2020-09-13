@@ -19,7 +19,7 @@ export default (street, newUser, setNewUser) => {
             if(res.data.length){
                 setNewUser({
                     ...newUser,
-                    adress: res.data
+                    adress: res.data[0].address
                 })
             }            
         })
