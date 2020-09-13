@@ -5,13 +5,13 @@ import {useDispatch} from 'react-redux'
 
 ///////////////////>> SCRIPTS <<///////////////////
 import style from './styles/RegisterStyle'
-import { save_user, send_mail__post } from '../../redux/actions'
-import validate from './supports/Register/Validation_Register'
-import * as D from './supports/Register/Date_Register' //Functions to Date Register
-import api_adress from './supports/Register/Api_Adress_Register' //Function to Api Adress
+import { save_user, send_mail__post } from '../../../redux/actions'
+import validate from './supports/Validation_Register'
+import * as D from './supports/Date_Register' //Functions to Date Register
+import api_adress from './supports/Api_Adress_Register' //Function to Api Adress
 
 ///////////////////>> IMAGES <<///////////////////
-import Background from '../../assets/background.png'
+import Background from '../../../assets/background.png'
 
 //////////////////////////////////////////////////
 

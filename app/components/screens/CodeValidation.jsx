@@ -1,20 +1,21 @@
 import React ,{useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { View, Text, TextInput, Button } from 'react-native';
 import {register_user__post, search_code} from '../../redux/actions'
 
 export default () => {
    const dispatch = useDispatch()
    const [code, setCode] = useState(0)
+   const user = useSelector(state => state.saveUser)
+
    const hOnCh_code = (e) => {
-      setCode({ codigo: e.target.value})
+      setCode({ codigo: parseInt(e.target.value)})
+      console.log(code)
    }
 
    const validationCode = () => {
       try {
-         var validate = new Promise (dispatch(search_code(code))).then(res => {
-            console.log(res)
-         })
+         dispatch(search_code(code, user))
       } catch (error) {
          console.log(error)
       }
@@ -23,7 +24,7 @@ export default () => {
     <View>
       <Text>Código de autentificación</Text>
       <TextInput onChange={hOnCh_code} keyboardType='numeric' editable name='documentNumber'/>
-      <Button title="send"/>
+      <Button title="send" onPress={validationCode}/>
      </View>
   );
 }
