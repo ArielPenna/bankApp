@@ -7,6 +7,8 @@ import Recharge from '../screens/Recharge'
 import SendMoney from '../screens/SendMoney'
 import Statics from '../screens/Statics'
 import Transactions from '../screens/Transactions'
+import Code from '../screens/CodeValidation'
+
 
 
 export {Home}
@@ -18,3 +20,4 @@ export {Recharge}
 export {SendMoney}
 export {Statics}
 export {Transactions}
+export {Code}

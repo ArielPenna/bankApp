@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux'
 
 ///////////////////>> SCRIPTS <<///////////////////
 import style from './styles/RegisterStyle'
-import { register_user__post } from '../../redux/actions'
+import { save_user, send_mail__post } from '../../redux/actions'
 import validate from './supports/Register/Validation_Register'
 import * as D from './supports/Register/Date_Register' //Functions to Date Register
 import api_adress from './supports/Register/Api_Adress_Register' //Function to Api Adress
@@ -134,8 +134,13 @@ export default ()=>{
 
 //////////>> DISPATCH TO REGISTER THE NEW USER <<//////////
     const register = ()=>{
-        try{            
-            dispatch(register_user__post(newUser))
+        try{    
+            var sendMail = {
+                email: newUser.email,
+                name: newUser.firstName + " " + newUser.lastName
+            }        
+            dispatch(send_mail__post(sendMail))
+            dispatch(save_user(newUser))
         }
         catch(err){
             console.log(err)
@@ -236,7 +241,7 @@ export default ()=>{
 
 {/*//////////////////////////////////////////////////////////////////////////////////////*/}
             
-            <TouchableHighlight onPress={searchDirection} style={style.appButtonContainer} disabled={withoutError()}>
+            <TouchableHighlight onPress={register} style={style.appButtonContainer}>
                 <Text style={style.appButtonText}>Send</Text>
             </TouchableHighlight>
         </ImageBackground>
