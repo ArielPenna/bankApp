@@ -18,7 +18,7 @@ server.post('/sendmail', (req, res) => {
         secure: false,
         auth: {
             user: "BankApp.team@gmail.com",
-            pass: process.env.PASS
+            pass: "HenryBank12"//process.env.PASS
         } 
     }) 
 

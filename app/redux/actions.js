@@ -33,9 +33,7 @@ export const login_user__post = (user) => {
 
 export const send_mail__post = (user) => {
   return function (dispatch) {
-    instance.post('mail/sendMail', user).then((res)=>{
-      dispatch({type: cons.SEND_MAIL__POST, payload: res.data})
-    })
+    instance.post('email/sendmail', user)
   }
 }
 
@@ -43,4 +41,12 @@ export const save_user = (user) => {
   return function (dispatch) {
    dispatch({type: cons.SAVE_USER, payload: user})
   }
+}
+
+export const search_code = (code) => {
+  return function (dispatch){
+    instance.post('email/searchcod', code).then((res) =>{
+    dispatch({type: cons.SEARCH_CODE, payload: res.data})
+  })
+ }
 }
