@@ -17,7 +17,7 @@ import Logo from '../../../assets/logo.png'
 //hOnCh === handlerOnChange
 
 
-export default () => {
+export default ({navigation}) => {
     const dispatch = useDispatch()
     const [login, setLogin]= useState ({
         email:'',
@@ -34,10 +34,11 @@ export default () => {
 //DISPATCH TO LOG IN THE USER
     const onLogin = () => {
         try{ 
-            dispatch(login_user__post(login));
-            console.log("usuarioLogueado");                 
+          dispatch(login_user__post(login));
+          console.log("usuarioLogueado");
+          navigation.navigate('Main')
         } 
-        catch(err){console.log(error)}
+        catch(err){console.log(err)}
     }
 
 
@@ -61,6 +62,8 @@ export default () => {
             <Button style={style.btn} color="#ea94a0" title='Enviar' onPress= {onLogin}/>
             
           {/*//////////////////////////////////////////////////////////*/}
+
+          <Button title="MAIN" color="purple" onPress={() => navigation.navigate('Main')} />
         </View>
       </View>      
     </ImageBackground>
