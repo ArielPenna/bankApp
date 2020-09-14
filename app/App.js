@@ -18,16 +18,13 @@ export default function App() {
           <Stack.Screen name='Main' component={render.Main}/>
           <Stack.Screen name='Register' component={render.Register_One}/>
           <Stack.Screen name='Register_Two' component={render.Register_Two}/>
-
-          
-          <Stack.Screen name='Login' component={render.Login} />
-          <Stack.Screen name='Account' component={render.Account} />
-          <Stack.Screen name='Recharge' component={render.Recharge} />
-          <Stack.Screen name='SendMoney' component={render.SendMoney} />
-          <Stack.Screen name='Statistics' component={render.Statistics} />
-          <Stack.Screen name='Transactions' component={render.Transactions} />
-          <Stack.Screen name='Code' component={render.Code} />
-
+          <Stack.Screen name='Login' component={render.Login}/>
+          <Stack.Screen name='Account' component={render.Account}/>
+          <Stack.Screen name='Recharge' component={render.Recharge}/>
+          <Stack.Screen name='SendMoney' component={render.SendMoney}/>
+          <Stack.Screen name='Statistics' component={render.Statistics}/>
+          <Stack.Screen name='Transactions' component={render.Transactions}/>
+          <Stack.Screen name='Code' component={render.Code}/>
 
         </Stack.Navigator>
       </NavigationContainer>
