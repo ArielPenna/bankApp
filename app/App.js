@@ -14,10 +14,10 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name='Register' component={render.Register_One}/>
-          <Stack.Screen name='Register_Two' component={render.Register_Two}/>
           <Stack.Screen name='Home' component={render.Home}/>
           <Stack.Screen name='Main' component={render.Main}/>
+          <Stack.Screen name='Register' component={render.Register_One}/>
+          <Stack.Screen name='Register_Two' component={render.Register_Two}/>
 
           <Stack.Screen name='Login' component={render.Login}/>
           <Stack.Screen name='Account' component={render.Account}/>

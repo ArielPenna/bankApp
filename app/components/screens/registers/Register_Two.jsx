@@ -1,15 +1,19 @@
 //////////////// MODULS ////////////////
 import React,{ useState }from 'react'
+import {useDispatch} from 'react-redux'
 import {View, Text, TextInput , TouchableHighlight, Picker, ImageBackground} from 'react-native'
 
 //////////////// SCRIPTS ////////////////
 import style from './styles/RegisterStyle'
 import validate from './supports/Validation_Register'
+import api_adress from './supports/Api_Adress_Register'
+import {send_mail__post} from '../../../redux/actions'
 
 //////////////// IMGS ////////////////
 import Background from '../../../assets/background.png'
 
 export default ({route, navigation}) => {
+    const dispatch = useDispatch()
     const [newUser, setNewUser] = useState(route.params.info)
     
     //THIS STATE IS TO HELP US VALIDATE THE INPUTS OF THE USERS
@@ -73,11 +77,10 @@ export default ({route, navigation}) => {
     const register = ()=>{
         try{    
             var sendMail = {
-                email: newUser.email,
+                userObj: newUser,
                 name: newUser.firstName + " " + newUser.lastName
             }        
             dispatch(send_mail__post(sendMail))
-            dispatch(save_user(newUser))
         }
         catch(err){
             console.log(err)

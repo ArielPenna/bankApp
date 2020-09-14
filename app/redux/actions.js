@@ -36,7 +36,7 @@ export const search_code = (code, user) => {
     instance.post('email/searchcod', code)
       .then((res) =>{
         //If the code is true Register the user
-        if(res.data) instance.post('user/auth/register', user)
+        if(res.data) instance.post('user/auth/register', res.data)
         else throw Error        
 
       })
