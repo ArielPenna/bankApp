@@ -37,7 +37,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Wallet, Account, Location } = sequelize.models;
+const { User, Wallet, Account, Location, Transaction } = sequelize.models;
 
 //-----------------------^^^^^^^^^^^^^^^^^^^^^^-------------------------------//
 //-----------------------||||||||||||||||||||||-------------------------------//
@@ -68,8 +68,8 @@ User.belongsToMany(User, { as: "friended", foreignKey: "friend", through: "conta
 
 
 // un usuario tiene muchas transacciones 
-User.belongsToMany(User, { as: "debit", foreignKey: "deposit", through: "transactions" })
-User.belongsToMany(User, { as: "deposit", foreignKey: "debit", through: "transactions" })
+User.belongsToMany(User, { as: "debit", through: "transaction" })
+User.belongsToMany(User, { as: "deposit", through: "transaction" })
 
 
 //----------------------------------------------------------------------------//
