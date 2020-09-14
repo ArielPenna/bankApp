@@ -34,8 +34,9 @@ export default ({navigation}) => {
 //DISPATCH TO LOG IN THE USER
     const onLogin = () => {
         try{ 
-            dispatch(login_user__post(login));
-            console.log("usuarioLogueado");                        
+          dispatch(login_user__post(login));
+          console.log("usuarioLogueado");
+          navigation.navigate('Main')
         } 
         catch(err){console.log(err)}
     }
