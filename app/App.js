@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Provider, useSelector } from 'react-redux'
+import { Provider } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import store from './redux/store'
@@ -14,10 +14,20 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name='Home' component={render.Home} />
-          <Stack.Screen name='Register' component={render.Register} />
-          <Stack.Screen name='Main' component={render.Main} />
+          <Stack.Screen name='Home' component={render.Home}/>
+          <Stack.Screen name='Main' component={render.Main}/>
+          <Stack.Screen name='Register' component={render.Register_One}/>
+          <Stack.Screen name='Register_Two' component={render.Register_Two}/>
 
+<<<<<<< HEAD
+          <Stack.Screen name='Login' component={render.Login}/>
+          <Stack.Screen name='Account' component={render.Account}/>
+          <Stack.Screen name='Recharge' component={render.Recharge}/>
+          <Stack.Screen name='SendMoney' component={render.SendMoney}/>
+          <Stack.Screen name='Statics' component={render.Statics}/>
+          <Stack.Screen name='Transactions' component={render.Transactions}/>
+          <Stack.Screen name='Code' component={render.Code}/>
+=======
           <Stack.Screen name='Login' component={render.Login} />
           <Stack.Screen name='Account' component={render.Account} />
           <Stack.Screen name='Recharge' component={render.Recharge} />
@@ -25,6 +35,7 @@ export default function App() {
           <Stack.Screen name='Statistics' component={render.Statistics} />
           <Stack.Screen name='Transactions' component={render.Transactions} />
           <Stack.Screen name='Code' component={render.Code} />
+>>>>>>> master
 
         </Stack.Navigator>
       </NavigationContainer>

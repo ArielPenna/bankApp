@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         documentNumber: {
-            type: S.INTEGER,
+            type: S.STRING,
             allowNull: false
         },
         birth: {
