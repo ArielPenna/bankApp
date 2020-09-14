@@ -1,6 +1,6 @@
 const server = require("express").Router();
 const { Op } = require("sequelize");
-const { User, Transaction } = require("../../db.js");
+const { User, Transaction, Wallet } = require("../../db.js");
 
 server.post("/:idFrom/:idTo", (req, res) => {
     const { idFrom, idTo } = req.params
@@ -47,13 +47,13 @@ server.post("/:idFrom/:idTo", (req, res) => {
 })
 
 // AGREGAR DINERO A LA BILLETERA
-/* server.put('/recarge/wallet', (req, res) => {
+server.put('/recarge/wallet', (req, res) => {
     const { balance } = req.body
     const { id } = req.user
 
 
     Wallet.findOne({
-        where: { id: Number(idWallet) }
+        where: { userId: id }
     }).then(wallet => {
         wallet.update({
             balance: balance + parseFloat(wallet.dataValues.balance)
@@ -63,7 +63,7 @@ server.post("/:idFrom/:idTo", (req, res) => {
                 'no se actualizo')
         })
     })
-}) */
+})
 
 // TRAER TODAS LAS TRANSFERENCIAS DEL USUARIO
 server.get('/get', (req, res) => {
