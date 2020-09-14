@@ -6,7 +6,6 @@ import {View, Text, TextInput , TouchableHighlight, Picker, ImageBackground} fro
 //////////////// SCRIPTS ////////////////
 import style from './styles/RegisterStyle'
 import validate from './supports/Validation_Register'
-import api_adress from './supports/Api_Adress_Register'
 import {send_mail__post} from '../../../redux/actions'
 
 //////////////// IMGS ////////////////
@@ -43,12 +42,8 @@ export default ({route, navigation}) => {
         if(error.firstName || error.lastName || error.phoneNumber 
         || error.documentNumber || error.email  || error.password) return true
         else return false
-    } 
-
-    const searchDirection = ()=>{
-        const street = address.street_1 + ' y ' + address.street_2
-        api_adress(street, newUser, setNewUser)
     }
+    
 
     const hOnCh_NewUser = (e) =>{
         setError(
@@ -64,14 +59,7 @@ export default ({route, navigation}) => {
         })
         } 
         console.log(newUser)       
-    }
-
-    const hOnCh_Adress = (e)=>{
-        setAddress({
-            ...address,
-            [e.target.name]: e.target.value
-        })
-    }
+    }   
 
 
     const register = ()=>{
@@ -88,25 +76,8 @@ export default ({route, navigation}) => {
     }
 
     return(
-        <ImageBackground source={Background}>
-        <View>
-            {/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}
-            <Text style={error.adress ? style.error : style.label}>Address</Text>
-            <View style={style.adressContainer}>
-                <View>
-                    <Text style={style.subLabel}>Street 1</Text>
-                    <TextInput style={style.inputStreet} editable name='street_1' onChange={hOnCh_Adress}/>
-                </View>
-                <View>
-                    <Text style={style.subLabel}>Street 2</Text>
-                    <TextInput style={style.inputStreet} editable name='street_2' onChange={hOnCh_Adress}/>
-                </View>
-            </View>
-            <TouchableHighlight onPress={searchDirection} style={style.appButtonContainer}>
-                <Text style={style.appButtonText}>SEARCH</Text>
-            </TouchableHighlight>
-            <Text style={error.phoneNumber ? style.error : style.label}>Numero</Text>
-            <TextInput style={style.inputR} keyboardType='numeric' editable name='phoneNumber' onChange={hOnCh_NewUser}/>
+        <ImageBackground source={Background} style={style.background}>
+        <View>           
 
 {/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
             <Text style={error.phoneNumber ? style.error : style.label}>Tel/Cel</Text>

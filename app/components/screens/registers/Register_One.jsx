@@ -60,6 +60,11 @@ export default ({navigation})=>{
         year: new Date().getFullYear() - 16
     })   
     
+/////////////>> SUPPORT <</////////////////
+    const searchDirection = ()=>{
+        const street = address.street_1 + ' y ' + address.street_2
+        api_adress(street, newUser, setNewUser)
+    }
 
 ///////////////////>> HANDLER ON CHAGES <<///////////////////
 
@@ -103,11 +108,18 @@ export default ({navigation})=>{
             ...newUser,
             birth: new Date(date.year, date.month, date.day)
         })
-    }    
+    }  
+    
+    const hOnCh_Adress = (e)=>{
+        setAddress({
+            ...address,
+            [e.target.name]: e.target.value
+        })
+    }
 
     return(
         <ImageBackground source={Background} style={style.container}>
-            <Text style={style.mainTitle}>Alta de Cliente</Text>
+            <Text style={style.mainTitle}>Client Registration</Text>
 {/*///////////////////////////////////>>> NAME <<<///////////////////////////////////*/}
             {/*//////////////->FIRST NAME<-//////////////*/}
             <Text style={error.firstName ? style.error : style.label}>Name</Text>
@@ -161,6 +173,23 @@ export default ({navigation})=>{
                     })}
                 </Picker>
             </View>
+
+{/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}
+            <Text style={error.adress ? style.error : style.label}>Address</Text>
+            <View style={style.adressContainer}>
+            <Text style={style.subLabel}>Street 1</Text>
+                <View style={style.streetPrincipal}>                    
+                    <TextInput style={style.inputStreet} editable name='street_1' onChange={hOnCh_Adress}/>
+                    <TextInput style={style.inputSubStreet} editable name='street_1' onChange={hOnCh_Adress}/>
+                </View>
+                <View>
+                    <Text style={style.subLabel}>Street 2</Text>
+                    <TextInput style={style.inputR} editable name='street_2' onChange={hOnCh_Adress}/>
+                </View>
+                <TouchableHighlight onPress={searchDirection} style={style.appButtonContainer}>
+                    <Text style={style.appButtonText}>SEARCH</Text>
+                </TouchableHighlight>
+            </View>            
             
 {/*//////////////////////////////////////////////////////////////////////////////*/}
             <TouchableHighlight onPress={()=> navigation.navigate('Register_Two',{
