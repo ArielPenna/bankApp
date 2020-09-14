@@ -7,11 +7,11 @@ const nodemailer = require("nodemailer");
 
 
 
-const codToCreateUser = []; 
+let codToCreateUser = []; 
 
 server.post('/sendmail', (req, res) => {
 
-    const { email, name } = req.body
+    const { userObj, name } = req.body
 
     const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -23,28 +23,30 @@ server.post('/sendmail', (req, res) => {
     }) 
 
     const codig = {
-        email: email,
+        userObj: userObj,
         codigo: Math.floor(Math.random() * (99999 - 10000) + 1000)
     }
 
     const mailOptions = {
         from: "BankApp <BankApp.team@gmail.com>",
-        to: email,
+        to: userObj.email,
         subject: "Validar Usuario en BankApp",
         html:  `   <html>
             <head>
                 <body>
 
-                <h1>¡Hola ${name}, para continuar enviar el siguiente codigo! </h1>
-                <h2>Codigo: ${codig.codigo} </h2>
-                <h2>Gracias por elegirnos como tu billetera personal </h2>   
-                <h2>Team BankApp </h2>   
+                    <h1>¡Hola ${name}, para continuar enviar el siguiente codigo! </h1>
+                    <h2>Codigo: ${codig.codigo} </h2>
+                    <h2>Gracias por elegirnos como tu billetera personal </h2>   
+                    <h2>Team BankApp </h2>   
                 </body>
     	    </head>
        </html>`
     }
     
     codToCreateUser.push(codig)
+
+    console.log('cod:',codToCreateUser);
 
     transporter.sendMail(mailOptions, (error, info) => {
         if(error) {
@@ -54,24 +56,23 @@ server.post('/sendmail', (req, res) => {
             res.status(200).json(req.body)
         }
     })
-    console.log('cod:',codToCreateUser);
 })
 
 server.post('/searchcod', (req, res) => {
     const { codigo } = req.body
 
-    res.send(searchCod(codigo) ? 'true' : 'false')
-})
-
-//-------------------------------------------------
-//            BUSCAR CODIGO
-function searchCod( codigo ){
+    let codigoMatch;
     for(var i in codToCreateUser){
-        if(codToCreateUser[i].codigo === codigo) return true        
+        if(codToCreateUser[i].codigo === codigo){
+            codigoMatch = codToCreateUser[i]
+            codigoMatch.index = i
+        }
     }
-    console.log('is false')
-    return false
-}
-//-------------------------------------------------
+
+    if(codigoMatch){
+        codToCreateUser.splice(codigoMatch.index, 1)
+        res.send(codigoMatch.userObj)
+    } else res.send('false')
+})
 
 module.exports = server;
