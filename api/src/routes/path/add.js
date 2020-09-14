@@ -1,23 +1,6 @@
 const server = require("express").Router();
-const { User, Wallet } = require("../../db.js");
+const { User } = require("../../db.js");
 
-// AGREGAR DINERO A LA BILLETERA
-server.put('/money/:idWallet', (req, res) => {
-    const { balance } = req.body
-    const { idWallet } = req.params
-
-    Wallet.findOne({
-        where: { id: Number(idWallet) }
-    }).then(wallet => {
-        wallet.update({
-            balance: balance + parseFloat(wallet.dataValues.balance)
-        }).then((actualizo) => {
-            res.send(actualizo ?
-                'se actualizo la billetera' :
-                'no se actualizo un carajo')
-        })
-    })
-})
 
 // AGREGAR AMIGO
 server.post('/friend/:id', (req, res) => {

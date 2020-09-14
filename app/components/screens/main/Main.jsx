@@ -77,10 +77,10 @@ export default ({ navigation }) => {
             </View>
           </TouchableHighlight> */}
 
-          <TouchableHighlight onPress={() => navigation.navigate("Account")}>
+          <TouchableHighlight onPress={() => navigation.navigate("misproductos")}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={Productos} />
-              <Text style={styles.small}>Mis Cuenta</Text>
+              <Text style={styles.small}>Mis Productos</Text>
             </View>
           </TouchableHighlight>
         </View>
