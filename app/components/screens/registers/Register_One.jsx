@@ -25,7 +25,7 @@ import Background from '../../../assets/background.png'
 //dispatch(actions)
 //const users = useSelector(state => state.users)
 
-export default ()=>{ 
+export default ({navigation})=>{ 
     const dispatch = useDispatch()
 
 //////////>> STATES <<//////////
@@ -58,28 +58,8 @@ export default ()=>{
         day: 1,
         month: 0,
         year: new Date().getFullYear() - 16
-    })
-
-//THIS STATE IS TO HELP US IN THE ADRESS
-    const [address, setAddress] = useState({
-        street_1: '',
-        street_2: ''
-    })
-
-////////////////////>> SUPPORTS <<////////////////////
-
-    //////////--> FUNCTIONS <--//////////
-    ////--> VERIFY IF HAS A ERROR <--////
-    const withoutError = ()=>{
-        if(error.firstName || error.lastName || error.phoneNumber 
-        || error.documentNumber || error.email  || error.password) return true
-        else return false
-    } 
+    })   
     
-    const searchDirection = ()=>{
-        const street = address.street_1 + ' y ' + address.street_2
-        api_adress(street, newUser, setNewUser)
-    }
 
 ///////////////////>> HANDLER ON CHAGES <<///////////////////
 
@@ -123,32 +103,11 @@ export default ()=>{
             ...newUser,
             birth: new Date(date.year, date.month, date.day)
         })
-    }
-
-    const hOnCh_Adress = (e)=>{
-        setAddress({
-            ...address,
-            [e.target.name]: e.target.value
-        })
-    }
-
-//////////>> DISPATCH TO REGISTER THE NEW USER <<//////////
-    const register = ()=>{
-        try{    
-            var sendMail = {
-                email: newUser.email,
-                name: newUser.firstName + " " + newUser.lastName
-            }        
-            dispatch(send_mail__post(sendMail))
-            dispatch(save_user(newUser))
-        }
-        catch(err){
-            console.log(err)
-        }
-    }
+    }    
 
     return(
         <ImageBackground source={Background} style={style.container}>
+            <Text style={style.mainTitle}>Alta de Cliente</Text>
 {/*///////////////////////////////////>>> NAME <<<///////////////////////////////////*/}
             {/*//////////////->FIRST NAME<-//////////////*/}
             <Text style={error.firstName ? style.error : style.label}>Name</Text>
@@ -202,48 +161,14 @@ export default ()=>{
                     })}
                 </Picker>
             </View>
-
-{/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}
-            <Text style={error.adress ? style.error : style.label}>Address</Text>
-            <View style={style.adressContainer}>
-                <View>
-                    <Text style={style.subLabel}>Street 1</Text>
-                    <TextInput style={style.inputStreet} editable name='street_1' onChange={hOnCh_Adress}/>
-                </View>
-                <View>
-                    <Text style={style.subLabel}>Street 2</Text>
-                    <TextInput style={style.inputStreet} editable name='street_2' onChange={hOnCh_Adress}/>
-                </View>
-            </View>
-            <TouchableHighlight onPress={searchDirection} style={style.appButtonContainer}>
-                <Text style={style.appButtonText}>SEARCH</Text>
-            </TouchableHighlight>
-
-{/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
-            <Text style={error.phoneNumber ? style.error : style.label}>Tel/Cel</Text>
-            <TextInput style={style.inputR} keyboardType='numeric' editable name='phoneNumber' onChange={hOnCh_NewUser}/>
-
-{/*///////////////////////////////////>>> EMAIL <<<///////////////////////////////////*/}
-            {/*//////////////->EMAIL<-//////////////*/}
-            <Text style={error.email ? style.error : style.label}>Email</Text>
-            <TextInput style={style.inputR} editable name='email' onChange={hOnCh_NewUser}/>
-            {/*//////////////->CONFIRM EMAIL<-//////////////*/}
-            <Text style={error.confirmEmail ? style.error : style.label}>Confirm Email</Text>
-            <TextInput style={style.inputR} editable name='confirmEmail' onChange={hOnCh_NewUser}/>
-
-{/*///////////////////////////////////>>> PASSWORD <<<///////////////////////////////////*/}
-            {/*//////////////->PASSWORD<-//////////////*/}
-            <Text style={error.password ? style.error : style.label}>Password</Text>
-            <TextInput style={style.inputR} secureTextEntry={true} editable name='password' onChange={hOnCh_NewUser}/>
-            {/* /////////////->CONFIRM PASSWORD<-/////////// */}
-            <Text style={error.confirmPassword ? style.error : style.label}>Confirm Password</Text>
-            <TextInput style={style.inputR} secureTextEntry={true} editable name='confirmPassword' onChange={hOnCh_NewUser}/>
-
-{/*//////////////////////////////////////////////////////////////////////////////////////*/}
             
-            <TouchableHighlight onPress={register} style={style.appButtonContainer}>
-                <Text style={style.appButtonText}>Send</Text>
+{/*//////////////////////////////////////////////////////////////////////////////*/}
+            <TouchableHighlight onPress={()=> navigation.navigate('Register_Two',{
+                info:newUser
+            })} style={style.appButtonContainer}>
+                <Text style={style.appButtonText}>NEXT </Text>
             </TouchableHighlight>
+
         </ImageBackground>
     )
 }

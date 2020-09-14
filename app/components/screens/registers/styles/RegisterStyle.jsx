@@ -67,13 +67,11 @@ const styles = StyleSheet.create({
    birth:{
       flex: 1,
       flexDirection: 'row',
-      justifyContent: 'space-around',
-      marginBottom: '10px'
+      justifyContent: 'space-around'
    },
    date:{
       width:'25%',
       height: '40px',
-      paddingVertical: '10px',
       borderRadius: '5px'
    },
    adressContainer:{
@@ -108,6 +106,14 @@ const styles = StyleSheet.create({
     subLabel:{
       color:"#f0f3bd",
       fontSize:"20px"
+    },
+    mainTitle:{
+    fontSize: 50,
+    color:"white",
+    fontWeight: '8',
+    textAlign:"center",
+    marginTop: 50,
+    marginBottom: 40
     }
 })
 
