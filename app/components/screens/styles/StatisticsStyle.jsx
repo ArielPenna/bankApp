@@ -58,6 +58,33 @@ const styles = StyleSheet.create({
   bigText: {
     fontSize: 30,
   },
+  misproductos: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  misproductosrectangulo: {
+    alignItems: "center",
+    backgroundColor: "#f7b700",
+    width: 300,
+    padding: 20,    
+    margin: 10, 
+    shadowColor: "#000",
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    elevation: 8,   
+  },
+  imgmiscuentas: {
+    alignSelf: "normal",
+    width: 50,
+    height: 50,
+    
+  },
+  textmicuentas: {
+    
+    fontSize: "14px",
+  },
 });
 
 export default styles;
