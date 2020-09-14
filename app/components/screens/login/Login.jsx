@@ -64,6 +64,9 @@ export default ({navigation}) => {
           </TouchableHighlight>          
           {/*//////////////////////////////////////////////////////////*/}
 
+          {/*///////////////////////>> OLVIDO CONTRASEÑA <<//////////////////////*/}
+          <Text>¿Forgot your password?</Text>
+
         </View>
       </View>      
     </ImageBackground>
