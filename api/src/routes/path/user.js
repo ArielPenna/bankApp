@@ -1,6 +1,7 @@
 const server = require("express").Router();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
+const { Op } = require("sequelize");
 /* const LocalStrategy = require("passport-local").Strategy; */
 const { User, Wallet, Account, Location } = require("../../db.js");
 
@@ -110,19 +111,22 @@ server.get("/:id/location", (req, res) => {
 //---------------------------------------------
 //        BUSCA USER POR NOMBRE Y EMAIL       |
 //---------------------------------------------
+//http://localhost:9000/user/search/?query={valor a buscar}
 server.get("/search", (req, res) => {
     User.findAll({
             where: {
-                // [Op.or]: [
-                email: {
-                    [Sequelize.Op.iLike]: `%${req.params.id}%`
-                }
+                [Op.or]: [
+                    {email: {[Op.like]: `%${req.query.query.toLowerCase()}%` }},
+                    {firstName: {[Op.like]: `%${req.query.query.toLowerCase()}%` }},
+                    {lastName: {[Op.like]: `%${req.query.query.toLowerCase()}%` }}
+                ]
             }
         })
         .then(usuarioEncontrado => {
-            res.json(usuarioEncontrado);
+            if(usuarioEncontrado.length)res.send(usuarioEncontrado);
+            else res.send('Usuario no Encontrado');
         })
-        .catch((err) => res.send(err));
+        .catch(err => res.send(err));
 });
 
 

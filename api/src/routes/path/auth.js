@@ -1,3 +1,4 @@
+const estaAutenticado = require("../../Suppliers/authenticateFunction")
 const server = require("express").Router();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
@@ -94,18 +95,6 @@ server.get("/me", estaAutenticado, function (req, res) {
         .then(user => res.send(user))
         .catch(err => res.send(err))
 });
-
-
-//-------------------------------------
-//      FUNCION AUTENTICAR USUARIO    |
-//-------------------------------------
-function estaAutenticado(req, res, next) {
-    if (req.isAuthenticated())
-        next();
-    else 
-        res.status(401).send("no esta autenticado");
-}
-
 
 
 module.exports = server;
