@@ -52,26 +52,32 @@ server.post("/to/:idTo", estaAutenticado, async (req, res) => {
 })
 
 // AGREGAR DINERO A LA BILLETERA
-server.put('/recarge/wallet', (req, res) => {
+server.put('/recarge/wallet', estaAutenticado, async (req, res) => {
     const { balance } = req.body
     const { id } = req.user
 
+    const user = await User.findByPk(id)
+    
+    if(!user) res.send('el usuario no existe')
 
-    Wallet.findOne({
-        where: { userId: id }
-    }).then(wallet => {
-        wallet.update({
-            balance: balance + parseFloat(wallet.dataValues.balance)
-        }).then((actualizo) => {
-            res.send(actualizo ?
-                'se actualizo la billetera' :
-                'no se actualizo')
+    else {
+        Transaction.create({ deposit: id, value: balance, transactions_type: 'recarga billetera' })
+            .then(() => user.getWallet())
+            .then(wallet => {
+                wallet.update({
+                    balance: balance + parseFloat(wallet.dataValues.balance)
+                })
+            .then((actualizo) => {
+                res.send(actualizo 
+                    ? `se agregaron ${balance}$ a tu billetera`
+                    : 'no se actualizo')
+            })
         })
-    })
+    }
 })
 
 // TRAER TODAS LAS TRANSFERENCIAS DEL USUARIO
-server.get('/get', (req, res) => {
+server.get('/get', estaAutenticado, (req, res) => {
     const { id } = req.user;
 
     Transaction.findAll({
