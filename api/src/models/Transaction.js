@@ -28,15 +28,6 @@ module.exports = (sequelize) => {
                 ]),
                 defaultValue: "transferencia a usuario"
             },
-        },{ // HOOKS
-            hooks: {
-                afterCreate: (account) => {
-                    console.log('----------------------------------')
-                    console.log('ESTOY DENTRO DEL MODELO')
-                    console.log(account)
-                    console.log('----------------------------------')
-                }
-            }
         }
     );
 };

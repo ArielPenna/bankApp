@@ -1,49 +1,54 @@
+const estaAutenticado = require("../../Suppliers/authenticateFunction")
 const server = require("express").Router();
 const { Op } = require("sequelize");
 const { User, Transaction, Wallet } = require("../../db.js");
 
-server.post("/:idFrom/:idTo", (req, res) => {
-    const { idFrom, idTo } = req.params
+
+server.post("/to/:idTo", estaAutenticado, async (req, res) => {
+    const { idTo } = req.params
     const { transaction } = req.body
+    const { id } = req.user
 
-    const floatTransaction = parseFloat(transaction) // convierto el numero a decimal
-
+    //-------------------------------------------
+    //              DECLARACIONES               |
     let nuevoSaldo;
+    const userFrom = await User.findByPk(id)
+    const userTo = await User.findByPk(idTo)
+    const userfromWallet = await userFrom.getWallet()
+    //-------------------------------------------
+    //                PARSEOS                   |
+    const floatTransaction = parseFloat(transaction) // convierto el numero a decimal
+    const floatBalance = parseFloat(userfromWallet.dataValues.balance)
+    //-------------------------------------------
 
-    if(!Number(idFrom))                 res.send('usuario from invalido')
-    else if(!Number(idTo))              res.send('usuario to invalido')
-    else if(idFrom === idTo)            res.send('los usuarios son iguales')
-    else if(!floatTransaction)          res.send('transaccion invalida')
-    else if(floatTransaction < 100)     res.send('la transaccion debe ser de un monto minimo de 100$')
+
+    if(id === Number(idTo)) res.send('los usuarios son iguales')
+    else if(!userFrom) res.send('usuario from inexistente')
+    else if(!userTo) res.send('usuario to inexistente')
+    else if(!floatTransaction) res.send('transaccion invalida')
+    else if(!(floatTransaction > 100)) res.send('la transaccion debe ser de un monto minimo de 100$')
+    else if(!(floatBalance > floatTransaction)) res.send('saldo insuficiente')      
     
     //-----------------------------------
     //     SI PASA TODOS LOS FILTROS
     //-----------------------------------
     else {
-        Transaction.create({debit:idFrom, deposit: idTo, value: floatTransaction})
+        Transaction.create({debit:id, deposit: idTo, value: floatTransaction})
             //  usuario FROM
-            .then(() => User.findByPk(idFrom)) // id del usuario que va a pagar
-            .then(from => from.getWallet()) // cuando lo encuentro busco su billetera
-            .then(async (wallet)=> {
-                nuevoSaldo = await wallet.update({ // descuento el saldo de la transaccion
-                    balance:(parseFloat(wallet.dataValues.balance) - floatTransaction)
+            .then(() => userFrom.getWallet()) // cuando lo encuentro busco su billetera
+            .then(async ()=> {
+                nuevoSaldo = await userfromWallet.update({ // descuento el saldo de la transaccion
+                    balance:(parseFloat(userfromWallet.dataValues.balance) - floatTransaction)
                 })})
 
             //  usuario TO
-            .then(() => User.findByPk(idTo)) // busco el usuario a acreditar
-            .then(to => to.getWallet()) // cuando lo encuentro busco su billetera
+            .then(() => userTo.getWallet()) // cuando lo encuentro busco su billetera
             .then(wallet => wallet.update({ // acredito el saldo de la transaccion
                 balance:(parseFloat(wallet.dataValues.balance) + floatTransaction)
                 }))
             .then(() => res.send(nuevoSaldo.dataValues)) // envio el saldo actual del usuario
             // ----------- ERRORES ----------------//
-            .catch(err => {
-                if(err.name === 'SequelizeValidationError') res.send('Saldo insuficiente')
-                else if(err === 'NotFound') res.send('usuario no encontrado')
-                else {
-                    res.send(err)
-                }
-            })}
+            .catch(err => res.send(err))}
 })
 
 // AGREGAR DINERO A LA BILLETERA
