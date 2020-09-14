@@ -24,15 +24,6 @@ export default function App() {
           <Stack.Screen name="Main" component={render.Main} options={headerOptions} />
           <Stack.Screen name="Register" component={render.Register_One} options={headerOptions} />
           <Stack.Screen name="Register_Two" component={render.Register_Two} options={headerOptions} />
-
-          <Stack.Screen name="Login" component={render.Login} options={headerOptions} />
-          <Stack.Screen name="Account" component={render.Account} options={headerOptions} />
-          <Stack.Screen name="Recharge" component={render.Recharge} options={headerOptions} />
-          <Stack.Screen name="SendMoney" component={render.SendMoney} options={headerOptions} />
-          <Stack.Screen name="Statistics" component={render.Statistics} options={headerOptions} />
-          <Stack.Screen name="Transactions" component={render.Transactions} options={headerOptions} />
-          <Stack.Screen name="Code" component={render.Code} options={headerOptions} />
-
           <Stack.Screen name="Login" component={render.Login} options={headerOptions} />
           <Stack.Screen name="Account" component={render.Account} options={headerOptions} />
           <Stack.Screen name="Recharge" component={render.Recharge} options={headerOptions} />
