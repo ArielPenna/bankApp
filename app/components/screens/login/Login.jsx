@@ -4,11 +4,12 @@ import {View, Text, TextInput, TouchableHighlight, Image, ImageBackground} from 
 import {useDispatch} from 'react-redux'
 
 ///////////////////>> SCRIPTS <<///////////////////
-import {login_user__post} from '../../redux/actions'
+import {login_user__post} from '../../../redux/actions'
+import style from './styles/LoginStyle'
 
 ///////////////////>> IMAGES <<///////////////////
-import Background from '../../assets/background.png'
-import style from './styles/LoginStyle'
+import Background from '../../../assets/background.png'
+import Logo from '../../../assets/logo.png'
 
 //////////////////////////////////////////////////
 
@@ -16,7 +17,7 @@ import style from './styles/LoginStyle'
 //hOnCh === handlerOnChange
 
 
-export default () => {
+export default ({navigation}) => {
     const dispatch = useDispatch()
     const [login, setLogin]= useState ({
         email:'',
@@ -33,10 +34,11 @@ export default () => {
 //DISPATCH TO LOG IN THE USER
     const onLogin = () => {
         try{ 
-            dispatch(login_user__post(login));
-            console.log("usuarioLogueado");                 
+          dispatch(login_user__post(login));
+          console.log("usuarioLogueado");
+          navigation.navigate('Main')
         } 
-        catch(err){console.log(error)}
+        catch(err){console.log(err)}
     }
 
 
@@ -46,7 +48,7 @@ export default () => {
         <Text style={style.mainTitle}>Login</Text>
         <Image 
           style={style.img}
-          source={require('../../assets/logo.png')} />
+          source={Logo} />
         <View >
           {/*///////////////////////>> EMAIL <<///////////////////////*/}
             <Text style={style.label}>E-mail</Text>
