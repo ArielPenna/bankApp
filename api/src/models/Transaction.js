@@ -1,4 +1,4 @@
-const S = require('sequelize').DataTypes 
+const S = require("sequelize").DataTypes;
 
 module.exports = (sequelize) => {
     sequelize.define( 'transaction',

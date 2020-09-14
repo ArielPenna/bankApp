@@ -5,14 +5,17 @@ const styles = StyleSheet.create({
     flex:1,   
     width: "100%",
     height: "100%",      
-    alignItems: "center",
-    
-    
+    alignItems: "center",   
   },
   img:{    
     alignSelf:"center",
     width:70,
-    height:70,    
+    height: 70,
+    shadowColor: "#000",
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    elevation: 8,
   },
   ico:{    
     alignSelf:"center",
@@ -36,7 +39,12 @@ const styles = StyleSheet.create({
   },
   generalView:{
     backgroundColor:"white",
-    width:"100%",
+    width: "100%",
+    shadowColor: "#000",
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    elevation: 8,
   },
   top:{
     justifyContent:"flex-start",
@@ -55,16 +63,35 @@ const styles = StyleSheet.create({
   }, 
   touch: {
     alignItems: "center",
-    backgroundColor: "#DDDDDD",
+    backgroundColor: "#f7b700",
     padding: 10,    
     margin: 10, 
-    elevation: 1,   
+    shadowColor: "#000",
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    elevation: 8,   
   },
   small: {
     fontSize: "9px",
   },
   bigText:{
     fontSize: 30,
+  },
+  button: {    
+    backgroundColor: "#f7b700",
+    textAlign: "center",
+    justifyContent:"space-around",
+    alignItems:"center",    
+    borderRadius: 2,
+    height:35
+  },
+  buttonText: {
+    color: "#752667",    
+    textAlign: "center",
+    justifyContent:"space-around",
+    alignItems:"center",
+    fontWeight: "bold",      
   }
 });
 

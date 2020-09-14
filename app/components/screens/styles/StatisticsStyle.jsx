@@ -6,12 +6,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     alignItems: "center",
-  },
-  img: {
-    alignSelf: "center",
-    width: 70,
-    height: 70,
-  },
+  }, 
   ico: {
     alignSelf: "center",
     width: 50,
@@ -26,11 +21,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-  },
-  money: {
-    color: "white",
-    marginHorizontal: 25,
-    fontSize: 30,
   },
   generalView: {
     backgroundColor: "white",
@@ -53,10 +43,14 @@ const styles = StyleSheet.create({
   },
   touch: {
     alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 10,
-    margin: 10,
-    elevation: 1,
+    backgroundColor: "#f7b700",
+    padding: 10,    
+    margin: 10, 
+    shadowColor: "#000",
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    elevation: 8,   
   },
   small: {
     fontSize: "9px",
