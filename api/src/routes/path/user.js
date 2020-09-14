@@ -1,8 +1,7 @@
 const server = require("express").Router();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
+const { Op } = require("sequelize");
 /* const LocalStrategy = require("passport-local").Strategy; */
 const { User, Wallet, Account, Location } = require("../../db.js");
 
