@@ -206,7 +206,7 @@ export default ({navigation})=>{
                 </View>
                 <TouchableHighlight onPress={searchDirection} disabled={withoutErrorLocation()}
                 style={withoutErrorLocation() ? style.appButtonContainerFalse : style.appButtonContainer}>
-                    <Text style={style.appButtonText}>SEARCH</Text>
+                    <Text style={withoutErrorLocation() ? style.appButtonTextFalse : style.appButtonText}>SEARCH</Text>
                 </TouchableHighlight>
             </View>         
 
@@ -216,7 +216,7 @@ export default ({navigation})=>{
             <TouchableHighlight disabled={withoutError()} onPress={()=> navigation.navigate('Next Register',{
                 info:newUser
             })} style={withoutError() ? style.appButtonContainerFalse : style.appButtonContainer}>
-                <Text style={style.appButtonText}>NEXT </Text>
+                <Text style={withoutErrorLocation() ? style.appButtonTextFalse : style.appButtonText}>NEXT </Text>
             </TouchableHighlight>
 
         </ImageBackground>
