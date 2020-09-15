@@ -1,4 +1,3 @@
-import React from 'react';
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'; 
 import { Button, View, SafeAreaView, Text, Image, ImageBackground} from 'react-native';
@@ -16,7 +15,7 @@ export default ({ navigation }) => {
   const dispatch= useDispatch()
   useEffect(()=>{
     dispatch (transactions_get())
-  })
+  },[])
 
   return (
     <ImageBackground source={Background}>
