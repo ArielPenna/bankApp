@@ -1,11 +1,9 @@
 ///////////////////>> MODULS <<///////////////////
 import React, {useState} from 'react'
-import {View, Text, TextInput, Button, Picker, ImageBackground, TouchableHighlight} from 'react-native'
-import {useDispatch} from 'react-redux'
+import {View, Text, TextInput, Picker, ImageBackground, TouchableHighlight} from 'react-native'
 
 ///////////////////>> SCRIPTS <<///////////////////
 import style from './styles/RegisterStyle'
-import { save_user, send_mail__post } from '../../../redux/actions'
 import validate from './supports/Validation_Register'
 import * as D from './supports/Date_Register' //Functions to Date Register
 import api_adress from './supports/Api_Adress_Register' //Function to Api Adress
@@ -26,8 +24,6 @@ import Background from '../../../assets/background.png'
 //const users = useSelector(state => state.users)
 
 export default ({navigation})=>{ 
-    const dispatch = useDispatch()
-
 //////////>> STATES <<//////////
     const [newUser, setNewUser] = useState({
         firstName: '',
@@ -45,12 +41,7 @@ export default ({navigation})=>{
         firstName: '*',
         lastName:'*',
         documentNumber:'*',
-        adress:'*',
-        phoneNumber:'*',
-        email:'*',
-        confirmEmail:'*',
-        password:'*',
-        confirmPassword:'*'
+        address:'*'
     })
 
 //THIS STATE IS TO HELP US IN THE DATES
@@ -58,8 +49,39 @@ export default ({navigation})=>{
         day: 1,
         month: 0,
         year: new Date().getFullYear() - 16
-    })   
+    })
     
+    //THIS STATE IS TO HELP US IN THE ADRESS
+    const [address, setAddress] = useState({
+        street_1: '',
+        number: '',
+        street_2: ''
+    })
+    
+/////////////>> SUPPORT <</////////////////
+    //////-> FUNCTIONS <-//////
+    const withoutErrorLocation = () => {
+        if(address.street_1 && address.street_2 && address.number) return false
+        else return true
+    }
+
+    //SEARCH THE LOCATION WITH THE API
+    const searchDirection = ()=>{
+        const street = address.street_1 + ' y ' + address.street_2
+        api_adress(street, address.number, newUser, setNewUser, error, setError)
+    }
+
+    //SEND A STRING OF THE LOCATION
+    const location = ()=>{
+        const loc = newUser.address.split(',')
+        return loc[2] + ', ' + loc[3] + ',\n' + loc[4]
+    }
+
+    //WHITOUT ERROR CAN WE GO TO THE NEXT REGISTER
+    const withoutError = ()=>{
+        if(error.firstName || error.lastName || error.documentNumber || error.address) return true
+        else return false
+    }
 
 ///////////////////>> HANDLER ON CHAGES <<///////////////////
 
@@ -75,8 +97,7 @@ export default ({navigation})=>{
             ...newUser,
             [e.target.name]: e.target.value
         })
-        } 
-        console.log(newUser)       
+        }     
     }
 
     const hOnCh_Birth = (e) =>{
@@ -103,11 +124,19 @@ export default ({navigation})=>{
             ...newUser,
             birth: new Date(date.year, date.month, date.day)
         })
-    }    
+    }  
+    
+    const hOnCh_Adress = (e)=>{
+        setAddress({
+            ...address,
+            [e.target.name]: e.target.value
+        })
+    }
+/////////////////////////////////////////////////////////////////////////////
 
     return(
         <ImageBackground source={Background} style={style.container}>
-            <Text style={style.mainTitle}>Alta de Cliente</Text>
+            <Text style={style.mainTitle}>Client Register</Text>
 {/*///////////////////////////////////>>> NAME <<<///////////////////////////////////*/}
             {/*//////////////->FIRST NAME<-//////////////*/}
             <Text style={error.firstName ? style.error : style.label}>Name</Text>
@@ -161,11 +190,32 @@ export default ({navigation})=>{
                     })}
                 </Picker>
             </View>
+
+{/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}
+            <Text style={error.address ? style.error : style.label}>Address</Text>
+            <View style={style.adressContainer}>
+            <Text style={style.subLabel}>Principal Street</Text>
+                <View style={style.streetPrincipal}>                    
+                    <TextInput style={style.inputStreet} editable name='street_1' onChange={hOnCh_Adress}/>
+                    <TextInput style={style.inputSubStreet} keyboardType='numeric' 
+                    editable name='number' onChange={hOnCh_Adress} placeholder='N°'/>
+                </View>
+                <View>
+                    <Text style={style.subLabel}>One street that cuts the principal</Text>
+                    <TextInput style={style.inputR} editable name='street_2' onChange={hOnCh_Adress}/>
+                </View>
+                <TouchableHighlight onPress={searchDirection} disabled={withoutErrorLocation()}
+                style={withoutErrorLocation() ? style.appButtonContainerFalse : style.appButtonContainer}>
+                    <Text style={style.appButtonText}>SEARCH</Text>
+                </TouchableHighlight>
+            </View>         
+
+            <Text style={newUser.address ? style.locationY : style.locationX}>{newUser.address ? location() : 'City'}</Text>   
             
 {/*//////////////////////////////////////////////////////////////////////////////*/}
-            <TouchableHighlight onPress={()=> navigation.navigate('Register_Two',{
+            <TouchableHighlight disabled={withoutError()} onPress={()=> navigation.navigate('Next Register',{
                 info:newUser
-            })} style={style.appButtonContainer}>
+            })} style={withoutError() ? style.appButtonContainerFalse : style.appButtonContainer}>
                 <Text style={style.appButtonText}>NEXT </Text>
             </TouchableHighlight>
 

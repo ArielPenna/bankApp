@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default (street, newUser, setNewUser) => {
+export default (street, number, newUser, setNewUser, error, setError) => {
     axios({
         "method":"GET",
         "url":"https://trueway-places.p.rapidapi.com/FindPlaceByText",
@@ -16,10 +16,14 @@ export default (street, newUser, setNewUser) => {
         })
         .then((res)=>{
             console.log(res)
-            if(res.data.length){
+            if(res.data.results.length){
+                setError({
+                    ...error,
+                    address: ''
+                })
                 setNewUser({
                     ...newUser,
-                    adress: res.data[0].address
+                    address: number + ',' + res.data.results[0].address
                 })
             }            
         })
