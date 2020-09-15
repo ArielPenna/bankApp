@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import { Button, View, SafeAreaView, Text, Alert, Image, ImageBackground, TouchableHighlight } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles/MainStyle";
-import {get_user__me, transactions_get} from "../../../redux/actions"
+import {get_user__me, transactions_get, full_balance_get} from "../../../redux/actions"
 
 ///////////////////>> IMGS <<///////////////////
 import Background from "../../../assets/background.png";
@@ -19,13 +19,18 @@ export default ({ navigation }) => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user);   
   const transactions = useSelector((state) => state.transactions);
+  const fullBalance = useSelector((state) => state.fullBalance);
+  
 
   useEffect(() => {
     dispatch(get_user__me())
-    dispatch(transactions_get())
+    dispatch(transactions_get())    
   }, []);
+
   {console.log(user)}
   {console.log(transactions)}
+  {console.log(fullBalance)}
+ 
   
 
   return (
@@ -48,14 +53,14 @@ export default ({ navigation }) => {
           <View style={styles.row}>
             <View style={styles.margin}>
               <Text style={styles.centerText}>Ingresos</Text>
-              <Text style={styles.bigText}>$5400</Text>
+              <Text style={styles.bigText}>$ {typeof fullBalance == "object" && fullBalance.credit}</Text>
             </View>
             <View style={styles.margin}>
               <Text style={styles.centerText}>Gastos</Text>
-              <Text style={styles.bigText}>$5400</Text>
+              <Text style={styles.bigText}>$ {typeof fullBalance == "object" && fullBalance.debit}</Text>
             </View>
           </View>
-          <Text style={styles.centerText}>1 Día 7 Días 30 Días</Text>
+          {/* <Text style={styles.centerText}>1 Día 7 Días 30 Días</Text> */}
         </View>
 
         <Separator />
