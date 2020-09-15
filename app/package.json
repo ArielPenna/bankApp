@@ -19,6 +19,7 @@
     "react-icons": "^3.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-date-picker": "^3.2.3",
+    "react-native-elements": "^2.3.2",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-reanimated": "~1.9.0",
     "react-native-safe-area-context": "~3.0.7",

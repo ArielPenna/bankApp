@@ -17,7 +17,7 @@ export default ({ navigation }) => {
     dispatch (transactions_get())
   },[])
 
-  return (
+  return (    
     <ImageBackground source={Background}>
       <View>
         <Text>Transactions</Text>         

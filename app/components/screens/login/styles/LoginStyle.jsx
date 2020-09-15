@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
       marginLeft:"5px",
       padding:"10px",
       height:"auto",
-      borderRadius:"15px",
+      borderRadius:"5px",
       backgroundColor:"white",
       marginBottom:"10px",
       
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   button: {    
     backgroundColor: "#f7b700",
-    textAlign: "center",
+    // textAlign: "center",
     justifyContent:"space-around",
     alignItems:"center",    
     borderRadius: 2,
