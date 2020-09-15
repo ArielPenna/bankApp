@@ -64,17 +64,20 @@ export default ({navigation})=>{
         if(address.street_1 && address.street_2 && address.number) return false
         else return true
     }
-    const searchDirection = ()=>{
 
+    //SEARCH THE LOCATION WITH THE API
+    const searchDirection = ()=>{
         const street = address.street_1 + ' y ' + address.street_2
         api_adress(street, address.number, newUser, setNewUser, error, setError)
     }
 
+    //SEND A STRING OF THE LOCATION
     const location = ()=>{
         const loc = newUser.address.split(',')
         return loc[2] + ', ' + loc[3] + ',\n' + loc[4]
     }
 
+    //WHITOUT ERROR CAN WE GO TO THE NEXT REGISTER
     const withoutError = ()=>{
         if(error.firstName || error.lastName || error.documentNumber || error.address) return true
         else return false
@@ -129,6 +132,7 @@ export default ({navigation})=>{
             [e.target.name]: e.target.value
         })
     }
+/////////////////////////////////////////////////////////////////////////////
 
     return(
         <ImageBackground source={Background} style={style.container}>

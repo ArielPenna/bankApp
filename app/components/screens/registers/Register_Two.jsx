@@ -12,7 +12,10 @@ import {send_mail__post} from '../../../redux/actions'
 import Background from '../../../assets/background.png'
 
 export default ({route, navigation}) => {
+    //DISPATCH 
     const dispatch = useDispatch()
+
+/////////////>> STATES <<//////////////
     const [newUser, setNewUser] = useState(route.params.info)
     
     //THIS STATE IS TO HELP US VALIDATE THE INPUTS OF THE USERS
@@ -28,7 +31,7 @@ export default ({route, navigation}) => {
         confirmPassword:'*'
     })    
 
-    ////////////////////>> SUPPORTS <<////////////////////
+////////////////////>> SUPPORTS <<////////////////////
 
     //////////--> FUNCTIONS <--//////////
     ////--> VERIFY IF HAS A ERROR <--////
@@ -38,7 +41,7 @@ export default ({route, navigation}) => {
         else return false
     }
     
-
+////////////////////>> HANDLER OF CHANGE <<////////////////////
     const hOnCh_NewUser = (e) =>{
         setError(
             validate({
@@ -55,7 +58,7 @@ export default ({route, navigation}) => {
         console.log(newUser)       
     }   
 
-
+//DISPATCH THE REGISTER AND SEND THE CODE
     const register = ()=>{
         try{    
             var sendMail = {
