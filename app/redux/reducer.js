@@ -6,6 +6,7 @@ const initialState = {
   code: 0,
   saveUser: undefined,
   search: 0,
+  transactions: {}
 };
 
 export default (state = initialState, action) => {
@@ -15,7 +16,7 @@ export default (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
-    case cons.GET_USER__ME:
+    case cons.GET_USER__ME:    
     case cons.LOGOUT__GET:
       return {
         ...state,
@@ -35,6 +36,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         search: action.payload,
+      };
+    case cons.TRANSACTIONS_GET:
+      return {
+        ...state,
+        transactions: action.payload,
       };
   }
   return state;
