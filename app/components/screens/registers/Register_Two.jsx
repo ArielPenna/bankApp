@@ -26,21 +26,15 @@ export default ({route, navigation}) => {
         confirmEmail:'*',
         password:'*',
         confirmPassword:'*'
-    })
-
-    //THIS STATE IS TO HELP US IN THE ADRESS
-    const [address, setAddress] = useState({
-        street_1: '',
-        street_2: ''
-    })
+    })    
 
     ////////////////////>> SUPPORTS <<////////////////////
 
     //////////--> FUNCTIONS <--//////////
     ////--> VERIFY IF HAS A ERROR <--////
     const withoutError = ()=>{
-        if(error.firstName || error.lastName || error.phoneNumber 
-        || error.documentNumber || error.email  || error.password) return true
+        if(error.phoneNumber || error.email  || error.password
+            || error.confirmEmail  || error.confirmPassword) return true
         else return false
     }
     
@@ -69,6 +63,7 @@ export default ({route, navigation}) => {
                 name: newUser.firstName + " " + newUser.lastName
             }        
             dispatch(send_mail__post(sendMail))
+            navigation.navigate('Code')
         }
         catch(err){
             console.log(err)
@@ -77,6 +72,7 @@ export default ({route, navigation}) => {
 
     return(
         <ImageBackground source={Background} style={style.background}>
+            <Text style={style.mainTitle}>Almost</Text>
         <View>           
 
 {/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
@@ -101,7 +97,8 @@ export default ({route, navigation}) => {
 
 {/*//////////////////////////////////////////////////////////////////////////////////////*/}
             
-            <TouchableHighlight onPress={register} style={style.appButtonContainer}>
+            <TouchableHighlight disabled={withoutError()} onPress={register} 
+            style={withoutError() ? style.appButtonContainerFalse : style.appButtonContainer}>
                 <Text style={style.appButtonText}>Send</Text>
             </TouchableHighlight>
         </View>

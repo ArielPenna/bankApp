@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
       height:"40px",
       borderRadius:"5px",
       backgroundColor:"white",
-      marginBottom: 5     
+      marginBottom: 5,
+      paddingLeft: 10     
    },
    inputDoc:{
       width:"66%",
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
       padding:"10px",
       borderRadius:"5px",
       backgroundColor:"white",
-      marginLeft:'15px' 
+      marginLeft:'15px', 
    },
    inputDocNum:{
       width:"120%",
@@ -36,14 +37,15 @@ const styles = StyleSheet.create({
       paddingVertical:"20px",
       padding:"10px",
       borderRadius:"5px",     
-      backgroundColor:"white"    
+      backgroundColor:"white",
+      paddingLeft: 10    
    },
    docContainer:{
       width:'94%',
       height: 10,
       flex:1,
       flexDirection: 'row',
-      marginBottom: -280
+      marginBottom: -230
    },
    doc:{
       flex:1,
@@ -69,26 +71,26 @@ const styles = StyleSheet.create({
       fontSize:20 
    },
    birth:{
-      flex: 1,
       flexDirection: 'row',
       justifyContent: 'space-around',
-      marginBottom: -290
+      marginBottom: 5
    },
    date:{
       width:'25%',
       height: '40px',
-      borderRadius: '5px'
+      borderRadius: '5px',
+      paddingLeft:20
    },
    adressContainer:{
       flex:1,
       flexDirection: 'column',
-      marginBottom: -200
+      marginBottom: -30
    },
    streetPrincipal:{
-      flex: 1,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginLeft:20
+      marginLeft:20,
+      marginBottom:10
    },
    inputStreet:{
       width: '60%',
@@ -101,7 +103,8 @@ const styles = StyleSheet.create({
       height: 40,
       backgroundColor:'white',
       borderRadius:'5px',
-      marginRight:20
+      marginRight:20,
+      paddingLeft: 10
    },
    appButtonContainer: {
       width: '90%',
@@ -110,6 +113,17 @@ const styles = StyleSheet.create({
       marginTop: '20px',
       elevation: 8,
       backgroundColor: "#009688",
+      borderRadius: 5,
+      paddingVertical: 10,
+      paddingHorizontal: 12
+   },
+   appButtonContainerFalse: {
+      width: '90%',
+      marginLeft: '20px',
+      marginBottom: '10px',
+      marginTop: '20px',
+      elevation: 8,
+      backgroundColor: "#001829",
       borderRadius: 5,
       paddingVertical: 10,
       paddingHorizontal: 12
@@ -133,6 +147,20 @@ const styles = StyleSheet.create({
    textAlign:"center",
    marginTop: 30,
    marginBottom: 10
+   },
+   locationX:{
+      textAlign:'center',
+      fontSize: 25,
+      color:'yellow',
+      position: 'relative',
+      bottom: 35
+   },
+   locationY:{
+      textAlign:'center',
+      fontSize: 15,
+      color:"#f7b700",
+      position: 'relative',
+      bottom: 35
    }
 })
 
