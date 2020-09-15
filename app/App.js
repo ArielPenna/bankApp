@@ -29,8 +29,12 @@ export default function App() {
           <Stack.Screen name="Recharge" component={render.Recharge} options={headerOptions} />
           <Stack.Screen name="SendMoney" component={render.SendMoney} options={headerOptions} />
           <Stack.Screen name="Statistics" component={render.Statistics} options={headerOptions} />
+          <Stack.Screen name="misproductos" component={render.misproductos} options={headerOptions} />
           <Stack.Screen name="Transactions" component={render.Transactions} options={headerOptions} />
           <Stack.Screen name="Code" component={render.Code} options={headerOptions} />
+          <Stack.Screen name="mitarjeta" component={render.mitarjeta} options={headerOptions} />
+          <Stack.Screen name="miscontactos" component={render.miscontactos} options={headerOptions} /> 
+
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

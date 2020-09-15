@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import { Button, View, SafeAreaView, Text, Alert, Image, ImageBackground, TouchableHighlight } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles/MainStyle";
-import {get_user__me} from "../../../redux/actions"
+import {get_user__me, transactions_get} from "../../../redux/actions"
 
 ///////////////////>> IMGS <<///////////////////
 import Background from "../../../assets/background.png";
@@ -18,9 +18,14 @@ const Separator = () => <View style={styles.separator} />;
 export default ({ navigation }) => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user);   
+  const transactions = useSelector((state) => state.transactions);
 
-  useEffect(() => { dispatch(get_user__me()) }, []);
+  useEffect(() => {
+    dispatch(get_user__me())
+    dispatch(transactions_get())
+  }, []);
   {console.log(user)}
+  {console.log(transactions)}
   
 
   return (
@@ -77,10 +82,10 @@ export default ({ navigation }) => {
             </View>
           </TouchableHighlight> */}
 
-          <TouchableHighlight onPress={() => navigation.navigate("Account")}>
+          <TouchableHighlight onPress={() => navigation.navigate("misproductos")}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={Productos} />
-              <Text style={styles.small}>Mis Cuenta</Text>
+              <Text style={styles.small}>Mis Productos</Text>
             </View>
           </TouchableHighlight>
         </View>
