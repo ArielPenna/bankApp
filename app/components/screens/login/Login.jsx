@@ -1,6 +1,6 @@
 ///////////////////>> MODULS <<///////////////////
 import React, {useState} from 'react'
-import {View, Text, TextInput, Button, Image, ImageBackground} from 'react-native'
+import {View, Text, TextInput, Button, Image, ImageBackground,TouchableHighlight} from 'react-native'
 import {useDispatch} from 'react-redux'
 
 ///////////////////>> SCRIPTS <<///////////////////
@@ -55,15 +55,17 @@ export default ({navigation}) => {
             <TextInput style={style.inputR} placeholder= 'E-mail' editable name='email' onChange= {hOnCh_Login}/>
 
           {/*///////////////////////>> PASSWORD <<///////////////////////*/}  
-            <Text style={style.label}> Contraseña </Text>
+            <Text style={style.label}> Password </Text>
             <TextInput style={style.inputR} secureTextEntry={true} editable placeholder='Contraseña' name='password' onChange={hOnCh_Login}/>
 
           {/*///////////////////////>> LOGIN <<///////////////////////*/}
-            <Button style={style.btn} color="#ea94a0" title='Enviar' onPress= {onLogin}/>
+            <TouchableHighlight style={style.button} onPress={onLogin}>             
+              <Text style={style.buttonText}>ENTER</Text>            
+            </TouchableHighlight> 
             
           {/*//////////////////////////////////////////////////////////*/}
 
-          <Button title="MAIN" color="purple" onPress={() => navigation.navigate('Main')} />
+          {/* <Button title="MAIN" color="purple" onPress={() => navigation.navigate('Main')} /> */}
         </View>
       </View>      
     </ImageBackground>
