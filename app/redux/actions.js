@@ -70,4 +70,4 @@ export const transactions_get = () => {
       dispatch({ type: cons.TRANSACTIONS_GET, payload: res.data });
     });
   };
-};
+};   
