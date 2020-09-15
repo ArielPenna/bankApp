@@ -14,16 +14,13 @@ export default ({ navigation }) => {
         <Image style={styles.img} source={Logo} />
         <View>
           <TouchableHighlight style={styles.button} onPress={() => navigation.navigate("Login")}>             
-            <Text style={styles.buttonText}>INGRESAR</Text>            
+            <Text style={styles.buttonText}>ENTER</Text>            
           </TouchableHighlight>          
           <br />
           <TouchableHighlight style={styles.button} onPress={() => navigation.navigate("Register")}>             
-            <Text style={styles.buttonText}>REGISTRARSE</Text>            
+            <Text style={styles.buttonText}>REGISTER</Text>            
           </TouchableHighlight>         
-
-          <Text>Botones de testeo de componentes</Text>
-
-          <Button title="Validation" color="purple" onPress={() => navigation.navigate("Code")} />
+          
         </View>
       </View>
     </ImageBackground>

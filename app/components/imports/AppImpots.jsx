@@ -15,12 +15,12 @@ import Account from '../screens/Account'
 import Recharge from '../screens/Recharge'
 import SendMoney from '../screens/SendMoney'
 import Statistics from '../screens/Statistics'
-import misproductos from '../screens/misproductos'
+import MyProducts from '../screens/MyProducts'
 import Transactions from '../screens/Transactions'
 
 //////////////// MIS PRODUCTOS //////////////
-import mitarjeta from '../screens/mitarjeta'
-import miscontactos from '../screens/miscontactos' 
+import MyCard from '../screens/MyCard'
+import MyContact from '../screens/MyContact' 
 
 /////////////// HOME ///////////////
 export {Home}
@@ -39,10 +39,10 @@ export {Account}
 export {Recharge}
 export {SendMoney}
 export {Statistics}
-export {misproductos}
+export {MyProducts}
 export {Transactions}
 
 
-//////////////// MIS PRODUCTOS //////////////////
-export {mitarjeta}
-export {miscontactos} 
+//////////////// MIS PRODUCTOS //////////////
+export {MyCard}
+export {MyContact} 

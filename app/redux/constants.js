@@ -6,3 +6,5 @@ export const SEARCH_CODE = "SEARCH_CODE";
 export const LOGOUT__GET = "LOGOUT__GET";
 export const GET_USER__ME = "GET_USER__ME";
 export const GET_WALLET = "GET_WALLET";
+export const TRANSACTIONS_GET = "TRANSACTIONS_GET";
+export const FULL_BALANCE_GET = "FULL_BALANCE_GET";

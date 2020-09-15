@@ -1,7 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-    container:{
+   background:{
+      flex:1
+   },
+   container:{
       flex:1,
       width:"100%",
       heigth:"100%",
@@ -16,7 +19,8 @@ const styles = StyleSheet.create({
       height:"40px",
       borderRadius:"5px",
       backgroundColor:"white",
-      marginBottom:"10px"      
+      marginBottom: 5,
+      paddingLeft: 10     
    },
    inputDoc:{
       width:"66%",
@@ -25,7 +29,7 @@ const styles = StyleSheet.create({
       padding:"10px",
       borderRadius:"5px",
       backgroundColor:"white",
-      marginLeft:'15px' 
+      marginLeft:'15px', 
    },
    inputDocNum:{
       width:"120%",
@@ -33,13 +37,15 @@ const styles = StyleSheet.create({
       paddingVertical:"20px",
       padding:"10px",
       borderRadius:"5px",     
-      backgroundColor:"white"    
+      backgroundColor:"white",
+      paddingLeft: 10    
    },
    docContainer:{
       width:'94%',
+      height: 10,
       flex:1,
       flexDirection: 'row',
-      marginBottom:"10px"
+      marginBottom: -230
    },
    doc:{
       flex:1,
@@ -51,7 +57,7 @@ const styles = StyleSheet.create({
    label:{
       marginLeft:"20px",
       color:"#f0f3bd",
-      fontSize:"25px"
+      fontSize:20
    },
    btn:{
       marginTop:"50px",
@@ -62,28 +68,43 @@ const styles = StyleSheet.create({
    error:{
       marginLeft:"20px",
       color:"red",
-      fontSize:"25px"  
+      fontSize:20 
    },
    birth:{
-      flex: 1,
       flexDirection: 'row',
-      justifyContent: 'space-around'
+      justifyContent: 'space-around',
+      marginBottom: 5
    },
    date:{
       width:'25%',
       height: '40px',
-      borderRadius: '5px'
+      borderRadius: '5px',
+      paddingLeft:20
    },
    adressContainer:{
       flex:1,
+      flexDirection: 'column',
+      marginBottom: -30
+   },
+   streetPrincipal:{
       flexDirection: 'row',
-      justifyContent: 'space-around'
+      justifyContent: 'space-between',
+      marginLeft:20,
+      marginBottom:10
    },
    inputStreet:{
-      width: '100%',
+      width: '60%',
       height: '40px',
       backgroundColor: 'white',
       borderRadius: '5px'
+   },
+   inputSubStreet:{
+      width:'30%',
+      height: 40,
+      backgroundColor:'white',
+      borderRadius:'5px',
+      marginRight:20,
+      paddingLeft: 10
    },
    appButtonContainer: {
       width: '90%',
@@ -91,30 +112,63 @@ const styles = StyleSheet.create({
       marginBottom: '10px',
       marginTop: '20px',
       elevation: 8,
-      backgroundColor: "#009688",
+      backgroundColor: "#f7b700",
       borderRadius: 5,
       paddingVertical: 10,
       paddingHorizontal: 12
-    },
-    appButtonText: {
+   },
+   appButtonContainerFalse: {
+      width: '90%',
+      marginLeft: '20px',
+      marginBottom: '10px',
+      marginTop: '20px',
+      elevation: 8,
+      backgroundColor: "#752667",       
+      borderRadius: 5,
+      paddingVertical: 10,
+      paddingHorizontal: 12
+   },
+   appButtonText: {
+      fontSize: 18,
+      color: "#752667",
+      fontWeight: "bold",
+      alignSelf: "center",
+      textTransform: "uppercase"
+   },
+   appButtonTextFalse: {
       fontSize: 18,
       color: "#fff",
       fontWeight: "bold",
       alignSelf: "center",
       textTransform: "uppercase"
-    },
-    subLabel:{
+   },
+   subLabel:{
       color:"#f0f3bd",
-      fontSize:"20px"
-    },
-    mainTitle:{
-    fontSize: 50,
-    color:"white",
-    fontWeight: '8',
-    textAlign:"center",
-    marginTop: 50,
-    marginBottom: 40
-    }
+      fontSize:15,
+      marginLeft:20
+   },
+   mainTitle:{
+   fontSize: 40,
+   color:"white",
+   fontWeight: '8',
+   textAlign:"center",
+   marginTop: 30,
+   marginBottom: 10
+   },
+   locationX:{
+      textAlign:'center',
+      fontSize: 25,
+      color:'yellow',
+      position: 'relative',
+      bottom: 35
+   },
+   locationY:{
+      textAlign:'center',
+      fontSize: 15,
+      color:"#f7b700",
+      position: 'relative',
+      bottom: 35
+   }
 })
 
 export default styles

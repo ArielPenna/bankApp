@@ -29,9 +29,8 @@
 // ----------------───────██████████████████████████───────
 // ----------------─────────────███████████████────────────
 
-
 const server = require("./src/app.js");
-const { conn } = require('./src/db.js');
+const { conn } = require("./src/db.js");
 
 //----------------------------------------------------------------------------//
 //-----------------------SYNC-DEL-SERVIDOR------------------------------------//
@@ -44,10 +43,9 @@ const { conn } = require('./src/db.js');
 // Sync de la api
 conn.sync({ force: false }).then(() => {
   server.listen(9000, () => {
-    console.log('|||||||||||||||||||||||||||||||||||||');
-    console.log('|    CORRIENDO HENRYBANK EN 9000    |');
-    console.log('|||||||||||||||||||||||||||||||||||||');
-    console.log('VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV');
+    console.log("|||||||||||||||||||||||||||||||||||||");
+    console.log("|    CORRIENDO HENRYBANK EN 9000    |");
+    console.log("|||||||||||||||||||||||||||||||||||||");
+    console.log("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV");
   });
 });
-
