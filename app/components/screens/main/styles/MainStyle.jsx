@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   button: {    
     backgroundColor: "#f7b700",
-    textAlign: "center",
+    // textAlign: "center",
     justifyContent:"space-around",
     alignItems:"center",    
     borderRadius: 2,
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#752667",    
-    textAlign: "center",
+    // textAlign: "center",
     justifyContent:"space-around",
     alignItems:"center",
     fontWeight: "bold",      
