@@ -30,8 +30,13 @@ const validate = (input)=>{
     }
 
 /////////////>>ADRESS<</////////////
-    if(!input.adress){
-      errors.adress = '*'
+    if(!input.address){
+      errors.address = '*'
+    }
+
+/////////////>>DOC NUMBER<</////////////
+    if(!input.documentNumber){
+      errors.documentNumber = '*'
     }
 
 /////////////>>TEL/CEL<</////////////

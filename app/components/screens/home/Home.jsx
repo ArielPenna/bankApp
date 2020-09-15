@@ -20,10 +20,7 @@ export default ({ navigation }) => {
           <TouchableHighlight style={styles.button} onPress={() => navigation.navigate("Register")}>             
             <Text style={styles.buttonText}>REGISTRARSE</Text>            
           </TouchableHighlight>         
-
-          <Text>Botones de testeo de componentes</Text>
-
-          <Button title="Validation" color="purple" onPress={() => navigation.navigate("Code")} />
+          
         </View>
       </View>
     </ImageBackground>
