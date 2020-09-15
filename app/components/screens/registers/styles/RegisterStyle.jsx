@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
       marginBottom: '10px',
       marginTop: '20px',
       elevation: 8,
-      backgroundColor: "#009688",
+      backgroundColor: "#f7b700",
       borderRadius: 5,
       paddingVertical: 10,
       paddingHorizontal: 12
@@ -123,12 +123,19 @@ const styles = StyleSheet.create({
       marginBottom: '10px',
       marginTop: '20px',
       elevation: 8,
-      backgroundColor: "#001829",
+      backgroundColor: "#752667",       
       borderRadius: 5,
       paddingVertical: 10,
       paddingHorizontal: 12
    },
    appButtonText: {
+      fontSize: 18,
+      color: "#752667",
+      fontWeight: "bold",
+      alignSelf: "center",
+      textTransform: "uppercase"
+   },
+   appButtonTextFalse: {
       fontSize: 18,
       color: "#fff",
       fontWeight: "bold",
