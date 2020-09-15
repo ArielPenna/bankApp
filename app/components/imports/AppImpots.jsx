@@ -33,7 +33,7 @@ export {Register_Two}
 export {Login}
 export {Code}
 
-/////////////// MAIN ///////////////
+/////////////// MAIN /////////////////
 export {Main}
 export {Account}
 export {Recharge}
@@ -43,6 +43,6 @@ export {misproductos}
 export {Transactions}
 
 
-//////////////// MIS PRODUCTOS //////////////
+//////////////// MIS PRODUCTOS //////////////////
 export {mitarjeta}
 export {miscontactos} 
