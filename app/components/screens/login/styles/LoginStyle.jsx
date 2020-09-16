@@ -48,11 +48,10 @@ const styles = StyleSheet.create({
       fontSize:"25px"  
   },
   button: {    
-    backgroundColor: "#f7b700",
-    // textAlign: "center",
+    backgroundColor: "#f7b700",    
     justifyContent:"space-around",
     alignItems:"center",    
-    borderRadius: 2,
+    borderRadius: 5,
     height: 35, 
     shadowColor: "#000",
     shadowOffset: {width: 0, height: 4},
