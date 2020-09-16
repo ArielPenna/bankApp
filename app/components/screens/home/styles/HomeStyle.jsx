@@ -7,8 +7,7 @@ const styles = StyleSheet.create({
     height: "100%",
     alignContent:"center",    
     justifyContent: "center",
-    alignItems: "center",
-    backgroundColor:"#79d8aa",
+    alignItems: "center",    
   },
   img:{    
     alignSelf:"center",
@@ -20,7 +19,7 @@ const styles = StyleSheet.create({
   mainTitle:{
     fontSize: 24,
     color:"white",
-    fontWeight: '8',
+    fontWeight: "bold",
     textAlign:"center",
   }, 
   button: {    
@@ -41,7 +40,10 @@ const styles = StyleSheet.create({
     justifyContent:"space-around",
     alignItems:"center",
     fontWeight: "bold",      
-  }
+  },
+  separator: {
+    marginVertical: 10,   
+  },
 });
 
 export default styles

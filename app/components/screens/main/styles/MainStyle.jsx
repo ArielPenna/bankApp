@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     elevation: 8,   
   },
   small: {
-    fontSize: "9px",
+    fontSize: 9,
   },
   bigText:{
     fontSize: 30,
