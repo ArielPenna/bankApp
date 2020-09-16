@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'; 
 import { Button, View, SafeAreaView, Text, Image, ImageBackground} from 'react-native';
-import {Card} from 'react-native-elements';
+//import {Card} from 'react-native-elements';
 import {transactions_get} from '../../redux/actions';
 // import styles from './styles/HomeStyle'
 

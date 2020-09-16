@@ -4,11 +4,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import { View, Text, TextInput, Button, ImageBackground, TouchableHighlight } from 'react-native';
 
 //////////////// SCRIPTS ////////////////
-import {search_code} from '../../../redux/actions'
+import {search_code} from '../../../../redux/actions'
 import style from './styles/CodeValidationStyle'
 
 //////////////// IMGS ////////////////
-import Background from '../../../assets/background.png'
+import Background from '../../../../assets/background.png'
 
 
 export default () => {
@@ -30,7 +30,7 @@ export default () => {
   return (
      <ImageBackground source={Background} style={style.container}>
       <View>
-         <Text style={style.mainTitle}>Código de autentificación</Text>
+         <Text style={style.mainTitle}>Authentication Code</Text>
          <TextInput onChange={hOnCh_code} keyboardType='numeric' 
          editable name='documentNumber' style={style.input}/>
           <TouchableHighlight onPress={validationCode} style={style.appButtonContainer}>

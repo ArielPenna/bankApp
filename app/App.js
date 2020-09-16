@@ -24,9 +24,10 @@ export default function App() {
           <Stack.Screen name="Home" component={render.Home} options={headerOptions}/>
 
           {/*/////////////////////>> REGISTER <</////////////////////*/}
-          <Stack.Screen name="Register" component={render.Register_One} options={headerOptions}/>
-          <Stack.Screen name="Next Register" component={render.Register_Two} options={headerOptions}/>
+          <Stack.Screen name='Register' component={render.Register_Email} options={headerOptions}/>
           <Stack.Screen name="Code" component={render.Code} options={headerOptions}/>
+          <Stack.Screen name="Register Info" component={render.Register_One} options={headerOptions}/>
+          <Stack.Screen name="Next Register" component={render.Register_Two} options={headerOptions}/>
 
           {/*/////////////////////>> LOGIN <</////////////////////*/}
           <Stack.Screen name="Login" component={render.Login} options={headerOptions}/>

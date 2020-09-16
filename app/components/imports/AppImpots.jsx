@@ -2,12 +2,13 @@
 import Home from '../screens/home/Home'
 
 /////////////// REGISTER ///////////////
+import Register_Email from '../screens/registers/Register_Email'
+import Code from '../screens/registers/code_validation/CodeValidation'
 import Register_One from '../screens/registers/Register_One'
 import Register_Two from '../screens/registers/Register_Two'
 
 /////////////// LOGIN ///////////////
 import Login from '../screens/login/Login'
-import Code from '../screens/code_validation/CodeValidation'
 
 /////////////// MAIN ///////////////
 import Main from '../screens/main/Main'
@@ -26,12 +27,13 @@ import MyContact from '../screens/MyContact'
 export {Home}
 
 /////////////// REGISTER ///////////////
+export {Register_Email}
+export {Code}
 export {Register_One}
 export {Register_Two}
 
 /////////////// LOGIN ///////////////
 export {Login}
-export {Code}
 
 /////////////// MAIN ///////////////
 export {Main}
