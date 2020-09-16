@@ -6,14 +6,16 @@ import {View, Text, TextInput , TouchableHighlight, Picker, ImageBackground} fro
 //////////////// SCRIPTS ////////////////
 import style from './styles/RegisterStyle'
 import validate from './supports/Validation_Register'
-import api_adress from './supports/Api_Adress_Register'
 import {send_mail__post} from '../../../redux/actions'
 
 //////////////// IMGS ////////////////
 import Background from '../../../assets/background.png'
 
 export default ({route, navigation}) => {
+    //DISPATCH 
     const dispatch = useDispatch()
+
+/////////////>> STATES <<//////////////
     const [newUser, setNewUser] = useState(route.params.info)
     
     //THIS STATE IS TO HELP US VALIDATE THE INPUTS OF THE USERS
@@ -27,29 +29,19 @@ export default ({route, navigation}) => {
         confirmEmail:'*',
         password:'*',
         confirmPassword:'*'
-    })
+    })    
 
-    //THIS STATE IS TO HELP US IN THE ADRESS
-    const [address, setAddress] = useState({
-        street_1: '',
-        street_2: ''
-    })
-
-    ////////////////////>> SUPPORTS <<////////////////////
+////////////////////>> SUPPORTS <<////////////////////
 
     //////////--> FUNCTIONS <--//////////
     ////--> VERIFY IF HAS A ERROR <--////
     const withoutError = ()=>{
-        if(error.firstName || error.lastName || error.phoneNumber 
-        || error.documentNumber || error.email  || error.password) return true
+        if(error.phoneNumber || error.email  || error.password
+            || error.confirmEmail  || error.confirmPassword) return true
         else return false
-    } 
-
-    const searchDirection = ()=>{
-        const street = address.street_1 + ' y ' + address.street_2
-        api_adress(street, newUser, setNewUser)
     }
-
+    
+////////////////////>> HANDLER OF CHANGE <<////////////////////
     const hOnCh_NewUser = (e) =>{
         setError(
             validate({
@@ -64,16 +56,9 @@ export default ({route, navigation}) => {
         })
         } 
         console.log(newUser)       
-    }
+    }   
 
-    const hOnCh_Adress = (e)=>{
-        setAddress({
-            ...address,
-            [e.target.name]: e.target.value
-        })
-    }
-
-
+//DISPATCH THE REGISTER AND SEND THE CODE
     const register = ()=>{
         try{    
             var sendMail = {
@@ -81,6 +66,7 @@ export default ({route, navigation}) => {
                 name: newUser.firstName + " " + newUser.lastName
             }        
             dispatch(send_mail__post(sendMail))
+            navigation.navigate('Code')
         }
         catch(err){
             console.log(err)
@@ -88,25 +74,9 @@ export default ({route, navigation}) => {
     }
 
     return(
-        <ImageBackground source={Background}>
-        <View>
-            {/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}
-            <Text style={error.adress ? style.error : style.label}>Address</Text>
-            <View style={style.adressContainer}>
-                <View>
-                    <Text style={style.subLabel}>Street 1</Text>
-                    <TextInput style={style.inputStreet} editable name='street_1' onChange={hOnCh_Adress}/>
-                </View>
-                <View>
-                    <Text style={style.subLabel}>Street 2</Text>
-                    <TextInput style={style.inputStreet} editable name='street_2' onChange={hOnCh_Adress}/>
-                </View>
-            </View>
-            <TouchableHighlight onPress={searchDirection} style={style.appButtonContainer}>
-                <Text style={style.appButtonText}>SEARCH</Text>
-            </TouchableHighlight>
-            <Text style={error.phoneNumber ? style.error : style.label}>Numero</Text>
-            <TextInput style={style.inputR} keyboardType='numeric' editable name='phoneNumber' onChange={hOnCh_NewUser}/>
+        <ImageBackground source={Background} style={style.background}>
+            <Text style={style.mainTitle}>Almost</Text>
+        <View>           
 
 {/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
             <Text style={error.phoneNumber ? style.error : style.label}>Tel/Cel</Text>
@@ -130,7 +100,8 @@ export default ({route, navigation}) => {
 
 {/*//////////////////////////////////////////////////////////////////////////////////////*/}
             
-            <TouchableHighlight onPress={register} style={style.appButtonContainer}>
+            <TouchableHighlight disabled={withoutError()} onPress={register} 
+            style={withoutError() ? style.appButtonContainerFalse : style.appButtonContainer}>
                 <Text style={style.appButtonText}>Send</Text>
             </TouchableHighlight>
         </View>

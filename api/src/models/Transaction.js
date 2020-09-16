@@ -1,11 +1,23 @@
-const S = require('sequelize').DataTypes 
+const S = require("sequelize").DataTypes;
 
 module.exports = (sequelize) => {
     sequelize.define( 'transaction',
         {
+            id: {
+                type: S.INTEGER,
+                autoIncrement: true,
+                primaryKey: true
+            },
+            debit: {
+                type: S.INTEGER
+            },
+            deposit: {
+                type: S.INTEGER
+            },
             value: {
                 type: S.DECIMAL(1000, 2),
-                allowNull: false
+                defaultValue: 0.0,
+                validate: { min: 0 }
             },
             transactions_type: {
                 type: S.ENUM([
@@ -14,8 +26,8 @@ module.exports = (sequelize) => {
                     "transferencia bancaria",
                     "recarga billetera",
                 ]),
-                allowNull: true,
+                defaultValue: "transferencia a usuario"
             },
-        },
+        }
     );
 };

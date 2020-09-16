@@ -16,8 +16,12 @@ import Recharge from '../screens/money/Recharge'
 import ValidateCharge from '../screens/money/ValidateCharge'
 import SendMoney from '../screens/money/SendMoney'
 import Statistics from '../screens/Statistics'
+import MyProducts from '../screens/MyProducts'
 import Transactions from '../screens/Transactions'
 
+//////////////// MIS PRODUCTOS //////////////
+import MyCard from '../screens/MyCard'
+import MyContact from '../screens/MyContact' 
 
 /////////////// HOME ///////////////
 export {Home}
@@ -37,4 +41,10 @@ export {Recharge}
 export {ValidateCharge}
 export {SendMoney}
 export {Statistics}
+export {MyProducts}
 export {Transactions}
+
+
+//////////////// MIS PRODUCTOS //////////////
+export {MyCard}
+export {MyContact} 

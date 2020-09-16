@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, View, SafeAreaView, Text, Image, ImageBackground } from "react-native";
+import { Button, View, SafeAreaView, Text, Image, ImageBackground, TouchableHighlight} from "react-native";
 import styles from "./styles/HomeStyle";
 
 ///////////////////>> IMAGES <<///////////////////
@@ -13,13 +13,14 @@ export default ({ navigation }) => {
         <Text style={styles.mainTitle}>BankApp Me!</Text>
         <Image style={styles.img} source={Logo} />
         <View>
-          <Button title="LOGIN" color="purple" onPress={() => navigation.navigate("Login")} />
+          <TouchableHighlight style={styles.button} onPress={() => navigation.navigate("Login")}>             
+            <Text style={styles.buttonText}>ENTER</Text>            
+          </TouchableHighlight>          
           <br />
-          <Button title="REGISTER" color="purple" onPress={() => navigation.navigate("Register")} />
-
-          <Text>Botones de testeo de componentes</Text>
-
-          <Button title="Validation" color="purple" onPress={() => navigation.navigate("Code")} />
+          <TouchableHighlight style={styles.button} onPress={() => navigation.navigate("Register")}>             
+            <Text style={styles.buttonText}>REGISTER</Text>            
+          </TouchableHighlight>         
+          
         </View>
       </View>
     </ImageBackground>

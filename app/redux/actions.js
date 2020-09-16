@@ -63,3 +63,11 @@ export const get_user__me = () => {
     });
   };
 };
+
+export const transactions_get = () => {
+  return function (dispatch) {
+    instance.get("transactions/get").then((res) => {
+      dispatch({ type: cons.TRANSACTIONS_GET, payload: res.data });
+    });
+  };
+};   

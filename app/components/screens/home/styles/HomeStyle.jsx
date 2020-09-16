@@ -22,7 +22,26 @@ const styles = StyleSheet.create({
     color:"white",
     fontWeight: '8',
     textAlign:"center",
-  } 
+  }, 
+  button: {    
+    backgroundColor: "#f7b700",    
+    justifyContent:"space-around",
+    alignItems:"center",    
+    borderRadius: 2,
+    height: 35, 
+    shadowColor: "#000",
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    elevation: 8,
+  },
+  buttonText: {
+    color: "#752667",    
+    textAlign: "center",
+    justifyContent:"space-around",
+    alignItems:"center",
+    fontWeight: "bold",      
+  }
 });
 
 export default styles

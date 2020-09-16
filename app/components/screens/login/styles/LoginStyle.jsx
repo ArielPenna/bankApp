@@ -1,53 +1,72 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {     
-      flex:1,   
-      width: "100%",
-      height: "100%",
-      alignContent:"center",    
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor:"#79d8aa",
-    },
-    img:{    
-      alignSelf:"center",
-      width:200,
-      height:200,
-      marginTop: 50,
-      marginBottom:80,
-    },
-    mainTitle:{
-      fontSize: 24,
-      fontWeight: '8',
-      textAlign:"center",
-    },
-    inputR:{
-        width:"94%",
-        marginLeft:"5px",
-        padding:"10px",
-        height:"auto",
-        borderRadius:"15px",
-        backgroundColor:"white",
-        marginBottom:"10px",
-        
-    },
-    label:{
-        marginLeft:"15px",
-        color:"#f0f3bd",
-        fontSize:"25px"
-    },
+  container: {     
+    flex:1,   
+    width: "100%",
+    height: "100%",
+    alignContent:"center",    
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor:"#79d8aa",
+  },
+  img:{    
+    alignSelf:"center",
+    width:200,
+    height:200,
+    marginTop: 50,
+    marginBottom:80,
+  },
+  mainTitle:{
+    fontSize: 24,
+    fontWeight: '8',
+    textAlign:"center",
+  },
+  inputR:{
+      width:"94%",
+      marginLeft:"5px",
+      padding:"10px",
+      height:"auto",
+      borderRadius:"5px",
+      backgroundColor:"white",
+      marginBottom:"10px",
+      
+  },
+  label:{
+      marginLeft:"15px",
+      color:"#f0f3bd",
+      fontSize:"25px"
+  },
 
-    btn:{
-        marginTop:"15px",
+  btn:{
+      marginTop:"15px",
 
-    },
-    error:{
-        marginLeft:"15px",
-        color:"red",
-        fontSize:"25px"  
-    }
-   
+  },
+  error:{
+      marginLeft:"15px",
+      color:"red",
+      fontSize:"25px"  
+  },
+  button: {    
+    backgroundColor: "#f7b700",
+    // textAlign: "center",
+    justifyContent:"space-around",
+    alignItems:"center",    
+    borderRadius: 2,
+    height: 35, 
+    shadowColor: "#000",
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    elevation: 8,
+  },
+  buttonText: {
+    color: "#752667",    
+    textAlign: "center",
+    justifyContent:"space-around",
+    alignItems:"center",
+    fontWeight: "bold",      
+  }   
   });
 
 export default styles
