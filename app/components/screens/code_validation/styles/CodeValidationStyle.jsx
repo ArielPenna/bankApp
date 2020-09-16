@@ -21,16 +21,16 @@ const styles = StyleSheet.create({
     mainTitle:{
     fontSize: 30,
     color:"white",
-    fontWeight: '8',
+    fontWeight: "bold",
     textAlign:"center",
     },
     appButtonContainer: {
         width: '100%',
-        marginBottom: '10px',
-        marginTop: '20px',
+        marginBottom: 10,
+        marginTop: 20,
         elevation: 8,
         backgroundColor: "#009688",
-        borderRadius: 5,
+        borderRadius: 2,
         paddingVertical: 10,
         paddingHorizontal: 12
       },

@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     elevation: 8,   
   },
   small: {
-    fontSize: "9px",
+    fontSize: 9,
   },
   bigText: {
     fontSize: 30,
@@ -76,14 +76,14 @@ const styles = StyleSheet.create({
     elevation: 8,   
   },
   imgmiscuentas: {
-    alignSelf: "normal",
+    alignSelf: "center",
     width: 50,
     height: 50,
     
   },
   textmicuentas: {
     
-    fontSize: "14px",
+    fontSize: 14
   },
 });
 
