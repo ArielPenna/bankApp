@@ -1,17 +1,25 @@
 import React from 'react';
 import { View, Text, ImageBackground, Button} from 'react-native';
+import { useDispatch } from "react-redux";
+import {recharge_wallet} from "../../../redux/actions"
 // import styles from './styles/HomeStyle'
 import style from '../money/styles/ValidateStyles'
 import Background from '../../../assets/background.png'
 
 
 export default ({ route ,navigation }) => {
+  const dispatch = useDispatch()
+
+  const {chng, balance} = route.params
+  {console.log(chng)}
 
   function updateWallet(){
-    route.params.ch("Change")
+    dispatch(recharge_wallet({balance}))
+    chng("Charge")
     navigation.navigate('Main')
   }
 
+    
 
   return (
   <ImageBackground source={Background} style={style.container}>
