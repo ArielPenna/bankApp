@@ -1,11 +1,14 @@
 const server = require("express").Router();
 const nodemailer = require("nodemailer");
-
+const bcrypt = require("bcrypt");
 //-------------------------------------
 //         VALIDAR USUARIO            |
 //-------------------------------------
 
 
+// enctriptar codigo
+const salt = bcrypt.genSaltSync(10);
+const hash = bcrypt.hashSync(codig, salt);
 
 let codToCreateUser = []; 
 
@@ -23,7 +26,7 @@ server.post('/sendmail', (req, res) => {
     }) 
 
     const codig = {
-        userObj: userObj,
+        userObj: userObj, hash,
         codigo: Math.floor(Math.random() * (99999 - 10000) + 1000)
     }
 
