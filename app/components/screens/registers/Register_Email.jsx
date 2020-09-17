@@ -11,8 +11,9 @@ import style from './code_validation/styles/CodeValidationStyle'
 import Background from '../../../assets/background.png'
 
 
-export default () => {
+export default ({navigation}) => {
     const dispatch = useDispatch()
+    const send = useSelector(state => state.sendEmail)
 ///////>> STATES <<///////
     const [mail, setMail] = useState({
     email:''
@@ -67,6 +68,7 @@ export default () => {
 
     return (
         <ImageBackground source={Background} style={style.container}>
+            {typeof send === 'string' && navigation.navigate('Code', mail)}
             <View>
                 <Text style={style.mainTitle}>Register your email</Text>
                 <TextInput onChange={hOnCh_Mail} editable name='documentNumber' style={style.input}/>
@@ -74,6 +76,14 @@ export default () => {
                 style={withError() ? style.appButtonContainerFalse : style.appButtonContainer}>
                     <Text style={withError() ? style.appButtonTextFalse : style.appButtonText}>Send</Text>
                 </TouchableHighlight>
+                {!send && 
+                <View>
+                    <Text>El mail ya se encuentra en uso</Text>
+                    <TouchableHighlight onPress={sendEmail} style={style.appButtonContainer}>
+                    <Text style={style.appButtonText}>LogIn</Text>
+                    </TouchableHighlight>
+                </View>
+                }
             </View>
         </ImageBackground>
     );

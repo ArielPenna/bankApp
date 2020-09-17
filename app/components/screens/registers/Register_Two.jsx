@@ -6,7 +6,7 @@ import {View, Text, TextInput , TouchableHighlight, Picker, ImageBackground} fro
 //////////////// SCRIPTS ////////////////
 import style from './styles/RegisterStyle'
 import validate from './supports/Validation_Register'
-import {send_mail__post} from '../../../redux/actions'
+import {register_user__post} from '../../../redux/actions'
 
 //////////////// IMGS ////////////////
 import Background from '../../../assets/background.png'
@@ -20,13 +20,7 @@ export default ({route, navigation}) => {
     
     //THIS STATE IS TO HELP US VALIDATE THE INPUTS OF THE USERS
     const [error, setError] = useState({
-        firstName: '*',
-        lastName:'*',
-        documentNumber:'*',
-        adress:'*',
         phoneNumber:'*',
-        email:'*',
-        confirmEmail:'*',
         password:'*',
         confirmPassword:'*'
     })    
@@ -36,8 +30,7 @@ export default ({route, navigation}) => {
     //////////--> FUNCTIONS <--//////////
     ////--> VERIFY IF HAS A ERROR <--////
     const withoutError = ()=>{
-        if(error.phoneNumber || error.email  || error.password
-            || error.confirmEmail  || error.confirmPassword) return true
+        if(error.phoneNumber  || error.password || error.confirmPassword) return true
         else return false
     }
     
@@ -60,13 +53,9 @@ export default ({route, navigation}) => {
 
 //DISPATCH THE REGISTER AND SEND THE CODE
     const register = ()=>{
-        try{    
-            var sendMail = {
-                userObj: newUser,
-                name: newUser.firstName + " " + newUser.lastName
-            }        
-            dispatch(send_mail__post(sendMail))
-            navigation.navigate('Code')
+        try{         
+            dispatch(register_user__post(newUser))
+            navigation.navigate('Login')
         }
         catch(err){
             console.log(err)
@@ -81,14 +70,6 @@ export default ({route, navigation}) => {
 {/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
             <Text style={error.phoneNumber ? style.error : style.label}>Tel/Cel</Text>
             <TextInput style={style.inputR} keyboardType='numeric' editable name='phoneNumber' onChange={hOnCh_NewUser}/>
-
-{/*///////////////////////////////////>>> EMAIL <<<///////////////////////////////////*/}
-            {/*//////////////->EMAIL<-//////////////*/}
-            <Text style={error.email ? style.error : style.label}>Email</Text>
-            <TextInput style={style.inputR} editable name='email' onChange={hOnCh_NewUser}/>
-            {/*//////////////->CONFIRM EMAIL<-//////////////*/}
-            <Text style={error.confirmEmail ? style.error : style.label}>Confirm Email</Text>
-            <TextInput style={style.inputR} editable name='confirmEmail' onChange={hOnCh_NewUser}/>
 
 {/*///////////////////////////////////>>> PASSWORD <<<///////////////////////////////////*/}
             {/*//////////////->PASSWORD<-//////////////*/}

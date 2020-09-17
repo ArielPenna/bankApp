@@ -16,10 +16,12 @@ const styles = StyleSheet.create({
       height:50,
       marginTop: 50,
       marginBottom:40,
-      backgroundColor:'white'
+      backgroundColor:'white',
+      fontSize: 25,
+      textAlign: 'center'
     },
     mainTitle:{
-      fontSize: 30,
+      fontSize: 40,
       color:"white",
       fontWeight: '8',
       textAlign:"center",
