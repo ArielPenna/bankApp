@@ -1,19 +1,19 @@
 const S = require('sequelize').DataTypes
+/* const passport = require('passport'); */
 const seedrandom = require("seedrandom")
 
 
 module.exports = (sequelize) => {
     sequelize.define('account', {
-        id: {
-            type: S.INTEGER,
+        accountId: {
+            type: S.TEXT,
             primaryKey: true,
-            autoIncrement: true
         },
         cvu: {
-            type: S.BIGINT
+            type: S.TEXT,
         },
         numCard: {
-            type: S.BIGINT
+            type: S.TEXT,
         },
     }, { // HOOKS
         hooks: {
@@ -26,9 +26,13 @@ module.exports = (sequelize) => {
 };
 
 const GenCVU = (account) => {
-    account.dataValues.cvu = Math.random() * (9999999999999999 - 1000000000000000) + 1000000000000000
+    let code = seedrandom(account.dataValues.accountId)
+    code = Math.floor(code() * (99999999999999999999 - 10000000000000000000) + 10000000000000000000);
+    account.dataValues.cvu = code
 }
 
 const GenCard = (account) => {
-    account.dataValues.numCard = Math.random() * (999999999999999999 - 100000000000000000) + 100000000000000000
+    let code = seedrandom(account.dataValues.accountId)
+    code = '5547' + Math.floor(code() * (999999999999 - 100000000000) + 100000000000);
+    account.dataValues.numCard = code
 }
