@@ -30,7 +30,7 @@ export default ({ navigation }) => {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => navigation.navigate("miscontactos")}>
+          <TouchableHighlight onPress={() => navigation.navigate("MyContact")}>
             <View style={styles.misproductosrectangulo}>
               <Image style={styles.imgmiscuentas} source={require("../../assets/miscontactos.png")} />
               <Text style={styles.textmicuentas}>Mis Contactos</Text>

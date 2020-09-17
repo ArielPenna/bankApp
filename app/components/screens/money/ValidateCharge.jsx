@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Text, ImageBackground, Button} from 'react-native';
 import { useDispatch } from "react-redux";
 import {recharge_wallet} from "../../../redux/actions"
-// import styles from './styles/HomeStyle'
+
+
 import style from '../money/styles/ValidateStyles'
 import Background from '../../../assets/background.png'
 

@@ -22,7 +22,7 @@ import Transactions from '../screens/Transactions'
 
 //////////////// MIS PRODUCTOS //////////////
 import MyCard from '../screens/MyCard/MyCard'
-import MyContact from '../screens/MyContact' 
+import MyContact from '../screens/MyContact/MyContact' 
 
 /////////////// HOME ///////////////
 export {Home}

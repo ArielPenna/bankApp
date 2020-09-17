@@ -74,3 +74,11 @@ export const recharge_wallet = (balance) => {
     instance.put("transactions/recarge/wallet", balance)
   }
 }
+
+export const add_friend = (user) => {
+  return function(dispatch){
+    instance.post('add/friend/:id', user).then((res) =>{
+      dispatch({type: cons.ADD_FRIEND, payload: res.data})
+    })
+  }
+}

@@ -30,7 +30,7 @@ export default ({ route, navigation }) => {
           <View style={style.containerInput}>
             <Text style={style.text}>Ingrese el monto que desea cargar</Text>
 
-            <TextInput style={style.inputMoney} onChange={handleChange} keyboardType="numeric" placeholder="Ingrese el monto"/>
+            <TextInput style={style.inputMoney} onChange={handleChange}  keyboardType="numeric" placeholder="Ingrese el monto"/>
 
             <Text style={style.text2}>A continuación será redirigido al código que deberá mostrar en un RapiPago o PagoFacil</Text>
 
