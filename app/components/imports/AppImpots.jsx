@@ -13,14 +13,15 @@ import Login from '../screens/login/Login'
 /////////////// MAIN ///////////////
 import Main from '../screens/main/Main'
 import Account from '../screens/Account'
-import Recharge from '../screens/Recharge'
-import SendMoney from '../screens/SendMoney'
+import Recharge from '../screens/money/Recharge'
+import ValidateCharge from '../screens/money/ValidateCharge'
+import SendMoney from '../screens/money/SendMoney'
 import Statistics from '../screens/Statistics'
 import MyProducts from '../screens/MyProducts'
 import Transactions from '../screens/Transactions'
 
 //////////////// MIS PRODUCTOS //////////////
-import MyCard from '../screens/MyCard'
+import MyCard from '../screens/MyCard/MyCard'
 import MyContact from '../screens/MyContact' 
 
 /////////////// HOME ///////////////
@@ -39,6 +40,7 @@ export {Login}
 export {Main}
 export {Account}
 export {Recharge}
+export {ValidateCharge}
 export {SendMoney}
 export {Statistics}
 export {MyProducts}
