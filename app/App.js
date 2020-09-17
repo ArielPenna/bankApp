@@ -22,6 +22,7 @@ export default function App() {
       
         <Stack.Navigator>
           {/*/////////////////////>> HOME <</////////////////////*/}
+          
           <Stack.Screen name="Home" component={render.Home} options={headerOptions}/>
 
           {/*/////////////////////>> REGISTER <</////////////////////*/}
@@ -45,7 +46,7 @@ export default function App() {
 
           {/*/////////////////////>> HOME <</////////////////////*/}
           <Stack.Screen name="mitarjeta" component={render.MyCard} options={headerOptions}/>
-          <Stack.Screen name="miscontactos" component={render.MyContact} options={headerOptions}/> 
+          <Stack.Screen name="MyContact" component={render.MyContact} options={headerOptions}/> 
 
         </Stack.Navigator>
       

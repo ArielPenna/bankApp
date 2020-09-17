@@ -5,7 +5,8 @@ const initialState = {
   sendEmail: [],
   code: false,
   transactions: {},
-  fullBalance: {},  
+  fullBalance: {},
+  contacts:[]
 };
 
 
@@ -48,6 +49,8 @@ export default (state = initialState, action) => {
         transactions: action.payload,
         fullBalance: obj,
       };    
+      case cons.ADD_FRIEND:
+      return {...state, contacts:action.payload}
   }
   return state;
 };
