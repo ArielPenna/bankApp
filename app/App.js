@@ -12,13 +12,14 @@ const headerOptions = {
   headerTintColor: "#752667",
   headerStyle: {
     backgroundColor: "#f7b700",
-    height: 30,
+    height: 50,
   },
 };
 export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
+      
         <Stack.Navigator>
           {/*/////////////////////>> HOME <</////////////////////*/}
           <Stack.Screen name="Home" component={render.Home} options={headerOptions}/>
@@ -46,8 +47,9 @@ export default function App() {
           <Stack.Screen name="miscontactos" component={render.MyContact} options={headerOptions}/> 
 
         </Stack.Navigator>
+      
       </NavigationContainer>
-    </Provider>
+      </Provider>
   );
 }
 
@@ -55,6 +57,6 @@ const s = StyleSheet.create({
   container: {
     flex: 1,    
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
 });
