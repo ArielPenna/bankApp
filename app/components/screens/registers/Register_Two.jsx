@@ -83,7 +83,7 @@ export default ({route, navigation}) => {
             
             <TouchableHighlight disabled={withoutError()} onPress={register} 
             style={withoutError() ? style.appButtonContainerFalse : style.appButtonContainer}>
-                <Text style={style.appButtonText}>Send</Text>
+                <Text style={withoutError() ? style.appButtonTextFalse : style.appButtonText}>Send</Text>
             </TouchableHighlight>
         </View>
         </ImageBackground>

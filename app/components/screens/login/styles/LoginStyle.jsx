@@ -64,6 +64,25 @@ const styles = StyleSheet.create({
     justifyContent:"space-around",
     alignItems:"center",
     fontWeight: "bold",      
+  },
+    buttonFalse: {    
+    backgroundColor: "#752667",    
+    justifyContent:"space-around",
+    alignItems:"center",    
+    borderRadius: 2,
+    height: 35, 
+    shadowColor: "#000",
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    elevation: 8,
+  },
+  buttonTextFalse: {
+    color: "#fff",    
+    textAlign: "center",
+    justifyContent:"space-around",
+    alignItems:"center",
+    fontWeight: "bold",      
   }   
   });
 
