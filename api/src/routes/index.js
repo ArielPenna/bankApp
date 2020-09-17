@@ -1,6 +1,5 @@
 const { Router } = require("express");
 
-
 //----------------------------------------------------------------------------//
 //---------------------------MODULES-IMPORTS----------------------------------//
 //----------------------------------------------------------------------------//
@@ -9,6 +8,12 @@ const userPath = require("./path/user")
 const addPath = require("./path/add")
 const authUserPath = require("./path/auth")
 const emailPath = require("./path/email")
+
+//----------------------------------------------------------------------------//
+//---------------------------MODULES-IMPORTS----------------------------------//
+//-------------------------------API-REST-------------------------------------//
+//----------------------------------------------------------------------------//
+const apiLocationPath = require("./api/location")
 
 //----------------------------------------------------------------------------//
 //-----------------------MIDDLEWARES-FUNCIONAL--------------------------------//
@@ -25,5 +30,10 @@ router.use('/add', addPath)
 router.use('/transactions', transactionsPath)
 router.use('/email', emailPath)
 
+//--------API-Rest----------//
+
+router.use('/api/location', apiLocationPath)
+
+//-------------------------//
 
 module.exports = router;
