@@ -66,3 +66,10 @@ export const transactions_get = () => {
     });
   };
 };   
+
+
+export const recharge_wallet = (balance) => {
+  return function(dispatch) {
+    instance.put("transactions/recarge/wallet", balance)
+  }
+}

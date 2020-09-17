@@ -151,11 +151,11 @@ export default ({route, navigation})=>{
                 {/*//////////////->DOCUMENT TYPE<-//////////////*/}
                 <View style={style.doc}>
                     <Text style={style.label}>Doc. Type</Text>
-                    <Picker style={style.inputDoc}
+                    {/* <Picker style={style.inputDoc}
                     name='documentType' onValueChange={hOnCh_NewUser}>
                         <Picker.Item key={1} label='DNI' value='DNI'/>
                         <Picker.Item key={2} label='Pas' value='Pasaporte'/>
-                    </Picker>
+                    </Picker> */}
                 </View>
                 {/*//////////////->DOCUMENT NUMBER<-//////////////*/}
                 <View style={style.docN}>
@@ -168,27 +168,27 @@ export default ({route, navigation})=>{
             <Text style={style.label}>Birth date</Text>
             <View style={style.birth}>
                 {/*//////--> DAY <--//////*/}
-                <Picker style={style.date} onValueChange={hOnCh_Birth}>
+                {/* <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.daysTotal(date.month).map(day =>{
                         return <Picker.Item key={day} label={day.toString()} value={'1-' + day}/>
                     })}
-                </Picker>
+                </Picker> */}
                 {/*//////--> MONTH <--//////*/}
-                <Picker style={style.date} onValueChange={hOnCh_Birth}>
+                {/* <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.months.map(month => {
                         return(
                             //month[0] name's month
                             //month[1] position's month 
                             <Picker.Item key={month[1]} label={month[0]} value={'2-' + month[1]}/>
                         )
-                    })}
-                </Picker>
+                    })} */}
+                {/* </Picker> */}
                 {/*//////--> YEAR <--//////*/}
-                <Picker style={style.date} onValueChange={hOnCh_Birth}>
+                {/* <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.yearTotal().map(year => {
                         return <Picker.Item key={year} label={year.toString()} value={'3-' + year}/>
                     })}
-                </Picker>
+                </Picker> */}
             </View>
 
 {/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}

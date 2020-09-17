@@ -73,22 +73,20 @@ const styles = StyleSheet.create({
     elevation: 8,   
   },
   small: {
-    fontSize: "9px",
+    fontSize: 9,
   },
   bigText:{
     fontSize: 30,
   },
   button: {    
-    backgroundColor: "#f7b700",
-    // textAlign: "center",
+    backgroundColor: "#f7b700",    
     justifyContent:"space-around",
     alignItems:"center",    
     borderRadius: 2,
     height:35
   },
   buttonText: {
-    color: "#752667",    
-    // textAlign: "center",
+    color: "#752667",        
     justifyContent:"space-around",
     alignItems:"center",
     fontWeight: "bold",      

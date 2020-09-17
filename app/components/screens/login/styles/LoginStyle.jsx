@@ -7,8 +7,7 @@ const styles = StyleSheet.create({
     height: "100%",
     alignContent:"center",    
     justifyContent: "center",
-    alignItems: "center",
-    backgroundColor:"#79d8aa",
+    alignItems: "center",    
   },
   img:{    
     alignSelf:"center",
@@ -19,37 +18,36 @@ const styles = StyleSheet.create({
   },
   mainTitle:{
     fontSize: 24,
-    fontWeight: '8',
+    fontWeight: "bold",
     textAlign:"center",
   },
   inputR:{
       width:"94%",
-      marginLeft:"5px",
-      padding:"10px",
+      marginLeft:5,
+      padding:10,
       height:"auto",
-      borderRadius:"5px",
+      borderRadius:2,
       backgroundColor:"white",
-      marginBottom:"10px",
+      marginBottom:10,
       
   },
   label:{
-      marginLeft:"15px",
+      marginLeft:15,
       color:"#f0f3bd",
-      fontSize:"25px"
+      fontSize:25
   },
 
   btn:{
-      marginTop:"15px",
+      marginTop:15,
 
   },
   error:{
-      marginLeft:"15px",
+      marginLeft:15,
       color:"red",
-      fontSize:"25px"  
+      fontSize:25  
   },
   button: {    
-    backgroundColor: "#f7b700",
-    // textAlign: "center",
+    backgroundColor: "#f7b700",    
     justifyContent:"space-around",
     alignItems:"center",    
     borderRadius: 2,
