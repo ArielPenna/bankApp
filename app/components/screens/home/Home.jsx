@@ -6,9 +6,12 @@ import styles from "./styles/HomeStyle";
 import Background from "../../../assets/background.png";
 import Logo from "../../../assets/logo.png";
 
+const Separator = () => <View style={styles.separator} />;
+
 export default ({ navigation }) => {
   return (
     <ImageBackground source={Background} style={styles.container}>
+      
       <View>
         <Text style={styles.mainTitle}>BankApp Me!</Text>
         <Image style={styles.img} source={Logo} />
@@ -16,13 +19,14 @@ export default ({ navigation }) => {
           <TouchableHighlight style={styles.button} onPress={() => navigation.navigate("Login")}>             
             <Text style={styles.buttonText}>ENTER</Text>            
           </TouchableHighlight>          
-          <br />
+          <Separator/>
           <TouchableHighlight style={styles.button} onPress={() => navigation.navigate("Register")}>             
             <Text style={styles.buttonText}>REGISTER</Text>            
           </TouchableHighlight>         
           
         </View>
       </View>
-    </ImageBackground>
+      
+      </ImageBackground>
   );
 };

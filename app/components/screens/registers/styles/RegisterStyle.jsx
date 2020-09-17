@@ -7,36 +7,36 @@ const styles = StyleSheet.create({
    container:{
       flex:1,
       width:"100%",
-      heigth:"100%",
+      // height:"100%",
       justifyContent:"center",
       alignContent:"center",
    },
    inputR:{
       width:"90%",
-      marginLeft:"20px",
-      marginRight:"15px",
-      padding:"10px",
-      height:"40px",
-      borderRadius:"5px",
+      marginLeft:20,
+      marginRight:15,
+      padding:10,
+      height:40,
+      borderRadius:2,
       backgroundColor:"white",
       marginBottom: 5,
       paddingLeft: 10     
    },
    inputDoc:{
       width:"66%",
-      height:'40px',
-      paddingVertical: '10px',
-      padding:"10px",
-      borderRadius:"5px",
+      height:40,
+      paddingVertical: 10,
+      padding:10,
+      borderRadius:2,
       backgroundColor:"white",
-      marginLeft:'15px', 
+      marginLeft:15, 
    },
    inputDocNum:{
       width:"120%",
-      height: '40px',
-      paddingVertical:"20px",
-      padding:"10px",
-      borderRadius:"5px",     
+      height: 40,
+      paddingVertical:20,
+      padding:20,
+      borderRadius:2,     
       backgroundColor:"white",
       paddingLeft: 10    
    },
@@ -52,21 +52,21 @@ const styles = StyleSheet.create({
       flexDirection:'column'
    },
    docN:{
-      marginRight:'25px'
+      marginRight:25
    },
    label:{
-      marginLeft:"20px",
+      marginLeft:20,
       color:"#f0f3bd",
       fontSize:20
    },
    btn:{
-      marginTop:"50px",
+      marginTop:50,
       width:'100%',
-      height: '60px',
+      height: 60,
       backgroundColor: "#DDDDDD"
    },
    error:{
-      marginLeft:"20px",
+      marginLeft:20,
       color:"red",
       fontSize:20 
    },
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
    date:{
       width:'25%',
       height: '40px',
-      borderRadius: '5px',
+      borderRadius: 2,
       paddingLeft:20
    },
    adressContainer:{
@@ -96,35 +96,35 @@ const styles = StyleSheet.create({
       width: '60%',
       height: '40px',
       backgroundColor: 'white',
-      borderRadius: '5px'
+      borderRadius: 2
    },
    inputSubStreet:{
       width:'30%',
       height: 40,
       backgroundColor:'white',
-      borderRadius:'5px',
+      borderRadius:2,
       marginRight:20,
       paddingLeft: 10
    },
    appButtonContainer: {
       width: '90%',
-      marginLeft: '20px',
-      marginBottom: '10px',
-      marginTop: '20px',
+      marginLeft:20,
+      marginBottom:10,
+      marginTop:20,
       elevation: 8,
       backgroundColor: "#f7b700",
-      borderRadius: 5,
+      borderRadius: 2,
       paddingVertical: 10,
       paddingHorizontal: 12
    },
    appButtonContainerFalse: {
       width: '90%',
-      marginLeft: '20px',
-      marginBottom: '10px',
-      marginTop: '20px',
+      marginLeft:20,
+      marginBottom:10,
+      marginTop:20,
       elevation: 8,
       backgroundColor: "#752667",       
-      borderRadius: 5,
+      borderRadius: 2,
       paddingVertical: 10,
       paddingHorizontal: 12
    },
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
    mainTitle:{
    fontSize: 40,
    color:"white",
-   fontWeight: '8',
+   fontWeight: "bold",
    textAlign:"center",
    marginTop: 30,
    marginBottom: 10

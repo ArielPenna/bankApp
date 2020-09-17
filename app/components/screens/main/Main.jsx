@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { Button, View, SafeAreaView, Text, Alert, Image, ImageBackground, TouchableHighlight } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles/MainStyle";
@@ -20,16 +20,19 @@ export default ({ navigation }) => {
   const user = useSelector((state) => state.user);   
   const transactions = useSelector((state) => state.transactions);
   const fullBalance = useSelector((state) => state.fullBalance);
+
+  const [change, setChange] = useState("")
   
 
   useEffect(() => {
+    setChange("")
     dispatch(get_user__me())
     dispatch(transactions_get())    
-  }, []);
+  }, [change]);
 
-  {console.log(user)}
-  {console.log(transactions)}
-  {console.log(fullBalance)}
+  // {console.log(user)}
+  // {console.log(transactions)}
+  // {console.log(fullBalance)}
  
   
 
@@ -42,7 +45,7 @@ export default ({ navigation }) => {
               <Text style={styles.mainTitle}>Hello, {typeof user == "object" && user.firstName}</Text>
               <Image style={styles.img} source={Avatar} />
             </View>
-            <Text style={styles.money}>$ {typeof user == "object" && user.wallet.balance}</Text>
+            <Text style={styles.money}>$ {typeof user == "object" && fullBalance.total} </Text>
           </View>
         </View>
 
@@ -98,7 +101,7 @@ export default ({ navigation }) => {
         <Separator />
 
         <View style={styles.row}>
-          <TouchableHighlight onPress={() => navigation.navigate("Recharge")}>
+          <TouchableHighlight onPress={() => navigation.navigate("Recharge", {chng:setChange})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={Saldo} />
               <Text style={styles.small}>Recharge</Text>
