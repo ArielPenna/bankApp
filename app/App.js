@@ -36,6 +36,7 @@ export default function App() {
           <Stack.Screen name="Main" component={render.Main} options={headerOptions}/>
           <Stack.Screen name="Account" component={render.Account} options={headerOptions}/>
           <Stack.Screen name="Recharge" component={render.Recharge} options={headerOptions}/>
+          <Stack.Screen name='ValidateCharge' component={render.ValidateCharge}/>
           <Stack.Screen name="SendMoney" component={render.SendMoney} options={headerOptions}/>
           <Stack.Screen name="Statistics" component={render.Statistics} options={headerOptions}/>
           <Stack.Screen name="misproductos" component={render.MyProducts} options={headerOptions}/>

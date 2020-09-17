@@ -12,8 +12,9 @@ import Code from '../screens/code_validation/CodeValidation'
 /////////////// MAIN ///////////////
 import Main from '../screens/main/Main'
 import Account from '../screens/Account'
-import Recharge from '../screens/Recharge'
-import SendMoney from '../screens/SendMoney'
+import Recharge from '../screens/money/Recharge'
+import ValidateCharge from '../screens/money/ValidateCharge'
+import SendMoney from '../screens/money/SendMoney'
 import Statistics from '../screens/Statistics'
 import MyProducts from '../screens/MyProducts'
 import Transactions from '../screens/Transactions'
@@ -37,6 +38,7 @@ export {Code}
 export {Main}
 export {Account}
 export {Recharge}
+export {ValidateCharge}
 export {SendMoney}
 export {Statistics}
 export {MyProducts}
