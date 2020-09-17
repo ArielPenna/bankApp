@@ -1,25 +1,18 @@
 import * as cons from "./constants";
 
 const initialState = {
-  users: [],
   user: undefined,
-  code: 0,
-  saveUser: undefined,
-  search: 0,
+  sendEmail: [],
+  code: false,
   transactions: {},
   fullBalance: {},
-  
+  contacts:[]
 };
 
 
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case cons.REGISTER_USER__POST:
-      return {
-        ...state,
-        users: action.payload,
-      };
     case cons.GET_USER__ME:    
     case cons.LOGOUT__GET:
       return {
@@ -29,17 +22,12 @@ export default (state = initialState, action) => {
     case cons.SEND_MAIL__POST:
       return {
         ...state,
-        code: action.payload,
-      };
-    case cons.SAVE_USER:
-      return {
-        ...state,
-        saveUser: action.payload,
+        sendEmail: action.payload,
       };
     case cons.SEARCH_CODE:
       return {
         ...state,
-        search: action.payload,
+        code: action.payload,
       };
     case cons.TRANSACTIONS_GET:
       var debit = 0;
@@ -61,6 +49,8 @@ export default (state = initialState, action) => {
         transactions: action.payload,
         fullBalance: obj,
       };    
+      case cons.ADD_FRIEND:
+      return {...state, contacts:action.payload}
   }
   return state;
 };

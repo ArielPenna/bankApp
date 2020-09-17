@@ -11,9 +11,16 @@ const instance = axios.create({
   baseURL: url,
 });
 
+export const register_user__post = (user)=>{
+  return function(dispatch){
+    instance.post('user/auth/register', user)
+  }
+}
+
 export const login_user__post = (user) => {
   return function (dispatch) {
     instance.post("user/auth/login", user).then((res) => {
+      console.log(res.data)
       dispatch({ type: cons.LOGIN_USER__POST, payload: res.data });
     });
   };
@@ -21,30 +28,19 @@ export const login_user__post = (user) => {
 
 export const send_mail__post = (user) => {
   return function (dispatch) {
-    instance.post("email/sendmail", user);
+    instance.post("email/sendmail", user)
+    .then(res =>{
+      dispatch({type:cons.SEND_MAIL__POST, payload: res.data})
+    })
   };
 };
 
-export const save_user = (user) => {
+export const search_code = (code) => {
   return function (dispatch) {
-    dispatch({ type: cons.SAVE_USER, payload: user });
-  };
-};
-
-export const search_code = (code, user) => {
-  return function (dispatch) {
-    instance
-      .post("email/searchcod", code)
-      .then((res) => {
-        //If the code is true Register the user
-        if(res.data) instance.post('user/auth/register', res.data)
-        else throw Error        
-
-      })
-      .then((res) => {
-        if (res) dispatch({ type: cons.REGISTER_USER__POST, payload: res.data });
-      })
-      .catch((err) => console.log(err));
+    instance.post("email/searchcod", code)
+    .then(res =>{
+      dispatch({type: cons.SEARCH_CODE, payload: res.data})
+    })
   };
 };
 
@@ -71,3 +67,18 @@ export const transactions_get = () => {
     });
   };
 };   
+
+
+export const recharge_wallet = (balance) => {
+  return function(dispatch) {
+    instance.put("transactions/recarge/wallet", balance)
+  }
+}
+
+export const add_friend = (user) => {
+  return function(dispatch){
+    instance.post('add/friend/:id', user).then((res) =>{
+      dispatch({type: cons.ADD_FRIEND, payload: res.data})
+    })
+  }
+}

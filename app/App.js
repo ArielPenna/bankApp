@@ -22,12 +22,14 @@ export default function App() {
       
         <Stack.Navigator>
           {/*/////////////////////>> HOME <</////////////////////*/}
+          
           <Stack.Screen name="Home" component={render.Home} options={headerOptions}/>
 
           {/*/////////////////////>> REGISTER <</////////////////////*/}
-          <Stack.Screen name="Register" component={render.Register_One} options={headerOptions}/>
-          <Stack.Screen name="Next Register" component={render.Register_Two} options={headerOptions}/>
+          <Stack.Screen name='Register' component={render.Register_Email} options={headerOptions}/>
           <Stack.Screen name="Code" component={render.Code} options={headerOptions}/>
+          <Stack.Screen name="Register Info" component={render.Register_One} options={headerOptions}/>
+          <Stack.Screen name="Next Register" component={render.Register_Two} options={headerOptions}/>
 
           {/*/////////////////////>> LOGIN <</////////////////////*/}
           <Stack.Screen name="Login" component={render.Login} options={headerOptions}/>
@@ -36,6 +38,7 @@ export default function App() {
           <Stack.Screen name="Main" component={render.Main} options={headerOptions}/>
           <Stack.Screen name="Account" component={render.Account} options={headerOptions}/>
           <Stack.Screen name="Recharge" component={render.Recharge} options={headerOptions}/>
+          <Stack.Screen name='ValidateCharge' component={render.ValidateCharge}/>
           <Stack.Screen name="SendMoney" component={render.SendMoney} options={headerOptions}/>
           <Stack.Screen name="Statistics" component={render.Statistics} options={headerOptions}/>
           <Stack.Screen name="misproductos" component={render.MyProducts} options={headerOptions}/>
@@ -43,7 +46,7 @@ export default function App() {
 
           {/*/////////////////////>> HOME <</////////////////////*/}
           <Stack.Screen name="mitarjeta" component={render.MyCard} options={headerOptions}/>
-          <Stack.Screen name="miscontactos" component={render.MyContact} options={headerOptions}/> 
+          <Stack.Screen name="MyContact" component={render.MyContact} options={headerOptions}/> 
 
         </Stack.Navigator>
       
