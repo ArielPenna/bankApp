@@ -13,10 +13,11 @@ let codToCreateUser = [];
 
 server.post('/sendmail', async (req, res) => {
 
-    const { email, name } = req.body
+    const { email } = req.body
     const encontrado = await User.findOne({
         where : { email }
     })
+    console.log(encontrado)
 
     if(!encontrado){
     //////// enctriptar codigo /////////
@@ -34,7 +35,7 @@ server.post('/sendmail', async (req, res) => {
     }) 
 
     const constCod = Math.floor(Math.random() * (99999 - 10000) + 1000)
-
+    console.log(constCod)
     const codeCript = bcrypt.hashSync(toString(constCod), salt)
 
     const mailOptions = {
@@ -45,7 +46,7 @@ server.post('/sendmail', async (req, res) => {
             <head>
                 <body>
 
-                    <h1>¡Hola ${name}, para continuar enviar el siguiente codigo! </h1>
+                    <h1>¡Hola futuro esclavo para continuar enviar el siguiente codigo! </h1>
                     <h2>Codigo: ${constCod} </h2>
                     <h2>Gracias por elegirnos como tu billetera personal </h2>   
                     <h2>Team BankApp </h2>   
@@ -60,7 +61,7 @@ server.post('/sendmail', async (req, res) => {
         if(error) res.send(error.message)
         else res.send("¡Email enviado con éxito!")
     })
-    } else res.send('Email ya registrado')
+    } else res.send(false)
 })
 
 
