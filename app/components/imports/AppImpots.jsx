@@ -12,12 +12,12 @@ import Login from '../screens/login/Login'
 
 /////////////// MAIN ///////////////
 import Main from '../screens/main/Main'
-import Account from '../screens/Account'
+import Account from '../screens/MyAccount/Account'
 import Recharge from '../screens/money/Recharge'
 import ValidateCharge from '../screens/money/ValidateCharge'
 import SendMoney from '../screens/money/SendMoney'
 import Statistics from '../screens/Statistics'
-import MyProducts from '../screens/MyProducts'
+import MyProducts from '../screens/MyProducts/MyProducts'
 import Transactions from '../screens/Transactions'
 
 //////////////// MIS PRODUCTOS //////////////
@@ -36,7 +36,7 @@ export {Register_Two}
 /////////////// LOGIN ///////////////
 export {Login}
 
-/////////////// MAIN ///////////////
+/////////////// MAIN /////////////////
 export {Main}
 export {Account}
 export {Recharge}

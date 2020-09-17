@@ -9,6 +9,7 @@ const { User } = require("../../db.js");
 
 
 
+
 let codToCreateUser = []; 
 
 server.post('/sendmail', async (req, res) => {
@@ -45,7 +46,6 @@ server.post('/sendmail', async (req, res) => {
         html:  `   <html>
             <head>
                 <body>
-
                     <h1>¡Hola futuro esclavo para continuar enviar el siguiente codigo! </h1>
                     <h2>Codigo: ${constCod} </h2>
                     <h2>Gracias por elegirnos como tu billetera personal </h2>   
