@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, View, SafeAreaView, Text, Image, ImageBackground, TouchableHighlight } from "react-native";
-import styles from "./styles/StatisticsStyle";
-import Background from "../../assets/background.png";
+import styles from "./MyProductsStyles";
+import Background from "../../../assets/background.png";
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -18,21 +18,21 @@ export default ({ navigation }) => {
         <View style={styles.misproductos}>
           <TouchableHighlight onPress={() => navigation.navigate("Account")}>
             <View style={styles.misproductosrectangulo}>
-              <Image style={styles.imgmiscuentas} source={require("../../assets/micuenta.png")} />
+              <Image style={styles.imgmiscuentas} source={require("../../../assets/micuenta.png")} />
               <Text style={styles.textmicuentas}>Mi Cuenta</Text>
             </View>
           </TouchableHighlight>
 
           <TouchableHighlight onPress={() => navigation.navigate("mitarjeta")}>
             <View style={styles.misproductosrectangulo}>
-              <Image style={styles.imgmiscuentas} source={require("../../assets/mitarjeta.png")} />
+              <Image style={styles.imgmiscuentas} source={require("../../../assets/mitarjeta.png")} />
               <Text style={styles.textmicuentas}>Mi tarjeta</Text>
             </View>
           </TouchableHighlight>
 
           <TouchableHighlight onPress={() => navigation.navigate("MyContact")}>
             <View style={styles.misproductosrectangulo}>
-              <Image style={styles.imgmiscuentas} source={require("../../assets/miscontactos.png")} />
+              <Image style={styles.imgmiscuentas} source={require("../../../assets/miscontactos.png")} />
               <Text style={styles.textmicuentas}>Mis Contactos</Text>
             </View>
           </TouchableHighlight>
