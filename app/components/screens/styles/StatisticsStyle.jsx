@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   mainTitle: {
     fontSize: 12,
-    color: "white",
+    color: "#fff",
     textAlign: "left",
   },
   row: {
