@@ -110,7 +110,7 @@ export default ({navigation}) => {
             <TextInput style={style.inputR} secureTextEntry={true} editable placeholder='Contraseña' name='password' onChange={hOnCh_Login}/>
 
           {/*///////////////////////>> LOGIN <<///////////////////////*/}
-            <TouchableHighlight disabled={withError()}  style={withError() ? style.buttonFalse : style.button} onPress={onLogin}>             
+            <TouchableHighlight /* disabled={withError()} */  style={withError() ? style.buttonFalse : style.button} onPress={onLogin}>             
               <Text style={withError() ? style.buttonTextFalse : style.buttonText}>ENTER</Text>            
             </TouchableHighlight> 
             

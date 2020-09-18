@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const routes = require("./routes/index.js");
 const session = require("express-session");
+const cors = require("cors")
 
 //-----------MODELS---------------//
 const { User } = require("./db")
@@ -57,20 +58,6 @@ passport.deserializeUser((id, done) => {
 
 
 //-------------------------------//
-//------------CORS---------------//
-//-------------------------------//
-server.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:19006", "*"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Credentials", "true");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, X-Auth-Token, X-PINGOTHER, Accept"
-    );
-    res.header("Access-Control-Allow-Methods", "HEAD, GET, POST, PATCH, OPTIONS, PUT, DELETE");
-    next();
-});
-
-//-------------------------------//
 //---------MIDDLEWARES-----------//
 //-------------------------------//
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
@@ -84,6 +71,29 @@ server.use(
         saveUninitialized: false,
     })
 );
+
+//-------------------------------//
+//------------CORS---------------//
+//-------------------------------//
+/* server.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:19006"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, X-Auth-Token, X-PINGOTHER, Accept"
+    );
+    res.header("Access-Control-Allow-Methods", "HEAD, GET, POST, PATCH, OPTIONS, PUT, DELETE");
+    next();
+}); */
+/* const whiteList = ['http://localhost:19006'] */
+
+server.use(cors({
+    credentials: true,
+    origin: 'http://localhost:19006',
+    allowedHeaders: "Origin, X-Requested-With, Content-Type, X-Auth-Token, X-PINGOTHER, Accept",
+    methods: "GET,HEAD,PUT,PATCH,OPTIONS,POST,DELETE"
+}))
+
 
 //-----------------------------------------------
 //           INICIALIZAR PASSPORT Y SESSION     |
