@@ -10,12 +10,12 @@ export default ({ navigation }) => {
   return (
     <ImageBackground source={Background} style={styles.container}>
       <View>
-        <Text style={styles.centerText}>Account</Text>         
+        <Text style={styles.centerText}>My Account</Text>         
         <View style={styles.cvuaccount}>
           
-          <Text style={styles.textaccount}>Client: NAME</Text>
-          <Text style={styles.textaccount}>CVU:</Text>
-          <Text style={styles.textaccount}>2020202020202020202020</Text>
+            <Text style={styles.textaccount}>Client: NAME</Text>
+            <Text style={styles.textaccount}>CVU:</Text>
+            <Text style={styles.textaccount}>2020202020202020202020</Text>
 
         </View>
       
