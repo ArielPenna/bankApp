@@ -19,6 +19,8 @@ import Logo from '../../../assets/logo.png'
 
 export default ({navigation}) => {
     const dispatch = useDispatch()
+
+///////////>> STATES <<////////////
     const [login, setLogin]= useState ({
         email:'',
         password:''
@@ -30,8 +32,10 @@ export default ({navigation}) => {
     })
 
 
-    const regex_email = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-    
+///////////////>> SUPPORTS <<///////////////
+
+//-----------> VARS <-------------//
+    const regex_email = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;    
 
     /*La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, 
     al menos una minúscula y al menos una mayúscula.
@@ -66,7 +70,7 @@ export default ({navigation}) => {
         else return false
     }
 
-
+//////////>> HANDLER ON CHANGE (hOnCh) <<////////////
     const hOnCh_Login = (e) => {
         setError(validation({
           ...login,
@@ -111,8 +115,7 @@ export default ({navigation}) => {
             </TouchableHighlight> 
             
           {/*//////////////////////////////////////////////////////////*/}
-
-          {/* <Button title="MAIN" color="purple" onPress={() => navigation.navigate('Main')} /> */}
+          
         </View>
       </View>      
     </ImageBackground>
