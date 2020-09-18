@@ -30,9 +30,9 @@ export default ({ navigation }) => {
     dispatch(transactions_get())    
   }, [change]);
 
-  // {console.log(user)}
-  // {console.log(transactions)}
-  // {console.log(fullBalance)}
+  {console.log(user)}
+  {console.log(transactions)}
+  {console.log(fullBalance)}
  
   
 
