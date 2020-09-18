@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
       marginBottom:10
    },
 
-   passwordContainer: {
+   searchContainer: {
       flexDirection: 'row',
       backgroundColor:"#C2C8E2",
       borderRadius:15,
@@ -26,14 +26,13 @@ const styles = StyleSheet.create({
       marginLeft:10,
       fontSize:25,
       color:"black",
-      },
+   },
 
    btn:{
       width: '90%',
       marginTop:15,
       marginLeft: 18,
-      marginBottom: 10,
-      textAlign:"center",
+      marginBottom: 10,      
       backgroundColor: "#009688",
       borderRadius: 10,
       paddingVertical: 10,
@@ -42,7 +41,8 @@ const styles = StyleSheet.create({
 
    appButtonText:{
       fontSize:20,
-      color:"white"
+      color:"white",
+      textAlign:"center"
    },
 
    cardTitle:{
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
    cardText:{
       fontSize:20,
       textAlign:"center"
-   }
+   },
 
 })
 
