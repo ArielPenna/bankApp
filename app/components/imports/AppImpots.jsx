@@ -20,9 +20,12 @@ import Statistics from '../screens/Statistics'
 import MyProducts from '../screens/MyProducts/MyProducts'
 import Transactions from '../screens/Transactions'
 
+//-------------> CONTACTS <-------------//
+import MyContact from '../screens/MyContact/MyContact'
+import AddContact from '../screens/MyContact/AddContact' 
+
 //////////////// MIS PRODUCTOS //////////////
 import MyCard from '../screens/MyCard/MyCard'
-import MyContact from '../screens/MyContact/MyContact' 
 
 /////////////// HOME ///////////////
 export {Home}
@@ -45,8 +48,9 @@ export {SendMoney}
 export {Statistics}
 export {MyProducts}
 export {Transactions}
-
+//----> CONTACT <--------//
+export {MyContact} 
+export {AddContact}
 
 //////////////// MIS PRODUCTOS //////////////
 export {MyCard}
-export {MyContact} 
