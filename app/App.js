@@ -40,7 +40,7 @@ export default function App() {
           <Stack.Screen name='ValidateCharge' component={render.ValidateCharge}/>
           <Stack.Screen name="SendMoney" component={render.SendMoney} options={headerOptions}/>
           <Stack.Screen name="Statistics" component={render.Statistics} options={headerOptions}/>
-          <Stack.Screen name="misproductos" component={render.MyProducts} options={headerOptions}/>
+          <Stack.Screen name="MyProducts" component={render.MyProducts} options={headerOptions}/>
           <Stack.Screen name="Transactions" component={render.Transactions} options={headerOptions}/>
           <Stack.Screen name="MyContact" component={render.MyContact} options={headerOptions}/>
           <Stack.Screen name="Add Contact" component={render.AddContact} options={headerOptions}/>
