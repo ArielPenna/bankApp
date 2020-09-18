@@ -64,12 +64,12 @@ export default ({ navigation }) => {
         {contacts.length && filter.map(c => {
           return (
               <Card style={style.cardContainer} >
-                <Card.Title style={style.cardTitle} onPress={()=>console.log('hola')}>
-                  {c.name} 
+                <Card.Title style={style.cardTitle} onPress={()=>navigation.navigate('OnlyContact', c)}>
+                  {c.name}
                 </Card.Title>
                   <Card.Divider/>
                     <View >
-                      <Text style={style.cardText}>{c.email} </Text>
+                      <Text style={style.cardText} onPress={()=>navigation.navigate('OnlyContact', c)}>{c.email}</Text>
                     </View>
               </Card>
           )
