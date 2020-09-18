@@ -15,7 +15,7 @@ export default StyleSheet.create({
     title:{
         textAlign: "center",
         fontSize:35,
-        color:"white",
+        color:"#fff",
         padding:5,
         marginBottom:10
     },
@@ -23,7 +23,7 @@ export default StyleSheet.create({
     label:{
         textAlign: "center",
         fontSize:25,
-        color:"white",
+        color:"#fff",
         padding:5,
         marginBottom:10
     },
@@ -47,7 +47,7 @@ export default StyleSheet.create({
 
     appButtonText:{
         fontSize:20,
-        color:"white",
+        color:"#fff",
         textAlign:'center'
     },
 })
