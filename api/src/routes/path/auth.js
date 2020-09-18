@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 const { User, Wallet, Account, Location } = require("../../db.js");
 
+const characters = "abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ1234567890";
 
 //-------------------------------------
 //           CREAR USUARIO            |
@@ -43,11 +44,22 @@ server.post('/register', (req, res) => {
         address,
         access
     })
-        .then(user => {
-            Account.create({  // creacion de cuenta bancaria
-                userId: user.dataValues.id 
-            })
-            return user // pasamanos de usuario
+        .then(async (user) => {
+            while(true){
+                let code = '' // genero un codigo VVV
+                for (i=0; i<10; i++) code += characters.charAt(Math.floor(Math.random() * characters.length));
+                // lo busco para asegurarme de que no se repita
+                const existe = await Account.findByPk(code)
+                // si no existe lo creo
+                if(!existe){
+                    Account.create({  // creacion de cuenta bancaria
+                        accountId: code,
+                        userId: user.dataValues.id 
+                    })
+                    return user // pasamanos de usuario
+                }
+                // si si existe itero
+            }
         })
         .then(user => {
             Wallet.create({ // creacion de billetera
