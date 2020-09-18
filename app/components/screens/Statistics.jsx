@@ -45,7 +45,7 @@ export default ({ navigation }) => {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => navigation.navigate("Account")}>
+          <TouchableHighlight onPress={() => navigation.navigate("MyProducts")}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={require("../../assets/productos.png")} />
               <Text style={styles.small}>My Products</Text>
