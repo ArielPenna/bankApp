@@ -68,8 +68,8 @@ User.belongsToMany(User, { as: "friended", foreignKey: "friend", through: "conta
 
 
 // un usuario tiene muchas transacciones 
-User.belongsToMany(User, { as: "debit", through: "transaction" })
-User.belongsToMany(User, { as: "deposit", through: "transaction" })
+Account.belongsToMany(Account, { as: "debit", foreignKey: "deposit", through: "transaction" })
+Account.belongsToMany(Account, { as: "deposit", foreignKey: "debit", through: "transaction" })
 
 
 //----------------------------------------------------------------------------//
