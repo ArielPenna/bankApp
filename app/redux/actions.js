@@ -98,9 +98,9 @@ export const get_friends = (id) =>{
 }
 
 ///////>> ADD FRIEND <<////////
-export const add_friend = (user) => {
+export const add_friend = (user, id) => {
   return (dispatch) => {
-    instance.post('friend/add/:id', user)
+    instance.post('friend/add/'+ id , user)
       .then(res => {
         dispatch({type: cons.ADD_FRIEND, payload: res.data})
       })
