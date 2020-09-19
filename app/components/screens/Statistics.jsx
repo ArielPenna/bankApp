@@ -1,11 +1,22 @@
 import React from "react";
-import { Button, View, SafeAreaView, Text, Image, ImageBackground, TouchableHighlight } from "react-native";
+import { View, Text, Image, ImageBackground, TouchableHighlight } from "react-native";
 import styles from "./styles/StatisticsStyle";
 import Background from "../../assets/background.png";
+import { PieChart } from 'react-native-svg-charts'
+
 
 const Separator = () => <View style={styles.separator} />;
 
-export default ({ navigation }) => {
+export default ({ navigation, route }) => {
+  const { fullBalance } = route.params;
+  const { user } = route.params;
+
+  const data = [fullBalance.credit,fullBalance.debit]
+  const color = ["green", "red"]
+
+  const pieData = data.filter((value) => value > 0).map((value, index) => ({
+      value, svg: {fill: color[index]}, key: `pie-${index}`}));   
+
   return (
     <ImageBackground source={Background} style={styles.container}>
       <View>
@@ -32,7 +43,8 @@ export default ({ navigation }) => {
         </View>
 
         <View style={styles.generalView}>
-          <Text style={styles.centerText}>Aca va el grafico de estadisticas</Text>
+        <PieChart style={{ height: 200 }} data={pieData} />
+          <Text style={styles.centerText}>Income ${fullBalance.credit}   Outcome ${fullBalance.debit} </Text>
         </View>
 
         <Separator />
@@ -45,7 +57,7 @@ export default ({ navigation }) => {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => navigation.navigate("MyProducts")}>
+          <TouchableHighlight onPress={() => navigation.navigate("MyProducts", {user:user})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={require("../../assets/productos.png")} />
               <Text style={styles.small}>My Products</Text>
