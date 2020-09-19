@@ -16,7 +16,6 @@ import Logo from '../../../assets/logo.png'
 //--Leyenda--//
 //hOnCh === handlerOnChange
 
-
 export default ({navigation}) => {
     const dispatch = useDispatch()
 
@@ -64,8 +63,8 @@ export default ({navigation}) => {
 
         return error
     }  
-
-    const withError = ()=>{
+    
+    const withoutError = ()=>{
         if(error.email || error.password) return true
         else return false
     }
@@ -111,7 +110,7 @@ export default ({navigation}) => {
 
           {/*///////////////////////>> LOGIN <<///////////////////////*/}
             <TouchableHighlight /* disabled={withError()} */  style={withError() ? style.buttonFalse : style.button} onPress={onLogin}>             
-              <Text style={withError() ? style.buttonTextFalse : style.buttonText}>ENTER</Text>            
+              <Text style={withoutError() ? style.buttonTextFalse : style.buttonText}>ENTER</Text>            
             </TouchableHighlight> 
             
           {/*//////////////////////////////////////////////////////////*/}
