@@ -17,6 +17,7 @@ import SendMoney from '../screens/SendMoney'
 import Statistics from '../screens/Statistics'
 import MyProducts from '../screens/MyProducts'
 import Transactions from '../screens/Transactions'
+import MyProfile from '../screens/MyProfile'
 
 //////////////// MIS PRODUCTOS //////////////
 import MyCard from '../screens/MyCard/MyCard'
@@ -41,6 +42,7 @@ export {SendMoney}
 export {Statistics}
 export {MyProducts}
 export {Transactions}
+export {MyProfile}
 
 
 //////////////// MIS PRODUCTOS //////////////

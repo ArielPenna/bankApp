@@ -7,8 +7,7 @@ const initialState = {
   saveUser: undefined,
   search: 0,
   transactions: {},
-  fullBalance: {},
-  
+  fullBalance: {},  
 };
 
 
@@ -60,7 +59,7 @@ export default (state = initialState, action) => {
         ...state,
         transactions: action.payload,
         fullBalance: obj,
-      };    
+      }; 
   }
   return state;
 };

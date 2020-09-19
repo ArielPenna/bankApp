@@ -12,6 +12,7 @@ import Estadisticas from "../../../assets/estadisticas.png";
 import Productos from "../../../assets/productos.png";
 import Saldo from "../../../assets/saldo.png";
 import EnviarDinero from "../../../assets/enviarDinero.png";
+import MyProfile from "../../../assets/datos.png";
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -80,12 +81,12 @@ export default ({ navigation }) => {
             </View>
           </TouchableHighlight>
 
-          {/* <TouchableHighlight onPress={() => navigation.navigate('Login')}>
+          <TouchableHighlight onPress={() => navigation.navigate('MyProfile')}>
             <View style={styles.touch}>
-              <Image style={styles.ico} source={require('../../assets/datos.png')}/>
-              <Text style={styles.small}>Mis Datos</Text>
+              <Image style={styles.ico} source={MyProfile}/>
+              <Text style={styles.small}>My Profile</Text>
             </View>
-          </TouchableHighlight> */}
+          </TouchableHighlight>
 
           <TouchableHighlight onPress={() => navigation.navigate("misproductos")}>
             <View style={styles.touch}>
