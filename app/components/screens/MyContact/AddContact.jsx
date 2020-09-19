@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { View ,Text, TextInput, TouchableHighlight, ImageBackground } from 'react-native'
 import {add_friend} from '../../../redux/actions.js'
+
 /////////>> SCRIPTS <<//////////
 import {contacts} from './prueba/prueba'
 import styles from './styles/AddContact_Styles'
@@ -17,12 +18,12 @@ export default ({route, navigation}) =>{
 
     /////////>> STATES <<//////////
     const [contact, setContact] = useState({
-        name: '',
+        nickName: '',
         email: ''
     })
      
     const [error, setError] = useState({
-        name: '*',
+        nickName: '*',
         email: '*'
     })
 
@@ -34,23 +35,16 @@ export default ({route, navigation}) =>{
     const validation = input =>{
         let errors = {}
 
-        if(!input.name) errors.name = '*'
+        if(!input.nickName) errors.nickName = '*'
 
         if(!input.email) errors.email = '*'
         else if(!regex_email.test(input.email)) errors.email='*'
 
         return errors
-    }
-    const addFriend = () =>{
-        try {
-            dispatch(add_friend(contact, id))
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    }   
 
     const withoutErrors = ()=>{
-        if(error.name || error.email) return true
+        if(error.nickName || error.email) return true
         else return false
     }
 
@@ -68,6 +62,15 @@ export default ({route, navigation}) =>{
         })
     }
 
+    //////////>> DISPATCH <<////////////
+    const addFriend = () =>{
+        try {
+            dispatch(add_friend(contact))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return(
         <ImageBackground source={Background} style={styles.background}>
             <View style={styles.container}>
@@ -76,7 +79,7 @@ export default ({route, navigation}) =>{
 
                 {/*/////////>> NAME <</////////*/}
                 <Text style={styles.label}>Name</Text>
-                <TextInput style={styles.inputs} name='name' onChange={hOnCh_Contact}/>
+                <TextInput style={styles.inputs} name='nickName' onChange={hOnCh_Contact}/>
 
                 {/*/////////>> EMAIL <</////////*/}
                 <Text style={styles.label}>Email</Text>
