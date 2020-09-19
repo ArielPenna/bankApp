@@ -9,10 +9,10 @@ module.exports = (sequelize) => {
                 primaryKey: true
             },
             debit: {
-                type: S.INTEGER
+                type: S.TEXT
             },
             deposit: {
-                type: S.INTEGER
+                type: S.TEXT
             },
             value: {
                 type: S.DECIMAL(1000, 2),
