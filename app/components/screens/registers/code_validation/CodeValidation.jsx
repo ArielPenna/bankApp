@@ -13,13 +13,17 @@ import Background from '../../../../assets/background.png'
 
 export default ({route, navigation}) => {
    const dispatch = useDispatch()
-   const [code, setCode] = useState(0)
    const val = useSelector(state => state.code)
+   
+   /////////>> STATE <<////////
+   const [code, setCode] = useState(0)
 
+   ////////>> HANDLER ON CHANGE (hOnCh) <<///////////
    const hOnCh_code = (e) => {
-      setCode({ codigo: parseInt(e.target.value)})
+      setCode({ codigo: e})
    }
 
+   ///////>> DISPATCH <</////////
    const validationCode = () => {
       try {
          dispatch(search_code(code))
@@ -27,18 +31,23 @@ export default ({route, navigation}) => {
          console.log(error)
       }
    }
-  return (
-     <ImageBackground source={Background} style={style.container}>
-        {console.log(val)}
-        {val && navigation.navigate('Register Info', route.params)}
-      <View>
-         <Text style={style.mainTitle}>Authentication Code</Text>
-         <TextInput onChange={hOnCh_code} keyboardType='numeric' 
-         editable name='documentNumber' style={style.input}/>
-          <TouchableHighlight onPress={validationCode} style={style.appButtonContainer}>
-                <Text style={style.appButtonText}>Send</Text>
+   return (
+      <ImageBackground source={Background} style={style.container}>
+         {console.log(val)}
+         {val && navigation.navigate('Register Info', route.params)}
+         <View>
+            {/*////////////>> TITLE <</////////////*/}
+            <Text style={style.mainTitle}>Authentication Code</Text>
+
+            {/*////////////>> INPUT <</////////////*/}
+            <TextInput onChangeText={hOnCh_code} keyboardType='numeric' 
+            editable name='documentNumber' style={style.input}/>
+
+            {/*////////////>> BUTTON <</////////////*/}
+            <TouchableHighlight onPress={validationCode} style={style.appButtonContainer}>
+                  <Text style={style.appButtonText}>Send</Text>
             </TouchableHighlight>
-      </View>
-     </ImageBackground>
-  );
+         </View>
+      </ImageBackground>
+   );
 }
