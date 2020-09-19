@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Button, View, TouchableHighlight, Text, Image, ImageBackground} from 'react-native';
+import {View, TouchableHighlight, Text, Image, ImageBackground} from 'react-native';
 import styles from './MyCardStyle'
 import Background from '../../../assets/background.png'
 import Tarjeta from '../../../assets/tarjeta.png'
@@ -28,9 +27,9 @@ export default ({ navigation, route }) => {
         <Separator/>
         <Image style={styles.img} source={Tarjeta} />        
         <View style={styles.dataView}>
-          <Text style={styles.cardNumber} color="#fff" >{numCard}</Text>
-          <Text style={styles.cardNumber} color="#fff">Expiration: 10/24</Text>
-          <Text style={styles.cardNumber} color="#fff">{user.firstName +" "+user.lastName}</Text>
+          <Text style={styles.cardNumber} color="white">{numCard}</Text>
+          <Text style={styles.cardNumber} color="white">Expiration: 10/24</Text>
+          <Text style={styles.cardNumber} color="white">{user.firstName +" "+user.lastName}</Text>
         </View>        
       </View>      
       {/* <Separator/> */}
