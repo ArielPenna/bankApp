@@ -22,27 +22,25 @@ server.delete('/delete/:id', (req, res) => {
     const { idFriend } = req.body;
 
     User.findByPk(parseInt(id))
-    .then( (me) => {
-        me.removeFriend(idFriend).then(
-            success => res.send(success ? 'Se elimino tu Amigo' : 'No se elimino')
-        )
-    }).catch(err => res.send('No se pudo eliminar tu Amigo'))
+    .then( me => me.removeFriend(idFriend))
+    .then(remove => res.send(remove
+        ? "Se elimino el amigo"
+        : "No se elimino"
+    )).catch(err => res.send(err))
+
 })
 
 //  TRAER AMIGOS
 server.get('/list/:id', (req, res) => {
     const { id } = req.params;
 
-    User.findOne({
-        include: {
-            model: User,
-            as: 'friend',
-            through : {where:  { friended: parseInt(id)},}
-        }
-    })
-    .then(friends => res.send(friends.friend.length !== 0 ? friends.friend : 'No tenes Amigos'
-    )).catch(err => res.send(err))    // error 
-  
+    User.findByPk(parseInt(id))
+    .then( me => me.getFriend())
+    .then( friends =>res.send(friends
+        ? friends
+        : "Aun no tenes amigos"
+    )).catch(err => res.send(err))
+
 })
 
 module.exports = server;
