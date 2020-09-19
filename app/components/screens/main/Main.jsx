@@ -76,19 +76,12 @@ export default ({ navigation }) => {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => navigation.navigate("Statistics")}>
+          <TouchableHighlight onPress={() => navigation.navigate("Statistics", {fullBalance:fullBalance, user:user})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={Estadisticas} />
               <Text style={styles.small}>Statistics</Text>
             </View>
-          </TouchableHighlight>
-
-          {/* <TouchableHighlight onPress={() => navigation.navigate('Login')}>
-            <View style={styles.touch}>
-              <Image style={styles.ico} source={require('../../assets/datos.png')}/>
-              <Text style={styles.small}>Mis Datos</Text>
-            </View>
-          </TouchableHighlight> */}
+          </TouchableHighlight>          
 
           <TouchableHighlight onPress={() => navigation.navigate("MyProducts", {user:user})}>
             <View style={styles.touch}>

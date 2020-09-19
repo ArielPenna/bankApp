@@ -47,7 +47,7 @@ export default function App() {
           <Stack.Screen name="OnlyContact" component={render.OnlyContact} options={headerOptions}/>
           <Stack.Screen name="MyContact" component={render.MyContact} options={headerOptions}/>
           {/*/////////////////////>> HOME <</////////////////////*/}
-          <Stack.Screen name="mitarjeta" component={render.MyCard} options={headerOptions}/>
+          <Stack.Screen name="MyCard" component={render.MyCard} options={headerOptions}/>
 
           
           
