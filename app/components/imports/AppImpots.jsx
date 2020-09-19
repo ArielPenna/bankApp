@@ -24,6 +24,8 @@ import Transactions from '../screens/Transactions'
 import MyContact from '../screens/MyContact/MyContact'
 import AddContact from '../screens/MyContact/AddContact' 
 import OnlyContact from '../screens/MyContact/OnlyContact'
+import EditContact from '../screens/MyContact/EditContact'
+
 //////////////// MIS PRODUCTOS //////////////
 import MyCard from '../screens/MyCard/MyCard'
 
@@ -52,5 +54,7 @@ export {Transactions}
 export {MyContact} 
 export {AddContact}
 export {OnlyContact}
+export {EditContact}
+
 //////////////// MIS PRODUCTOS //////////////
 export {MyCard}

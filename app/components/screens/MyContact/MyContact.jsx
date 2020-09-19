@@ -38,7 +38,7 @@ export default ({ navigation }) => {
   }
 
   useEffect(() => {
-    dispatch(get_friends(user.id))
+    dispatch(get_friends())
   }, [])  
 
 
