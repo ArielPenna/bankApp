@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   mainTitle: {
     fontSize: 12,
-    color: "white",
+    color: "#fff",
     textAlign: "left",
   },
   row: {
@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   centerText: {
+    fontSize: 28,
     textAlign: "center",
     justifyContent: "center",
     margin: 5,
@@ -90,10 +91,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     width: 280,
     height: 150,
-    justifycontent: "space around",
+    justifyContent: "space-around",
     padding: 10,
     alignitems: "center",
     textalignlast: "left",
+    borderRadius: 12,
   },
   textaccount: {
     fontSize: 20,

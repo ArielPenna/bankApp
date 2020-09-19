@@ -1,5 +1,27 @@
 import * as cons from "./constants";
 
+///////>> SUPPORTS <<////////
+const getBalance = (payload) => {
+
+    var debit = 0;
+    var credit = 0;     
+
+    for (var i in payload) {
+      if (payload[i].debit) {
+        debit += parseFloat(payload[i].value)
+      } else {
+        credit += parseFloat(payload[i].value)
+      }
+    }
+    
+    return {
+      debit: debit,
+      credit: credit,
+      total: credit-debit,
+    }
+}
+
+///////>> STATE <</////
 const initialState = {
   user: undefined,
   sendEmail: [],
@@ -9,17 +31,11 @@ const initialState = {
   contacts:[]
 };
 
-
-
 export default (state = initialState, action) => {
   switch (action.type) {
-    case cons.GET_USER__ME:    
-    case cons.LOGOUT__GET:
-      return {
-        ...state,
-        user: action.payload,
-      };
-    case cons.SEND_MAIL__POST:
+//--------------------------------------------------------------//
+    ////>> REGISTER <</////
+    case cons.SEND_MAIL:
       return {
         ...state,
         sendEmail: action.payload,
@@ -29,28 +45,33 @@ export default (state = initialState, action) => {
         ...state,
         code: action.payload,
       };
+//--------------------------------------------------------------//
+    /////>> LOGIN <</////
+    case cons.GET_USER_ME:    
+    case cons.LOGOUT:
+      return {
+        ...state,
+        user: action.payload,
+      };
+//--------------------------------------------------------------//    
+    /////>> MONEY <</////
     case cons.TRANSACTIONS_GET:
-      var debit = 0;
-      var credit = 0;      
-      for (var i in action.payload) {
-        if (action.payload[i].debit) {
-          debit += parseFloat(action.payload[i].value)
-        } else {
-          credit += parseFloat(action.payload[i].value)
-        }
-      }
-      var obj = {
-        debit: debit,
-        credit: credit,
-        total: credit-debit,
-      }
+      const balance = getBalance(action.payload)
       return {
         ...state,
         transactions: action.payload,
-        fullBalance: obj,
+        fullBalance: balance,
       };    
-      case cons.ADD_FRIEND:
-      return {...state, contacts:action.payload}
+//--------------------------------------------------------------//
+    /////>> CONTACTS <</////
+    case cons.GET_FRIENDS:
+    case cons.ADD_FRIEND:
+    case cons.UPDATE_FRIEND:
+    case cons.DELETE_FRIEND:
+      return {
+        ...state, 
+        contacts:action.payload
+      }
   }
   return state;
 };

@@ -1,10 +1,11 @@
 ////////////>> MODULES <</////////////
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { Button, View, Text, TextInput, TouchableHighlight, Image, ImageBackground} from 'react-native';
 import {Card, Icon} from 'react-native-elements'
 
 /////////////>> SCRIPTS <<//////////////
+import {get_friends} from '../../../redux/actions.js'
 import {contacts} from './prueba/prueba.js'
 import style from './styles/MyContactStyles'
 
@@ -16,6 +17,7 @@ export default ({ navigation }) => {
   ////////>> REDUX <<//////////
   const dispatch = useDispatch()
   const contact = useSelector(state => state.contacts)
+  const user = useSelector(state => state.user)
 
   ////////>> STATES <<////////
   const [search, setSearch] = useState('')
@@ -34,6 +36,12 @@ export default ({ navigation }) => {
   const hOnCh_Search = (e)=>{
     setSearch(e)
   }
+
+  useEffect(() => {
+    dispatch(get_friends(user.id))
+  }, [])  
+
+
 
   return (
     <ImageBackground source={Background} style={style.container} >
@@ -56,7 +64,7 @@ export default ({ navigation }) => {
           </View>
 
         {/*/////////>> ADD CONTACT BUTTON <</////////*/}
-        <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact')}>
+        <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact', {id: user.id})}>
             <Text style={style.appButtonText}> +Add Contact </Text>
         </TouchableHighlight>
 
@@ -64,12 +72,12 @@ export default ({ navigation }) => {
         {contacts.length && filter.map(c => {
           return (
               <Card style={style.cardContainer} >
-                <Card.Title style={style.cardTitle} onPress={()=>console.log('hola')}>
-                  {c.name} 
+                <Card.Title style={style.cardTitle} onPress={()=>navigation.navigate('OnlyContact', c)}>
+                  {c.name}
                 </Card.Title>
                   <Card.Divider/>
                     <View >
-                      <Text style={style.cardText}>{c.email} </Text>
+                      <Text style={style.cardText} onPress={()=>navigation.navigate('OnlyContact', c)}>{c.email}</Text>
                     </View>
               </Card>
           )
