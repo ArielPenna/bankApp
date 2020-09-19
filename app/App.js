@@ -42,6 +42,9 @@ export default function App() {
           <Stack.Screen name="Statistics" component={render.Statistics} options={headerOptions}/>
           <Stack.Screen name="MyProducts" component={render.MyProducts} options={headerOptions}/>
           <Stack.Screen name="Transactions" component={render.Transactions} options={headerOptions}/>
+          <Stack.Screen name="MyProfile" component={render.MyProfile} options={headerOptions}/> 
+
+
           
           <Stack.Screen name="Add Contact" component={render.AddContact} options={headerOptions}/>
           <Stack.Screen name="OnlyContact" component={render.OnlyContact} options={headerOptions}/>

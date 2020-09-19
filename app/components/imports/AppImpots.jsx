@@ -19,6 +19,7 @@ import SendMoney from '../screens/money/SendMoney'
 import Statistics from '../screens/Statistics'
 import MyProducts from '../screens/MyProducts/MyProducts'
 import Transactions from '../screens/Transactions'
+import MyProfile from '../screens/MyProfile'
 
 //-------------> CONTACTS <-------------//
 import MyContact from '../screens/MyContact/MyContact'
@@ -50,6 +51,9 @@ export {SendMoney}
 export {Statistics}
 export {MyProducts}
 export {Transactions}
+export {MyProfile}
+
+
 //----> CONTACT <--------//
 export {MyContact} 
 export {AddContact}
