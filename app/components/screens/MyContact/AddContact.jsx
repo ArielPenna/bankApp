@@ -2,7 +2,7 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { View ,Text, TextInput, TouchableHighlight, ImageBackground } from 'react-native'
-
+import {add_friend} from '../../../redux/actions.js'
 /////////>> SCRIPTS <<//////////
 import {contacts} from './prueba/prueba'
 import styles from './styles/AddContact_Styles'
@@ -10,14 +10,17 @@ import styles from './styles/AddContact_Styles'
 ////////>> IMGS <<////////////
 import Background from '../../../assets/background.png'
 
-export default ({navigation}) =>{
+export default ({route, navigation}) =>{
+
+    const dispatch = useDispatch()
+    const {id} = route.params
 
     /////////>> STATES <<//////////
     const [contact, setContact] = useState({
         name: '',
         email: ''
     })
-
+     
     const [error, setError] = useState({
         name: '*',
         email: '*'
@@ -37,6 +40,13 @@ export default ({navigation}) =>{
         else if(!regex_email.test(input.email)) errors.email='*'
 
         return errors
+    }
+    const addFriend = () =>{
+        try {
+            dispatch(add_friend(contact, id))
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     const withoutErrors = ()=>{
@@ -74,7 +84,7 @@ export default ({navigation}) =>{
 
                 {/*/////////>> ADD BUTTON <</////////*/}
                 <TouchableHighlight disabled={withoutErrors()} style={styles.btn} 
-                onPress={()=>console.log('add contact')}>
+                onPress={addFriend}>
                     <Text style={styles.appButtonText}>+Add</Text>
                 </TouchableHighlight>
             </View>

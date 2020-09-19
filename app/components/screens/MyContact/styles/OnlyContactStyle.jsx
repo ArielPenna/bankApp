@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 
 
    titulo:{
-      fontSize:25,
+      fontSize:20,
       fontFamily: "monospace",
       fontWeight: "bold",
       marginLeft:15,
