@@ -1,67 +1,89 @@
 const estaAutenticado = require("../../Suppliers/authenticateFunction")
 const server = require("express").Router();
 const { Op } = require("sequelize");
-const { User, Transaction, Wallet } = require("../../db.js");
+const { User, Transaction, Account } = require("../../db.js");
 
-
-server.post("/to/:idTo", estaAutenticado, async (req, res) => {
-    const { idTo } = req.params
+// GENERAR TRANSACCION
+server.post("/to/:CVUfriend", estaAutenticado, async (req, res) => {
+    const { CVUfriend } = req.params
     const { transaction } = req.body
     const { id } = req.user
 
     //-------------------------------------------
     //              DECLARACIONES               |
-    let nuevoSaldo;
-    const userFrom = await User.findByPk(id)
-    const userTo = await User.findByPk(idTo)
-    const userfromWallet = await userFrom.getWallet()
+    //  CUENTA
+    const userFromAccount = await Account.findOne({where: { userId: id }});
+    const userToAccount = await Account.findOne({where: { cvu: CVUfriend }});
+    console.log('---------------------------')
+    console.log(userFromAccount && userFromAccount.dataValues)
+    console.log(userToAccount && userToAccount.dataValues)
+    //  USUARIO
+    const userFrom = userFromAccount && await userFromAccount.getUser()
+    const userTo = userToAccount && await userToAccount.getUser()
+    console.log('---------------------------')
+    console.log('userFrom ', userFrom && userFrom.dataValues)
+    console.log('userTo ', userTo && userTo.dataValues)
+    //  BILLETERA
+    const userFromWallet = userFrom && await userFrom.getWallet()
+    const userToWallet = userTo && await userTo.getWallet()
+    console.log('---------------------------')
+    console.log('walletFrom ', userFromWallet && userFromWallet.dataValues)
+    console.log('walletTo ', userToWallet && userToWallet.dataValues)
+    console.log('---------------------------') 
+
     //-------------------------------------------
     //                PARSEOS                   |
     const floatTransaction = parseFloat(transaction) // convierto el numero a decimal
-    const floatBalance = parseFloat(userfromWallet.dataValues.balance)
+    const floatBalance = parseFloat(userFromWallet.dataValues.balance)
     //-------------------------------------------
 
+    let nuevoSaldo;
 
-    if(id === Number(idTo)) res.send('los usuarios son iguales')
-    else if(!userFrom) res.send('usuario from inexistente')
-    else if(!userTo) res.send('usuario to inexistente')
-    else if(!floatTransaction) res.send('transaccion invalida')
-    else if(!(floatTransaction > 100)) res.send('la transaccion debe ser de un monto minimo de 100$')
-    else if(!(floatBalance > floatTransaction)) res.send('saldo insuficiente')      
-    
-    //-----------------------------------
-    //     SI PASA TODOS LOS FILTROS
-    //-----------------------------------
-    else {
-        Transaction.create({debit:id, deposit: idTo, value: floatTransaction})
-            //  usuario FROM
-            .then(() => userFrom.getWallet()) // cuando lo encuentro busco su billetera
-            .then(async ()=> {
-                nuevoSaldo = await userfromWallet.update({ // descuento el saldo de la transaccion
-                    balance:(parseFloat(userfromWallet.dataValues.balance) - floatTransaction)
-                })})
+    if(!userFromAccount) 
+        res.send('user from no existe')
+    else if(!userToAccount) 
+        res.send('user to no existe')
+    else if(userFromAccount.dataValues.accountId === userToAccount.dataValues.accountId) 
+        res.send('los usuarios son iguales')
+    else if(!floatTransaction) 
+        res.send('transaccion invalida')
+    else if(!(floatTransaction > 100)) 
+        res.send('la transaccion debe ser de un monto minimo de 100$')
+    else if(!(floatBalance > floatTransaction)) 
+        res.send('saldo insuficiente')
 
-            //  usuario TO
-            .then(() => userTo.getWallet()) // cuando lo encuentro busco su billetera
-            .then(wallet => wallet.update({ // acredito el saldo de la transaccion
-                balance:(parseFloat(wallet.dataValues.balance) + floatTransaction)
-                }))
-            .then(() => res.send(nuevoSaldo.dataValues)) // envio el saldo actual del usuario
-            // ----------- ERRORES ----------------//
-            .catch(err => res.send(err))}
+    else {    
+        //-----------------------------------
+        //     SI PASA TODOS LOS FILTROS
+        //-----------------------------------   
+        await Transaction.create({
+                debit: userFromAccount.accountId, 
+                deposit: userToAccount.accountId, 
+                value: floatTransaction
+            })
+        nuevoSaldo = await userFromWallet.update({ // descuento el saldo de la transaccion
+                balance:(parseFloat(userFromWallet.dataValues.balance) - floatTransaction)
+            })
+        await userToWallet.update({
+            balance:(parseFloat(userFromWallet.dataValues.balance) + floatTransaction)
+            })
+        res.send(nuevoSaldo.dataValues)
+    }
 })
+
 
 // AGREGAR DINERO A LA BILLETERA
 server.put('/recarge/wallet', estaAutenticado, async (req, res) => {
-    const { balance } = req.body
-    const { id } = req.user
+    const { balance } = req.body;   // Me traigo el monto a agregar a la billetera
+    const { id } = req.user;    // Me treigo el usuario logeado
 
-    const user = await User.findByPk(id)
+    const user = await User.findByPk(id)    // Busco el usuario logeado
+    const userAccount = (await user.getAccount()).dataValues // me traigo toda la data de la cuenta
     
     if(!user) res.send('el usuario no existe')
-
+    
     else {
-        Transaction.create({ deposit: id, value: balance, transactions_type: 'recarga billetera' })
+        Transaction.create({ deposit: userAccount.accountId, value: balance, transactions_type: 'recarga billetera' })
             .then(() => user.getWallet())
             .then(wallet => {
                 wallet.update({
@@ -77,14 +99,17 @@ server.put('/recarge/wallet', estaAutenticado, async (req, res) => {
 })
 
 // TRAER TODAS LAS TRANSFERENCIAS DEL USUARIO
-server.get('/get', estaAutenticado, (req, res) => {
+server.get('/get', estaAutenticado, async (req, res) => {
     const { id } = req.user;
+    
+    const user = await User.findByPk(id)    // Busco el usuario logeado
+    const userAccount = (await user.getAccount()).dataValues // me traigo toda la data de la cuenta
 
     Transaction.findAll({
         where: {
             [Op.or]:[
-                {debit: id },
-                {deposit: id }
+                {debit: userAccount.accountId },
+                {deposit: userAccount.accountId }
             ]
         }
     })
