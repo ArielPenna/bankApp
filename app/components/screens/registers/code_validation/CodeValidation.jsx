@@ -4,12 +4,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import { View, Text, TextInput, Button, ImageBackground, TouchableHighlight } from 'react-native';
 
 //////////////// SCRIPTS ////////////////
-import {search_code} from '../../../../redux/actions'
+import { search_code, send_mail__post } from '../../../../redux/actions'
 import style from './styles/CodeValidationStyle'
 
 //////////////// IMGS ////////////////
 import Background from '../../../../assets/background.png'
-
 
 export default ({route, navigation}) => {
    const dispatch = useDispatch()
@@ -31,6 +30,16 @@ export default ({route, navigation}) => {
          console.log(error)
       }
    }
+
+   const sendAgainEmail = () => {
+      try{
+         dispatch(send_mail__post(route.params))
+      }
+      catch(err){
+         console.log(err)
+      }
+   }
+
    return (
       <ImageBackground source={Background} style={style.container}>
          {console.log(val)}
@@ -43,10 +52,17 @@ export default ({route, navigation}) => {
             <TextInput onChangeText={hOnCh_code} keyboardType='numeric' 
             editable name='documentNumber' style={style.input}/>
 
-            {/*////////////>> BUTTON <</////////////*/}
+            {/*////////////>> BUTTON VALIDATE <</////////////*/}
             <TouchableHighlight onPress={validationCode} style={style.appButtonContainer}>
-                  <Text style={style.appButtonText}>Send</Text>
+                  <Text style={style.appButtonText}>Confirm</Text>
             </TouchableHighlight>
+
+            {/*////////////>> BUTTON SEND AGAIN <</////////////*/}
+            <Text style={style.subTitle}>You didn't get the code?</Text>
+            <TouchableHighlight onPress={sendAgainEmail} style={style.appButtonContainerAgain}>
+                  <Text style={style.appButtonTextAgain}>Send Code Again</Text>
+            </TouchableHighlight>
+
          </View>
       </ImageBackground>
    );

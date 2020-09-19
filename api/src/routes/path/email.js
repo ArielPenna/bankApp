@@ -74,10 +74,10 @@ server.post('/searchcod', (req, res) => {
     for(var i in codToCreateUser){
         //if(bcrypt.compare(toString(codigo), codToCreateUser[i])) codigoMatch = i
         //console.log(bcrypt.compareSync(toString(codigo), codToCreateUser[i]))
-        if(codigo === codToCreateUser[i]) codigoMatch = i
+        if(parseInt(codigo) === codToCreateUser[i]) codigoMatch = i
     }
 
-    if(codigoMatch){
+    if(codToCreateUser[codigoMatch]){
         codToCreateUser.splice(codigoMatch, 1)
         res.send('true')
     } else res.send('false')

@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
       alignItems: "center",
       backgroundColor:"#79d8aa",
     },
+
     input:{    
       alignSelf:"center",
       width:310,
@@ -20,12 +21,42 @@ const styles = StyleSheet.create({
       fontSize: 25,
       textAlign: 'center'
     },
+
     mainTitle:{
       fontSize: 40,
       color:"#fff",
       fontWeight: '8',
       textAlign:"center",
     },
+
+    subTitle:{
+      fontSize: 20,
+      color:"#fff",
+      fontWeight: '8',
+      textAlign:"center",
+      marginTop: 150
+    },
+
+    appButtonContainerAgain: {
+      width: '60%',
+      marginLeft: '75px',
+      marginBottom: '10px',
+      marginTop: '20px',
+      elevation: 8,
+      backgroundColor: "#f7b700",       
+      borderRadius: 5,
+      paddingVertical: 10,
+      paddingHorizontal: 12
+    },
+
+    appButtonTextAgain: {
+      fontSize: 15,
+      color: "#752667",
+      fontWeight: "bold",
+      alignSelf: "center",
+      textTransform: "uppercase"
+    },
+
     appButtonContainer: {
       width: '90%',
       marginLeft: '20px',
@@ -36,7 +67,8 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       paddingVertical: 10,
       paddingHorizontal: 12
-  },
+    },
+
     appButtonContainerFalse: {
       width: '90%',
       marginLeft: '20px',
@@ -48,6 +80,7 @@ const styles = StyleSheet.create({
       paddingVertical: 10,
       paddingHorizontal: 12
     },
+
     appButtonText: {
       fontSize: 18,
       color: "#752667",
@@ -55,6 +88,7 @@ const styles = StyleSheet.create({
       alignSelf: "center",
       textTransform: "uppercase"
     },
+
     appButtonTextFalse: {
       fontSize: 18,
       color: "#fff",
