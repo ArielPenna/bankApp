@@ -22,7 +22,7 @@ export default function App() {
       
         <Stack.Navigator>
           {/*/////////////////////>> HOME <</////////////////////*/}
-          <Stack.Screen name="MyContact" component={render.MyContact} options={headerOptions}/>
+          
           <Stack.Screen name="Home" component={render.Home} options={headerOptions}/>
 
           {/*/////////////////////>> REGISTER <</////////////////////*/}
@@ -46,7 +46,7 @@ export default function App() {
           
           <Stack.Screen name="Add Contact" component={render.AddContact} options={headerOptions}/>
           <Stack.Screen name="OnlyContact" component={render.OnlyContact} options={headerOptions}/>
-
+          <Stack.Screen name="MyContact" component={render.MyContact} options={headerOptions}/>
           {/*/////////////////////>> HOME <</////////////////////*/}
           <Stack.Screen name="mitarjeta" component={render.MyCard} options={headerOptions}/>
            
