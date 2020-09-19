@@ -1,65 +1,77 @@
 import * as cons from "./constants";
 
+///////>> SUPPORTS <<////////
+const getBalance = (payload) => {
+
+    var debit = 0;
+    var credit = 0;     
+
+    for (var i in payload) {
+      if (payload[i].debit) {
+        debit += parseFloat(payload[i].value)
+      } else {
+        credit += parseFloat(payload[i].value)
+      }
+    }
+    
+    return {
+      debit: debit,
+      credit: credit,
+      total: credit-debit,
+    }
+}
+
+///////>> STATE <</////
 const initialState = {
-  users: [],
   user: undefined,
-  code: 0,
-  saveUser: undefined,
-  search: 0,
+  sendEmail: [],
+  code: false,
   transactions: {},
-  fullBalance: {},  
+  fullBalance: {},
+  contacts:[]
 };
-
-
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case cons.REGISTER_USER__POST:
+//--------------------------------------------------------------//
+    ////>> REGISTER <</////
+    case cons.SEND_MAIL:
       return {
         ...state,
-        users: action.payload,
-      };
-    case cons.GET_USER__ME:    
-    case cons.LOGOUT__GET:
-      return {
-        ...state,
-        user: action.payload,
-      };
-    case cons.SEND_MAIL__POST:
-      return {
-        ...state,
-        code: action.payload,
-      };
-    case cons.SAVE_USER:
-      return {
-        ...state,
-        saveUser: action.payload,
+        sendEmail: action.payload,
       };
     case cons.SEARCH_CODE:
       return {
         ...state,
-        search: action.payload,
+        code: action.payload,
       };
+//--------------------------------------------------------------//
+    /////>> LOGIN <</////
+    case cons.GET_USER_ME:    
+    case cons.LOGOUT:
+      return {
+        ...state,
+        user: action.payload,
+      };
+//--------------------------------------------------------------//    
+    /////>> MONEY <</////
     case cons.TRANSACTIONS_GET:
-      var debit = 0;
-      var credit = 0;      
-      for (var i in action.payload) {
-        if (action.payload[i].debit) {
-          debit += parseFloat(action.payload[i].value)
-        } else {
-          credit += parseFloat(action.payload[i].value)
-        }
-      }
-      var obj = {
-        debit: debit,
-        credit: credit,
-        total: credit-debit,
-      }
+      const balance = getBalance(action.payload)
       return {
         ...state,
         transactions: action.payload,
-        fullBalance: obj,
-      }; 
+        fullBalance: balance,
+      };    
+//--------------------------------------------------------------//
+    /////>> CONTACTS <</////
+    case cons.GET_FRIENDS:
+    case cons.ADD_FRIEND:
+    case cons.UPDATE_FRIEND:
+    case cons.DELETE_FRIEND:
+      return {
+        ...state, 
+        contacts:action.payload
+      }
   }
   return state;
 };

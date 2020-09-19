@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from 'react-redux'; 
-import { View, Text, Image, ImageBackground} from 'react-native';
+import { View, Text, Image, ImageBackground, TouchableHighlight} from 'react-native';
 
 import Background from '../../assets/background.png'
 import { Card } from 'react-native-elements';
@@ -37,6 +37,9 @@ export default ({ navigation }) => {
         <Card>
           <Text>{myProfile.address}</Text>         
         </Card>
+        <TouchableHighlight>
+          <Text>Edit Profile</Text>
+        </TouchableHighlight>
       </View>
     </ImageBackground>
   )

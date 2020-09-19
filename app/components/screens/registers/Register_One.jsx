@@ -23,12 +23,12 @@ import Background from '../../../assets/background.png'
 //dispatch(actions)
 //const users = useSelector(state => state.users)
 
-export default ({navigation})=>{ 
+export default ({route, navigation})=>{ 
 //////////>> STATES <<//////////
     const [newUser, setNewUser] = useState({
         firstName: '',
         lastName: '',
-        email: '',
+        email: route.params.email,
         documentType: 'DNI',
         documentNumber: 0,
         birth: new Date((new Date().getFullYear() - 16), 0, 1),
