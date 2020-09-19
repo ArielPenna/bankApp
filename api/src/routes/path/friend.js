@@ -3,10 +3,13 @@ const { User } = require("../../db.js");
 
 
 // AGREGAR AMIGO
-server.post('/add/:id', (req, res) => {
+server.post('/add/:id', async (req, res) => {
     const { id } = req.params;
-    const { idFriend } = req.body;
-    
+    const { email } = req.body;
+    const idFriend = await User.findOne({
+        where: { email }
+    })
+
     User.findByPk(parseInt(id))
     .then( (me) => {
         console.log(me)

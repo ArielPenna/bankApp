@@ -21,7 +21,7 @@ export default function App() {
       <NavigationContainer>
       
         <Stack.Navigator>
-          {/*/////////////////////>> HOME <</////////////////////*/}
+          {/*/////////////////////>> HOME <</////////////////////*/}          
           <Stack.Screen name="Home" component={render.Home} options={headerOptions}/>
 
           {/*/////////////////////>> REGISTER <</////////////////////*/}
@@ -42,11 +42,15 @@ export default function App() {
           <Stack.Screen name="Statistics" component={render.Statistics} options={headerOptions}/>
           <Stack.Screen name="MyProducts" component={render.MyProducts} options={headerOptions}/>
           <Stack.Screen name="Transactions" component={render.Transactions} options={headerOptions}/>
-          <Stack.Screen name="MyContact" component={render.MyContact} options={headerOptions}/>
+          
           <Stack.Screen name="Add Contact" component={render.AddContact} options={headerOptions}/>
-
+          <Stack.Screen name="OnlyContact" component={render.OnlyContact} options={headerOptions}/>
+          <Stack.Screen name="MyContact" component={render.MyContact} options={headerOptions}/>
           {/*/////////////////////>> HOME <</////////////////////*/}
           <Stack.Screen name="mitarjeta" component={render.MyCard} options={headerOptions}/>
+
+          
+          
            
 
         </Stack.Navigator>
@@ -56,10 +60,10 @@ export default function App() {
   );
 }
 
-const s = StyleSheet.create({
-  container: {
-    flex: 1,    
-    alignItems: "center",
-    justifyContent: "center"
-  },
-});
+// const s = StyleSheet.create({
+//   container: {
+//     flex: 1,    
+//     alignItems: "center",
+//     justifyContent: "center"
+//   },
+// });
