@@ -42,7 +42,7 @@ server.get('/list/:id', (req, res) => {
     })
     .then(friends => res.send(friends.friend.length !== 0 ? friends.friend : 'No tenes Amigos'
     )).catch(err => res.send(err))    // error 
-  
+
 })
 
 module.exports = server;
