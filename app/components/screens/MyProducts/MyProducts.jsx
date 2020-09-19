@@ -5,7 +5,11 @@ import Background from "../../../assets/background.png";
 
 const Separator = () => <View style={styles.separator} />;
 
-export default ({ navigation }) => {
+export default ({ navigation, route }) => {
+  const { user } = route.params;
+  
+  
+  
   return (
     <ImageBackground source={Background} style={styles.container}>
         
@@ -23,7 +27,7 @@ export default ({ navigation }) => {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => navigation.navigate("mitarjeta")}>
+          <TouchableHighlight onPress={() => navigation.navigate("mitarjeta",{user:user})}>
             <View style={styles.misproductosrectangulo}>
               <Image style={styles.imgmiscuentas} source={require("../../../assets/mitarjeta.png")} />
               <Text style={styles.textmicuentas}>Mi tarjeta</Text>

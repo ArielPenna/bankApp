@@ -30,9 +30,9 @@ export default ({ navigation }) => {
     dispatch(transactions_get())    
   }, [change]);
 
-  // {console.log(user)}
-  // {console.log(transactions)}
-  // {console.log(fullBalance)}
+  {console.log(user)}
+  {console.log(transactions)}
+  {console.log(fullBalance)}
  
   
 
@@ -90,7 +90,7 @@ export default ({ navigation }) => {
             </View>
           </TouchableHighlight> */}
 
-          <TouchableHighlight onPress={() => navigation.navigate("misproductos")}>
+          <TouchableHighlight onPress={() => navigation.navigate("MyProducts", {user:user})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={Productos} />
               <Text style={styles.small}>My Products</Text>
