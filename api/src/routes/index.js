@@ -5,7 +5,7 @@ const { Router } = require("express");
 //----------------------------------------------------------------------------//
 const transactionsPath = require("./path/transactions")
 const userPath = require("./path/user")
-const addPath = require("./path/add")
+const addPath = require("./path/friend")
 const authUserPath = require("./path/auth")
 const emailPath = require("./path/email")
 
@@ -26,7 +26,7 @@ const router = Router();
 
 router.use('/user/auth', authUserPath)
 router.use('/user', userPath)
-router.use('/add', addPath)
+router.use('/friend', addPath)
 router.use('/transactions', transactionsPath)
 router.use('/email', emailPath)
 

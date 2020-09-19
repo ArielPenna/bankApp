@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   mainTitle:{
     fontSize: 12,
-    color:"white",    
+    color:"#fff",    
     textAlign:"left",
   },
   row:{
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     alignItems:"center",
   }, 
   money:{
-    color:"white",
+    color:"#fff",
     marginHorizontal:25,
     fontSize:30,
   },
