@@ -1,7 +1,7 @@
 ////////////>> MODULES <</////////////
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import { Button, View, Text, TextInput, TouchableHighlight, Image, ImageBackground} from 'react-native';
+import { View, Text, TextInput, TouchableHighlight, ImageBackground} from 'react-native';
 import {Card, Icon} from 'react-native-elements'
 
 /////////////>> SCRIPTS <<//////////////
@@ -53,12 +53,9 @@ export default ({ navigation }) => {
           <View style={style.searchContainer}>
               <View style={style.btnSearch}>
                 {/*/////////>> ICON <</////////*/}
-                <Icon  
-                    raised
-                    name='search'
-                    type='font-awesome'
-                    color='black'
-                    onPress={() => console.log('hello')} />
+                <Icon raised name='search'
+                type='font-awesome' color='black'
+                onPress={() => console.log('hello')} />
               </View>
             <TextInput style={style.inputStyle} onChangeText={hOnCh_Search} placeholder="Search contact..."/>  
           </View>

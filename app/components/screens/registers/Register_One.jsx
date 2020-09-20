@@ -1,12 +1,13 @@
 ///////////////////>> MODULS <<///////////////////
 import React, {useState} from 'react'
+import { useDispatch } from 'react-redux'
 import {View, Text, TextInput, Picker, ImageBackground, TouchableHighlight} from 'react-native'
 
 ///////////////////>> SCRIPTS <<///////////////////
 import style from './styles/RegisterStyle'
+import { location_get } from '../../../redux/actions'
 import validate from './supports/Validation_Register'
 import * as D from './supports/Date_Register' //Functions to Date Register
-import api_adress from './supports/Api_Adress_Register' //Function to Api Adress
 
 ///////////////////>> IMAGES <<///////////////////
 import Background from '../../../assets/background.png'
@@ -24,6 +25,9 @@ import Background from '../../../assets/background.png'
 //const users = useSelector(state => state.users)
 
 export default ({route, navigation})=>{ 
+
+    const dispatch = useDispatch()
+    
 //////////>> STATES <<//////////
     const [newUser, setNewUser] = useState({
         firstName: '',
@@ -53,22 +57,21 @@ export default ({route, navigation})=>{
     
     //THIS STATE IS TO HELP US IN THE ADRESS
     const [address, setAddress] = useState({
-        street_1: '',
+        street1: '',
         number: '',
-        street_2: ''
+        street2: ''
     })
     
 /////////////>> SUPPORT <</////////////////
     //////-> FUNCTIONS <-//////
     const withoutErrorLocation = () => {
-        if(address.street_1 && address.street_2 && address.number) return false
+        if(address.street1 && address.street2 && address.number) return false
         else return true
     }
 
     //SEARCH THE LOCATION WITH THE API
-    const searchDirection = ()=>{
-        const street = address.street_1 + ' y ' + address.street_2
-        api_adress(street, address.number, newUser, setNewUser, error, setError)
+    const searchDirection = ()=>{        
+        dispatch(location_get(address, newUser, setNewUser, error, setError))
     }
 
     //SEND A STRING OF THE LOCATION
@@ -151,11 +154,11 @@ export default ({route, navigation})=>{
                 {/*//////////////->DOCUMENT TYPE<-//////////////*/}
                 <View style={style.doc}>
                     <Text style={style.label}>Doc. Type</Text>
-                    {/* <Picker style={style.inputDoc}
+                    <Picker style={style.inputDoc}
                     name='documentType' onValueChange={hOnCh_NewUser}>
                         <Picker.Item key={1} label='DNI' value='DNI'/>
                         <Picker.Item key={2} label='Pas' value='Pasaporte'/>
-                    </Picker> */}
+                    </Picker> 
                 </View>
                 {/*//////////////->DOCUMENT NUMBER<-//////////////*/}
                 <View style={style.docN}>
@@ -168,27 +171,27 @@ export default ({route, navigation})=>{
             <Text style={style.label}>Birth date</Text>
             <View style={style.birth}>
                 {/*//////--> DAY <--//////*/}
-                {/* <Picker style={style.date} onValueChange={hOnCh_Birth}>
+                <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.daysTotal(date.month).map(day =>{
                         return <Picker.Item key={day} label={day.toString()} value={'1-' + day}/>
                     })}
-                </Picker> */}
+                </Picker> 
                 {/*//////--> MONTH <--//////*/}
-                {/* <Picker style={style.date} onValueChange={hOnCh_Birth}>
+                <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.months.map(month => {
                         return(
                             //month[0] name's month
                             //month[1] position's month 
                             <Picker.Item key={month[1]} label={month[0]} value={'2-' + month[1]}/>
                         )
-                    })} */}
-                {/* </Picker> */}
+                    })} 
+                </Picker> 
                 {/*//////--> YEAR <--//////*/}
-                {/* <Picker style={style.date} onValueChange={hOnCh_Birth}>
+                <Picker style={style.date} onValueChange={hOnCh_Birth}>
                     {D.yearTotal().map(year => {
                         return <Picker.Item key={year} label={year.toString()} value={'3-' + year}/>
                     })}
-                </Picker> */}
+                </Picker> 
             </View>
 
 {/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}
@@ -196,13 +199,13 @@ export default ({route, navigation})=>{
             <View style={style.adressContainer}>
             <Text style={style.subLabel}>Principal Street</Text>
                 <View style={style.streetPrincipal}>                    
-                    <TextInput style={style.inputStreet} editable name='street_1' onChange={hOnCh_Adress}/>
+                    <TextInput style={style.inputStreet} editable name='street1' onChange={hOnCh_Adress}/>
                     <TextInput style={style.inputSubStreet} keyboardType='numeric' 
                     editable name='number' onChange={hOnCh_Adress} placeholder='N°'/>
                 </View>
                 <View>
                     <Text style={style.subLabel}>One street that cuts the principal</Text>
-                    <TextInput style={style.inputR} editable name='street_2' onChange={hOnCh_Adress}/>
+                    <TextInput style={style.inputR} editable name='street2' onChange={hOnCh_Adress}/>
                 </View>
                 <TouchableHighlight onPress={searchDirection} disabled={withoutErrorLocation()}
                 style={withoutErrorLocation() ? style.appButtonContainerFalse : style.appButtonContainer}>
