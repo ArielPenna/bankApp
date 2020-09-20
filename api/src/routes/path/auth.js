@@ -45,7 +45,7 @@ server.post('/register', (req, res) => {
         access
     })
         .then(async (user) => {
-            while(true){
+            do {
                 let code = '' // genero un codigo VVV
                 for (i=0; i<10; i++) code += characters.charAt(Math.floor(Math.random() * characters.length));
                 // lo busco para asegurarme de que no se repita
@@ -59,7 +59,7 @@ server.post('/register', (req, res) => {
                     return user // pasamanos de usuario
                 }
                 // si si existe itero
-            }
+            } while(true)
         })
         .then(user => {
             Wallet.create({ // creacion de billetera
