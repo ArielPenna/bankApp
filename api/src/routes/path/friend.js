@@ -1,6 +1,6 @@
 const estaAutenticado = require("../../Suppliers/authenticateFunction")
 const server = require("express").Router();
-const { User, Contact } = require("../../db.js");
+const { User, Contact, Account } = require("../../db.js");
 
 
 //-----------------------------------------------------------------------------//
@@ -34,7 +34,8 @@ server.post('/add', estaAutenticado, async (req, res) => {
         Contact.create({
                 friend: me.id,
                 friended: friend.id,
-                nickName
+                nickName,
+                email
             })
             .then((create) => res.send(create))
             .catch(err => {
@@ -76,12 +77,29 @@ server.put('/edit', estaAutenticado, (req, res) => {
 //-----------------------------------------------------------------------------//
 //                        LISTAR AMIGOS                                        //
 //-----------------------------------------------------------------------------//
-server.get('/list', estaAutenticado, (req, res) => {
+server.get('/list', estaAutenticado, async (req, res) => {
     const { id } = req.user; // muestro si estoy autenticado
     
-    Contact.findAll({ where: { friend: id } })
-        .then(friends => res.send(friends.length ? friends : [] /*No tiene amigos*/))
-        .catch(err => res.send(err))    // error 
+    const contacts = await Contact.findAll({ where: { friend: id } })
+    if(!contacts) res.send('no tenes amigos')
+    else res.send(contacts)
 })
+
+//-----------------------------------------------------------------------------//
+//                         TRAER AMIGO                                         //
+//-----------------------------------------------------------------------------//
+server.get('/:idFriend', estaAutenticado, async (req, res) => {
+    const { idFriend } = req.params;
+
+    const friend = await User.findByPk(idFriend, {
+                include: [{model: Account, attributes: ['cvu']}],
+                attributes: { exclude: ['password', 'access', 'createdAt', 'updatedAt'] }
+            }
+        )
+
+    if(!friend) res.send('el amigo no existe')
+    else res.send(friend)
+})
+
 
 module.exports = server;
