@@ -28,10 +28,35 @@ export const search_code = (code) => {
   return (dispatch) => {
     instance.post("email/searchcod", code)
     .then(res => {
+      console.log(res.data)
       dispatch({type: cons.SEARCH_CODE, payload: res.data})
     })
   };
 };
+
+//////>> LOCATION GET <<///////
+export const location_get = (location, newUser, setNewUser, error, setError) => {
+  return ()=>{
+    instance.post('api/location/get', location)
+    .then(res => {
+      console.log(res)
+      
+      ///////---> SET ADDRESS <------////
+
+      if(res.data.length){
+          setError({
+              ...error,
+              address: ''
+          })
+          setNewUser({
+              ...newUser,
+              address: location.number + ', ' + res.data[0].address
+          })
+      }    
+    })
+    .catch(err => console.log(err))
+  }  
+}
 
 ///////>> REGISTER <<////////
 export const register_user__post = (user)=>{
@@ -88,9 +113,9 @@ export const recharge_wallet = (balance) => {
 //##############>>> ¡CONTACTS! <<<##############//
 
 //////>> GET CONTACTS <<//////
-export const get_friends = (id) =>{
+export const get_friends = () =>{
   return (dispatch) => {
-    instance.get(`friend/list/${id}`)
+    instance.get('friend/list')
       .then(res => {
         dispatch({type: cons.GET_FRIENDS, payload: res.data})
       })
@@ -98,19 +123,29 @@ export const get_friends = (id) =>{
 }
 
 ///////>> ADD FRIEND <<////////
-export const add_friend = (user, id) => {
+export const add_friend = (friend) => {
   return (dispatch) => {
-    instance.post('friend/add/'+ id , user)
+    instance.post('friend/add' , friend)
       .then(res => {
         dispatch({type: cons.ADD_FRIEND, payload: res.data})
       })
   }
 }
 
-//////>> DELETE FRIEND <<///////
-export const delete_friend = (user, id) => {
+//////>> EDIT FRIEND <<///////
+export const update_friend = (friend) => {
   return (dispatch) => {
-    instance.delete(`friend/delete/${id}`, user)
+    instance.put('friend/edit', friend)
+      .then(res => {
+        dispatch({type: cons.UPDATE_FRIEND, payload: res.data})
+      })
+  }
+}
+
+//////>> DELETE FRIEND <<///////
+export const delete_friend = (user) => {
+  return (dispatch) => {
+    instance.delete('friend/delete', user)
       .then(res => {
         dispatch({type: cons.DELETE_FRIEND, payload: res.data})
       })
