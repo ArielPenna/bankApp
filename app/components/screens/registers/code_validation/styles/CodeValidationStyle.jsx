@@ -37,6 +37,14 @@ const styles = StyleSheet.create({
       marginTop: 150
     },
 
+    subTitleX:{
+      fontSize: 25,
+      color:"#fff",
+      fontWeight: '8',
+      textAlign:"center",
+      marginTop: 50
+    },
+
     appButtonContainerAgain: {
       width: '60%',
       marginLeft: '75px',

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {View, TouchableHighlight, Text, Image, ImageBackground} from 'react-native';
-import styles from './MyCardStyle'
+import styles from './styles/MyCardStyle'
 import Background from '../../../assets/background.png'
 import Tarjeta from '../../../assets/tarjeta.png'
 import Saldo from "../../../assets/saldo.png"

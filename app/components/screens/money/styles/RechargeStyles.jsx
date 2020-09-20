@@ -4,28 +4,30 @@ const styles = StyleSheet.create({
    container:{
       flex:1
    },
+
    title:{
       marginLeft:75,
       marginTop:30,
       color:"#fff",
       width:200,
       fontSize:25,
-      textAlign:"center",
-      
+      textAlign:"center",      
    },
+
    containerInput:{
       marginLeft:15,
       marginTop:50,
-      fontSize:30,
       height:500,
       width:350,
       borderRadius:15,
       backgroundColor:"white"
    },
+
    text:{
       fontSize:25,
       padding:15,
    },
+   
    inputMoney:{
       display:"flex",
       marginTop:55,
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
       width: '90%',
       marginLeft: '20px',
       marginBottom: '10px',
-      textAlign:"center",
+      
       marginTop: -23,
       backgroundColor: "#009688",
       borderRadius: 5,
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
    appButtonText:{
       color:"#fff",
       fontSize:25,
-
+      textAlign:"center"
    }
 })
 
