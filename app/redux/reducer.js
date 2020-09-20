@@ -4,7 +4,7 @@ import * as cons from "./constants";
 const getBalance = (payload) => {
 
     var debit = 0;
-    var credit = 0;     
+    var credit = 0;  
 
     for (var i in payload) {
       if (payload[i].debit) {

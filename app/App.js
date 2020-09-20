@@ -1,10 +1,9 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { Provider } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import store from "./redux/store";
-import * as render from "./components/imports/AppImpots";
+import * as render from "./components/imports/AppImports";
 
 const Stack = createStackNavigator();
 
@@ -15,6 +14,7 @@ const headerOptions = {
     height: 50,
   },
 };
+
 export default function App() {
   return (
     <Provider store={store}>
@@ -35,26 +35,37 @@ export default function App() {
 
           {/*/////////////////////>> MAIN <</////////////////////*/}
           <Stack.Screen name="Main" component={render.Main} options={headerOptions}/>
-          <Stack.Screen name="Account" component={render.Account} options={headerOptions}/>
-          <Stack.Screen name="Recharge" component={render.Recharge} options={headerOptions}/>
-          <Stack.Screen name='ValidateCharge' component={render.ValidateCharge}/>
-          <Stack.Screen name="SendMoney" component={render.SendMoney} options={headerOptions}/>
-          <Stack.Screen name="Statistics" component={render.Statistics} options={headerOptions}/>
-          <Stack.Screen name="MyProducts" component={render.MyProducts} options={headerOptions}/>
+
+          {/*///////-> TRANSACTIONS <-////////*/}
           <Stack.Screen name="Transactions" component={render.Transactions} options={headerOptions}/>
-          <Stack.Screen name="MyProfile" component={render.MyProfile} options={headerOptions}/> 
-
-
           
-          <Stack.Screen name="Add Contact" component={render.AddContact} options={headerOptions}/>
-          <Stack.Screen name="OnlyContact" component={render.OnlyContact} options={headerOptions}/>
-          <Stack.Screen name="MyContact" component={render.MyContact} options={headerOptions}/>
-          {/*/////////////////////>> HOME <</////////////////////*/}
+          {/*///////-> STATISTICS <-////////*/}
+          <Stack.Screen name="Statistics" component={render.Statistics} options={headerOptions}/>
+
+          {/*///////-> MY PROFILE <-////////*/}
+          <Stack.Screen name="MyProfile" component={render.MyProfile} options={headerOptions}/>
+
+          {/*///////-> MY PRODUCTS <-////////*/}
+          <Stack.Screen name="MyProducts" component={render.MyProducts} options={headerOptions}/>
+
+          {/*//--> MY ACCOUNT <--//*/}
+          <Stack.Screen name="Account" component={render.Account} options={headerOptions}/>
+
+          {/*//--> MY CARD <--//*/}
           <Stack.Screen name="MyCard" component={render.MyCard} options={headerOptions}/>
 
-          
-          
-           
+          {/*//--> MY CONTACTS <--//*/}
+          <Stack.Screen name="MyContact" component={render.MyContact} options={headerOptions}/>
+          <Stack.Screen name="OnlyContact" component={render.OnlyContact} options={headerOptions}/>
+          <Stack.Screen name="Add Contact" component={render.AddContact} options={headerOptions}/>
+          <Stack.Screen name="Edit Contact" component={render.EditContact} options={headerOptions}/>
+
+          {/*///////-> RECHARGE <-////////*/}
+          <Stack.Screen name="Recharge" component={render.Recharge} options={headerOptions}/>
+          <Stack.Screen name='ValidateCharge' component={render.ValidateCharge}/>
+
+          {/*///////-> SEND MONEY <-////////*/}
+          <Stack.Screen name="SendMoney" component={render.SendMoney} options={headerOptions}/>      
 
         </Stack.Navigator>
       
@@ -62,11 +73,3 @@ export default function App() {
       </Provider>
   );
 }
-
-// const s = StyleSheet.create({
-//   container: {
-//     flex: 1,    
-//     alignItems: "center",
-//     justifyContent: "center"
-//   },
-// });

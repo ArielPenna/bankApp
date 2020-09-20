@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",    
   },
+
   img:{    
     alignSelf:"center",
     width:200,
@@ -16,12 +17,14 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginBottom:80,
   },
+
   mainTitle:{
     fontSize: 24,
     color:"#fff",
     fontWeight: "bold",
     textAlign:"center",
   }, 
+
   button: {    
     backgroundColor: "#f7b700",    
     justifyContent:"space-around",
@@ -34,6 +37,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4.65,
     elevation: 8,
   },
+
   buttonText: {
     color: "#752667",    
     textAlign: "center",
@@ -41,6 +45,7 @@ const styles = StyleSheet.create({
     alignItems:"center",
     fontWeight: "bold",      
   },
+  
   separator: {
     marginVertical: 10,   
   },

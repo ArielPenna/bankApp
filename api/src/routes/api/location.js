@@ -5,9 +5,9 @@ const axios = require("axios")
 //  Esta es la consulta a la api de RapidApi    //
 //  devuelve un array de objetos de locacion    //
 //----------------------------------------------//
-server.get('/get', (req, res) => {
+server.post('/get', (req, res) => {
     const {street1, street2} = req.body
-
+    
     if(!street1 || !street2) res.send('street1 o street2 son invalidos')
 
     else {

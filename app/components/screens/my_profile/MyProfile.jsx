@@ -2,17 +2,15 @@ import React from 'react';
 import {useSelector} from 'react-redux'; 
 import { View, Text, Image, ImageBackground, TouchableHighlight} from 'react-native';
 
-import Background from '../../assets/background.png'
+import Background from '../../../assets/background.png'
 import { Card } from 'react-native-elements';
-
-
 
 export default ({ navigation }) => {
 
   const myProfile= useSelector(state => state.user)   
 
   return (    
-    <ImageBackground source={Background}>
+    <ImageBackground source={Background} style={{flex:1}}>
       <View>
         <Text h1>My profile</Text>         
           
