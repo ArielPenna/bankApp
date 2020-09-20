@@ -21,9 +21,6 @@ export default function App() {
       <NavigationContainer>
       
         <Stack.Navigator>
-          {/*///////-> SEND MONEY <-////////*/}
-          <Stack.Screen name="SendMoney" component={render.SendMoney} options={headerOptions}/>
-
           {/*/////////////////////>> HOME <</////////////////////*/}          
           <Stack.Screen name="Home" component={render.Home} options={headerOptions}/>
 
@@ -67,7 +64,8 @@ export default function App() {
           <Stack.Screen name="Recharge" component={render.Recharge} options={headerOptions}/>
           <Stack.Screen name='ValidateCharge' component={render.ValidateCharge}/>
 
-                
+          {/*///////-> SEND MONEY <-////////*/}
+          <Stack.Screen name="SendMoney" component={render.SendMoney} options={headerOptions}/>      
 
         </Stack.Navigator>
       
