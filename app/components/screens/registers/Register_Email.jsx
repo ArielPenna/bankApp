@@ -70,20 +70,29 @@ export default ({navigation}) => {
         <ImageBackground source={Background} style={style.container}>
             {typeof send === 'string' && navigation.navigate('Code', mail)}
             <View>
+                {/*///////////////////>> TITLE <<///////////////*/}
                 <Text style={style.mainTitle}>Register your email</Text>
+
+                {/*///////////////////>> INPUT <<///////////////*/}
                 <TextInput onChange={hOnCh_Mail} editable name='documentNumber' style={style.input}/>
+                
+                {/*///////////////////>> SEND MAIL <<///////////////*/}
                 <TouchableHighlight onPress={sendEmail} disabled={withError()}
                 style={withError() ? style.appButtonContainerFalse : style.appButtonContainer}>
                     <Text style={withError() ? style.appButtonTextFalse : style.appButtonText}>Send</Text>
                 </TouchableHighlight>
+
+                {/*///////////////////>> IF THE USER IS REGISTER <<///////////////*/}
                 {!send && 
                 <View>
-                    <Text>El mail ya se encuentra en uso</Text>
-                    <TouchableHighlight onPress={sendEmail} style={style.appButtonContainer}>
+                    <Text style={style.subTitleX}>The mail is already in use</Text>
+                    <TouchableHighlight onPress={()=>{navigation.navigate('Login')}}
+                    style={style.appButtonContainer}>
                     <Text style={style.appButtonText}>LogIn</Text>
                     </TouchableHighlight>
-                </View>
-                }
+                </View>}
+
+                {/*//////////////////////////////////////////////////////////////*/}
             </View>
         </ImageBackground>
     );

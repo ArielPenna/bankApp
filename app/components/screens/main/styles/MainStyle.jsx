@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     height: "100%",      
     alignItems: "center",   
   },
+
   img:{    
     alignSelf:"center",
     width:70,
@@ -14,9 +15,9 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.30,
-    shadowRadius: 4.65,
-    elevation: 8,
+    shadowRadius: 4.65
   },
+
   ico:{    
     alignSelf:"center",
     width:50,

@@ -85,7 +85,6 @@ export default ({navigation}) => {
     const onLogin = () => {
         try{ 
           dispatch(login_user__post(login));
-          console.log("usuarioLogueado");
           navigation.navigate('Main')
         } 
         catch(err){console.log(err)}
@@ -109,7 +108,7 @@ export default ({navigation}) => {
             <TextInput style={style.inputR} secureTextEntry={true} editable placeholder='Contraseña' name='password' onChange={hOnCh_Login}/>
 
           {/*///////////////////////>> LOGIN <<///////////////////////*/}
-            <TouchableHighlight /* disabled={withError()} */  style={withoutError() ? style.buttonFalse : style.button} onPress={onLogin}>             
+            <TouchableHighlight disabled={withError()}  style={withoutError() ? style.buttonFalse : style.button} onPress={onLogin}>             
               <Text style={withoutError() ? style.buttonTextFalse : style.buttonText}>ENTER</Text>            
             </TouchableHighlight> 
             

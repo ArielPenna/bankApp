@@ -28,10 +28,35 @@ export const search_code = (code) => {
   return (dispatch) => {
     instance.post("email/searchcod", code)
     .then(res => {
+      console.log(res.data)
       dispatch({type: cons.SEARCH_CODE, payload: res.data})
     })
   };
 };
+
+//////>> LOCATION GET <<///////
+export const location_get = (location, newUser, setNewUser, error, setError) => {
+  return ()=>{
+    instance.post('api/location/get', location)
+    .then(res => {
+      console.log(res)
+      
+      ///////---> SET ADDRESS <------////
+
+      if(res.data.length){
+          setError({
+              ...error,
+              address: ''
+          })
+          setNewUser({
+              ...newUser,
+              address: location.number + ', ' + res.data[0].address
+          })
+      }    
+    })
+    .catch(err => console.log(err))
+  }  
+}
 
 ///////>> REGISTER <<////////
 export const register_user__post = (user)=>{

@@ -1,51 +1,69 @@
+//////////////>> MODULES <<///////////
 import React from "react";
-import { Button, View, SafeAreaView, Text, Image, ImageBackground, TouchableHighlight } from "react-native";
-import styles from "./accountStyle";
+import { View, Text, Image, ImageBackground, TouchableHighlight, Clipboard } from "react-native";
+
+/////////////>> SCRIPTS <<///////////
+import styles from "./styles/AccountStyle";
+
+////////////>> IMGS <<//////////
 import Background from "../../../assets/background.png";
-// import styles from './styles/HomeStyle'
+import AssociateCVU from "../../../assets/asociarcvu.png"
+import ShareCVU from "../../../assets/compartircvu.png"
 
-function copiarAlPortapapeles(id_elemento) {
-  var aux = document.createElement("input");
-  aux.setAttribute("value", document.getElementById(id_elemento).innerText);
-  document.body.appendChild(aux);
-  aux.select();
-  document.execCommand("copy");
-  document.body.removeChild(aux);
-}
+export default ({ route, navigation }) => {
 
-export default ({ navigation }) => {
+  /////////>> PARAMS <<///////////
+  const { name, cvu } = route.params
+
+  ////////>> SUPPORT <<///////////
+
+  ///////>> VAR <<//////////// 
+  const idCVU = "p1" //This is for have the id of the 
+
+  ///////>> FUNCTION <<//////////
+  const copyToClipboard = ()=>{
+    Clipboard.setString(cvu) //With this we can copy the URL (Warning)
+  }
+  
   return (
     <ImageBackground source={Background} style={styles.container}>
       <View>
-        <Text style={styles.centerText}>My Account</Text>         
-        <View style={styles.cvuaccount}>
-          
-            <Text style={styles.textaccount}>Client: NAME</Text>
-            <Text style={styles.textaccount}>CVU:</Text>
-            <Text style={styles.textaccount} id="p1">2020202020202020202020</Text>
+        {/*/////////////>> TITLE <<///////////////*/}
+        <Text style={styles.centerText}>My Account</Text> 
 
+        {/*/////////////>> INFO BOX <<///////////////*/}
+        <View style={styles.cvuaccount}>
+
+            {/*/////------->> NAME <<-------////*/}          
+            <Text style={styles.textaccount}>Client:</Text>
+            <Text style={styles.textaccount}>{name}</Text>
+
+            {/*/////------->> CVU <<-------////*/}   
+            <Text style={styles.textaccount}>CVU:</Text>
+            <Text style={styles.textaccount} id={idCVU}> { cvu } </Text>
         </View>
-      
+
+        {/*/////////////>> BUTTONS <<///////////////*/}
         <View style={styles.row}>
+
+          {/*/////------->> ASSOCIATE CVU <<-------////*/}   
           <TouchableHighlight onPress={() => navigation.navigate("")}>
             <View style={styles.touch}>
-              <Image style={styles.ico} source={require("../../../assets/asociarcvu.png")} />
-              <Text style={styles.small}>associate CVU</Text>
+              <Image style={styles.ico} source={AssociateCVU} />
+              <Text style={styles.small}>Associate CVU</Text>
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => copiarAlPortapapeles("p1", alert("Se ha copiado tu CVU"))}>
-         
+          {/*/////------->> SHARE CVU <<-------////*/} 
+          <TouchableHighlight onPress={ copyToClipboard }>        
             <View style={styles.touch}>
-              <Image style={styles.ico} source={require("../../../assets/compartircvu.png")} />
+              <Image style={styles.ico} source={ShareCVU} />
               <Text style={styles.small}>Share cvu</Text>
             </View>
           </TouchableHighlight>
-        </View>
-      
-      
-      </View>      
-      
+        </View>      
+      {/*/////////////////////////////////////////////////*/} 
+      </View>            
     </ImageBackground>
   )
 }
