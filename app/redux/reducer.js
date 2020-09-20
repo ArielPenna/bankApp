@@ -23,6 +23,7 @@ const getBalance = (payload) => {
 
 ///////>> STATE <</////
 const initialState = {
+  register: false,
   user: undefined,
   sendEmail: [],
   code: false,
@@ -45,8 +46,14 @@ export default (state = initialState, action) => {
         ...state,
         code: action.payload,
       };
+    case cons.SUCCESSFUL_REGISTER:
+      return {
+        ...state,
+        register: action.payload
+      }
 //--------------------------------------------------------------//
     /////>> LOGIN <</////
+    case cons.LOGIN:
     case cons.GET_USER_ME:    
     case cons.LOGOUT:
       return {

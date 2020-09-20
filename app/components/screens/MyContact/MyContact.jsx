@@ -28,8 +28,8 @@ export default ({ navigation }) => {
 
   //This function is to filter the array we have 
   //with the user type on the search bar 
-  const filter = contacts.filter(c => {
-    return c.name.toLowerCase().includes(search.toLowerCase())
+  const filter = contact.filter(c => {
+    return c.nickName.toLowerCase().includes(search.toLowerCase())
   })
 
   ///////>> HANDLER ON CHANGES (hOnCh) <<///////
@@ -66,19 +66,21 @@ export default ({ navigation }) => {
         </TouchableHighlight>
 
         {/*/////////>> CARDS <</////////*/}
-        {contacts.length && filter.map(c => {
+        {contact.length ? filter.map(c => {
           return (
               <Card style={style.cardContainer} >
                 <Card.Title style={style.cardTitle} onPress={()=>navigation.navigate('OnlyContact', c)}>
-                  {c.name}
+                  {c.nickName}
                 </Card.Title>
                   <Card.Divider/>
                     <View >
-                      <Text style={style.cardText} onPress={()=>navigation.navigate('OnlyContact', c)}>{c.email}</Text>
+                      <Text style={style.cardText} onPress={()=>navigation.navigate('OnlyContact', c)}>{/*c.email*/}</Text>
                     </View>
               </Card>
           )
           })
+          :
+          <Text> You haven't added any friends yet </Text>
         }
 
       </View>      

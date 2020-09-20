@@ -60,8 +60,11 @@ export const location_get = (location, newUser, setNewUser, error, setError) => 
 
 ///////>> REGISTER <<////////
 export const register_user__post = (user)=>{
-  return () => {
+  return (dispatch) => {
     instance.post('user/auth/register', user)
+      .then(res => {
+        dispatch({type: cons.SUCCESSFUL_REGISTER, payload: true})
+      })
   }
 }
 
@@ -69,8 +72,12 @@ export const register_user__post = (user)=>{
 
 ///////>> LOGIN <<////////
 export const login_user__post = (user) => {
-  return () => {
+  return (dispatch) => {
     instance.post("user/auth/login", user)
+      .then(res => {
+        console.log(res)
+        dispatch({type: cons.LOGIN, payload: true})
+      })
   };
 };
 
@@ -117,6 +124,7 @@ export const get_friends = () =>{
   return (dispatch) => {
     instance.get('friend/list')
       .then(res => {
+        console.log(res)
         dispatch({type: cons.GET_FRIENDS, payload: res.data})
       })
   }

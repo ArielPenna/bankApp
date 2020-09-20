@@ -80,7 +80,7 @@ server.get('/list', estaAutenticado, (req, res) => {
     const { id } = req.user; // muestro si estoy autenticado
     
     Contact.findAll({ where: { friend: id } })
-        .then(friends => res.send(friends.length ? friends : 'No tenes Amigos'))
+        .then(friends => res.send(friends.length ? friends : [] /*No tiene amigos*/))
         .catch(err => res.send(err))    // error 
 })
 
