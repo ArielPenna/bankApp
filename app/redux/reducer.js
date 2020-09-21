@@ -23,10 +23,7 @@ const getBalance = (payload) => {
 
 ///////>> STATE <</////
 const initialState = {
-  register: false,
   user: undefined,
-  sendEmail: [],
-  code: false,
   transactions: {},
   fullBalance: {},
   contacts:[],
@@ -36,25 +33,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
 //--------------------------------------------------------------//
-    ////>> REGISTER <</////
-    case cons.SEND_MAIL:
-      return {
-        ...state,
-        sendEmail: action.payload,
-      };
-    case cons.SEARCH_CODE:
-      return {
-        ...state,
-        code: action.payload,
-      };
-    case cons.SUCCESSFUL_REGISTER:
-      return {
-        ...state,
-        register: action.payload
-      }
-//--------------------------------------------------------------//
     /////>> LOGIN <</////
-    case cons.LOGIN:
     case cons.GET_USER_ME:    
     case cons.LOGOUT:
       return {

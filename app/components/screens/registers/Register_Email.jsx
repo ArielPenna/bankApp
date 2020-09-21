@@ -1,8 +1,7 @@
 //////////////// MODELS ////////////////
 import React ,{useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
 import { View, Text, TextInput, ImageBackground, TouchableHighlight } from 'react-native';
-import { Button, Icon} from 'react-native-elements'
+import { Button } from 'react-native-elements'
 
 //////////////// SCRIPTS ////////////////
 import {send_mail__post} from '../../../redux/actions'
@@ -13,8 +12,7 @@ import Background from '../../../assets/background.png'
 
 
 export default ({navigation}) => {
-    const dispatch = useDispatch()
-    const send = useSelector(state => state.sendEmail)
+
 ///////>> STATES <<///////
     const [mail, setMail] = useState({
     email:''
@@ -23,6 +21,9 @@ export default ({navigation}) => {
     const [error, setError] = useState({
         email: '*'
     })
+
+    const [send, setSend] = useState(true)
+    const [loading, setLoading] = useState(false)
 
 //////>> SUPPORTS <<//////
     ////-> VARS <-////
@@ -59,9 +60,10 @@ export default ({navigation}) => {
     }
 
 ///////>> DISPATCH <<//////
-    const sendEmail = () => {
+    const sendEmail = async () => {
         try {
-            dispatch(send_mail__post(mail))
+            setLoading(true)
+            send_mail__post(mail, setSend, setLoading)
         }catch (error) {
             console.log(error)
         }
@@ -78,17 +80,16 @@ export default ({navigation}) => {
                 <TextInput onChange={hOnCh_Mail} editable name='documentNumber' style={style.input}/>
                 
                 {/*///////////////////>> SEND MAIL <<///////////////*/}
-                <TouchableHighlight onPress={sendEmail} disabled={withError()}
-                style={withError() ? style.appButtonContainerFalse : style.appButtonContainer}>
-                    <Text style={withError() ? style.appButtonTextFalse : style.appButtonText}>Send</Text>
-                </TouchableHighlight>
-
-                {/*<Button title='send' onPress={sendEmail} loading={false}/>*/}
+                <Button title='SEND' onPress={sendEmail} disabled={withError()} loading={loading}
+                disabledStyle={style.appButtonContainerFalse} 
+                disabledTitleStyle={style.appButtonTextFalse}
+                titleStyle={style.appButtonText}
+                buttonStyle={style.appButtonContainer}/>
 
                 {/*///////////////////>> IF THE USER IS REGISTER <<///////////////*/}
                 {!send && 
                 <View>
-                    <Text style={style.subTitleX}>The mail is already in use</Text>
+                    <Text style={style.subTitleX}>This mail is already in use</Text>
                     <TouchableHighlight onPress={()=>{navigation.navigate('Login')}}
                     style={style.appButtonContainer}>
                     <Text style={style.appButtonText}>LogIn</Text>

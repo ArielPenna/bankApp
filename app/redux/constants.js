@@ -1,10 +1,4 @@
-/////////////////////>> REGISTER <</////////////////////
-export const SEND_MAIL = "SEND_MAIL";
-export const SEARCH_CODE = "SEARCH_CODE";
-export const SUCCESSFUL_REGISTER = "SUCCESSFUL_REGISTER";
-
 /////////////////////>> LOGIN <</////////////////////
-export const LOGIN = "LOGIN";
 export const GET_USER_ME = "GET_USER_ME";
 export const LOGOUT = "LOGOUT__GET";
 

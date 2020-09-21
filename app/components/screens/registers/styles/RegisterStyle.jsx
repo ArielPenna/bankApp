@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
       height: 10,
       flex:1,
       flexDirection: 'row',
-      marginBottom: -230
+      marginBottom: -200
    },
    doc:{
       flex:1,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
    birth:{
       flexDirection: 'row',
       justifyContent: 'space-around',
-      marginBottom: 5
+      marginBottom: 5,
    },
    date:{
       width:'25%',
