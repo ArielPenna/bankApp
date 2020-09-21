@@ -14,7 +14,7 @@ import MyContacts from "../../../assets/miscontactos.png"
 const Separator = () => <View style={styles.separator} />;
 
 export default ({ navigation, route }) => {
-  const { user } = route.params;  
+  const { user, chng, total,  } = route.params;  
 
   const toMyAccount = {
     name: `${user.firstName} ${user.lastName}`, 
@@ -47,7 +47,7 @@ export default ({ navigation, route }) => {
           </TouchableHighlight>
 
           {/*///////////////>> BUTTON MY CONTACT <</////////////*/}
-          <TouchableHighlight onPress={() => navigation.navigate("MyContact")}>
+          <TouchableHighlight onPress={() => navigation.navigate("MyContact", {chng, total})}>
             <View style={styles.misproductosrectangulo}>
               <Image style={styles.imgmiscuentas} source={MyContacts} />
               <Text style={styles.textmicuentas}>Mis Contactos</Text>

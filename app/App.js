@@ -66,7 +66,8 @@ export default function App() {
           <Stack.Screen name='ValidateCharge' component={render.ValidateCharge}/>
 
           {/*///////-> SEND MONEY <-////////*/}
-          <Stack.Screen name="SendMoney" component={render.SendMoney} options={headerOptions}/>      
+          <Stack.Screen name="Send Money to Contacts" component={render.SendMoneyContacts} options={headerOptions}/>
+          <Stack.Screen name="Send Money" component={render.SendMoney} options={headerOptions}/>      
 
         </Stack.Navigator>
       

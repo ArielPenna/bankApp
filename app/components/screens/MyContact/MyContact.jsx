@@ -12,7 +12,7 @@ import style from './styles/MyContactStyles'
 ////////////>> IMGS <<////////////////
 import Background from '../../../assets/background.png'
 
-export default ({ navigation }) => {
+export default ({ route, navigation }) => {
 
   ////////>> REDUX <<//////////
   const dispatch = useDispatch()
@@ -54,8 +54,7 @@ export default ({ navigation }) => {
               <View style={style.btnSearch}>
                 {/*/////////>> ICON <</////////*/}
                 <Icon raised name='search'
-                type='font-awesome' color='black'
-                onPress={() => console.log('hello')} />
+                type='font-awesome' color='black'/>
               </View>
             <TextInput style={style.inputStyle} onChangeText={hOnCh_Search} placeholder="Search contact..."/>  
           </View>
@@ -67,20 +66,29 @@ export default ({ navigation }) => {
 
         {/*/////////>> CARDS <</////////*/}
         {contact.length ? filter.map(c => {
+          //THIS IS THE OBJ WE SEND TO ONLY CONTACT
+          const onlyContact = {
+            idFriend: c.friended, 
+            nickName: c.nickName, 
+            update: setChange,
+            chng: route.params.chng,
+            total: route.params.total
+          }
+
           return (
               <Card style={style.cardContainer} >
-                <Card.Title style={style.cardTitle} onPress={()=>navigation.navigate('OnlyContact', {idFriend: c.friended, nickName: c.nickName, update: setChange})}>
+                <Card.Title style={style.cardTitle} onPress={()=>navigation.navigate('OnlyContact', onlyContact)}>
                   {c.nickName}
                 </Card.Title>
                   <Card.Divider/>
                     <View >
-                      <Text style={style.cardText} onPress={()=>navigation.navigate('OnlyContact', {idFriend: c.friended, nickName: c.nickName, update: setChange})}>{c.email}</Text>
+                      <Text style={style.cardText} onPress={()=>navigation.navigate('OnlyContact', onlyContact)}>{c.email}</Text>
                     </View>
               </Card>
           )
           })
           :
-          <Text> You haven't added any friends yet </Text>
+          <Text style={style.cardText}> You haven't added any friends yet </Text>
         }
 
       </View>      

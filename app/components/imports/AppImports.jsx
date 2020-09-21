@@ -44,6 +44,7 @@ import Recharge from '../screens/money/Recharge'
 import ValidateCharge from '../screens/money/ValidateCharge'
 
 ///////////////>>>>>> SEND MONEY <<<<<<</////////////////////////
+import SendMoneyContacts from '../screens/money/SendMoneyContacts'
 import SendMoney from '../screens/money/SendMoney'
 
 
@@ -62,21 +63,42 @@ export {Login}
 
 /////////////// MAIN /////////////////
 export {Main}
-export {Account}
-export {Recharge}
-export {ValidateCharge}
-export {SendMoney}
-export {Statistics}
-export {MyProducts}
-export {Transactions}
-export {MyProfile}
-export {EditProfile}
 
-//----> CONTACT <--------//
+//// TRANSACTIONS ////
+export {Transactions}
+
+//// STATISTICS ////
+export {Statistics}
+
+//// MY PROFILE ////
+export {MyProfile}
+<<<<<<< HEAD
+export {EditProfile}
+=======
+
+//// MY PRODUCTS ////
+export {MyProducts}
+>>>>>>> master
+
+//// MY ACCOUNT ////
+export {Account}
+
+//// MY CARD ////
+export {MyCard}
+
+//// CONTACTS ////
 export {MyContact} 
 export {AddContact}
 export {OnlyContact}
 export {EditContact}
 
-//////////////// MIS PRODUCTOS //////////////
-export {MyCard}
+//// RECHARGES ////
+export {Recharge}
+export {ValidateCharge}
+
+//// SEND MONEY ////
+export {SendMoneyContacts}
+export {SendMoney}
+
+
+
