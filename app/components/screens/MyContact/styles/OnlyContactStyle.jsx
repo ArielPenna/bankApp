@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
+
    container:{
       flex:1,
       alignContent:"center",    
@@ -8,15 +9,23 @@ const styles = StyleSheet.create({
       alignItems: "center" 
    },
 
+   subTitle:{
+      color: 'white',
+      fontSize: 20,
+      marginBottom: 30,
+      marginTop: 10,
+      marginLeft: 50
+   },
+
    name:{
       color: "white",
       fontSize: 45,
       display: "flex",
       justifyContent: "center",
-      marginBottom:25
+      marginBottom: 25,      
    },
 
-  containerDate:{
+   containerDate:{
       backgroundColor:"white",
       width:350,
       borderRadius:25,

@@ -1,7 +1,7 @@
 ///////////////////>> MODULS <<///////////////////
 import React, {useState} from 'react'
-import {View, Text, TextInput, Image, ImageBackground,TouchableHighlight} from 'react-native'
-import {useDispatch} from 'react-redux'
+import { View, Text, TextInput, Image, ImageBackground } from 'react-native'
+import { Button } from 'react-native-elements'
 
 ///////////////////>> SCRIPTS <<///////////////////
 import {login_user__post} from '../../../redux/actions'
@@ -17,7 +17,6 @@ import Logo from '../../../assets/logo.png'
 //hOnCh === handlerOnChange
 
 export default ({navigation}) => {
-    const dispatch = useDispatch()
 
 ///////////>> STATES <<////////////
     const [login, setLogin]= useState ({
@@ -29,6 +28,9 @@ export default ({navigation}) => {
       email:'*',
       password:'*'
     })
+
+    const [auth, setAuth] = useState('false')
+    const [loading, setLoading] = useState(false)
 
 
 ///////////////>> SUPPORTS <<///////////////
@@ -84,8 +86,8 @@ export default ({navigation}) => {
 //DISPATCH TO LOG IN THE USER
     const onLogin = () => {
         try{ 
-          dispatch(login_user__post(login));
-          navigation.navigate('Main')
+          setLoading(true)
+          login_user__post(login, setAuth, setLoading);
         } 
         catch(err){console.log(err)}
     }
@@ -93,6 +95,7 @@ export default ({navigation}) => {
 
     return (
     <ImageBackground source={Background} style={style.container}>
+      {typeof auth === 'object' && navigation.navigate('Main')}
       <View>
         <Text style={style.mainTitle}>Login</Text>
         <Image 
@@ -108,9 +111,19 @@ export default ({navigation}) => {
             <TextInput style={style.inputR} secureTextEntry={true} editable placeholder='Contraseña' name='password' onChange={hOnCh_Login}/>
 
           {/*///////////////////////>> LOGIN <<///////////////////////*/}
-            <TouchableHighlight disabled={withoutError()}  style={withoutError() ? style.buttonFalse : style.button} onPress={onLogin}>             
-              <Text style={withoutError() ? style.buttonTextFalse : style.buttonText}>ENTER</Text>            
-            </TouchableHighlight> 
+           
+            <Button title='ENTER' onPress={onLogin} disabled={withoutError()} loading={loading}
+            disabledStyle={style.buttonFalse} 
+            disabledTitleStyle={style.buttonTextFalse}
+            titleStyle={style.buttonText}
+            buttonStyle={style.button}/>
+
+            {!auth &&
+              <View>
+                <Text>An error occurred when logging in</Text>
+                <Text>Please try again</Text>
+              </View>
+            }
             
           {/*//////////////////////////////////////////////////////////*/}
           
