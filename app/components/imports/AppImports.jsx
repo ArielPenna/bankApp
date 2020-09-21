@@ -22,6 +22,7 @@ import Statistics from '../screens/statistics/Statistics'
 
 ///////////////>>>>>> MY PROFILE <<<<<<<///////////////
 import MyProfile from '../screens/my_profile/MyProfile'
+import EditProfile from '../screens/my_profile/Edit Profile'
 
 ///////////////>>>>>> MY PRODUCTS <<<<<<<///////////////
 import MyProducts from '../screens/MyProducts/MyProducts'
@@ -69,7 +70,7 @@ export {Statistics}
 export {MyProducts}
 export {Transactions}
 export {MyProfile}
-
+export {EditProfile}
 
 //----> CONTACT <--------//
 export {MyContact} 

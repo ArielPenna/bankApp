@@ -96,7 +96,7 @@ export default ({ navigation }) => {
           </TouchableHighlight>
 
           {/*//////////////--->>>> BUTTON MY PROFILE <<<<---///////////*/}
-          <TouchableHighlight onPress={() => navigation.navigate('MyProfile', {user})}>
+          <TouchableHighlight onPress={() => navigation.navigate('MyProfile', {user: user, editProfile: setChange})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={MyProfile}/>
               <Text style={styles.small}>My Profile</Text>

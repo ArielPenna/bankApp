@@ -151,3 +151,13 @@ export const delete_friend = (user) => {
       })
   }
 }
+
+/////////>> EDIT USER <<//////////
+export const edit_user = (user) => {
+  return (dispatch) => {
+    instance.put(`user/edit/${user}`)
+      .then(res => {
+        dispatch ({type: cons.EDIT_USER, payload:res.data})
+      })
+  }
+}

@@ -44,6 +44,7 @@ export default function App() {
 
           {/*///////-> MY PROFILE <-////////*/}
           <Stack.Screen name="MyProfile" component={render.MyProfile} options={headerOptions}/>
+          <Stack.Screen name="EditProfile" component={render.EditProfile} options={headerOptions}/>
 
           {/*///////-> MY PRODUCTS <-////////*/}
           <Stack.Screen name="MyProducts" component={render.MyProducts} options={headerOptions}/>
