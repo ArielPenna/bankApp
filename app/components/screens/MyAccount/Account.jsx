@@ -34,15 +34,17 @@ export default ({ navigation }) => {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => copiarAlPortapapeles("p1", alert("Se ha copiado tu CVU"))}>
-         
+          <TouchableHighlight onPress={() => copiarAlPortapapeles("p1", alert("Se ha copiado tu CVU"))}>  
+
             <View style={styles.touch}>
               <Image style={styles.ico} source={require("../../../assets/compartircvu.png")} />
               <Text style={styles.small}>Share cvu</Text>
             </View>
           </TouchableHighlight>
         </View>
-      
+          <View> 
+              <Text>Se ha copiado tu CVU exitosamente</Text>
+          </View>
       
       </View>      
       
