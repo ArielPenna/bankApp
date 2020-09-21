@@ -96,7 +96,7 @@ export default ({ navigation }) => {
         {/*////////////>> INPUTS <<///////////////*/}
         {!sure ? 
         /*////////--->> MONEY TO SEND <<---////////////*/
-        <View>
+        <View style={styles.containerInputs}>
           <Text style={styles.subTitle}>Quantity:</Text>
           <TextInput editable style={styles.inputs} name='send' 
           keyboardType='numeric' onChange={hOnCh_Send} placeholder={send.send ? `$${send.send}` : '$$$$$$'}/> 

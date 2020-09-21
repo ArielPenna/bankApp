@@ -10,6 +10,13 @@ export default StyleSheet.create({
         alignItems: "center",    
     },
 
+    containerInputs:{
+        backgroundColor:"white",
+        width:340,
+        height:550,
+        borderRadius:15
+    },
+
     mainTitle:{
         color: 'white',
         fontSize: 40,
