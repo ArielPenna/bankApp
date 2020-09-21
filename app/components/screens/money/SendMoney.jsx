@@ -89,7 +89,7 @@ export default ({ navigation }) => {
     <ImageBackground source={Background} style={styles.container}>
       <View>
         {/*////////////>> TITLE <<///////////////*/}
-        <Text style={styles.mainTitle}>Send Money</Text>   
+        {/* <Text style={styles.mainTitle}>Send Money</Text>    */}
 
         {/* *********   INSERT IMG SEND MONEY ****************/}
 
@@ -99,7 +99,7 @@ export default ({ navigation }) => {
         <View style={styles.containerInputs}>
           <Text style={styles.subTitle}>Quantity:</Text>
           <TextInput editable style={styles.inputs} name='send' 
-          keyboardType='numeric' onChange={hOnCh_Send} placeholder={send.send ? `$${send.send}` : '$$$$$$'}/> 
+          keyboardType='numeric' onChange={hOnCh_Send} placeholder={send.send ? `$${send.send}` : 'Enter an amount...'}/> 
           
           {/*////////--->> EMAIL FROM THE FRIEND <<---////////////*/}
           <Text style={styles.subTitle}>To:</Text>
@@ -116,13 +116,13 @@ export default ({ navigation }) => {
 
         : ////////IF YOU PRESS THE BUTTON SEND WILL APPEAR ALL THIS ///////////
 
-          <View>
+          <View style={styles.containerConfirm}>
             {/*/////////>> SUB TITLE <<///////////*/}
-            <Text style={styles.subTitle}>Are you sure send</Text>
+            <Text style={styles.subTitleConfirm}>Are you sure send</Text>
 
             {/*/////////>> INFO <<///////////*/}
-            <Text style={styles.subTitle}>${send.send} to</Text>
-            <Text style={styles.subTitle}>{send.emailFriend} ? </Text>
+            <Text style={styles.subTitleConfirm}>${send.send} to</Text>
+            <Text style={styles.subTitleConfirm}>{send.emailFriend} ? </Text>
 
             {/*/////////>> BUTTONS <<///////////*/}
             <View>

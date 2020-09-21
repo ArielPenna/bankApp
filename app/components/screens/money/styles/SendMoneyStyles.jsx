@@ -11,10 +11,13 @@ export default StyleSheet.create({
     },
 
     containerInputs:{
-        backgroundColor:"white",
+        backgroundColor:"#ECE8AF",
         width:340,
         height:550,
-        borderRadius:15
+        borderRadius:15,
+        shadowOpacity: 0.57,
+        shadowRadius: 15.19,
+        elevation: 23,
     },
 
     mainTitle:{
@@ -24,9 +27,11 @@ export default StyleSheet.create({
     },
 
     subTitle:{
-        color: 'white',
-        fontSize: 30,
-        marginBottom: 30
+        color: 'black',
+        marginTop:35,
+        marginLeft:20,
+        fontSize:30,
+        marginBottom:30
     },
     
     iconContainer:{
@@ -40,38 +45,51 @@ export default StyleSheet.create({
     },
 
     inputs:{
-        width:'100%',
-        height: 40,
-        backgroundColor: 'white',
+        width:296,
+        height:55,
+        marginLeft: 17,
+        borderRadius: 15,
         marginBottom: 30,
+        backgroundColor:"#8F958B",
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'center',
     },
 
     appButtonContainer: {
-        width: '100%',
-        marginBottom: '10px',
-        marginTop: '20px',
+        width: "87%",
+        height: 54,
+        marginLeft: 20,
+        marginBottom: 10,
+        marginTop: 35,
         elevation: 8,
         backgroundColor: "#f7b700",
         borderRadius: 5,
         paddingVertical: 10,
-        paddingHorizontal: 12
+        paddingHorizontal: 12,
+        shadowOpacity: 0.57,
+        shadowRadius: 8,
+        elevation: 23,
     },
 
     appButtonContainerFalse: {
-        width: '100%',
+        width: "87%",
+        marginLeft: 20,
+        height: 54,
         marginBottom: '10px',
-        marginTop: '20px',
+        marginTop: 35,
         elevation: 8,
         backgroundColor: "#752667",       
         borderRadius: 5,
         paddingVertical: 10,
-        paddingHorizontal: 12
+        paddingHorizontal: 12,
+        shadowOpacity: 0.57,
+        shadowRadius: 8,
+        elevation: 23,
     },
 
     appButtonText: {
         fontSize: 18,
+        marginTop:5,
         color: "#752667",
         fontWeight: "bold",
         alignSelf: "center",
@@ -81,8 +99,26 @@ export default StyleSheet.create({
     appButtonTextFalse: {
         fontSize: 18,
         color: "#fff",
+        marginTop:5,
         fontWeight: "bold",
         alignSelf: "center",
         textTransform: "uppercase"
+    },
+    containerConfirm:{
+        backgroundColor:"#ECE8AF",
+        width:340,
+        height:436,
+        borderRadius:15,
+        shadowOpacity: 0.57,
+        shadowRadius: 15.19,
+        elevation: 23,
+    },
+
+    subTitleConfirm:{
+        color: 'black',
+        fontWeight:'bold',
+        marginTop:30,
+        marginLeft:20,
+        fontSize:30,
     }
 })
