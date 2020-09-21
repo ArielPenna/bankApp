@@ -14,7 +14,7 @@ import Background from '../../../assets/background.png'
 export default ({route, navigation}) =>{
 
     const dispatch = useDispatch()
-    const {id} = route.params
+    const {update} = route.params
 
     /////////>> STATES <<//////////
     const [contact, setContact] = useState({
@@ -66,6 +66,7 @@ export default ({route, navigation}) =>{
     const addFriend = () =>{
         try {
             dispatch(add_friend(contact))
+            update('POST')
         } catch (err) {
             console.log(err)
         }

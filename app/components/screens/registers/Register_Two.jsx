@@ -1,7 +1,7 @@
 //////////////// MODULS ////////////////
 import React,{ useState }from 'react'
-import {useDispatch} from 'react-redux'
 import {View, Text, TextInput , TouchableHighlight, Picker, ImageBackground} from 'react-native'
+import { Button } from 'react-native-elements'
 
 //////////////// SCRIPTS ////////////////
 import style from './styles/RegisterStyle'
@@ -12,11 +12,12 @@ import {register_user__post} from '../../../redux/actions'
 import Background from '../../../assets/background.png'
 
 export default ({route, navigation}) => {
-    //DISPATCH 
-    const dispatch = useDispatch()
 
 /////////////>> STATES <<//////////////
     const [newUser, setNewUser] = useState(route.params.info)
+
+    const [regis, setRegister] = useState(false)
+    const [loading, setLoading] = useState(false)
     
     //THIS STATE IS TO HELP US VALIDATE THE INPUTS OF THE USERS
     const [error, setError] = useState({
@@ -24,6 +25,7 @@ export default ({route, navigation}) => {
         password:'*',
         confirmPassword:'*'
     })    
+    
 
 ////////////////////>> SUPPORTS <<////////////////////
 
@@ -43,19 +45,18 @@ export default ({route, navigation}) => {
         }));
         
         if (e.target.name != "confirmEmail" || e.target.name != "confirmPassword"){
-        setNewUser({
-            ...newUser,
-            [e.target.name]: e.target.value
-        })
-        } 
-        console.log(newUser)       
+            setNewUser({
+                ...newUser,
+                [e.target.name]: e.target.value
+            })
+        }  
     }   
 
 //DISPATCH THE REGISTER AND SEND THE CODE
     const register = ()=>{
         try{         
-            dispatch(register_user__post(newUser))
-            navigation.navigate('Login')
+            setLoading(true)
+            register_user__post(newUser, setRegister, setLoading)           
         }
         catch(err){
             console.log(err)
@@ -64,6 +65,7 @@ export default ({route, navigation}) => {
 
     return(
         <ImageBackground source={Background} style={style.background}>
+            {regis && navigation.navigate('Login')}
             <Text style={style.mainTitle}>Almost</Text>
         <View>           
 
@@ -79,12 +81,13 @@ export default ({route, navigation}) => {
             <Text style={error.confirmPassword ? style.error : style.label}>Confirm Password</Text>
             <TextInput style={style.inputR} secureTextEntry={true} editable name='confirmPassword' onChange={hOnCh_NewUser}/>
 
-{/*//////////////////////////////////////////////////////////////////////////////////////*/}
+{/*/////////////////////////////////>> SEND BUTTON <<////////////////////////////////////////////////*/}
+            <Button title='SEND' onPress={register} disabled={withoutError()} loading={loading}
+            disabledStyle={style.appButtonContainerFalse} 
+            disabledTitleStyle={style.appButtonTextFalse}
+            titleStyle={style.appButtonText}
+            buttonStyle={style.appButtonContainer}/>
             
-            <TouchableHighlight disabled={withoutError()} onPress={register} 
-            style={withoutError() ? style.appButtonContainerFalse : style.appButtonContainer}>
-                <Text style={withoutError() ? style.appButtonTextFalse : style.appButtonText}>Send</Text>
-            </TouchableHighlight>
         </View>
         </ImageBackground>
     )

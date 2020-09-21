@@ -24,27 +24,14 @@ const getBalance = (payload) => {
 ///////>> STATE <</////
 const initialState = {
   user: undefined,
-  sendEmail: [],
-  code: false,
   transactions: {},
   fullBalance: {},
-  contacts:[]
+  contacts:[],
+  oneFriend: {}
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-//--------------------------------------------------------------//
-    ////>> REGISTER <</////
-    case cons.SEND_MAIL:
-      return {
-        ...state,
-        sendEmail: action.payload,
-      };
-    case cons.SEARCH_CODE:
-      return {
-        ...state,
-        code: action.payload,
-      };
 //--------------------------------------------------------------//
     /////>> LOGIN <</////
     case cons.GET_USER_ME:    
@@ -65,12 +52,14 @@ export default (state = initialState, action) => {
 //--------------------------------------------------------------//
     /////>> CONTACTS <</////
     case cons.GET_FRIENDS:
-    case cons.ADD_FRIEND:
-    case cons.UPDATE_FRIEND:
-    case cons.DELETE_FRIEND:
       return {
         ...state, 
-        contacts:action.payload
+        contacts: action.payload
+      }
+    case cons.GET_ONE_FRIEND:
+      return {
+        ...state,
+        oneFriend: action.payload
       }
   }
   return state;

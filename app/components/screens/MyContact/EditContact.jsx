@@ -12,8 +12,10 @@ import Background from '../../../assets/background.png'
 export default ({route, navigation}) => {
     const dispatch = useDispatch()
 
+    const { update } = route.params
+
     /////////>> STATES <<//////////
-    const [friend, setFriend] = useState=({
+    const [friend, setFriend] = useState({
         idFriend: route.params.id,
         nickName: route.params.nickName
     })
@@ -30,6 +32,8 @@ export default ({route, navigation}) => {
     const updateFriend = () => {
         try{
             dispatch(update_friend(friend))
+            update('UPDATE')
+            navigation.navigate('MyContact')
         }
         catch(err){
             console.log(err)
