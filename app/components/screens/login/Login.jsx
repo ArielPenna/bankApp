@@ -1,7 +1,7 @@
 ///////////////////>> MODULS <<///////////////////
 import React, {useState} from 'react'
 import {View, Text, TextInput, Button, Image, ImageBackground,TouchableHighlight} from 'react-native'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
 ///////////////////>> SCRIPTS <<///////////////////
 import {login_user__post} from '../../../redux/actions'
@@ -18,6 +18,7 @@ import Logo from '../../../assets/logo.png'
 
 export default ({navigation}) => {
     const dispatch = useDispatch()
+    const auth = useSelector(state => state.user)
 
 ///////////>> STATES <<////////////
     const [login, setLogin]= useState ({
@@ -29,6 +30,8 @@ export default ({navigation}) => {
       email:'*',
       password:'*'
     })
+
+    const [errorLogin, setErrorLogin] = useState(false)
 
 
 ///////////////>> SUPPORTS <<///////////////
@@ -69,6 +72,10 @@ export default ({navigation}) => {
         else return false
     }
 
+    const errorInLogin = ()=>{
+      setTimeout(()=>{ if(!errorLogin) setErrorLogin(true)}, 5500)
+    }
+
 //////////>> HANDLER ON CHANGE (hOnCh) <<////////////
     const hOnCh_Login = (e) => {
         setError(validation({
@@ -85,7 +92,7 @@ export default ({navigation}) => {
     const onLogin = () => {
         try{ 
           dispatch(login_user__post(login));
-          navigation.navigate('Main')
+          //errorInLogin()
         } 
         catch(err){console.log(err)}
     }
@@ -93,6 +100,7 @@ export default ({navigation}) => {
 
     return (
     <ImageBackground source={Background} style={style.container}>
+      {auth && navigation.navigate('Main')}
       <View>
         <Text style={style.mainTitle}>Login</Text>
         <Image 
@@ -108,9 +116,16 @@ export default ({navigation}) => {
             <TextInput style={style.inputR} secureTextEntry={true} editable placeholder='Contraseña' name='password' onChange={hOnCh_Login}/>
 
           {/*///////////////////////>> LOGIN <<///////////////////////*/}
-            <TouchableHighlight disabled={withError()}  style={withoutError() ? style.buttonFalse : style.button} onPress={onLogin}>             
+            <TouchableHighlight disabled={withoutError()}  style={withoutError() ? style.buttonFalse : style.button} onPress={onLogin}>             
               <Text style={withoutError() ? style.buttonTextFalse : style.buttonText}>ENTER</Text>            
             </TouchableHighlight> 
+
+            {errorLogin &&
+              <View>
+                <Text>An error occurred when logging in</Text>
+                <Text>Please try again</Text>
+              </View>
+            }
             
           {/*//////////////////////////////////////////////////////////*/}
           
