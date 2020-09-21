@@ -14,71 +14,65 @@ const instance = axios.create({
 //##############>>> ¡REGISTER! <<<##############//
 
 ///////>> SEND MAIL <<////////
-export const send_mail__post = (user) => {
-  return (dispatch) => {
-    instance.post("email/sendmail", user)
-    .then(res =>{
-      dispatch({type:cons.SEND_MAIL, payload: res.data})
-    })
-  };
+export const send_mail__post = async (user, setSend, setLoading) => {
+    const res = await instance.post("email/sendmail", user)
+    !!setSend && setSend(res.data)
+    setLoading(false)
 };
 
 ///////>> SEARCH CODE <<////////
-export const search_code = (code) => {
-  return (dispatch) => {
-    instance.post("email/searchcod", code)
-    .then(res => {
-      console.log(res.data)
-      dispatch({type: cons.SEARCH_CODE, payload: res.data})
-    })
-  };
+export const search_code = async (code, setVal, setValidation) => {
+    const res = await instance.post("email/searchcod", code)
+    setVal(res.data)
+    setValidation(false)
 };
 
 //////>> LOCATION GET <<///////
-export const location_get = (location, newUser, setNewUser, error, setError) => {
+export const location_get = (location, newUser, setNewUser, error, setError, setLoading) => {
   return ()=>{
     instance.post('api/location/get', location)
-    .then(res => {
-      console.log(res)
-      
-      ///////---> SET ADDRESS <------////
+      .then(res => {
+        console.log(res)
+        
+        ///////---> SET ADDRESS <------////
 
-      if(res.data.length){
-          setError({
-              ...error,
-              address: ''
-          })
-          setNewUser({
-              ...newUser,
-              address: location.number + ', ' + res.data[0].address
-          })
-      }    
-    })
-    .catch(err => console.log(err))
+        if(res.data.length){
+            setError({
+                ...error,
+                address: ''
+            })
+            setNewUser({
+                ...newUser,
+                address: location.number + ', ' + res.data[0].address
+            })
+        }   
+        
+        setLoading(false)
+      })
+      .catch(err => console.log(err))
   }  
 }
 
 ///////>> REGISTER <<////////
-export const register_user__post = (user)=>{
-  return (dispatch) => {
-    instance.post('user/auth/register', user)
-      .then(res => {
-        dispatch({type: cons.SUCCESSFUL_REGISTER, payload: true})
-      })
-  }
+export const register_user__post = async (user, setRegister, setLoading)=>{
+    const res = await instance.post('user/auth/register', user)    
+    setRegister(true)
+    setLoading(false)
 }
 
 //##############>>> ¡LOGIN! <<<##############//
 
 ///////>> LOGIN <<////////
-export const login_user__post = (user) => {
-  return (dispatch) => {
-    instance.post("user/auth/login", user)
-      .then(res => {
-        console.log(res)
-        dispatch({type: cons.LOGIN, payload: true})
-      })
-  };
+export const login_user__post = async (user, setAuth, setLoading) => {
+  try{
+    const res = await instance.post("user/auth/login", user)
+    setAuth(res.data)
+    setLoading(false)
+  }
+  catch(err){
+    setAuth(false)
+    setLoading(false)
+  }  
 };
 
 ///////>> GET USER <<////////

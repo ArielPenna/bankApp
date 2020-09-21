@@ -2,6 +2,7 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
 import {View, Text, TextInput, Picker, ImageBackground, TouchableHighlight} from 'react-native'
+import { Button } from 'react-native-elements'
 
 ///////////////////>> SCRIPTS <<///////////////////
 import style from './styles/RegisterStyle'
@@ -61,6 +62,8 @@ export default ({route, navigation})=>{
         number: '',
         street2: ''
     })
+
+    const [loading, setLoading] = useState(false)
     
 /////////////>> SUPPORT <</////////////////
     //////-> FUNCTIONS <-//////
@@ -70,8 +73,9 @@ export default ({route, navigation})=>{
     }
 
     //SEARCH THE LOCATION WITH THE API
-    const searchDirection = ()=>{        
-        dispatch(location_get(address, newUser, setNewUser, error, setError))
+    const searchDirection = ()=>{   
+        setLoading(true)     
+        dispatch(location_get(address, newUser, setNewUser, error, setError, setLoading))
     }
 
     //SEND A STRING OF THE LOCATION
@@ -207,10 +211,12 @@ export default ({route, navigation})=>{
                     <Text style={style.subLabel}>One street that cuts the principal</Text>
                     <TextInput style={style.inputR} editable name='street2' onChange={hOnCh_Adress}/>
                 </View>
-                <TouchableHighlight onPress={searchDirection} disabled={withoutErrorLocation()}
-                style={withoutErrorLocation() ? style.appButtonContainerFalse : style.appButtonContainer}>
-                    <Text style={withoutErrorLocation() ? style.appButtonTextFalse : style.appButtonText}>SEARCH</Text>
-                </TouchableHighlight>
+
+                <Button title='Search' onPress={searchDirection} disabled={withoutErrorLocation()} loading={loading}
+                disabledStyle={style.appButtonContainerFalse} 
+                disabledTitleStyle={style.appButtonTextFalse}
+                titleStyle={style.appButtonText}
+                buttonStyle={style.appButtonContainer}/>
             </View>         
 
             <Text style={newUser.address ? style.locationY : style.locationX}>{newUser.address ? location() : 'City'}</Text>   
