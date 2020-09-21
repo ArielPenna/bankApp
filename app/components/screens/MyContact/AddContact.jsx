@@ -2,6 +2,7 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { View ,Text, TextInput, TouchableHighlight, ImageBackground } from 'react-native'
+import {add_friend} from '../../../redux/actions.js'
 
 /////////>> SCRIPTS <<//////////
 import {contacts} from './prueba/prueba'
@@ -10,16 +11,19 @@ import styles from './styles/AddContact_Styles'
 ////////>> IMGS <<////////////
 import Background from '../../../assets/background.png'
 
-export default ({navigation}) =>{
+export default ({route, navigation}) =>{
+
+    const dispatch = useDispatch()
+    const {update} = route.params
 
     /////////>> STATES <<//////////
     const [contact, setContact] = useState({
-        name: '',
+        nickName: '',
         email: ''
     })
-
+     
     const [error, setError] = useState({
-        name: '*',
+        nickName: '*',
         email: '*'
     })
 
@@ -31,16 +35,16 @@ export default ({navigation}) =>{
     const validation = input =>{
         let errors = {}
 
-        if(!input.name) errors.name = '*'
+        if(!input.nickName) errors.nickName = '*'
 
         if(!input.email) errors.email = '*'
         else if(!regex_email.test(input.email)) errors.email='*'
 
         return errors
-    }
+    }   
 
     const withoutErrors = ()=>{
-        if(error.name || error.email) return true
+        if(error.nickName || error.email) return true
         else return false
     }
 
@@ -58,6 +62,16 @@ export default ({navigation}) =>{
         })
     }
 
+    //////////>> DISPATCH <<////////////
+    const addFriend = () =>{
+        try {
+            dispatch(add_friend(contact))
+            update('POST')
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return(
         <ImageBackground source={Background} style={styles.background}>
             <View style={styles.container}>
@@ -66,7 +80,7 @@ export default ({navigation}) =>{
 
                 {/*/////////>> NAME <</////////*/}
                 <Text style={styles.label}>Name</Text>
-                <TextInput style={styles.inputs} name='name' onChange={hOnCh_Contact}/>
+                <TextInput style={styles.inputs} name='nickName' onChange={hOnCh_Contact}/>
 
                 {/*/////////>> EMAIL <</////////*/}
                 <Text style={styles.label}>Email</Text>
@@ -74,7 +88,7 @@ export default ({navigation}) =>{
 
                 {/*/////////>> ADD BUTTON <</////////*/}
                 <TouchableHighlight disabled={withoutErrors()} style={styles.btn} 
-                onPress={()=>console.log('add contact')}>
+                onPress={addFriend}>
                     <Text style={styles.appButtonText}>+Add</Text>
                 </TouchableHighlight>
             </View>

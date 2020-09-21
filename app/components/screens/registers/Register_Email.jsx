@@ -1,7 +1,8 @@
 //////////////// MODELS ////////////////
 import React ,{useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { View, Text, TextInput, Button, ImageBackground, TouchableHighlight } from 'react-native';
+import { View, Text, TextInput, ImageBackground, TouchableHighlight } from 'react-native';
+import { Button, Icon} from 'react-native-elements'
 
 //////////////// SCRIPTS ////////////////
 import {send_mail__post} from '../../../redux/actions'
@@ -70,20 +71,31 @@ export default ({navigation}) => {
         <ImageBackground source={Background} style={style.container}>
             {typeof send === 'string' && navigation.navigate('Code', mail)}
             <View>
+                {/*///////////////////>> TITLE <<///////////////*/}
                 <Text style={style.mainTitle}>Register your email</Text>
+
+                {/*///////////////////>> INPUT <<///////////////*/}
                 <TextInput onChange={hOnCh_Mail} editable name='documentNumber' style={style.input}/>
+                
+                {/*///////////////////>> SEND MAIL <<///////////////*/}
                 <TouchableHighlight onPress={sendEmail} disabled={withError()}
                 style={withError() ? style.appButtonContainerFalse : style.appButtonContainer}>
                     <Text style={withError() ? style.appButtonTextFalse : style.appButtonText}>Send</Text>
                 </TouchableHighlight>
+
+                {/*<Button title='send' onPress={sendEmail} loading={false}/>*/}
+
+                {/*///////////////////>> IF THE USER IS REGISTER <<///////////////*/}
                 {!send && 
                 <View>
-                    <Text>El mail ya se encuentra en uso</Text>
-                    <TouchableHighlight onPress={sendEmail} style={style.appButtonContainer}>
+                    <Text style={style.subTitleX}>The mail is already in use</Text>
+                    <TouchableHighlight onPress={()=>{navigation.navigate('Login')}}
+                    style={style.appButtonContainer}>
                     <Text style={style.appButtonText}>LogIn</Text>
                     </TouchableHighlight>
-                </View>
-                }
+                </View>}
+
+                {/*//////////////////////////////////////////////////////////////*/}
             </View>
         </ImageBackground>
     );

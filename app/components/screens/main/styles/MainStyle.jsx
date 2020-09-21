@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     height: "100%",      
     alignItems: "center",   
   },
+
   img:{    
     alignSelf:"center",
     width:70,
@@ -14,9 +15,9 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.30,
-    shadowRadius: 4.65,
-    elevation: 8,
+    shadowRadius: 4.65
   },
+
   ico:{    
     alignSelf:"center",
     width:50,
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   },
   mainTitle:{
     fontSize: 12,
-    color:"white",    
+    color:"#fff",    
     textAlign:"left",
   },
   row:{
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     alignItems:"center",
   }, 
   money:{
-    color:"white",
+    color:"#fff",
     marginHorizontal:25,
     fontSize:30,
   },

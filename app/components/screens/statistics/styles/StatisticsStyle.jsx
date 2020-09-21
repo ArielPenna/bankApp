@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   mainTitle: {
     fontSize: 12,
-    color: "white",
+    color: "#fff",
     textAlign: "left",
   },
   row: {
@@ -85,7 +85,20 @@ const styles = StyleSheet.create({
     
     fontSize: 14
   },
-
+  cvuaccount: {
+    margin: 35,
+    backgroundColor: "#FFFFFF",
+    width: 280,
+    height: 150,
+    justifycontent: "space around",
+    padding: 10,
+    alignitems: "center",
+    textalignlast: "left",
+  },
+  textaccount: {
+    fontSize: 20,
+    fontWeight: "bold",
+  }
 });
 
 export default styles;

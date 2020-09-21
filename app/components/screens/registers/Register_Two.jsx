@@ -1,6 +1,6 @@
 //////////////// MODULS ////////////////
 import React,{ useState }from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {View, Text, TextInput , TouchableHighlight, Picker, ImageBackground} from 'react-native'
 
 //////////////// SCRIPTS ////////////////
@@ -14,6 +14,8 @@ import Background from '../../../assets/background.png'
 export default ({route, navigation}) => {
     //DISPATCH 
     const dispatch = useDispatch()
+
+    const succesfull = useSelector(state => state.register)
 
 /////////////>> STATES <<//////////////
     const [newUser, setNewUser] = useState(route.params.info)
@@ -54,8 +56,7 @@ export default ({route, navigation}) => {
 //DISPATCH THE REGISTER AND SEND THE CODE
     const register = ()=>{
         try{         
-            dispatch(register_user__post(newUser))
-            navigation.navigate('Login')
+            dispatch(register_user__post(newUser))            
         }
         catch(err){
             console.log(err)
@@ -64,6 +65,7 @@ export default ({route, navigation}) => {
 
     return(
         <ImageBackground source={Background} style={style.background}>
+            {succesfull && navigation.navigate('Login')}
             <Text style={style.mainTitle}>Almost</Text>
         <View>           
 

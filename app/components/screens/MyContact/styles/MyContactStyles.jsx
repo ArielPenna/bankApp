@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
    container:{
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
    title:{
       textAlign: "center",
       fontSize:35,
-      color:"white",
+      color:"#fff",
       padding:5,
       marginBottom:10
    },
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 
    appButtonText:{
       fontSize:20,
-      color:"white",
+      color:"#fff",
       textAlign:"center"
    },
 
