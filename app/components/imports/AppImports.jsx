@@ -72,13 +72,10 @@ export {Statistics}
 
 //// MY PROFILE ////
 export {MyProfile}
-<<<<<<< HEAD
 export {EditProfile}
-=======
 
 //// MY PRODUCTS ////
 export {MyProducts}
->>>>>>> master
 
 //// MY ACCOUNT ////
 export {Account}
