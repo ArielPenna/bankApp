@@ -100,6 +100,72 @@ label:{
     color:"#f0f3bd",
     fontSize:25
 },
+adressContainer:{
+  flex:1,
+  flexDirection: 'column',
+  marginBottom: -30
+},
+streetPrincipal:{
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  marginLeft:20,
+  marginBottom:10
+},
+inputStreet:{
+  width: '60%',
+  height: '40px',
+  backgroundColor: 'white',
+  borderRadius: 2
+},
+inputSubStreet:{
+  width:'30%',
+  height: 40,
+  backgroundColor:'white',
+  borderRadius:2,
+  marginRight:20,
+  paddingLeft: 10
+},
+appButtonContainer: {
+  width: '90%',
+  marginLeft:20,
+  marginBottom:10,
+  marginTop:20,
+  elevation: 8,
+  backgroundColor: "#f7b700",
+  borderRadius: 2,
+  paddingVertical: 10,
+  paddingHorizontal: 12
+},
+appButtonContainerFalse: {
+  width: '90%',
+  marginLeft:20,
+  marginBottom:10,
+  marginTop:20,
+  elevation: 8,
+  backgroundColor: "#752667",       
+  borderRadius: 2,
+  paddingVertical: 10,
+  paddingHorizontal: 12
+},
+appButtonText: {
+  fontSize: 18,
+  color: "#752667",
+  fontWeight: "bold",
+  alignSelf: "center",
+  textTransform: "uppercase"
+},
+appButtonTextFalse: {
+  fontSize: 18,
+  color: "#fff",
+  fontWeight: "bold",
+  alignSelf: "center",
+  textTransform: "uppercase"
+},
+subLabel:{
+  color:"#f0f3bd",
+  fontSize:15,
+  marginLeft:20
+}
 });
 
 export default styles;
