@@ -1,7 +1,7 @@
 //////////////// MODELS ////////////////
 import React ,{useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import { View, Text, TextInput, Button, ImageBackground, TouchableHighlight } from 'react-native';
+import { View, Text, TextInput, ImageBackground, TouchableHighlight } from 'react-native';
+import { Button } from 'react-native-elements'
 
 //////////////// SCRIPTS ////////////////
 import { search_code, send_mail__post } from '../../../../redux/actions'
@@ -11,11 +11,12 @@ import style from './styles/CodeValidationStyle'
 import Background from '../../../../assets/background.png'
 
 export default ({route, navigation}) => {
-   const dispatch = useDispatch()
-   const val = useSelector(state => state.code)
    
    /////////>> STATE <<////////
    const [code, setCode] = useState(0)
+   const [val, setVal] = useState(false)
+   const [loadingValidation, setValidation] = useState(false)
+   const [loading, setLoading] = useState(false)
 
    ////////>> HANDLER ON CHANGE (hOnCh) <<///////////
    const hOnCh_code = (e) => {
@@ -25,7 +26,8 @@ export default ({route, navigation}) => {
    ///////>> DISPATCH <</////////
    const validationCode = () => {
       try {
-         dispatch(search_code(code))
+         setValidation(true)
+         search_code(code, setVal, setValidation)
       } catch (error) {
          console.log(error)
       }
@@ -33,7 +35,8 @@ export default ({route, navigation}) => {
 
    const sendAgainEmail = () => {
       try{
-         dispatch(send_mail__post(route.params))
+         setLoading(true)
+         send_mail__post(route.params, null, setLoading)
       }
       catch(err){
          console.log(err)
@@ -42,7 +45,6 @@ export default ({route, navigation}) => {
 
    return (
       <ImageBackground source={Background} style={style.container}>
-         {console.log(val)}
          {val && navigation.navigate('Register Info', route.params)}
          <View>
             {/*////////////>> TITLE <</////////////*/}
@@ -53,15 +55,16 @@ export default ({route, navigation}) => {
             editable name='documentNumber' style={style.input}/>
 
             {/*////////////>> BUTTON VALIDATE <</////////////*/}
-            <TouchableHighlight onPress={validationCode} style={style.appButtonContainer}>
-                  <Text style={style.appButtonText}>Confirm</Text>
-            </TouchableHighlight>
+            <Button title='Confirm' onPress={validationCode} loading={loadingValidation}
+            titleStyle={style.appButtonText}
+            buttonStyle={style.appButtonContainer}/>
+
 
             {/*////////////>> BUTTON SEND AGAIN <</////////////*/}
             <Text style={style.subTitle}>You didn't get the code?</Text>
-            <TouchableHighlight onPress={sendAgainEmail} style={style.appButtonContainerAgain}>
-                  <Text style={style.appButtonTextAgain}>Send Code Again</Text>
-            </TouchableHighlight>
+            <Button title='Send Code Again' onPress={sendAgainEmail} loading={loading}
+            titleStyle={style.appButtonTextAgain}
+            buttonStyle={style.appButtonContainerAgain}/>
 
          </View>
       </ImageBackground>
