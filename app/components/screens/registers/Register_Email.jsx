@@ -1,7 +1,8 @@
 //////////////// MODELS ////////////////
 import React ,{useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { View, Text, TextInput, Button, ImageBackground, TouchableHighlight } from 'react-native';
+import { View, Text, TextInput, ImageBackground, TouchableHighlight } from 'react-native';
+import { Button, Icon} from 'react-native-elements'
 
 //////////////// SCRIPTS ////////////////
 import {send_mail__post} from '../../../redux/actions'
@@ -81,6 +82,8 @@ export default ({navigation}) => {
                 style={withError() ? style.appButtonContainerFalse : style.appButtonContainer}>
                     <Text style={withError() ? style.appButtonTextFalse : style.appButtonText}>Send</Text>
                 </TouchableHighlight>
+
+                {/*<Button title='send' onPress={sendEmail} loading={false}/>*/}
 
                 {/*///////////////////>> IF THE USER IS REGISTER <<///////////////*/}
                 {!send && 

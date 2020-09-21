@@ -23,12 +23,14 @@ const getBalance = (payload) => {
 
 ///////>> STATE <</////
 const initialState = {
+  register: false,
   user: undefined,
   sendEmail: [],
   code: false,
   transactions: {},
   fullBalance: {},
-  contacts:[]
+  contacts:[],
+  oneFriend: {}
 };
 
 export default (state = initialState, action) => {
@@ -45,8 +47,14 @@ export default (state = initialState, action) => {
         ...state,
         code: action.payload,
       };
+    case cons.SUCCESSFUL_REGISTER:
+      return {
+        ...state,
+        register: action.payload
+      }
 //--------------------------------------------------------------//
     /////>> LOGIN <</////
+    case cons.LOGIN:
     case cons.GET_USER_ME:    
     case cons.LOGOUT:
       return {
@@ -65,12 +73,14 @@ export default (state = initialState, action) => {
 //--------------------------------------------------------------//
     /////>> CONTACTS <</////
     case cons.GET_FRIENDS:
-    case cons.ADD_FRIEND:
-    case cons.UPDATE_FRIEND:
-    case cons.DELETE_FRIEND:
       return {
         ...state, 
-        contacts:action.payload
+        contacts: action.payload
+      }
+    case cons.GET_ONE_FRIEND:
+      return {
+        ...state,
+        oneFriend: action.payload
       }
   }
   return state;

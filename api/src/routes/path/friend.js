@@ -48,9 +48,9 @@ server.post('/add', estaAutenticado, async (req, res) => {
 //-----------------------------------------------------------------------------//
 //                        BORRAR AMIGOS                                        //
 //-----------------------------------------------------------------------------//
-server.delete('/delete', estaAutenticado, (req, res) => {
+server.delete('/delete/:idFriend', estaAutenticado, (req, res) => {
     const { id } = req.user; // elimino si estoy autenticado
-    const { idFriend } = req.body;
+    const { idFriend } = req.params;
 
     Contact.destroy({ where: {friend: id, friended:idFriend} })
         .then(destroy => res.send(destroy ? 'se elimino' : 'no se elimino'))
