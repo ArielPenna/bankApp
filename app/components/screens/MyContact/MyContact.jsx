@@ -21,6 +21,7 @@ export default ({ navigation }) => {
 
   ////////>> STATES <<////////
   const [search, setSearch] = useState('')
+  const [change, setChange] = useState('')
 
   //////>> SUPPORT <<///////
 
@@ -28,8 +29,8 @@ export default ({ navigation }) => {
 
   //This function is to filter the array we have 
   //with the user type on the search bar 
-  const filter = contacts.filter(c => {
-    return c.name.toLowerCase().includes(search.toLowerCase())
+  const filter = contact.filter(c => {
+    return c.nickName.toLowerCase().includes(search.toLowerCase())
   })
 
   ///////>> HANDLER ON CHANGES (hOnCh) <<///////
@@ -39,9 +40,8 @@ export default ({ navigation }) => {
 
   useEffect(() => {
     dispatch(get_friends())
-  }, [])  
-
-
+    setChange('')
+  }, [change])  
 
   return (
     <ImageBackground source={Background} style={style.container} >
@@ -61,24 +61,26 @@ export default ({ navigation }) => {
           </View>
 
         {/*/////////>> ADD CONTACT BUTTON <</////////*/}
-        <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact', {id: user.id})}>
+        <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact', { update: setChange })}>
             <Text style={style.appButtonText}> +Add Contact </Text>
         </TouchableHighlight>
 
         {/*/////////>> CARDS <</////////*/}
-        {contacts.length && filter.map(c => {
+        {contact.length ? filter.map(c => {
           return (
               <Card style={style.cardContainer} >
-                <Card.Title style={style.cardTitle} onPress={()=>navigation.navigate('OnlyContact', c)}>
-                  {c.name}
+                <Card.Title style={style.cardTitle} onPress={()=>navigation.navigate('OnlyContact', {idFriend: c.friended, nickName: c.nickName, update: setChange})}>
+                  {c.nickName}
                 </Card.Title>
                   <Card.Divider/>
                     <View >
-                      <Text style={style.cardText} onPress={()=>navigation.navigate('OnlyContact', c)}>{c.email}</Text>
+                      <Text style={style.cardText} onPress={()=>navigation.navigate('OnlyContact', {idFriend: c.friended, nickName: c.nickName, update: setChange})}>{c.email}</Text>
                     </View>
               </Card>
           )
           })
+          :
+          <Text> You haven't added any friends yet </Text>
         }
 
       </View>      
