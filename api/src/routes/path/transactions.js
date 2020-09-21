@@ -5,27 +5,30 @@ const { User, Transaction, Account } = require("../../db.js");
 
 // GENERAR TRANSACCION
 server.post("/to/:CVUfriend", estaAutenticado, async (req, res) => {
+    const { id } = req.user
     const { CVUfriend } = req.params
     const { transaction } = req.body
-    const { id } = req.user
 
     //-------------------------------------------
     //              DECLARACIONES               |
     //  CUENTA
     const userFromAccount = await Account.findOne({where: { userId: id }});
     const userToAccount = await Account.findOne({where: { cvu: CVUfriend }});
+
     console.log('---------------------------')
     console.log(userFromAccount && userFromAccount.dataValues)
     console.log(userToAccount && userToAccount.dataValues)
     //  USUARIO
     const userFrom = userFromAccount && await userFromAccount.getUser()
     const userTo = userToAccount && await userToAccount.getUser()
+
     console.log('---------------------------')
     console.log('userFrom ', userFrom && userFrom.dataValues)
     console.log('userTo ', userTo && userTo.dataValues)
     //  BILLETERA
     const userFromWallet = userFrom && await userFrom.getWallet()
     const userToWallet = userTo && await userTo.getWallet()
+    
     console.log('---------------------------')
     console.log('walletFrom ', userFromWallet && userFromWallet.dataValues)
     console.log('walletTo ', userToWallet && userToWallet.dataValues)
