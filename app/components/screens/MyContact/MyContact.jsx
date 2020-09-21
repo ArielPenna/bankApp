@@ -21,6 +21,7 @@ export default ({ navigation }) => {
 
   ////////>> STATES <<////////
   const [search, setSearch] = useState('')
+  const [change, setChange] = useState('')
 
   //////>> SUPPORT <<///////
 
@@ -39,9 +40,8 @@ export default ({ navigation }) => {
 
   useEffect(() => {
     dispatch(get_friends())
-  }, [])  
-
-
+    setChange('')
+  }, [change])  
 
   return (
     <ImageBackground source={Background} style={style.container} >
@@ -61,7 +61,7 @@ export default ({ navigation }) => {
           </View>
 
         {/*/////////>> ADD CONTACT BUTTON <</////////*/}
-        <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact', {id: user.id})}>
+        <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact', { update: setChange })}>
             <Text style={style.appButtonText}> +Add Contact </Text>
         </TouchableHighlight>
 
@@ -69,12 +69,12 @@ export default ({ navigation }) => {
         {contact.length ? filter.map(c => {
           return (
               <Card style={style.cardContainer} >
-                <Card.Title style={style.cardTitle} onPress={()=>navigation.navigate('OnlyContact', c)}>
+                <Card.Title style={style.cardTitle} onPress={()=>navigation.navigate('OnlyContact', {idFriend: c.friended, nickName: c.nickName, update: setChange})}>
                   {c.nickName}
                 </Card.Title>
                   <Card.Divider/>
                     <View >
-                      <Text style={style.cardText} onPress={()=>navigation.navigate('OnlyContact', c)}>{/*c.email*/}</Text>
+                      <Text style={style.cardText} onPress={()=>navigation.navigate('OnlyContact', {idFriend: c.friended, nickName: c.nickName, update: setChange})}>{c.email}</Text>
                     </View>
               </Card>
           )

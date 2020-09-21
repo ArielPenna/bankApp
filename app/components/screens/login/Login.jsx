@@ -73,7 +73,7 @@ export default ({navigation}) => {
     }
 
     const errorInLogin = ()=>{
-      setTimeout(()=>{setErrorLogin(true)}, 5500)
+      setTimeout(()=>{ if(!errorLogin) setErrorLogin(true)}, 5500)
     }
 
 //////////>> HANDLER ON CHANGE (hOnCh) <<////////////
@@ -92,7 +92,7 @@ export default ({navigation}) => {
     const onLogin = () => {
         try{ 
           dispatch(login_user__post(login));
-          errorInLogin()
+          //errorInLogin()
         } 
         catch(err){console.log(err)}
     }

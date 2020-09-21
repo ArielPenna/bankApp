@@ -83,7 +83,7 @@ export default ({navigation}) => {
                     <Text style={withError() ? style.appButtonTextFalse : style.appButtonText}>Send</Text>
                 </TouchableHighlight>
 
-                <Button title='send' onPress={sendEmail} loading={false}/>
+                {/*<Button title='send' onPress={sendEmail} loading={false}/>*/}
 
                 {/*///////////////////>> IF THE USER IS REGISTER <<///////////////*/}
                 {!send && 

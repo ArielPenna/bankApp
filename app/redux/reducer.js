@@ -29,7 +29,8 @@ const initialState = {
   code: false,
   transactions: {},
   fullBalance: {},
-  contacts:[]
+  contacts:[],
+  oneFriend: {}
 };
 
 export default (state = initialState, action) => {
@@ -72,12 +73,14 @@ export default (state = initialState, action) => {
 //--------------------------------------------------------------//
     /////>> CONTACTS <</////
     case cons.GET_FRIENDS:
-    case cons.ADD_FRIEND:
-    case cons.UPDATE_FRIEND:
-    case cons.DELETE_FRIEND:
       return {
         ...state, 
-        contacts:action.payload
+        contacts: action.payload
+      }
+    case cons.GET_ONE_FRIEND:
+      return {
+        ...state,
+        oneFriend: action.payload
       }
   }
   return state;

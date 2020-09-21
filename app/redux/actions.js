@@ -120,42 +120,43 @@ export const recharge_wallet = (balance) => {
 //##############>>> ¡CONTACTS! <<<##############//
 
 //////>> GET CONTACTS <<//////
-export const get_friends = () =>{
+export const get_friends = () => {
   return (dispatch) => {
     instance.get('friend/list')
       .then(res => {
-        console.log(res)
         dispatch({type: cons.GET_FRIENDS, payload: res.data})
+      })
+  }
+}
+
+//////>> GET ONE CONTACT <<//////
+export const get_one_friend = (idFriend) => {
+  console.log(idFriend)
+  return (dispatch) => {
+    instance.get(`friend/${idFriend}`)
+      .then(res => {
+        dispatch({type: cons.GET_ONE_FRIEND, payload: res.data})
       })
   }
 }
 
 ///////>> ADD FRIEND <<////////
 export const add_friend = (friend) => {
-  return (dispatch) => {
+  return () => {
     instance.post('friend/add' , friend)
-      .then(res => {
-        dispatch({type: cons.ADD_FRIEND, payload: res.data})
-      })
   }
 }
 
 //////>> EDIT FRIEND <<///////
 export const update_friend = (friend) => {
-  return (dispatch) => {
+  return () => {
     instance.put('friend/edit', friend)
-      .then(res => {
-        dispatch({type: cons.UPDATE_FRIEND, payload: res.data})
-      })
   }
 }
 
 //////>> DELETE FRIEND <<///////
-export const delete_friend = (user) => {
-  return (dispatch) => {
-    instance.delete('friend/delete', user)
-      .then(res => {
-        dispatch({type: cons.DELETE_FRIEND, payload: res.data})
-      })
+export const delete_friend = (idFriend) => {
+  return () => {
+    instance.delete(`friend/delete/${idFriend}`)
   }
 }
