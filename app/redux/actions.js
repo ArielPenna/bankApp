@@ -104,6 +104,13 @@ export const transactions_get = () => {
   };
 };   
 
+//////>> SEND MONEY <</////
+export const send_money = (CVUfriend, transaction) => {
+  return () => {
+    instance.post(`transactions/to/${CVUfriend}`, transaction)
+  }
+}
+
 ///////>> RECHARGE WALLET <<////////
 export const recharge_wallet = (balance) => {
   return () => {
