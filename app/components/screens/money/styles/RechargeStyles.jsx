@@ -2,7 +2,12 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
    container:{
-      flex:1
+      flex:1,   
+      width: "100%",
+      height: "100%",
+      alignContent:"center",    
+      justifyContent: "center",
+      alignItems: "center",  
    },
 
    title:{
@@ -15,36 +20,37 @@ const styles = StyleSheet.create({
    },
 
    containerInput:{
-      marginLeft:15,
-      marginTop:50,
-      height:500,
-      width:350,
+      backgroundColor:"#ECE8AF",
+      width:340,
+      height:444,
       borderRadius:15,
-      backgroundColor:"white"
+      shadowOpacity: 0.57,
+      shadowRadius: 15.19,
+      elevation: 23,
    },
 
    text:{
       fontSize:25,
-      padding:15,
+      padding:22,
    },
    
    inputMoney:{
-      display:"flex",
-      marginTop:55,
-      marginLeft:35,
-      fontSize: 25,
+      width:296,
       height:55,
-      padding:15,
-      borderRadius:8,
-      width:250,
+      marginLeft: 17,
+      marginTop:25,
+      borderRadius: 15,
+      backgroundColor:"#8F958B",
+      fontSize: 20,
+      textAlign: 'center',
    },
    
    text2:{
-      paddingLeft:15,
+      paddingLeft:25,
       paddingRight:15,
       paddingTop:25,
       fontSize:25,
-      marginBottom:100
+      marginBottom:58
    },
 
    btn:{

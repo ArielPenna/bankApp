@@ -44,6 +44,7 @@ export default function App() {
 
           {/*///////-> MY PROFILE <-////////*/}
           <Stack.Screen name="MyProfile" component={render.MyProfile} options={headerOptions}/>
+          <Stack.Screen name="EditProfile" component={render.EditProfile} options={headerOptions}/>
 
           {/*///////-> MY PRODUCTS <-////////*/}
           <Stack.Screen name="MyProducts" component={render.MyProducts} options={headerOptions}/>
@@ -62,10 +63,11 @@ export default function App() {
 
           {/*///////-> RECHARGE <-////////*/}
           <Stack.Screen name="Recharge" component={render.Recharge} options={headerOptions}/>
-          <Stack.Screen name='ValidateCharge' component={render.ValidateCharge}/>
+          <Stack.Screen name='ValidateCharge' component={render.ValidateCharge} options={headerOptions}/>
 
           {/*///////-> SEND MONEY <-////////*/}
-          <Stack.Screen name="SendMoney" component={render.SendMoney} options={headerOptions}/>      
+          <Stack.Screen name="Send Money to Contacts" component={render.SendMoneyContacts} options={headerOptions}/>
+          <Stack.Screen name="Send Money" component={render.SendMoney} options={headerOptions}/>      
 
         </Stack.Navigator>
       
