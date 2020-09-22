@@ -47,7 +47,7 @@ export default ({ navigation, route}) => {
         <Text style={styles.label}>Phone number:</Text>
         <TextInput style={styles.inputR} placeholder= {user.phoneNumber} name= "phoneNumber" onChange= {handlerOnChange}/>
         <Separator />
-        <Text style={error.address ? style.error : style.label}>Address:</Text>
+        <Text style={styles.label}>Address:</Text>
         <TextInput style={styles.inputR} placeholder= {user.address} name= "address" onChange= {handlerOnChange}/>
         <Separator />
         
