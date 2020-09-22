@@ -1,6 +1,7 @@
 //////////>> MODULES <</////////
 import React, {useState} from 'react'
 import { View, Text, TextInput, TouchableHighlight, ImageBackground } from 'react-native'
+import style from './styles/EditContact_Styles'
 import { useDispatch } from 'react-redux'
 
 /////////>> SCRIPTS <<//////////
@@ -41,12 +42,12 @@ export default ({route, navigation}) => {
     }
 
     return(
-        <ImageBackground source={Background} style={{flex:1}}>
-            <View>
-                <Text>Update Friend</Text>
-                <TextInput editable placeholder={friend.nickName} onChangeText={hOnCh_Friend}/>
-                <TouchableHighlight onPress={updateFriend}>
-                    <Text>Update</Text>
+        <ImageBackground source={Background} style={style.container}>
+            <View style={style.containerInput}>
+                <Text style={style.title}>Update Friend</Text>
+                <TextInput style={style.input} editable placeholder={friend.nickName} onChangeText={hOnCh_Friend}/>
+                <TouchableHighlight style={style.btn} onPress={updateFriend}>
+                    <Text style={style.textBtn}>Update</Text>
                 </TouchableHighlight>
             </View>
         </ImageBackground>
