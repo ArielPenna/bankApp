@@ -1,75 +1,38 @@
 //////////////>> MODELS <<//////////////
-import React,{ useState } from 'react';
-import { useDispatch } from 'react-redux'
+import React,{ useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import { View, Text, TextInput ,ImageBackground, TouchableHighlight} from 'react-native';
-import { Icon } from 'react-native-elements'
 
 //////////////>> SCRIPTS <<//////////////
 import styles from './styles/SendMoneyStyles'
+import { get_one_friend, send_money } from '../../../redux/actions'
 
 //////////////>> IMGS <<//////////////
 import Background from '../../../assets/background.png'
 
-export default ({ navigation }) => {
+export default ({ route, navigation }) => {
 
   const dispatch = useDispatch()
 
+  const friend = useSelector(state => state.oneFriend)
+
+  const { idFriend, nickName, changeTransaction, total } = route.params
+
   //////////>> STATES <<///////////
   const [send, setSend] = useState({
-    send: '',
-    emailFriend: ''
+    transaction: 0
   })
 
-  const [error, setError] = useState({
-    send: '*',
-    emailFriend: '*'
-  })
+  const [max, setMax] = useState(false)
 
   const [sure, setSure] = useState(false)
 
-  ///////////>> SUPPORTS <<//////////
-
-  //-----------> VARS <-------------//
-  const regex_email = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/; 
-
-  ////-> FUNCTIONS <-/////
-  const validation = (input) =>{
-    let error = {}
-    
-    if(!input.send){
-      error.send = '*'
-    }
-    else if(parseInt(input.send) < 100){
-      error.send = '*'
-    }
-
-    if(!input.emailFriend){
-        error.emailFriend = '*';
-    }
-    else if(!regex_email.test(input.emailFriend)){
-        error.emailFriend = 'Email invalido *';
-    }
-
-    return error
-  }
-  
-  const withoutError = () => {
-    if(error.emailFriend || error.send) return true
-    else return false
-  }
-
   //////////>> HANDLER ON CHANGE (hOnCh) <<////////////
   const hOnCh_Send = e =>{
-    setError(validation({
-      ...send,
-      [e.target.name]: [e.target.value]
-    }))
-
-    setSend({
-      ...send,
-      [e.target.name]: [e.target.value]
-    })
-  }
+      setSend({
+        transaction: parseInt(e)
+      })
+    }
 
   const hOnCh_Sure = () => {
     setSure(!sure)
@@ -78,12 +41,18 @@ export default ({ navigation }) => {
   //////////>> DISPATCHS <<///////////////
   const sendMoney = ()=> {
     try{
-      console.log('dinero enviado')
+      changeTransaction('CHANGE')
+      dispatch(send_money(friend.account.cvu, send))
+      navigation.navigate('Main')
     }
     catch(err){
       console.log(err)
     }
   }
+
+  useEffect(()=>{
+    dispatch(get_one_friend(idFriend))
+  }, [])
 
   return (
     <ImageBackground source={Background} style={styles.container}>
@@ -97,19 +66,19 @@ export default ({ navigation }) => {
         {!sure ? 
         /*////////--->> MONEY TO SEND <<---////////////*/
         <View style={styles.containerInputs}>
-          <Text style={styles.subTitle}>Quantity:</Text>
-          <TextInput editable style={styles.inputs} name='send' 
-          keyboardType='numeric' onChange={hOnCh_Send} placeholder={send.send ? `$${send.send}` : 'Enter an amount...'}/> 
-          
           {/*////////--->> EMAIL FROM THE FRIEND <<---////////////*/}
-          <Text style={styles.subTitle}>To:</Text>
-          <TextInput editable style={styles.inputs} name='emailFriend' 
-          onChange={hOnCh_Send} placeholder={send.emailFriend ? `${send.emailFriend}` : 'friend@henrybank.com'}/>
-
+          <Text style={styles.subTitleConfirm}>Send to {nickName}:</Text> 
+          <TextInput editable style={styles.inputs} name='send' 
+          keyboardType='numeric' onChangeText={hOnCh_Send} 
+          placeholder={send.transaction ? `$${send.transaction}` : '$$$$$$'}/> 
+          
           {/*////////////>> BUTTONS TO SEND <<///////////////*/}
-          <TouchableHighlight onPress={hOnCh_Sure} disabled={withoutError()}
-          style={withoutError() ? styles.appButtonContainerFalse : styles.appButtonContainer}>
-            <Text style={withoutError() ? styles.appButtonTextFalse : styles.appButtonText}> 
+          <TouchableHighlight onPress={hOnCh_Sure}
+          disabled={send.transaction > total || send.transaction < 100}
+          style={send.transaction > total || send.transaction < 100 ? 
+          styles.appButtonContainerFalse : styles.appButtonContainer} >
+            <Text style={send.transaction > total || send.transaction < 100 ?
+            styles.appButtonTextFalse : styles.appButtonText}> 
             Send </Text>
           </TouchableHighlight> 
         </View>
@@ -121,8 +90,8 @@ export default ({ navigation }) => {
             <Text style={styles.subTitleConfirm}>Are you sure send</Text>
 
             {/*/////////>> INFO <<///////////*/}
-            <Text style={styles.subTitleConfirm}>${send.send} to</Text>
-            <Text style={styles.subTitleConfirm}>{send.emailFriend} ? </Text>
+            <Text style={styles.subTitleConfirm}>${send.transaction} to</Text>
+            <Text style={styles.subTitleConfirm}>{nickName} ? </Text>
 
             {/*/////////>> BUTTONS <<///////////*/}
             <View>
