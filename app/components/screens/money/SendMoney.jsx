@@ -58,19 +58,26 @@ export default ({ route, navigation }) => {
     <ImageBackground source={Background} style={styles.container}>
       <View>
         {/*////////////>> TITLE <<///////////////*/}
-        <Text style={styles.mainTitle}>Send Money</Text>   
+        {/* <Text style={styles.mainTitle}>Send Money</Text>    */}
 
         {/* *********   INSERT IMG SEND MONEY ****************/}
 
         {/*////////////>> INPUTS <<///////////////*/}
         {!sure ? 
         /*////////--->> MONEY TO SEND <<---////////////*/
+
+        <View style={styles.containerInputs}>
+          <Text style={styles.subTitleConfirm}>Quantity:</Text>
+          <TextInput editable style={styles.inputs} name='send' 
+          keyboardType='numeric' onChange={hOnCh_Send} placeholder={send.send ? `$${send.send}` : 'Enter an amount...'}/> 
+
         <View>
           {/*////////--->> EMAIL FROM THE FRIEND <<---////////////*/}
-          <Text style={styles.subTitle}>Send to {nickName}:</Text> 
+          <Text style={styles.subTitleConfirm}>Send to {nickName}:</Text> 
           <TextInput editable style={styles.inputs} name='send' 
           keyboardType='numeric' onChangeText={hOnCh_Send} 
           placeholder={send.transaction ? `$${send.transaction}` : '$$$$$$'}/> 
+
           
           {/*////////////>> BUTTONS TO SEND <<///////////////*/}
           <TouchableHighlight onPress={hOnCh_Sure}
@@ -85,14 +92,15 @@ export default ({ route, navigation }) => {
 
         : ////////IF YOU PRESS THE BUTTON SEND WILL APPEAR ALL THIS ///////////
 
-          <View>
+          <View style={styles.containerConfirm}>
             {/*/////////>> SUB TITLE <<///////////*/}
-            <Text style={styles.subTitle}>Are you sure send</Text>
+            <Text style={styles.subTitleConfirm}>Are you sure send</Text>
 
             {/*/////////>> INFO <<///////////*/}
-            <Text style={styles.subTitle}>${send.transaction} to</Text>
-            <Text style={styles.subTitle}>{nickName} ? </Text>
 
+            <Text style={styles.subTitleConfirm}>${send.transaction} to</Text>
+            <Text style={styles.subTitleConfirm}>{nickName} ? </Text>
+            
             {/*/////////>> BUTTONS <<///////////*/}
             <View>
 

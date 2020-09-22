@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ImageBackground, Button} from 'react-native';
+import { View, Text, ImageBackground, Button, TouchableHighlight} from 'react-native';
 import { useDispatch } from "react-redux";
 import {recharge_wallet} from "../../../redux/actions"
 
@@ -24,10 +24,6 @@ export default ({ route ,navigation }) => {
 
   return (
   <ImageBackground source={Background} style={style.container}>
-
-      <View>
-        <Text style={style.title}>Recargar Dinero</Text>   
-      </View> 
     
     <View style={style.container2}>
       
@@ -42,7 +38,9 @@ export default ({ route ,navigation }) => {
         <Text style={style.text}>
           Mostrale este código al cajero en RapiPago o PagoFácil
         </Text>
-        <Button title="Confirmar Recarga" onPress={updateWallet}/>
+         <TouchableHighlight onPress={updateWallet} style={style.btn}>
+                <Text style={style.appButtonText}> Siguiente </Text>
+            </TouchableHighlight>
         
     </View>
 

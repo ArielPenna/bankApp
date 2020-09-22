@@ -80,11 +80,11 @@ export default ({route, navigation}) =>{
 
                 {/*/////////>> NAME <</////////*/}
                 <Text style={styles.label}>Name</Text>
-                <TextInput style={styles.inputs} name='nickName' onChange={hOnCh_Contact}/>
+                <TextInput style={styles.inputs} name='nickName' placeholder="Enter name..." onChange={hOnCh_Contact}/>
 
                 {/*/////////>> EMAIL <</////////*/}
                 <Text style={styles.label}>Email</Text>
-                <TextInput style={styles.inputs} name='email' onChange={hOnCh_Contact}/>
+                <TextInput style={styles.inputs} name='email' placeholder="Enter email..." onChange={hOnCh_Contact}/>
 
                 {/*/////////>> ADD BUTTON <</////////*/}
                 <TouchableHighlight disabled={withoutErrors()} style={styles.btn} 
