@@ -17,12 +17,10 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         nickName: {
-            type: S.TEXT,
-            unique: true
+            type: S.TEXT
         },
         email: {
-            type: S.TEXT,
-            unique: true
+            type: S.TEXT
         }
     })
 };

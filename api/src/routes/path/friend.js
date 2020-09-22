@@ -20,8 +20,8 @@ server.post('/add', estaAutenticado, async (req, res) => {
     //-----------------------------------------------------------------------------//
     //                              Filtros                                        //
     //-----------------------------------------------------------------------------//
-    if(!friend)                     res.send('el amigo que queres agregar no existe')
-    else if(me.id === friend.id)    res.send('no podes ser tu propio amigo')
+    if(!friend)                     res.status(404).send('el amigo que queres agregar no existe')
+    else if(me.id === friend.id)    res.status(404).send('no podes ser tu propio amigo')
     
     //----------------------------------//
     //      SI PASA LOS FILTROS         //
@@ -37,10 +37,11 @@ server.post('/add', estaAutenticado, async (req, res) => {
                 nickName,
                 email
             })
-            .then((create) => res.send(create))
+            .then((create) => res.status(202).send(create))
             .catch(err => {
-                if(err.name === 'SequelizeUniqueConstraintError') res.send('ya existe este amigo')
-                else res.send(err)
+                if(err.name === 'SequelizeUniqueConstraintError') 
+                    res.status(400).send('ya existe este amigo')
+                else res.status(400).send(err)
             })
     }
 })
