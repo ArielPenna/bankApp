@@ -70,6 +70,7 @@ export default ({ route, navigation }) => {
           <Text style={styles.subTitleConfirm}>Quantity:</Text>
           <TextInput editable style={styles.inputs} name='send' 
           keyboardType='numeric' onChange={hOnCh_Send} placeholder={send.send ? `$${send.send}` : 'Enter an amount...'}/> 
+        
 
         <View>
           {/*////////--->> EMAIL FROM THE FRIEND <<---////////////*/}
@@ -88,6 +89,7 @@ export default ({ route, navigation }) => {
             styles.appButtonTextFalse : styles.appButtonText}> 
             Send </Text>
           </TouchableHighlight> 
+        </View>
         </View>
 
         : ////////IF YOU PRESS THE BUTTON SEND WILL APPEAR ALL THIS ///////////
@@ -114,9 +116,12 @@ export default ({ route, navigation }) => {
                 <Text style={styles.appButtonText}> No </Text>
               </TouchableHighlight> 
             </View>
+          
           </View>
+        
         }
 
+      
       </View>      
     </ImageBackground>
   )

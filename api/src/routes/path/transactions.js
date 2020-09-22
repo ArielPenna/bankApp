@@ -64,9 +64,11 @@ server.post("/to/:CVUfriend", estaAutenticado, async (req, res) => {
         nuevoSaldo = await userFromWallet.update({ // descuento el saldo de la transaccion
                 balance:(parseFloat(userFromWallet.dataValues.balance) - floatTransaction)
             })
-        await userToWallet.update({
+        let newBalance = await userToWallet.update({
             balance:(parseFloat(userFromWallet.dataValues.balance) + floatTransaction)
             })
+
+        console.log(newBalance)
         res.send(nuevoSaldo.dataValues)
     }
 })
