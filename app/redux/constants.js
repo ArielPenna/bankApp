@@ -16,3 +16,6 @@ export const DELETE_FRIEND = "DELETE_FRIEND"
 
 ////////////////////>> USER PROFILE <<//////////////////
 export const EDIT_PROFILE = "EDIT_PROFILE";
+
+////////////////////>> EDIT USER <</////////////////////
+export const EDIT_USER = "EDIT_USER";
