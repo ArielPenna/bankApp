@@ -67,7 +67,7 @@ export default ({ route, navigation }) => {
         /*////////--->> MONEY TO SEND <<---////////////*/
         <View style={styles.containerInputs}>
           {/*////////--->> EMAIL FROM THE FRIEND <<---////////////*/}
-          <Text style={styles.subTitleConfirm}>Send to {nickName}:</Text> 
+          <Text style={styles.subTitle}>Send to {nickName}:</Text> 
           <TextInput editable style={styles.inputs} name='send' 
           keyboardType='numeric' onChangeText={hOnCh_Send} 
           placeholder={send.transaction ? `$${send.transaction}` : '$$$$$$'}/> 
