@@ -1,5 +1,6 @@
 import * as cons from "./constants";
 import axios from "axios";
+import { set } from "react-native-reanimated";
 
 const url = "http://localhost:9000/";
 
@@ -142,10 +143,14 @@ export const get_one_friend = (idFriend) => {
 }
 
 ///////>> ADD FRIEND <<////////
-export const add_friend = (friend) => {
-  return () => {
-    instance.post('friend/add' , friend)
+export const add_friend = async (friend, setFriend) => {
+  try{
+    const amigo = await instance.post('friend/add' , friend)
+    setFriend(true)
+  } catch(err){
+    setFriend(false)
   }
+  
 }
 
 //////>> EDIT FRIEND <<///////
