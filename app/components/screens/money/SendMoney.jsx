@@ -89,7 +89,7 @@ export default ({ route, navigation }) => {
             Send </Text>
           </TouchableHighlight> 
         </View>
-
+        </View>
         : ////////IF YOU PRESS THE BUTTON SEND WILL APPEAR ALL THIS ///////////
 
           <View style={styles.containerConfirm}>
