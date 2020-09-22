@@ -1,5 +1,6 @@
 const estaAutenticado = require("../../Suppliers/authenticateFunction")
 const server = require("express").Router();
+const { Op } = require("sequelize");
 const { User, Contact, Account } = require("../../db.js");
 
 
@@ -27,22 +28,30 @@ server.post('/add', estaAutenticado, async (req, res) => {
     //      SI PASA LOS FILTROS         //
     //----------------------------------//
     else{
-        // Si no existe nickName le pongo el nombre completo
-        if(!nickName) nickName = `${friend.firstName} ${friend.lastName}`
+        const existe = await Contact.findOne({
+                where: {
+                    [Op.and]:[
+                        {friend: me.id},
+                        {friended: friend.id}
+                    ]
+            }})
 
-        // Creo el contacto y le paso los valores que necesita
-        Contact.create({
-                friend: me.id,
-                friended: friend.id,
-                nickName,
-                email
-            })
-            .then((create) => res.status(202).send(create))
-            .catch(err => {
-                if(err.name === 'SequelizeUniqueConstraintError') 
-                    res.status(400).send('ya existe este amigo')
-                else res.status(400).send(err)
-            })
+        if(existe) res.status(402).send('ya existe este amigo')
+
+        else {
+            // Si no existe nickName le pongo el nombre completo
+            if(!nickName) nickName = `${friend.firstName} ${friend.lastName}`
+    
+            // Creo el contacto y le paso los valores que necesita
+            Contact.create({
+                    friend: me.id,
+                    friended: friend.id,
+                    nickName,
+                    email
+                })
+                .then((create) => res.status(202).send(create))
+                .catch(err => res.status(400).send(err))
+        }
     }
 })
 
