@@ -166,3 +166,10 @@ export const delete_friend = (idFriend) => {
     instance.delete(`friend/delete/${idFriend}`)
   }
 }
+
+/////////>> EDIT USER <<//////////
+export const edit_user = (user, id) => {
+  return () => {
+    instance.put(`user/edit/${id}`, user)
+  }
+}

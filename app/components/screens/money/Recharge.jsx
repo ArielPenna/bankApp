@@ -23,7 +23,7 @@ export default ({ route, navigation }) => {
 
     <ImageBackground source={Background} style={style.container}>
       <View>
-        <Text style={style.title}>Recargar Dinero</Text>   
+        <Text style={style.title}></Text>   
       </View> 
 
       

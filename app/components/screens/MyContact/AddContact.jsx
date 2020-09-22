@@ -81,7 +81,7 @@ export default ({route, navigation}) =>{
 
                 {/*/////////>> EMAIL <</////////*/}
                 <Text style={styles.label}>Email</Text>
-                <TextInput style={styles.inputs} name='email' onChange={hOnCh_Contact}/>
+                <TextInput style={styles.inputs} name='email' placeholder="Enter email..." onChange={hOnCh_Contact}/>
 
                 {/*/////////>> NAME <</////////*/}
                 <Text style={styles.label}>Name</Text>
