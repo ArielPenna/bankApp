@@ -71,25 +71,25 @@ export default ({ route, navigation }) => {
           <TextInput editable style={styles.inputs} name='send' 
           keyboardType='numeric' onChange={hOnCh_Send} placeholder={send.send ? `$${send.send}` : 'Enter an amount...'}/> 
 
-        <View>
-          {/*////////--->> EMAIL FROM THE FRIEND <<---////////////*/}
-          <Text style={styles.subTitleConfirm}>Send to {nickName}:</Text> 
-          <TextInput editable style={styles.inputs} name='send' 
-          keyboardType='numeric' onChangeText={hOnCh_Send} 
-          placeholder={send.transaction ? `$${send.transaction}` : '$$$$$$'}/> 
+          <View>
+            {/*////////--->> EMAIL FROM THE FRIEND <<---////////////*/}
+            <Text style={styles.subTitleConfirm}>Send to {nickName}:</Text> 
+            <TextInput editable style={styles.inputs} name='send' 
+            keyboardType='numeric' onChangeText={hOnCh_Send} 
+            placeholder={send.transaction ? `$${send.transaction}` : '$$$$$$'}/> 
 
           
-          {/*////////////>> BUTTONS TO SEND <<///////////////*/}
-          <TouchableHighlight onPress={hOnCh_Sure}
-          disabled={send.transaction > total || send.transaction < 100}
-          style={send.transaction > total || send.transaction < 100 ? 
-          styles.appButtonContainerFalse : styles.appButtonContainer} >
-            <Text style={send.transaction > total || send.transaction < 100 ?
-            styles.appButtonTextFalse : styles.appButtonText}> 
-            Send </Text>
-          </TouchableHighlight> 
+            {/*////////////>> BUTTONS TO SEND <<///////////////*/}
+            <TouchableHighlight onPress={hOnCh_Sure}
+              disabled={send.transaction > total || send.transaction < 100}
+              style={send.transaction > total || send.transaction < 100 ? 
+              styles.appButtonContainerFalse : styles.appButtonContainer} >
+                <Text style={send.transaction > total || send.transaction < 100 ?
+                styles.appButtonTextFalse : styles.appButtonText}> 
+                Send </Text>
+            </TouchableHighlight> 
         </View>
-
+      </View>
         : ////////IF YOU PRESS THE BUTTON SEND WILL APPEAR ALL THIS ///////////
 
           <View style={styles.containerConfirm}>
