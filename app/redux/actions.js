@@ -104,6 +104,13 @@ export const transactions_get = () => {
   };
 };   
 
+//////>> SEND MONEY <</////
+export const send_money = (CVUfriend, transaction) => {
+  return () => {
+    instance.post(`transactions/to/${CVUfriend}`, transaction)
+  }
+}
+
 ///////>> RECHARGE WALLET <<////////
 export const recharge_wallet = (balance) => {
   return () => {
@@ -152,5 +159,12 @@ export const update_friend = (friend) => {
 export const delete_friend = (idFriend) => {
   return () => {
     instance.delete(`friend/delete/${idFriend}`)
+  }
+}
+
+/////////>> EDIT USER <<//////////
+export const edit_user = (user, id) => {
+  return () => {
+    instance.put(`user/edit/${id}`, user)
   }
 }
