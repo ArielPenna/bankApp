@@ -9,13 +9,19 @@ export default StyleSheet.create({
     },
 
     container:{
-        margin:0
+        backgroundColor:"#ECE8AF",
+        width:340,
+        height:430,
+        borderRadius:15,
+        shadowOpacity: 0.57,
+        shadowRadius: 15.19,
+        elevation: 23,
     },
 
     title:{
         textAlign: "center",
         fontSize:35,
-        color:"#fff",
+        color:"black",
         padding:5,
         marginBottom:10
     },
@@ -23,15 +29,20 @@ export default StyleSheet.create({
     label:{
         textAlign: "center",
         fontSize:25,
-        color:"#fff",
+        color:"black",
         padding:5,
         marginBottom:10
     },
 
     inputs:{
-        backgroundColor: 'white',
-        height: 40,
-        textAlign: 'center'
+        width:296,
+        height:55,
+        marginLeft: 17,
+        borderRadius: 15,
+        marginBottom: 30,
+        backgroundColor:"#8F958B",
+        fontSize: 20,
+        textAlign: 'center',
     },
 
     btn:{

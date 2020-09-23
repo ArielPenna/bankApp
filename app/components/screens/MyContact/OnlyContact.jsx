@@ -104,7 +104,12 @@ export default ({ route, navigation }) => {
         }
 
         {/*///////////-->>>> SEND MONEY BUTTON <<<<--///////////*/}
-        <TouchableHighlight onPress={() => navigation.navigate("SendMoney")}>
+        <TouchableHighlight onPress={() => navigation.navigate("Send Money", {
+                    idFriend, 
+                    nickName,
+                    changeTransaction: route.params.chng,
+                    total: route.params.total
+                })}>
             <View style={style.touch}>
               <Image style={style.ico} source={EnviarDinero} />
               <Text style={style.small}>Send Money</Text>

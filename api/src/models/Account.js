@@ -1,5 +1,4 @@
 const S = require('sequelize').DataTypes
-/* const passport = require('passport'); */
 const seedrandom = require("seedrandom")
 
 

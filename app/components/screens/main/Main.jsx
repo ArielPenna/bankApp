@@ -26,13 +26,15 @@ export default ({ navigation }) => {
 
   //////>> STATE <<///////
   const [change, setChange] = useState("")
+  const [changeTransaction, setChangeTran] = useState("")
   
   /////>> USE EFFECT <<///////
   useEffect(() => {
     dispatch(get_user__me()) //Dispatch to bringing the user active
-    dispatch(transactions_get())//Dispatch to bringing the transactions from the user    
-    setChange("")
-  }, [change]);
+    dispatch(transactions_get())//Dispatch to bringing the transactions from the user 
+    setChange('')
+    setChangeTran('')       
+  }, [change, changeTransaction]);
 
   return (
     <ImageBackground source={Background} style={styles.container}>
@@ -42,11 +44,11 @@ export default ({ navigation }) => {
           <View style={styles.row}>
             <View>
               {/*//////////////--->>>> PROFILE <<<<---///////////*/}
-              <Text style={styles.mainTitle}>Hello, {typeof user == "object" && user.firstName}</Text>
+              <Text style={styles.mainTitle}>Hello, {user?.firstName}</Text>
               <Image style={styles.img} source={Avatar} />
             </View>
             {/*//////////////--->>>> TOTAL WALLET <<<<---///////////*/}
-            <Text style={styles.money}>$ {typeof user == "object" && fullBalance.total ? fullBalance.total : '0000'} </Text>
+            <Text style={styles.money}>$ {user?.wallet ? user.wallet.balance : '0000'} </Text>
           </View>
         </View>
 
@@ -62,13 +64,13 @@ export default ({ navigation }) => {
 
               {/*//////////////--->>>> INCOME <<<<---///////////*/}
               <Text style={styles.centerText}>Income</Text>
-              <Text style={styles.bigText}>$ {typeof fullBalance == "object" && fullBalance.credit ? fullBalance.credit : '0000'}</Text>
+              <Text style={styles.bigText}>$ {fullBalance?.credit ? fullBalance.credit : '0000'}</Text>
             </View>
             <View style={styles.margin}>
 
               {/*//////////////--->>>> OUTCOME <<<<---///////////*/}
               <Text style={styles.centerText}>Outcome</Text>
-              <Text style={styles.bigText}>$ {typeof fullBalance == "object" && fullBalance.debit ? fullBalance.debit : '0000'}</Text>
+              <Text style={styles.bigText}>$ {fullBalance?.debit ? fullBalance.debit : '0000'}</Text>
             </View>
           </View>
           {/* <Text style={styles.centerText}>1 Día 7 Días 30 Días</Text> */}
@@ -88,7 +90,7 @@ export default ({ navigation }) => {
           </TouchableHighlight>
 
           {/*//////////////--->>>> BUTTON STATISTICS <<<<---///////////*/}
-          <TouchableHighlight onPress={() => navigation.navigate("Statistics", {fullBalance:fullBalance, user:user})}>
+          <TouchableHighlight onPress={() => navigation.navigate("Statistics", {fullBalance, user})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={Estadisticas} />
               <Text style={styles.small}>Statistics</Text>
@@ -96,7 +98,7 @@ export default ({ navigation }) => {
           </TouchableHighlight>
 
           {/*//////////////--->>>> BUTTON MY PROFILE <<<<---///////////*/}
-          <TouchableHighlight onPress={() => navigation.navigate('MyProfile', {user})}>
+          <TouchableHighlight onPress={() => navigation.navigate('MyProfile', {user: user, editProfile: setChange})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={MyProfile}/>
               <Text style={styles.small}>My Profile</Text>
@@ -104,7 +106,7 @@ export default ({ navigation }) => {
           </TouchableHighlight>
 
           {/*//////////////--->>>> BUTTON MY PRODUCTS <<<<---///////////*/}
-          <TouchableHighlight onPress={() => navigation.navigate("MyProducts", {user:user})}>
+          <TouchableHighlight onPress={() => navigation.navigate("MyProducts", {user, chng:setChangeTran, total: fullBalance?.total})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={Productos} />
               <Text style={styles.small}>My Products</Text>
@@ -116,7 +118,7 @@ export default ({ navigation }) => {
 
         {/*//////////////--->>>> BUTTON RECHARGE <<<<---///////////*/}
         <View style={styles.row}>
-          <TouchableHighlight onPress={() => navigation.navigate("Recharge", {chng:setChange})}>
+          <TouchableHighlight onPress={() => navigation.navigate("Recharge", {chng:setChangeTran})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={Saldo} />
               <Text style={styles.small}>Recharge</Text>
@@ -124,7 +126,7 @@ export default ({ navigation }) => {
           </TouchableHighlight>
 
           {/*//////////////--->>>> BUTTON SEND MONEY <<<<---///////////*/}
-          <TouchableHighlight onPress={() => navigation.navigate("SendMoney")}>
+          <TouchableHighlight onPress={() => navigation.navigate("Send Money to Contacts", {chng:setChangeTran, total: fullBalance?.total})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={EnviarDinero} />
               <Text style={styles.small}>Send Money</Text>

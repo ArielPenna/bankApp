@@ -1,5 +1,6 @@
 import * as cons from "./constants";
 import axios from "axios";
+import { set } from "react-native-reanimated";
 
 const url = "http://localhost:9000/";
 
@@ -104,6 +105,13 @@ export const transactions_get = () => {
   };
 };   
 
+//////>> SEND MONEY <</////
+export const send_money = (CVUfriend, transaction) => {
+  return () => {
+    instance.post(`transactions/to/${CVUfriend}`, transaction)
+  }
+}
+
 ///////>> RECHARGE WALLET <<////////
 export const recharge_wallet = (balance) => {
   return () => {
@@ -135,10 +143,14 @@ export const get_one_friend = (idFriend) => {
 }
 
 ///////>> ADD FRIEND <<////////
-export const add_friend = (friend) => {
-  return () => {
-    instance.post('friend/add' , friend)
+export const add_friend = async (friend, setFriend) => {
+  try{
+    const amigo = await instance.post('friend/add' , friend)
+    setFriend(true)
+  } catch(err){
+    setFriend(false)
   }
+  
 }
 
 //////>> EDIT FRIEND <<///////
@@ -152,5 +164,12 @@ export const update_friend = (friend) => {
 export const delete_friend = (idFriend) => {
   return () => {
     instance.delete(`friend/delete/${idFriend}`)
+  }
+}
+
+/////////>> EDIT USER <<//////////
+export const edit_user = (user, id) => {
+  return () => {
+    instance.put(`user/edit/${id}`, user)
   }
 }
