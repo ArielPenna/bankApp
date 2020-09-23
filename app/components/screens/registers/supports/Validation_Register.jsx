@@ -14,6 +14,8 @@ const validate = (input)=>{
 
     //Documento
     const regex_dni = /[0-9]{1,8}/i
+
+    const regex_phone = /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/
     
 //////////////////////////////////////////////////////////////    
 
@@ -42,6 +44,8 @@ const validate = (input)=>{
 /////////////>>TEL/CEL<</////////////
     if(!input.phoneNumber){
       errors.phoneNumber = '*'
+    } else if ( !regex_phone.test(input.phoneNumber)){
+      errors.phoneNumber = 'Numero invalido *';
     }
 
 /////////////>>DOCUMENT NUMBER<</////////////   
