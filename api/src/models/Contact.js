@@ -21,6 +21,9 @@ module.exports = (sequelize) => {
         },
         email: {
             type: S.TEXT
+        },
+        phoneNumber: {
+            type: S.BIGINT
         }
     })
 };

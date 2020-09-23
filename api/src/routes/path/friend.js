@@ -46,6 +46,7 @@ server.post('/add', estaAutenticado, async (req, res) => {
             Contact.create({
                     friend: me.id,
                     friended: friend.id,
+                    phoneNumber: friend.phoneNumber,
                     nickName,
                     email
                 })
@@ -91,6 +92,7 @@ server.get('/list', estaAutenticado, async (req, res) => {
     const { id } = req.user; // muestro si estoy autenticado
     
     const contacts = await Contact.findAll({ where: { friend: id } })
+
     if(!contacts) res.send('no tenes amigos')
     else res.send(contacts)
 })
