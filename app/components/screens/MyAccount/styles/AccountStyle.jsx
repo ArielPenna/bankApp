@@ -1,106 +1,33 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-  }, 
-  ico: {
-    alignSelf: "center",
-    width: 50,
-    height: 50,
-  },
-  mainTitle: {
-    fontSize: 12,
-    color: "#fff",
-    textAlign: "left",
-  },
-  row: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  generalView: {
-    backgroundColor: "white",
-    width: "100%",
-  },
-  top: {
-    justifyContent: "flex-start",
-    marginTop: 40,
-  },
-  separator: {
-    marginVertical: 30,
-  },
-  margin: {
-    margin: 20,
-  },
-  centerText: {
-    fontSize: 28,
-    textAlign: "center",
-    justifyContent: "center",
-    margin: 5,
-  },
-  touch: {
-    alignItems: "center",
-    backgroundColor: "#f7b700",
-    padding: 10,    
-    margin: 10, 
-    shadowColor: "#000",
-    shadowOffset: {width: 0, height: 4},
-    shadowOpacity: 0.30,
-    shadowRadius: 4.65,
-    elevation: 8,   
-  },
-  small: {
-    fontSize: 9,
-  },
-  bigText: {
-    fontSize: 30,
-  },
-  misproductos: {
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  misproductosrectangulo: {
-    alignItems: "center",
-    backgroundColor: "#f7b700",
-    width: 300,
-    padding: 20,    
-    margin: 10, 
-    shadowColor: "#000",
-    shadowOffset: {width: 0, height: 4},
-    shadowOpacity: 0.30,
-    shadowRadius: 4.65,
-    elevation: 8,   
-  },
-  imgmiscuentas: {
-    alignSelf: "center",
-    width: 50,
-    height: 50,
-    
-  },
-  textmicuentas: {
-    
-    fontSize: 14
-  },
-  cvuaccount: {
-    margin: 35,
-    backgroundColor: "#FFFFFF",
-    width: 280,
-    height: 150,
-    justifyContent: "space-around",
-    padding: 10,
-    alignitems: "center",
-    textalignlast: "left",
-    borderRadius: 12,
-  },
-  textaccount: {
-    fontSize: 20,
-    fontWeight: "bold",
-  }
+  container:
+    { flex: 1, width: "100%", height: "100%", alignItems: "center" }, 
+  
+  misproductos:
+    { flexDirection: "column", flex: 1, justifyContent: "center", marginTop: 150 }, 
+  
+  ico:
+    { alignSelf: "center", width: 50, height: 50 },
+  
+  row:
+    { flexDirection: "row", justifyContent: "center", alignItems: "center" },
+  
+  touch:
+    { alignItems: "center", backgroundColor: "#f7b700", padding: 10, margin: 10, shadowColor: "#000", shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.30, shadowRadius: 4.65, elevation: 8 },
+  
+  small:
+    { fontSize: 9 },
+
+  cvuaccount:
+    { margin: 30, backgroundColor: "#FFFFFF", width: 280, height: 150, justifyContent: "space-around", padding: 10, alignitems: "center", textalignlast: "left", borderRadius: 2 },
+  
+  textaccount:
+    { fontSize: 20, fontWeight: "bold" },
+  
+  mainView:
+    { flexDirection: "column", flex: 1, justifyContent: "center", marginTop: 20 }, 
+  
 });
 
 export default styles;
