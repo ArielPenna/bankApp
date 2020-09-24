@@ -201,14 +201,14 @@ export default ({route, navigation})=>{
 {/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}
             <Text style={error.address ? style.error : style.label}>Address</Text>
             <View style={style.adressContainer}>
-            <Text style={style.subLabel}>Principal Street</Text>
+            <Text style={style.subLabel}>Street</Text>
                 <View style={style.streetPrincipal}>                    
                     <TextInput style={style.inputStreet} editable name='street1' onChange={hOnCh_Adress}/>
                     <TextInput style={style.inputSubStreet} keyboardType='numeric' 
                     editable name='number' onChange={hOnCh_Adress} placeholder='N°'/>
                 </View>
                 <View>
-                    <Text style={style.subLabel}>One street that cuts the principal</Text>
+                    <Text style={style.subLabel}>And</Text>
                     <TextInput style={style.inputR} editable name='street2' onChange={hOnCh_Adress}/>
                 </View>
 

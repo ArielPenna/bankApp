@@ -100,6 +100,7 @@ export const transactions_get = () => {
   return (dispatch) => {
     instance.get("transactions/get").then((res) => {
       dispatch({ type: cons.TRANSACTIONS_GET, payload: res.data });
+      console.log(transactions_get)
     });
   };
 };   
