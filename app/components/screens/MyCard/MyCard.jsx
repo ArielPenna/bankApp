@@ -22,9 +22,7 @@ export default ({ navigation, route }) => {
 
   return (
     <ImageBackground source={Background} style={styles.container}>
-      <View style={styles.mainView}>
-        <Text style={styles.mainTitle}>My Card</Text>   
-        <Separator/>
+      <View style={styles.mainView}>        
         <Image style={styles.img} source={Tarjeta} />        
         <View style={styles.dataView}>
           <Text style={styles.cardNumber} color="white">{numCard}</Text>
