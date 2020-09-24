@@ -27,10 +27,7 @@ export default ({ route, navigation }) => {
   
   return (
     <ImageBackground source={Background} style={styles.container}>
-      <View>
-        {/*/////////////>> TITLE <<///////////////*/}
-        <Text style={styles.centerText}>My Account</Text> 
-
+      <View style={styles.mainView}>
         {/*/////////////>> INFO BOX <<///////////////*/}
         <View style={styles.cvuaccount}>
 

@@ -85,40 +85,39 @@ export default ({ navigation, route}) => {
 
   return (    
     <ImageBackground source={Background} style={styles.container}>
-      <View style={styles.misdatos}>
-        <Separator />
+      <View>        
         <Text style={styles.mainTitle}>Edit profile</Text>         
         <Separator /> 
-        <Text style={styles.label}>Phone number:</Text>
-        <TextInput style={styles.inputR} placeholder= {user.phoneNumber} name= "phoneNumber" onChange= {handlerOnChange}/>
+          <Text style={styles.label}>Phone number:</Text>
+          <TextInput style={styles.inputR} placeholder= {user.phoneNumber} name= "phoneNumber" onChange= {handlerOnChange}/>
         <Separator />
-        <Text style={error.address ? styles.error : styles.label}>Address:</Text>
+        <Text style={styles.label}>Address:</Text>
         <View style={styles.adressContainer}>
-          <Text style={styles.subLabel}>Principal Street</Text>
+          <Text style={styles.label}>Principal Street</Text>
           <View style={styles.streetPrincipal}>                    
-              <TextInput style={styles.inputStreet} editable name='street1' onChange={hOnCh_Adress}/>
-              <TextInput style={styles.inputSubStreet} keyboardType='numeric' 
-              editable name='number' onChange={hOnCh_Adress} placeholder='N°'/>
+            <TextInput style={styles.inputStreet} editable name='street1' onChange={hOnCh_Adress}/>
+            <TextInput style={styles.inputSubStreet} keyboardType='numeric' 
+            editable name='number' onChange={hOnCh_Adress} placeholder='N°'/>
           </View>
           <View>
-              <Text style={styles.subLabel}>One street that cuts the principal</Text>
+              <Text style={styles.label}>One street that cuts the principal</Text>
               <TextInput style={styles.inputR} editable name='street2' onChange={hOnCh_Adress}/>
           </View>
 
-          <Button title='Search' onPress={searchDirection} disabled={withoutErrorLocation()} loading={loading}
-          disabledStyle={styles.appButtonContainerFalse} 
-          disabledTitleStyle={styles.appButtonTextFalse}
-          titleStyle={styles.appButtonText}
-          buttonStyle={styles.appButtonContainer}/>
-      </View>         
+          <Button title='SEARCH' onPress={searchDirection} disabled={withoutErrorLocation()} loading={loading}
+          disabledStyle={styles.buttonFalse} 
+          disabledTitleStyle={styles.buttonTextFalse}
+          titleStyle={styles.buttonText}
+          buttonStyle={styles.button}/>
+        </View>         
 
       <Text style={newUser.address ? styles.locationY : styles.locationX}>{newUser.address ? location() : 'City'}</Text>   
             
         <Separator />
         
         <TouchableHighlight onPress= {editData}>
-          <View style={styles.touch}>
-            <Text>Submit</Text>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>SUBMIT</Text>
           </View>
         </TouchableHighlight>
       </View>

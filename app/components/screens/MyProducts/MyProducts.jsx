@@ -28,11 +28,6 @@ export default ({ navigation, route }) => {
     <ImageBackground source={Background} style={styles.container}>
       {console.log(routes)}
       <View>
-        {/*///////////////>> TITLE <</////////////*/}
-        <Text style={styles.centerText}>Mis Productos</Text>
-        {console.log(user)}
-        <Separator />
-
         <View style={styles.misproductos}>
           {/*///////////////>> BUTTON MY ACCOUNT <</////////////*/}
           <TouchableHighlight onPress={() => navigation.navigate("Account", toMyAccount)}>
