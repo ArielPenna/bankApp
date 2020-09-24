@@ -30,14 +30,11 @@ export default ({ navigation }) => {
   
   /////>> USE EFFECT <<///////
   useEffect(() => {
-    dispatch(get_user__me()) //Dispatch to bringing the user active      
-    setChange("")
-  }, [change]);
-
-  useEffect(()=>{
+    dispatch(get_user__me()) //Dispatch to bringing the user active
     dispatch(transactions_get())//Dispatch to bringing the transactions from the user 
-    setChangeTran() 
-  }, [changeTransaction])
+    setChange('')
+    setChangeTran('')       
+  }, [change, changeTransaction]);
 
   return (
     <ImageBackground source={Background} style={styles.container}>
@@ -51,7 +48,7 @@ export default ({ navigation }) => {
               <Image style={styles.img} source={Avatar} />
             </View>
             {/*//////////////--->>>> TOTAL WALLET <<<<---///////////*/}
-            <Text style={styles.money}>$ {fullBalance?.total ? fullBalance.total : '0000'} </Text>
+            <Text style={styles.money}>$ {user?.wallet ? user.wallet.balance : '0000'} </Text>
           </View>
         </View>
 

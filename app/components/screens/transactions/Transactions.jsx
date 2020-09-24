@@ -31,7 +31,7 @@ export default ({ navigation }) => {
         {transactions.length ? transactions.map((tran)=>{
         return (
             <Card>
-              <Card.Title>CARD WITH DIVIDER</Card.Title>
+              <Card.Title>My transactions</Card.Title>
               <Card.Divider/>
               <View >
                 <Text>{tran.debit ? '-' + tran.value : '+' + tran.value}</Text>

@@ -23,14 +23,12 @@ export default ({ route, navigation }) => {
     transaction: 0
   })
 
-  const [max, setMax] = useState(false)
-
   const [sure, setSure] = useState(false)
 
   //////////>> HANDLER ON CHANGE (hOnCh) <<////////////
   const hOnCh_Send = e =>{
       setSend({
-        transaction: parseInt(e)
+        transaction: Number(e)
       })
     }
 
@@ -88,8 +86,8 @@ export default ({ route, navigation }) => {
                 styles.appButtonTextFalse : styles.appButtonText}> 
                 Send </Text>
             </TouchableHighlight> 
+          </View>
         </View>
-      </View>
         : ////////IF YOU PRESS THE BUTTON SEND WILL APPEAR ALL THIS ///////////
 
           <View style={styles.containerConfirm}>
