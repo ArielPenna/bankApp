@@ -1,6 +1,7 @@
 /////////>> MODULES <<///////
 import React from "react";
 import { View, Text, Image, ImageBackground, TouchableHighlight } from "react-native";
+import { useRoute } from '@react-navigation/native'
 
 ///////>> SCRIPTS <<///////
 import styles from "./styles/MyProductsStyles";
@@ -16,6 +17,8 @@ const Separator = () => <View style={styles.separator} />;
 export default ({ navigation, route }) => {
   const { user, chng, total,  } = route.params;  
 
+  const routes = useRoute()
+
   const toMyAccount = {
     name: `${user.firstName} ${user.lastName}`, 
     cvu: user.account.cvu
@@ -23,6 +26,7 @@ export default ({ navigation, route }) => {
   
   return (
     <ImageBackground source={Background} style={styles.container}>
+      {console.log(routes)}
       <View>
         {/*///////////////>> TITLE <</////////////*/}
         <Text style={styles.centerText}>Mis Productos</Text>
