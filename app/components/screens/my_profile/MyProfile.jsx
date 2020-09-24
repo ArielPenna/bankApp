@@ -1,10 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux'; 
-import { View, Text, Image, ImageBackground, TouchableHighlight} from 'react-native';
-
+import { View, Text, Image,TextInput, ImageBackground, TouchableHighlight} from 'react-native';
 import Background from '../../../assets/background.png';
-import { Card } from 'react-native-elements';
-
 import styles from './styles/MyProfile';
 
 const Separator = () => <View style={styles.separator} />;
@@ -16,40 +13,27 @@ export default ({ navigation, route}) => {
 
   return (    
     <ImageBackground source={Background} style={styles.container}>
-      <View style={styles.misdatos}>
+      <View >         
+        <Text style={styles.mainTitle}>Personal Data</Text>
         <Separator />
-        <Text style={styles.mainTitle}>My profile</Text>         
-        <Separator />  
-        <Text style={styles.textmisdatos}>Personal Data</Text>
+          <Text style={styles.label}>E-Mail:</Text>        
+          <Text style={styles.inputR}>  {myProfile.email}</Text>        
         <Separator />
-        <Text>E-Mail:</Text>
-        <Card>
-          <Text>{myProfile.email}</Text>
-        </Card>
+          <Text style={styles.label}>Name:</Text>        
+          <Text style={styles.inputR}>  {myProfile.firstName + ' ' + myProfile.lastName}</Text>        
         <Separator />
-        <Text >Name:</Text>
-        <Card>
-          <Text>{myProfile.firstName + ' ' + myProfile.lastName}</Text>
-        </Card>
+          <Text style={styles.label}>ID:</Text>        
+          <Text style={styles.inputR}>  {myProfile.documentType + myProfile.documentNumber}</Text>        
         <Separator />
-        <Text>ID:</Text>
-        <Card>
-          <Text>{myProfile.documentType + myProfile.documentNumber}</Text>
-        </Card>
+          <Text style={styles.label}>Phone number:</Text>      
+          <Text style={styles.inputR}>  {myProfile.phoneNumber}</Text>         
         <Separator />
-        <Text>Phone number:</Text>
-        <Card>
-          <Text>{myProfile.phoneNumber}</Text> 
-        </Card>
-        <Separator />
-        <Text>Address:</Text>
-        <Card>
-          <Text>{myProfile.address}</Text>         
-        </Card>
+          <Text style={styles.label}>Address:</Text>        
+          <Text style={styles.inputR}>  {myProfile.address}</Text>         
         <Separator />
         <TouchableHighlight onPress={() => navigation.navigate("EditProfile", {user: user, editProfile: editProfile} )}>
-          <View style={styles.touch}>
-            <Text>Edit Profile</Text>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>EDIT PROFILE</Text>
           </View>
         </TouchableHighlight>
       </View>
