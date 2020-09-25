@@ -41,23 +41,23 @@ export default ({ navigation, route }) => {
         <View style={[styles.row, styles.top]}>
 
           {/*///---------->> MONTH <<----------///*/}
-          <TouchableHighlight>
+          <TouchableHighlight onPress={ ()=>console.log("Mont")}>
             <View style={styles.touch}>
-              <Text style={styles.small}>1 Month</Text>
+              <Text style={styles.small}>6 Month</Text>
             </View>
           </TouchableHighlight>
 
           {/*///---------->> WEEK <<----------///*/}
-          <TouchableHighlight>
+          <TouchableHighlight onPress={ ()=>console.log("Week")}>
             <View style={styles.touch}>
-              <Text style={styles.small}>1 Week</Text>
+              <Text style={styles.small}>12 Week</Text>
             </View>
           </TouchableHighlight>
 
           {/*///---------->> DAY <<----------///*/}
-          <TouchableHighlight>
+          <TouchableHighlight onPress={ ()=>console.log("Day")}>
             <View style={styles.touch}>
-              <Text style={styles.small}>1 Day</Text>
+              <Text style={styles.small}>30 Day</Text>
             </View>
           </TouchableHighlight>
         </View>
