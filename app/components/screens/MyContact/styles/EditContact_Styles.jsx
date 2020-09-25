@@ -1,56 +1,20 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-   container:{
-      flex: 1,
-      alignContent:"center",    
-      justifyContent: "center",
-      alignItems: "center",    
-    },
-   containerInput:{
-      backgroundColor:"#ECE8AF",
-      width:340,
-      height:430,
-      borderRadius:15,
-      shadowOpacity: 0.57,
-      shadowRadius: 15.19,
-      elevation: 23,
-   },
-   title:{
-      textAlign: "center",
-      fontSize:35,
-      color:"black",
-      padding:5,
-      marginBottom:44,
-      marginTop:73,
-      marginTop:100
-   },
-   input:{
-      width:296,
-      height:55,
-      marginLeft: 17,
-      borderRadius: 15,
-      marginBottom: 30,
-      backgroundColor:"#8F958B",
-      fontSize: 25,
-      textAlign: 'center',
-      color:"white"
-   },
-   btn:{
-      width: '90%',
-      marginTop:15,
-      marginLeft: 18,
-      marginBottom: 10,
-      backgroundColor: "#009688",
-      borderRadius: 10,
-      paddingVertical: 10,
-      paddingHorizontal: 12,
-   },
-   textBtn:{
-      fontSize:20,
-      color:"#fff",
-      textAlign:'center'
-   }
+	container:
+		{ flex: 1, alignContent: "center", justifyContent: "center", alignItems: "center" },
+
+	title:
+		{ textAlign: "center", fontSize: 35, color: "white", padding: 5, marginBottom: 10 },
+	
+	input:
+		{ width: 250, height: 30, padding: 2, margin: 5, marginLeft: 15, borderRadius: 2, backgroundColor: "white", fontSize: 18 },
+
+	btn:
+		{ backgroundColor: "#f7b700", justifyContent: "space-around", alignItems: "center", borderRadius: 2, height: 35, shadowColor: "#000", shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.30, shadowRadius: 4.65, elevation: 8 },
+  
+	appButtonText:
+		{ color: "#752667", textAlign: "center", justifyContent: "space-around", alignItems: "center", fontWeight: "bold" },
 
 })
 
