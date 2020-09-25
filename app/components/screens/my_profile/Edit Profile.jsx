@@ -1,36 +1,28 @@
+////////////>> MODULES <<////////////
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux'; 
-import { View, Text, Image, ImageBackground, TouchableHighlight} from 'react-native';
-import {edit_user} from '../../../redux/actions';
-import Background from '../../../assets/background.png';
+import { View, Text, ImageBackground, TouchableHighlight} from 'react-native';
 import { Button } from 'react-native-elements';
-
-import styles from './styles/MyProfile';
 import { TextInput } from 'react-native-gesture-handler';
-import { location_get } from '../../../redux/actions';
+
+////////////>> SCRIPTS <<////////////
+import {edit_user, location_get} from '../../../redux/actions';
+import styles from './styles/MyProfileStyle';
+
+////////////>> IMGS <<////////////
+import Background from '../../../assets/background.png';
 
 const Separator = () => <View style={styles.separator} />;
-
-
 
 export default ({ navigation, route}) => {
     
   const dispatch= useDispatch()
-  const {user}= route.params
-  const {editProfile}= route.params
+
+  ////////>> VARS <<//////////
+  const {user, editProfile}= route.params
+
+  ////////>> STATES <<//////////
   const [update, setUpdate]= useState({phoneNumber: user.phoneNumber, address: user.address})
-
-  const handlerOnChange= (e)=> {
-      setUpdate ({
-          ...update,
-          [e.target.name]: e.target.value
-      })
-  }
-
-  //////////>> STATES <<//////////
-  const [newUser, setNewUser] = useState({
-    address:''
-  })
 
   //THIS STATE IS TO HELP US VALIDATE THE INPUTS OF THE USERS
   const [error, setError] = useState({
@@ -43,6 +35,7 @@ export default ({ navigation, route}) => {
     number: '',
     street2: ''
   })
+
   const [loading, setLoading] = useState(false)
 
   /////////////>> SUPPORT <</////////////////
@@ -64,6 +57,8 @@ export default ({ navigation, route}) => {
       return loc[2] + ', ' + loc[3] + ',\n' + loc[4]
   }
 
+  /////////////>> HANDLER ON CHANGE (hOnCh) <<//////////
+
   const hOnCh_Adress = (e)=>{
     setAddress({
         ...address,
@@ -71,7 +66,16 @@ export default ({ navigation, route}) => {
     })
   }
 
-    const editData = ()=>{
+  const handlerOnChange= (e)=> {
+    setUpdate ({
+        ...update,
+        [e.target.name]: e.target.value
+    })
+  }
+
+  //////////>> DISPATCH <<////////
+
+  const editData = ()=>{
     try{         
     dispatch(edit_user(update, user.id))
     editProfile('update')
@@ -80,46 +84,62 @@ export default ({ navigation, route}) => {
     catch(err){
     console.log(err)
     }
-
-}
+  }
 
   return (    
     <ImageBackground source={Background} style={styles.container}>
       <View>        
-        <Text style={styles.mainTitle}>Edit profile</Text>         
+        {/*//////////////>> TITLE <<//////////////*/}
+        <Text style={styles.mainTitle}>Edit profile</Text>  
+        
         <Separator /> 
-          <Text style={styles.label}>Phone number:</Text>
-          <TextInput style={styles.inputR} placeholder= {user.phoneNumber} name= "phoneNumber" onChange= {handlerOnChange}/>
+
+        {/*//////////////>> UPDATE INPUTS <<//////////////*/}
+        {/*///>>>>>>> PHONE <<<<<<<<///*/}
+        <Text style={styles.label}>Phone number:</Text>
+        <TextInput style={styles.inputR} placeholder= {user.phoneNumber} name= "phoneNumber" onChange= {handlerOnChange}/>
+        
         <Separator />
+        
+        {/*///>>>>>>> ADDRESS <<<<<<<<///*/}
         <Text style={styles.label}>Address:</Text>
         <View style={styles.adressContainer}>
+
+          {/*///>>>>>>> STREET 1 <<<<<<<<///*/}
           <Text style={styles.label}>Principal Street</Text>
           <View style={styles.streetPrincipal}>                    
             <TextInput style={styles.inputStreet} editable name='street1' onChange={hOnCh_Adress}/>
             <TextInput style={styles.inputSubStreet} keyboardType='numeric' 
             editable name='number' onChange={hOnCh_Adress} placeholder='N°'/>
           </View>
+
+          {/*///>>>>>>> STREET 2 <<<<<<<<///*/}
           <View>
               <Text style={styles.label}>One street that cuts the principal</Text>
               <TextInput style={styles.inputR} editable name='street2' onChange={hOnCh_Adress}/>
           </View>
 
-          <Button title='SEARCH' onPress={searchDirection} disabled={withoutErrorLocation()} loading={loading}
+          {/*///>>>>>>> SEARCH BUTTON <<<<<<<<///*/}
+          <Button title='SEARCH' onPress={searchDirection} 
+          disabled={withoutErrorLocation()} loading={loading}
           disabledStyle={styles.buttonFalse} 
           disabledTitleStyle={styles.buttonTextFalse}
           titleStyle={styles.buttonText}
           buttonStyle={styles.button}/>
         </View>         
 
-      <Text style={newUser.address ? styles.locationY : styles.locationX}>{newUser.address ? location() : 'City'}</Text>   
+        {/*///>>>>>>> SHOW LOCATION <<<<<<<<///*/}
+        <Text style={newUser.address ? styles.locationY : styles.locationX}>{newUser.address ? location() : 'City'}</Text>   
             
-        <Separator />
+      <Separator />
         
-        <TouchableHighlight onPress= {editData}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>SUBMIT</Text>
-          </View>
-        </TouchableHighlight>
+      {/*//////////////>> UPDATE BUTTON <<//////////////*/}
+      <TouchableHighlight onPress= {editData}>
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>SUBMIT</Text>
+        </View>
+      </TouchableHighlight>
+
       </View>
     </ImageBackground>
   )

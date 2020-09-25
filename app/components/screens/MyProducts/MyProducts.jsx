@@ -17,8 +17,6 @@ const Separator = () => <View style={styles.separator} />;
 export default ({ navigation, route }) => {
   const { user, chng, total,  } = route.params;  
 
-  const routes = useRoute()
-
   const toMyAccount = {
     name: `${user.firstName} ${user.lastName}`, 
     cvu: user.account.cvu
@@ -26,7 +24,6 @@ export default ({ navigation, route }) => {
   
   return (
     <ImageBackground source={Background} style={styles.container}>
-      {console.log(routes)}
       <View>
         <View style={styles.misproductos}>
           {/*///////////////>> BUTTON MY ACCOUNT <</////////////*/}
