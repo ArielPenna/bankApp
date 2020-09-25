@@ -12,7 +12,6 @@ export default ({ route ,navigation }) => {
   const dispatch = useDispatch()
 
   const {chng, balance} = route.params
-  {console.log(chng)}
 
   function updateWallet(){
     dispatch(recharge_wallet({balance}))
@@ -38,9 +37,9 @@ export default ({ route ,navigation }) => {
         <Text style={style.text}>
           Mostrale este código al cajero en RapiPago o PagoFácil
         </Text>
-         <TouchableHighlight onPress={updateWallet} style={style.btn}>
+        <TouchableHighlight onPress={updateWallet} style={style.btn}>
                 <Text style={style.appButtonText}> Siguiente </Text>
-            </TouchableHighlight>
+        </TouchableHighlight>
         
     </View>
 

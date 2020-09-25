@@ -17,7 +17,6 @@ import Logo from '../../../assets/logo.png'
 //hOnCh === handlerOnChange
 
 export default ({navigation}) => {
-
 ///////////>> STATES <<////////////
     const [login, setLogin]= useState ({
         email:'',
