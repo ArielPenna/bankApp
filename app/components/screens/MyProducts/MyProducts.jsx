@@ -1,6 +1,7 @@
 /////////>> MODULES <<///////
 import React from "react";
 import { View, Text, Image, ImageBackground, TouchableHighlight } from "react-native";
+import { useRoute } from '@react-navigation/native'
 
 ///////>> SCRIPTS <<///////
 import styles from "./styles/MyProductsStyles";
