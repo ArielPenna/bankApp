@@ -34,6 +34,9 @@ const styles = StyleSheet.create({
   inputR:
     { width: 250, height: 30, padding: 2, margin: 5, marginLeft: 15, borderRadius: 2, backgroundColor: "white", fontSize: 18 },
   
+  inputA:
+  { width: 250, height: 'auto', padding: 2, margin: 5, marginLeft: 15, borderRadius: 2, backgroundColor: "white", fontSize: 18 },
+
   adressContainer:
     { flex: 1, flexDirection: 'column', marginBottom: -30 },
   

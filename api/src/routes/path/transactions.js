@@ -59,6 +59,8 @@ server.post("/to/:CVUfriend", estaAutenticado, async (req, res) => {
         await userToWallet.update({
                 balance:(Number(userToWallet.dataValues.balance) + floatTransaction)
             })
+
+        console.log(newBalance)
         res.send(nuevoSaldo.dataValues)
     }
 })
