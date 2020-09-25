@@ -68,6 +68,7 @@ export default ({ route, navigation }) => {
           <Text style={styles.subTitleConfirm}>Quantity:</Text>
           <TextInput editable style={styles.inputs} name='send' 
           keyboardType='numeric' onChange={hOnCh_Send} placeholder={send.send ? `$${send.send}` : 'Enter an amount...'}/> 
+        
 
         <View>
           {/*////////--->> EMAIL FROM THE FRIEND <<---////////////*/}
@@ -112,9 +113,12 @@ export default ({ route, navigation }) => {
                 <Text style={styles.appButtonText}> No </Text>
               </TouchableHighlight> 
             </View>
+          
           </View>
+        
         }
 
+      
       </View>      
     </ImageBackground>
   )
