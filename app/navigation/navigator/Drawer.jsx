@@ -2,9 +2,7 @@
 import React from 'react'
 import { Image } from 'react-native'
 import { Block, Text, Button } from 'expo-ui-kit'
-import { createDrawerNavigator, 
-        DrawerContentScrollView, 
-        DrawerItem } from "@react-navigation/drawer"
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer"
 import { createStackNavigator, HeaderBackButton } from "@react-navigation/stack"
 import { useDispatch, useSelector } from 'react-redux'
 

@@ -53,15 +53,15 @@ export default ({ route, navigation }) => {
           <View style={style.searchContainer}>
               <View style={style.btnSearch}>
                 {/*/////////>> ICON <</////////*/}
-                <Icon raised name='search'
-                type='font-awesome' color='black'/>
+            <Icon raised name='search'
+              type='font-awesome' color='black' style={style.ico}/>
               </View>
             <TextInput style={style.inputStyle} onChangeText={hOnCh_Search} placeholder="Search contact..."/>  
           </View>
 
         {/*/////////>> ADD CONTACT BUTTON <</////////*/}
         <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact', { update: setChange })}>
-            <Text style={style.appButtonText}> +Add Contact </Text>
+            <Text style={style.appButtonText}> +ADD CONTACT </Text>
         </TouchableHighlight>
 
         {/*/////////>> CARDS <</////////*/}

@@ -12,8 +12,8 @@ export default function App({navigation}) {
   return (
     <Provider store={store}>
       <NavigationContainer>
-          <Drawer/>  
+        <Drawer/>  
       </NavigationContainer>
-      </Provider>
+    </Provider>
   );
 }

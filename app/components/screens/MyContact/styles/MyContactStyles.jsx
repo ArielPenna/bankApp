@@ -1,58 +1,32 @@
 import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
-   container:{
-      flex:1
-   },
+   container:
+      { flex: 1 },
 
-   title:{
-      textAlign: "center",
-      fontSize:35,
-      color:"#fff",
-      padding:5,
-      marginBottom:10
-   },
+   title:
+      { textAlign: "center", fontSize: 35, color: "#fff", padding: 5, marginBottom: 10 },
 
-   searchContainer: {
-      flexDirection: 'row',
-      backgroundColor:"#C2C8E2",
-      borderRadius:15,
-      width:327,
-      marginLeft:21
-   },
+   searchContainer:
+      { flexDirection: 'row', backgroundColor: "#fff", borderRadius: 2, width: 327, marginLeft: 21 },
+   
+   ico:
+      { backgroundColor: "#f7b700" },
 
-   inputStyle: {
-      flex: 1,
-      marginLeft:10,
-      fontSize:25,
-      color:"black",
-   },
+   inputStyle:
+      { flex: 1, marginLeft: 10, fontSize: 25, color: "black" },
+   
+   btn:
+      { width: '90%', marginTop: 15, marginLeft: 18, marginBottom: 10, backgroundColor: "#f7b700", borderRadius: 2, paddingVertical: 10, paddingHorizontal: 12 },
 
-   btn:{
-      width: '90%',
-      marginTop:15,
-      marginLeft: 18,
-      marginBottom: 10,      
-      backgroundColor: "#009688",
-      borderRadius: 10,
-      paddingVertical: 10,
-      paddingHorizontal: 12,
-   },
+   appButtonText:
+      { fontSize: 16, color: "#752667", textAlign: "center", fontWeight: "bold" },
 
-   appButtonText:{
-      fontSize:20,
-      color:"#fff",
-      textAlign:"center"
-   },
+   cardTitle:
+      { fontSize: 25 },
 
-   cardTitle:{
-      fontSize:25
-   },
-
-   cardText:{
-      fontSize:20,
-      textAlign:"center"
-   },
+   cardText:
+      { fontSize: 20, textAlign: "center" },
 
 })
 
