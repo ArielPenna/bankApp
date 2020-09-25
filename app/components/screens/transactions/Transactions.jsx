@@ -1,7 +1,7 @@
 /////////////>> MODULES <<//////////////
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'; 
-import { View, Text, Image, ImageBackground} from 'react-native';
+import { View, Text, Image, ImageBackground } from 'react-native';
 import {Card} from 'react-native-elements';
 
 /////////////>> SCRIPTS <<//////////////
