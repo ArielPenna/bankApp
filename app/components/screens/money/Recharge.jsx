@@ -16,8 +16,7 @@ export default ({ route, navigation }) => {
     setAmount(e.target.value)
   }
 
-  const {chng} = route.params
-
+  
 
   return (
 
@@ -34,7 +33,7 @@ export default ({ route, navigation }) => {
 
             <Text style={style.text2}>A continuación será redirigido al código que deberá mostrar en un RapiPago o PagoFacil</Text>
 
-            <TouchableHighlight onPress={()=> navigation.navigate("ValidateCharge", {chng, balance:amount})} style={style.btn}>
+            <TouchableHighlight onPress={()=> navigation.navigate("ValidateCharge", {chng: ()=>{}, balance:amount})} style={style.btn}>
                 <Text style={style.appButtonText}> Siguiente </Text>
             </TouchableHighlight>
 

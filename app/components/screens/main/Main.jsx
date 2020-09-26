@@ -16,25 +16,22 @@ import MyProfile from "../../../assets/datos.png";
 
 const Separator = () => <View style={styles.separator} />;
 
-export default ({ navigation }) => {
+export default ({ route, navigation }) => {
 
   const dispatch = useDispatch()
+
+  console.log(route.params)
+
 
   ///////>> STATE REDUX <<///////////
   const user = useSelector((state) => state.user);   
   const fullBalance = useSelector((state) => state.fullBalance);
 
-  //////>> STATE <<///////
-  const [change, setChange] = useState("")
-  const [changeTransaction, setChangeTran] = useState("")
-  
   /////>> USE EFFECT <<///////
   useEffect(() => {
     dispatch(get_user__me()) //Dispatch to bringing the user active
-    dispatch(transactions_get())//Dispatch to bringing the transactions from the user 
-    setChange('')
-    setChangeTran('')       
-  }, [change, changeTransaction]);
+    dispatch(transactions_get())//Dispatch to bringing the transactions from the user      
+  }, []);
 
   return (
     <ImageBackground source={Background} style={styles.container}>
@@ -118,7 +115,7 @@ export default ({ navigation }) => {
 
         {/*//////////////--->>>> BUTTON RECHARGE <<<<---///////////*/}
         <View style={styles.row}>
-          <TouchableHighlight onPress={() => navigation.navigate("Recharge", {chng:setChangeTran})}>
+          <TouchableHighlight onPress={() => navigation.navigate("Recharge", {chng:setChange})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={Saldo} />
               <Text style={styles.small}>Recharge</Text>

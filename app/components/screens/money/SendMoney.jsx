@@ -5,7 +5,7 @@ import { View, Text, TextInput ,ImageBackground, TouchableHighlight} from 'react
 
 //////////////>> SCRIPTS <<//////////////
 import styles from './styles/SendMoneyStyles'
-import { get_one_friend, send_money } from '../../../redux/actions'
+import { get_one_friend, send_money, transactions_get, get_user__me } from '../../../redux/actions'
 
 //////////////>> IMGS <<//////////////
 import Background from '../../../assets/background.png'
@@ -16,7 +16,9 @@ export default ({ route, navigation }) => {
 
   const friend = useSelector(state => state.oneFriend)
 
-  const { idFriend, nickName, changeTransaction, total } = route.params
+  const { idFriend, nickName, total } = route.params
+
+  const [change, setChange] = useState(false)  
 
   //////////>> STATES <<///////////
   const [send, setSend] = useState({
@@ -39,9 +41,7 @@ export default ({ route, navigation }) => {
   //////////>> DISPATCHS <<///////////////
   const sendMoney = ()=> {
     try{
-      changeTransaction('CHANGE')
-      dispatch(send_money(friend.account.cvu, send))
-      navigation.navigate('Main')
+      send_money(friend.account.cvu, send, setChange)
     }
     catch(err){
       console.log(err)
@@ -51,6 +51,15 @@ export default ({ route, navigation }) => {
   useEffect(()=>{
     dispatch(get_one_friend(idFriend))
   }, [])
+
+  useEffect(()=>{
+    if(change){
+      dispatch(transactions_get())
+      dispatch(get_user__me())
+      setChange(false)
+      navigation.navigate('Main')
+    }    
+  }, [change])
 
   return (
     <ImageBackground source={Background} style={styles.container}>
