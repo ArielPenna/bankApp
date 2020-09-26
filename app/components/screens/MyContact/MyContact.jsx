@@ -52,8 +52,8 @@ export default ({ route, navigation }) => {
           <View style={style.searchContainer}>
               <View style={style.btnSearch}>
                 {/*/////////>> ICON <</////////*/}
-                <Icon raised name='search'
-                type='font-awesome' color='black'/>
+            <Icon raised name='search'
+              type='font-awesome' color='black' style={style.ico}/>
               </View>
             <TextInput style={style.inputStyle} onChangeText={hOnCh_Search} placeholder="Search contact..."/>  
           </View>

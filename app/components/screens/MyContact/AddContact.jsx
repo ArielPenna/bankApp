@@ -72,12 +72,16 @@ export default ({route, navigation}) =>{
         }
     }
 
+    const Separator = () => <View style={styles.separator} />;
+
     return(
         <ImageBackground source={Background} style={styles.background}>
             {friend && navigation.navigate('MyContact')}
-            <View style={styles.container}>
+            <View >
                 {/*/////////>> TITLE <</////////*/}
                 <Text style={styles.title}>Add Contact</Text>
+
+                <Separator/>
 
                 {/*/////////>> EMAIL <</////////*/}
                 <Text style={styles.label}>Email</Text>
@@ -85,12 +89,14 @@ export default ({route, navigation}) =>{
 
                 {/*/////////>> NAME <</////////*/}
                 <Text style={styles.label}>Name</Text>
-                <TextInput style={styles.inputs} name='nickName' onChange={hOnCh_Contact}/>
+                <TextInput style={styles.inputs} name='nickName' onChange={hOnCh_Contact} />
+                
+                <Separator/>
 
                 {/*/////////>> ADD BUTTON <</////////*/}
                 <TouchableHighlight disabled={withoutErrors()} style={styles.btn} 
                 onPress={addFriend}>
-                    <Text style={styles.appButtonText}>+Add</Text>
+                    <Text style={styles.appButtonText}>+ADD</Text>
                 </TouchableHighlight>
             </View>
         </ImageBackground>
