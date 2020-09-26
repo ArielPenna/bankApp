@@ -12,6 +12,9 @@ import style from './styles/OnlyContactStyle'
 import EnviarDinero from "../../../assets/enviarDinero.png"
 import Background from '../../../assets/background.png'
 
+const Separator = () => <View style={style.separator} />;
+
+
 export default ({ route, navigation }) => {
 
   const dispatch = useDispatch()
@@ -74,12 +77,14 @@ export default ({ route, navigation }) => {
 
         {/*///////////-->>>> EDIT BUTTON <<<<--///////////*/}
         <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Edit Contact',{id: idFriend, nickName, update})}>
-            <Text style={style.appButtonText}> Edit </Text>
+            <Text style={style.appButtonText}> EDIT </Text>
         </TouchableHighlight>
+
+        <Separator/>
 
         {/*///////////-->>>> DELETE BUTTON <<<<--///////////*/}
         <TouchableHighlight style={style.btn} onPress={hOnCh_SureDelete}>
-            <Text style={style.appButtonText}> Delete </Text>
+            <Text style={style.appButtonText}> DELETE </Text>
         </TouchableHighlight>
 
         {sureDelete &&
@@ -94,6 +99,7 @@ export default ({ route, navigation }) => {
               <TouchableHighlight onPress={deleteFriend} style={style.btn}>
                 <Text style={style.appButtonText}> Yes </Text>
               </TouchableHighlight> 
+              
 
               {/*/////////>> BUTTON TO GO BACK <<///////////*/}
               <TouchableHighlight onPress={hOnCh_SureDelete} style={style.btn}>
@@ -102,22 +108,21 @@ export default ({ route, navigation }) => {
             </View>
           </View>
         }
+        </View>      
 
-        {/*///////////-->>>> SEND MONEY BUTTON <<<<--///////////*/}
-        <TouchableHighlight onPress={() => navigation.navigate("Send Money", {
+        {/*///////////-->>>> SEND MONEY BUTTON <<<<--///////////*/}       
+      <TouchableHighlight onPress={() => navigation.navigate("Send Money", {
                     idFriend, 
                     nickName,
                     changeTransaction: route.params.chng,
                     total: route.params.total
                 })}>
-            <View style={style.touch}>
-              <Image style={style.ico} source={EnviarDinero} />
-              <Text style={style.small}>Send Money</Text>
-            </View>
-          </TouchableHighlight>
-        {/*/////////////////////////////////////////////////////*/}
+        <View style={style.touch}>
+          <Image style={style.ico} source={EnviarDinero} />
+          <Text >Send Money</Text>
+        </View>
+      </TouchableHighlight>
 
-      </View>      
     </ImageBackground>
   )
 }

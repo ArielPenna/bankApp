@@ -12,8 +12,12 @@ export default function App({navigation}) {
   return (
     <Provider store={store}>
       <NavigationContainer>
+<<<<<<< HEAD
           <Drawer/>  
+=======
+        <Drawer/>  
+>>>>>>> 0bfab3469d743d8a04176c1c7d2fb4d26aa46f34
       </NavigationContainer>
-      </Provider>
+    </Provider>
   );
 }
