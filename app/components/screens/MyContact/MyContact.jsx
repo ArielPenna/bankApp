@@ -17,7 +17,6 @@ export default ({ route, navigation }) => {
   ////////>> REDUX <<//////////
   const dispatch = useDispatch()
   const contact = useSelector(state => state.contacts)
-  const user = useSelector(state => state.user)
 
   ////////>> STATES <<////////
   const [search, setSearch] = useState('')
@@ -60,8 +59,8 @@ export default ({ route, navigation }) => {
           </View>
 
         {/*/////////>> ADD CONTACT BUTTON <</////////*/}
-        <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact', { update: setChange })}>
-            <Text style={style.appButtonText}> +ADD CONTACT </Text>
+        <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact', { setChange })}>
+            <Text style={style.appButtonText}> +Add Contact </Text>
         </TouchableHighlight>
 
         {/*/////////>> CARDS <</////////*/}

@@ -1,12 +1,12 @@
 ////////////>> MODULES <<////////////
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux'; 
 import { View, Text, ImageBackground, TouchableHighlight} from 'react-native';
 import { Button } from 'react-native-elements';
 import { TextInput } from 'react-native-gesture-handler';
 
 ////////////>> SCRIPTS <<////////////
-import {edit_user, location_get} from '../../../redux/actions';
+import {edit_user, get_user__me, location_get, transactions_get} from '../../../redux/actions';
 import styles from './styles/MyProfileStyle';
 
 ////////////>> IMGS <<////////////
@@ -22,7 +22,10 @@ export default ({ navigation, route}) => {
   const {user, editProfile}= route.params
 
   ////////>> STATES <<//////////
-  const [update, setUpdate]= useState({phoneNumber: user.phoneNumber, address: user.address})
+  const [update, setUpdate]= useState({
+    phoneNumber: user.phoneNumber, 
+    address: user.address
+  })
 
   //THIS STATE IS TO HELP US VALIDATE THE INPUTS OF THE USERS
   const [error, setError] = useState({
@@ -36,6 +39,8 @@ export default ({ navigation, route}) => {
     street2: ''
   })
 
+  const [change, setChange] = useState(false)
+
   const [loading, setLoading] = useState(false)
 
   /////////////>> SUPPORT <</////////////////
@@ -48,12 +53,12 @@ export default ({ navigation, route}) => {
   //SEARCH THE LOCATION WITH THE API
   const searchDirection = ()=>{   
       setLoading(true)     
-      dispatch(location_get(address, newUser, setNewUser, error, setError, setLoading))
+      dispatch(location_get(address, update, setUpdate, error, setError, setLoading))
   }
 
   //SEND A STRING OF THE LOCATION
   const location = ()=>{
-      const loc = newUser.address.split(',')
+      const loc = update.address.split(',')
       return loc[2] + ', ' + loc[3] + ',\n' + loc[4]
   }
 
@@ -77,14 +82,21 @@ export default ({ navigation, route}) => {
 
   const editData = ()=>{
     try{         
-    dispatch(edit_user(update, user.id))
-    editProfile('update')
-    navigation.navigate('Main')
+    edit_user(update, user.id, setChange)
     }
     catch(err){
     console.log(err)
     }
   }
+
+  useEffect(()=>{
+    if(change){
+      dispatch(get_user__me())
+      dispatch(transactions_get())
+      setChange(false)
+      navigation.navigate('MyProfile')
+    }
+  }, [change])
 
   return (    
     <ImageBackground source={Background} style={styles.container}>
@@ -129,7 +141,7 @@ export default ({ navigation, route}) => {
         </View>         
 
         {/*///>>>>>>> SHOW LOCATION <<<<<<<<///*/}
-        <Text style={newUser.address ? styles.locationY : styles.locationX}>{newUser.address ? location() : 'City'}</Text>   
+        <Text style={update.address ? styles.locationY : styles.locationX}>{update.address ? location() : 'City'}</Text>   
             
       <Separator />
         

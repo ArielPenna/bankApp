@@ -12,7 +12,7 @@ import styles from './styles/AddContact_Styles'
 import Background from '../../../assets/background.png'
 
 export default ({route, navigation}) =>{
-    const {update} = route.params
+    const {setChange} = route.params
 
     /////////>> STATES <<//////////
     const [contact, setContact] = useState({
@@ -66,7 +66,7 @@ export default ({route, navigation}) =>{
     const addFriend = () =>{
         try {
             add_friend(contact, setFriend)
-            update('POST')
+            setChange('POsTTTTT')
         } catch (err) {
             console.log(err)
         }

@@ -1,5 +1,5 @@
 ///////////>> MODULES <<////////////
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Image } from 'react-native'
 import { Block, Text, Button } from 'expo-ui-kit'
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer"
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 ///////////>> SCRIPTS <<////////////
 import * as render from '../../components/imports/AppImports'
-import { logout } from '../../redux/actions'
+import { logout, get_user__me, transactions_get } from '../../redux/actions'
 
 ///////////>> IMGS <<////////////
 import Logo from '../../assets/logo.png'
@@ -31,6 +31,7 @@ const Stack = createStackNavigator()
 const DrawerContent = props => {
     const dispatch = useDispatch() //This is to dispatch the Logout
     const state = useSelector(state => state)
+    const [change, setChange] = useState('')
 
     return (
         <DrawerContentScrollView {...props}>
@@ -58,7 +59,7 @@ const DrawerContent = props => {
                         height: 25,
                         width: 25
                     }}/>)}}
-                    onPress={()=> props.navigation.navigate("Main")}
+                    onPress={()=> props.navigation.navigate("Main", {change, setChange})}
                 />
 
                 <DrawerItem 
@@ -69,7 +70,10 @@ const DrawerContent = props => {
                         height: 25,
                         width: 25
                     }}/>)}}
-                    onPress={()=> props.navigation.navigate("MyProfile")}
+                    onPress={()=> props.navigation.navigate("MyProfile", {
+                        myProfile: state.user,
+                        editProfile: setChange
+                    })}
                 />
 
                 <DrawerItem 
@@ -80,7 +84,7 @@ const DrawerContent = props => {
                         height: 20,
                         width: 20
                     }}/>)}}
-                    onPress={()=> props.navigation.navigate("MyContact")}
+                    onPress={()=> props.navigation.navigate("MyContact",{chng: setChange, total: state.fullBalance?.total})}
                 />
 
                 <DrawerItem 
@@ -113,7 +117,7 @@ const DrawerContent = props => {
                         height: 25,
                         width: 25
                     }}/>)}}
-                    onPress={()=> props.navigation.navigate("Recharge")}
+                    onPress={()=> props.navigation.navigate("Recharge", {chng: setChange})}
                 />
 
                 <DrawerItem 
@@ -124,7 +128,7 @@ const DrawerContent = props => {
                     height: 25,
                     width: 25
                 }}/>)}}
-                onPress={()=> props.navigation.navigate("SendMoney")}
+                onPress={()=> props.navigation.navigate("Send Money to Contacts", {chng: setChange, total: state.fullBalance?.total})}
                 />
 
                 <DrawerItem 
@@ -135,7 +139,10 @@ const DrawerContent = props => {
                     height: 25,
                     width: 25
                 }}/>)}}
-                onPress={()=> props.navigation.navigate("Statistics", {fullBalance: state.fullBalance})}
+                onPress={()=> props.navigation.navigate("Statistics", {
+                    fullBalance: state.fullBalance, 
+                    user:state.user
+                })}
                 />
 
             </Block>
@@ -207,7 +214,9 @@ const Screens = ({navigation})=>{
 
         {/*///////-> MY PROFILE <-////////*/}
         <Stack.Screen name="MyProfile" component={render.MyProfile}/>
-        <Stack.Screen name="EditProfile" component={render.EditProfile}/>
+        <Stack.Screen name="EditProfile" component={render.EditProfile} options={{headerLeft:
+            ()=> (<HeaderBackButton color="#f7b700" onPress={()=>{navigation.navigate('MyProfile')}}/>)
+        }}/>{/* BACK TO My Profile */}
 
         {/*///////-> MY PRODUCTS <-////////*/}
         <Stack.Screen name="MyProducts" component={render.MyProducts}/>
@@ -220,9 +229,15 @@ const Screens = ({navigation})=>{
 
         {/*//--> MY CONTACTS <--//*/}
         <Stack.Screen name="MyContact" component={render.MyContact}/>
-        <Stack.Screen name="OnlyContact" component={render.OnlyContact}/>
-        <Stack.Screen name="Add Contact" component={render.AddContact}/>
-        <Stack.Screen name="Edit Contact" component={render.EditContact}/>
+        <Stack.Screen name="OnlyContact" component={render.OnlyContact} options={{headerLeft:
+            ()=> (<HeaderBackButton color="#f7b700" onPress={()=>{navigation.navigate('MyContact')}}/>)
+        }}/>{/* BACK TO My Contact */}
+        <Stack.Screen name="Add Contact" component={render.AddContact} options={{headerLeft:
+            ()=> (<HeaderBackButton color="#f7b700" onPress={()=>{navigation.navigate('MyContact')}}/>)
+        }}/>{/* BACK TO My Contact */}
+        <Stack.Screen name="Edit Contact" component={render.EditContact} options={{headerLeft:
+            ()=> (<HeaderBackButton color="#f7b700" onPress={()=>{navigation.navigate('OnlyContact')}}/>)
+        }}/>{/* BACK TO My Contact */}
 
         {/*///////-> RECHARGE <-////////*/}
         <Stack.Screen name="Recharge" component={render.Recharge}/>
@@ -230,7 +245,9 @@ const Screens = ({navigation})=>{
 
         {/*///////-> SEND MONEY <-////////*/}
         <Stack.Screen name="Send Money to Contacts" component={render.SendMoneyContacts}/>
-        <Stack.Screen name="Send Money" component={render.SendMoney}/>
+        <Stack.Screen name="Send Money" component={render.SendMoney} options={{headerLeft:
+            ()=> (<HeaderBackButton color="#f7b700" onPress={()=>{navigation.navigate('Send Money to Contacts')}}/>)
+        }}/>{/* BACK TO Send Money to Contacts */}
 
     </Stack.Navigator>)
 }
