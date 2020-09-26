@@ -47,20 +47,21 @@ server.post("/to/:CVUfriend", estaAutenticado, async (req, res) => {
     else {    
         //-----------------------------------
         //     SI PASA TODOS LOS FILTROS
-        //-----------------------------------   
+        //-----------------------------------  
         await Transaction.create({
-                debit: userFromAccount.accountId, 
-                deposit: userToAccount.accountId, 
-                value: floatTransaction
-            })
+            debit: userFromAccount.accountId, 
+            deposit: userToAccount.accountId, 
+            value: floatTransaction
+        })
+
         nuevoSaldo = await userFromWallet.update({ // descuento el saldo de la transaccion
                 balance:(Number(userFromWallet.dataValues.balance) - floatTransaction)
             })
         await userToWallet.update({
                 balance:(Number(userToWallet.dataValues.balance) + floatTransaction)
             })
+        
 
-        console.log(newBalance)
         res.send(nuevoSaldo.dataValues)
     }
 })

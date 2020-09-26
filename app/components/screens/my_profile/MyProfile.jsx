@@ -13,8 +13,8 @@ const Separator = () => <View style={styles.separator} />;
 
 export default ({ navigation, route}) => {
 
-   ////////////// REDUX /////////////
-  const myProfile= useSelector(state => state.user)  
+   ////////////// VARS /////////////
+  const {myProfile, editProfile} = route.params
 
   return (    
     <ImageBackground source={Background} style={styles.container}>
@@ -55,7 +55,10 @@ export default ({ navigation, route}) => {
         <Separator/>
 
         {/*//////>>>>>>> BUTTON NAVIGATION <<<<<<<<<///////*/}
-        <TouchableHighlight onPress={() => navigation.navigate("EditProfile", route.params )}>
+        <TouchableHighlight onPress={() => navigation.navigate("EditProfile", {
+          user: myProfile, 
+          editProfile
+          })}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>EDIT PROFILE</Text>
           </View>

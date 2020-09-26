@@ -15,10 +15,7 @@ const getBalance = (payload, user) => {
     var debit = 0;
     var credit = 0;  
 
-    console.log(user)
-
     for (var i in payload) {
-      console.log(payload[i])
       if (payload[i].debit === user?.account.accountId) {
         debit += parseFloat(payload[i].value)
       } else {
