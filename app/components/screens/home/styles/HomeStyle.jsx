@@ -6,7 +6,10 @@ const styles = StyleSheet.create({
     { flex: 1, width: "100%", height: "100%", alignContent: "center", justifyContent: "center", alignItems: "center" },
 
   img:
-    { alignSelf: "center", width: 200, height: 200, marginTop: 50, marginBottom: 80 },
+    { alignSelf: "center", width: 200, height: 200, marginTop: 20, marginBottom: 140 },
+  
+  firm:
+    { alignSelf: "center", width: 250, height: 120, marginBottom: 20},
 
   mainTitle:
     { fontSize: 24, color: "#fff", fontWeight: "bold", textAlign: "center" }, 
