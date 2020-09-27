@@ -17,8 +17,6 @@ export default ({ navigation, route }) => {
  
   /////////>> PARAMS <</////////////
   const { fullBalance, user, transactions } = route.params;
-  {console.log(transactions)}
-  {console.log(transactions[0].updatedAt)}
   ////////>> STATE <<//////////
   const data = [fullBalance.credit,fullBalance.debit]
 
@@ -36,25 +34,24 @@ export default ({ navigation, route }) => {
   ///-------> FUNCTIONS <-------///
   const pieData = data.filter((value) => value > 0).map((value, index) => (
     {value, svg: {fill: color[index]}, key: `pie-${index}`}));   
-    console.log(pieData)
 
-  const months = (m) => {
+  const months = (m, type, indexC ) => {
    const value = transactions.map( t => {
     const month = parseInt(t.updatedAt.split("-")[1])
     
-    if (t.debit === user?.account.accountId && month >= m) {
+    if (t[type] === user?.account.accountId && month >= m) {
       return parseFloat(t.value)
     }
     return 0
   }).reduce((e, f) => e + f)
-  return {value, svg: {fill: color[1]}, key: `pie-1`}
+  return {value, svg: {fill: color[indexC]}, key: `pie-${indexC}`}
   }
   
-  const pieDataSixMonth = [months(sixMonth)]
+  const pieDataSixMonth = [months(sixMonth, "deposit", 0), months(sixMonth, "debit", 1)]
   
-  const pieDataThreeMonth = [months(threeMonth)]
+  const pieDataThreeMonth = [months(threeMonth, "deposit", 0), months(threeMonth, "debit", 1)]
 
-  const pieDataOneMonth = [months(oneMonth)]
+  const pieDataOneMonth = [months(oneMonth, "deposit", 0), months(oneMonth, "debit", 1)]
   
   const [pie, setPie] = useState(pieData)
 
@@ -76,7 +73,7 @@ export default ({ navigation, route }) => {
           </TouchableHighlight>
 
           {/*///---------->> WEEK <<----------///*/}
-          <TouchableHighlight onPress={ ()=>{setPie(pieDataThree)}}>
+          <TouchableHighlight onPress={ ()=>{setPie(pieDataThreeMonth)}}>
             <View style={styles.touch}>
               <Text style={styles.small}>3 Months</Text>
             </View>
