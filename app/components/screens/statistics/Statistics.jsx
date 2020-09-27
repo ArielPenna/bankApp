@@ -1,7 +1,7 @@
 /////////////>> MUDULES <<///////////////
 import React from "react";
 import { View, Text, Image, ImageBackground, TouchableHighlight } from "react-native";
-//import { PieChart } from 'react-native-svg-charts'
+import { PieChart } from 'react-native-svg-charts'
 
 ////////////>> SCRIPTS <<//////////////
 import styles from "./styles/StatisticsStyle";
@@ -22,11 +22,9 @@ export default ({ navigation, route }) => {
   ////////>> STATE <<//////////
   const data = [fullBalance.credit,fullBalance.debit]
 
-  ///////>> SUPPORT <<////////////
-  ///-------> VARS <-------///
-  const color = ["green", "red"]
-
-  ///-------> FUNCTIONS <-------///
+  ///////>> CHART <<////////////
+  
+  const color = ["green", "red"]  
   const pieData = data.filter((value) => value > 0).map((value, index) => (
     {value, svg: {fill: color[index]}, key: `pie-${index}`}));   
 
@@ -64,7 +62,7 @@ export default ({ navigation, route }) => {
 
         {/*///////////////>> STATISTIC <<////////////*/}
         <View style={styles.generalView}>
-          {/*<PieChart style={{ height: 200 }} data={pieData}/>*/}
+          <PieChart style={{ height: 200 }} data={pieData}/>
           <Text style={styles.centerText}>Income ${fullBalance.credit ? fullBalance.credit : '0000'}   Outcome ${fullBalance.debit} </Text>
         </View>
 

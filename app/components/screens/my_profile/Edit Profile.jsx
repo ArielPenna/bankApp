@@ -118,7 +118,7 @@ export default ({ navigation, route}) => {
         <View style={styles.adressContainer}>
 
           {/*///>>>>>>> STREET 1 <<<<<<<<///*/}
-          <Text style={styles.label}>Principal Street</Text>
+          <Text style={styles.label}>Main Street</Text>
           <View style={styles.streetPrincipal}>                    
             <TextInput style={styles.inputStreet} editable name='street1' onChange={hOnCh_Adress}/>
             <TextInput style={styles.inputSubStreet} keyboardType='numeric' 
@@ -127,8 +127,8 @@ export default ({ navigation, route}) => {
 
           {/*///>>>>>>> STREET 2 <<<<<<<<///*/}
           <View>
-              <Text style={styles.label}>One street that cuts the principal</Text>
-              <TextInput style={styles.inputR} editable name='street2' onChange={hOnCh_Adress}/>
+            <Text style={styles.label}>In between streets</Text>
+            <TextInput style={styles.inputR} editable name='street2' onChange={hOnCh_Adress}/>
           </View>
 
           {/*///>>>>>>> SEARCH BUTTON <<<<<<<<///*/}
@@ -138,7 +138,9 @@ export default ({ navigation, route}) => {
           disabledTitleStyle={styles.buttonTextFalse}
           titleStyle={styles.buttonText}
           buttonStyle={styles.button}/>
-        </View>         
+        </View>    
+        
+        <Separator />
 
         {/*///>>>>>>> SHOW LOCATION <<<<<<<<///*/}
         <Text style={update.address ? styles.locationY : styles.locationX}>{update.address ? location() : 'City'}</Text>   
