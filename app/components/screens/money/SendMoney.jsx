@@ -63,24 +63,16 @@ export default ({ route, navigation }) => {
 
   return (
     <ImageBackground source={Background} style={styles.container}>
-      <View>
-        {/*////////////>> TITLE <<///////////////*/}
-        {/* <Text style={styles.mainTitle}>Send Money</Text>    */}
+      <View>        
 
-        {/* *********   INSERT IMG SEND MONEY ****************/}
-
-        {/*////////////>> INPUTS <<///////////////*/}
+        {/*////////////>> INPUT <<///////////////*/}
         {!sure ? 
         /*////////--->> MONEY TO SEND <<---////////////*/
-        <View style={styles.containerInputs}>
-          <Text style={styles.subTitleConfirm}>Quantity:</Text>
-          <TextInput editable style={styles.inputs} name='send' 
-          keyboardType='numeric' onChange={hOnCh_Send} placeholder={send.send ? `$${send.send}` : 'Enter an amount...'}/> 
-        
-
-        <View>
+        <View style={styles.container2}>
           {/*////////--->> EMAIL FROM THE FRIEND <<---////////////*/}
-          <Text style={styles.subTitle}>Send to {nickName}:</Text> 
+          <View style={styles.confirmData}>
+            <Text style={styles.subTitleConfirm}>Send to {nickName}:</Text> 
+          </View>
           <TextInput editable style={styles.inputs} name='send' 
           keyboardType='numeric' onChangeText={hOnCh_Send} 
           placeholder={send.transaction ? `$${send.transaction}` : '$$$$$$'}/> 
@@ -92,31 +84,29 @@ export default ({ route, navigation }) => {
           styles.appButtonContainerFalse : styles.appButtonContainer} >
             <Text style={send.transaction > total || send.transaction < 100 ?
             styles.appButtonTextFalse : styles.appButtonText}> 
-            Send </Text>
+            SEND </Text>
           </TouchableHighlight> 
-          </View>
         </View>
-        : ////////IF YOU PRESS THE BUTTON SEND WILL APPEAR ALL THIS ///////////
         
-          <View style={styles.containerConfirm}>
-            {/*/////////>> SUB TITLE <<///////////*/}
-            <Text style={styles.subTitleConfirm}>Are you sure send</Text>
+        : ////////IF YOU PRESS THE BUTTON SEND WILL APPEAR ALL THIS ///////////
 
-            {/*/////////>> INFO <<///////////*/}
-            <Text style={styles.subTitleConfirm}>${send.transaction} to</Text>
-            <Text style={styles.subTitleConfirm}>{nickName} ? </Text>
-
+          <View style={styles.container2}>
+            
+            <View style={styles.confirmData}>
+              <Text style={styles.subTitleConfirm}>Are you sure send</Text>
+              <Text style={styles.moneyConfirm}>${send.transaction}</Text>
+              <Text style={styles.subTitleConfirm}> to {nickName} ? </Text>
+            </View>
             {/*/////////>> BUTTONS <<///////////*/}
             <View>
-
               {/*/////////>> BUTTON TO CONFIRM <<///////////*/}
               <TouchableHighlight onPress={sendMoney} style={styles.appButtonContainer}>
-                <Text style={styles.appButtonText}> Yes </Text>
+                <Text style={styles.appButtonText}> YES </Text>
               </TouchableHighlight> 
 
               {/*/////////>> BUTTON TO GO BACK <<///////////*/}
               <TouchableHighlight onPress={hOnCh_Sure} style={styles.appButtonContainer}>
-                <Text style={styles.appButtonText}> No </Text>
+                <Text style={styles.appButtonText}> NO </Text>
               </TouchableHighlight> 
             </View>
           

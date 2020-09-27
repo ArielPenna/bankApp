@@ -5,6 +5,7 @@ import styles from "./styles/HomeStyle";
 ///////////////////>> IMAGES <<///////////////////
 import Background from "../../../assets/background.png";
 import Logo from "../../../assets/logo.png";
+import Firm from "../../../assets/name.png";
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -12,8 +13,8 @@ export default ({ navigation }) => {
   return (
     <ImageBackground source={Background} style={styles.container}>
       
-      <View>
-        <Text style={styles.mainTitle}>BankApp Me!</Text>
+      <View>        
+        <Image style={styles.firm} source={Firm} />
         <Image style={styles.img} source={Logo} />
         <View>
           <TouchableHighlight style={styles.button} onPress={() => navigation.navigate("Login")}>             
