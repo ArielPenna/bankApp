@@ -157,6 +157,7 @@ server.get('/get', estaAutenticado, async (req, res) => {
                 {deposit: userAccount.accountId }
             ]
         }
+
     })
         .then(transactions=>res.send(transactions))
         .catch(err=>res.send(err))

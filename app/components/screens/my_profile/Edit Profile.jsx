@@ -21,12 +21,12 @@ export default ({ navigation, route}) => {
   ////////>> VARS <<//////////
   const {user, editProfile}= route.params
 
-  ////////>> STATES <<//////////
+  //////////>> STATES <<//////////
+
   const [update, setUpdate]= useState({
     phoneNumber: user.phoneNumber, 
     address: user.address
   })
-
   //THIS STATE IS TO HELP US VALIDATE THE INPUTS OF THE USERS
   const [error, setError] = useState({
     address:'*'
@@ -57,9 +57,22 @@ export default ({ navigation, route}) => {
   }
 
   //SEND A STRING OF THE LOCATION
-  const location = ()=>{
-      const loc = update.address.split(',')
-      return loc[2] + ', ' + loc[3] + ',\n' + loc[4]
+  const location = (e)=>{
+    const loc = update.address.split(',')
+    const streets= loc[1].split('&')
+    switch (e) {
+      case 'number':
+        return loc[0]        
+      
+      case 'street 1':
+        return streets[1]
+      
+      case 'street 2':
+        return streets[0]
+      
+      default:
+        return loc[2] + ', ' + loc[3] + ',\n' + loc[4]
+    }
   }
 
   /////////////>> HANDLER ON CHANGE (hOnCh) <<//////////
@@ -110,40 +123,31 @@ export default ({ navigation, route}) => {
         {/*///>>>>>>> PHONE <<<<<<<<///*/}
         <Text style={styles.label}>Phone number:</Text>
         <TextInput style={styles.inputR} placeholder= {user.phoneNumber} name= "phoneNumber" onChange= {handlerOnChange}/>
-        
-        <Separator />
-        
-        {/*///>>>>>>> ADDRESS <<<<<<<<///*/}
         <Text style={styles.label}>Address:</Text>
         <View style={styles.adressContainer}>
-
-          {/*///>>>>>>> STREET 1 <<<<<<<<///*/}
-          <Text style={styles.label}>Main Street</Text>
+          <Text style={styles.subLabel}>Street</Text>
           <View style={styles.streetPrincipal}>                    
-            <TextInput style={styles.inputStreet} editable name='street1' onChange={hOnCh_Adress}/>
+            <TextInput style={styles.inputStreet} editable name='street1' placeholder= {location('street 1')} onChange={hOnCh_Adress}/>
             <TextInput style={styles.inputSubStreet} keyboardType='numeric' 
-            editable name='number' onChange={hOnCh_Adress} placeholder='N°'/>
+            editable name='number' placeholder= {location('number')} onChange={hOnCh_Adress} />
           </View>
 
           {/*///>>>>>>> STREET 2 <<<<<<<<///*/}
           <View>
-            <Text style={styles.label}>In between streets</Text>
-            <TextInput style={styles.inputR} editable name='street2' onChange={hOnCh_Adress}/>
+            <Text style={styles.subLabel}>And</Text>
+            <TextInput style={styles.inputR} editable name='street2' placeholder= {location('street 2')} onChange={hOnCh_Adress}/>
           </View>
 
-          {/*///>>>>>>> SEARCH BUTTON <<<<<<<<///*/}
-          <Button title='SEARCH' onPress={searchDirection} 
-          disabled={withoutErrorLocation()} loading={loading}
-          disabledStyle={styles.buttonFalse} 
-          disabledTitleStyle={styles.buttonTextFalse}
-          titleStyle={styles.buttonText}
-          buttonStyle={styles.button}/>
-        </View>    
-        
-        <Separator />
+          <Button title='Search' onPress={searchDirection} disabled={withoutErrorLocation()} loading={loading}
+          disabledStyle={styles.appButtonContainerFalse} 
+          disabledTitleStyle={styles.appButtonTextFalse}
+          titleStyle={styles.appButtonText}
+          buttonStyle={styles.appButtonContainer}/>
+        </View> 
 
-        {/*///>>>>>>> SHOW LOCATION <<<<<<<<///*/}
-        <Text style={update.address ? styles.locationY : styles.locationX}>{update.address ? location() : 'City'}</Text>   
+        <Separator />        
+
+        <Text style={update.address ? styles.locationY : styles.locationX}>{error.address ? 'City' : location()}</Text>   
             
       <Separator />
         
