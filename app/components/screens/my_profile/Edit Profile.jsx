@@ -2,8 +2,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux'; 
 import { View, Text, ImageBackground, TouchableHighlight} from 'react-native';
-import {edit_user} from '../../../redux/actions';
-import Background from '../../../assets/background.png';
 import { Button } from 'react-native-elements';
 import { TextInput } from 'react-native-gesture-handler';
 
