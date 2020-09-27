@@ -5,7 +5,7 @@ import { View, Text, TextInput ,ImageBackground, TouchableHighlight} from 'react
 
 //////////////>> SCRIPTS <<//////////////
 import styles from './styles/SendMoneyStyles'
-import { get_one_friend, send_money } from '../../../redux/actions'
+import { get_one_friend, send_money, transactions_get, get_user__me } from '../../../redux/actions'
 
 //////////////>> IMGS <<//////////////
 import Background from '../../../assets/background.png'
@@ -16,21 +16,21 @@ export default ({ route, navigation }) => {
 
   const friend = useSelector(state => state.oneFriend)
 
-  const { idFriend, nickName, changeTransaction, total } = route.params
+  const { idFriend, nickName, total } = route.params
+
+  const [change, setChange] = useState(false)  
 
   //////////>> STATES <<///////////
   const [send, setSend] = useState({
     transaction: 0
   })
 
-  const [max, setMax] = useState(false)
-
   const [sure, setSure] = useState(false)
 
   //////////>> HANDLER ON CHANGE (hOnCh) <<////////////
   const hOnCh_Send = e =>{
       setSend({
-        transaction: parseInt(e)
+        transaction: Number(e)
       })
     }
 
@@ -41,9 +41,7 @@ export default ({ route, navigation }) => {
   //////////>> DISPATCHS <<///////////////
   const sendMoney = ()=> {
     try{
-      changeTransaction('CHANGE')
-      dispatch(send_money(friend.account.cvu, send))
-      navigation.navigate('Main')
+      send_money(friend.account.cvu, send, setChange)
     }
     catch(err){
       console.log(err)
@@ -54,20 +52,27 @@ export default ({ route, navigation }) => {
     dispatch(get_one_friend(idFriend))
   }, [])
 
+  useEffect(()=>{
+    if(change){
+      dispatch(transactions_get())
+      dispatch(get_user__me())
+      setChange(false)
+      navigation.navigate('Main')
+    }    
+  }, [change])
+
   return (
     <ImageBackground source={Background} style={styles.container}>
-      <View>
-        {/*////////////>> TITLE <<///////////////*/}
-        <Text style={styles.mainTitle}>Send Money</Text>   
+      <View>        
 
-        {/* *********   INSERT IMG SEND MONEY ****************/}
-
-        {/*////////////>> INPUTS <<///////////////*/}
+        {/*////////////>> INPUT <<///////////////*/}
         {!sure ? 
         /*////////--->> MONEY TO SEND <<---////////////*/
-        <View>
+        <View style={styles.container2}>
           {/*////////--->> EMAIL FROM THE FRIEND <<---////////////*/}
-          <Text style={styles.subTitle}>Send to {nickName}:</Text> 
+          <View style={styles.confirmData}>
+            <Text style={styles.subTitleConfirm}>Send to {nickName}:</Text> 
+          </View>
           <TextInput editable style={styles.inputs} name='send' 
           keyboardType='numeric' onChangeText={hOnCh_Send} 
           placeholder={send.transaction ? `$${send.transaction}` : '$$$$$$'}/> 
@@ -79,36 +84,37 @@ export default ({ route, navigation }) => {
           styles.appButtonContainerFalse : styles.appButtonContainer} >
             <Text style={send.transaction > total || send.transaction < 100 ?
             styles.appButtonTextFalse : styles.appButtonText}> 
-            Send </Text>
+            SEND </Text>
           </TouchableHighlight> 
         </View>
-
+        
         : ////////IF YOU PRESS THE BUTTON SEND WILL APPEAR ALL THIS ///////////
 
-          <View>
-            {/*/////////>> SUB TITLE <<///////////*/}
-            <Text style={styles.subTitle}>Are you sure send</Text>
-
-            {/*/////////>> INFO <<///////////*/}
-            <Text style={styles.subTitle}>${send.transaction} to</Text>
-            <Text style={styles.subTitle}>{nickName} ? </Text>
-
+          <View style={styles.container2}>
+            
+            <View style={styles.confirmData}>
+              <Text style={styles.subTitleConfirm}>Are you sure send</Text>
+              <Text style={styles.moneyConfirm}>${send.transaction}</Text>
+              <Text style={styles.subTitleConfirm}> to {nickName} ? </Text>
+            </View>
             {/*/////////>> BUTTONS <<///////////*/}
             <View>
-
               {/*/////////>> BUTTON TO CONFIRM <<///////////*/}
               <TouchableHighlight onPress={sendMoney} style={styles.appButtonContainer}>
-                <Text style={styles.appButtonText}> Yes </Text>
+                <Text style={styles.appButtonText}> YES </Text>
               </TouchableHighlight> 
 
               {/*/////////>> BUTTON TO GO BACK <<///////////*/}
               <TouchableHighlight onPress={hOnCh_Sure} style={styles.appButtonContainer}>
-                <Text style={styles.appButtonText}> No </Text>
+                <Text style={styles.appButtonText}> NO </Text>
               </TouchableHighlight> 
             </View>
+          
           </View>
+        
         }
 
+      
       </View>      
     </ImageBackground>
   )

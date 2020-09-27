@@ -1,57 +1,69 @@
+//////////////>> MODULES <<//////////////
 import React from 'react';
 import {useSelector} from 'react-redux'; 
-import { View, Text, Image, ImageBackground, TouchableHighlight} from 'react-native';
+import { View, Text, ImageBackground, TouchableHighlight} from 'react-native';
 
+//////////////>> SCRIPTS <<//////////////
+import styles from './styles/MyProfileStyle';
+
+//////////////>> IMGS <</////////////
 import Background from '../../../assets/background.png';
-import { Card } from 'react-native-elements';
-
-import styles from './styles/MyProfile';
 
 const Separator = () => <View style={styles.separator} />;
 
 export default ({ navigation, route}) => {
 
-  const myProfile= useSelector(state => state.user) 
-  const {user, editProfile}= route.params  
+   ////////////// VARS /////////////
+  const {myProfile, editProfile} = route.params
 
   return (    
     <ImageBackground source={Background} style={styles.container}>
-      <View style={styles.misdatos}>
-        <Separator />
-        <Text style={styles.mainTitle}>My profile</Text>         
-        <Separator />  
-        <Text style={styles.textmisdatos}>Personal Data</Text>
-        <Separator />
-        <Text>E-Mail:</Text>
-        <Card>
-          <Text>{myProfile.email}</Text>
-        </Card>
-        <Separator />
-        <Text >Name:</Text>
-        <Card>
-          <Text>{myProfile.firstName + ' ' + myProfile.lastName}</Text>
-        </Card>
-        <Separator />
-        <Text>ID:</Text>
-        <Card>
-          <Text>{myProfile.documentType + myProfile.documentNumber}</Text>
-        </Card>
-        <Separator />
-        <Text>Phone number:</Text>
-        <Card>
-          <Text>{myProfile.phoneNumber}</Text> 
-        </Card>
-        <Separator />
-        <Text>Address:</Text>
-        <Card>
-          <Text>{myProfile.address}</Text>         
-        </Card>
-        <Separator />
-        <TouchableHighlight onPress={() => navigation.navigate("EditProfile", {user: user, editProfile: editProfile} )}>
-          <View style={styles.touch}>
-            <Text>Edit Profile</Text>
+      <View >  
+        {/*///////////////>> INFO <<////////////////*/}
+        <Text style={styles.mainTitle}>Personal Data</Text>
+
+        <Separator/>
+
+          {/*//////>>>>>>> NAME <<<<<<<<<///////*/}
+          <Text style={styles.label}>Name:</Text>        
+          <Text style={styles.inputR}>  {myProfile.firstName + ' ' + myProfile.lastName}</Text>        
+                
+        <Separator/>
+
+          {/*//////>>>>>>> DOCUMENT <<<<<<<<<///////*/}
+          <Text style={styles.label}>{myProfile.documentType}</Text>        
+          <Text style={styles.inputR}>{myProfile.documentNumber}</Text>    
+        
+        <Separator/>
+
+          {/*//////>>>>>>> EMAIL <<<<<<<<<///////*/}
+          <Text style={styles.label}>E-Mail:</Text>        
+          <Text style={styles.inputR}>  {myProfile.email}</Text> 
+
+        <Separator/>
+
+          {/*//////>>>>>>> PHONE <<<<<<<<<///////*/}
+          <Text style={styles.label}>Phone:</Text>      
+          <Text style={styles.inputR}>  {myProfile.phoneNumber}</Text> 
+
+        <Separator/>
+
+          {/*//////>>>>>>> ADDRESS <<<<<<<<<///////*/}
+          <Text style={styles.label}>Address:</Text>        
+          <Text style={styles.inputA}>  {myProfile.address}</Text> 
+
+        <Separator/>
+
+        {/*//////>>>>>>> BUTTON NAVIGATION <<<<<<<<<///////*/}
+        <TouchableHighlight onPress={() => navigation.navigate("EditProfile", {
+          user: myProfile, 
+          editProfile
+          })}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>EDIT PROFILE</Text>
           </View>
         </TouchableHighlight>
+
       </View>
     </ImageBackground>
   )

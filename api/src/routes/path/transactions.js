@@ -5,36 +5,28 @@ const { User, Transaction, Account } = require("../../db.js");
 
 // GENERAR TRANSACCION
 server.post("/to/:CVUfriend", estaAutenticado, async (req, res) => {
+    const { id } = req.user
     const { CVUfriend } = req.params
     const { transaction } = req.body
-    const { id } = req.user
 
     //-------------------------------------------
     //              DECLARACIONES               |
     //  CUENTA
     const userFromAccount = await Account.findOne({where: { userId: id }});
     const userToAccount = await Account.findOne({where: { cvu: CVUfriend }});
-    console.log('---------------------------')
-    console.log(userFromAccount && userFromAccount.dataValues)
-    console.log(userToAccount && userToAccount.dataValues)
+
     //  USUARIO
     const userFrom = userFromAccount && await userFromAccount.getUser()
     const userTo = userToAccount && await userToAccount.getUser()
-    console.log('---------------------------')
-    console.log('userFrom ', userFrom && userFrom.dataValues)
-    console.log('userTo ', userTo && userTo.dataValues)
+
     //  BILLETERA
     const userFromWallet = userFrom && await userFrom.getWallet()
     const userToWallet = userTo && await userTo.getWallet()
-    console.log('---------------------------')
-    console.log('walletFrom ', userFromWallet && userFromWallet.dataValues)
-    console.log('walletTo ', userToWallet && userToWallet.dataValues)
-    console.log('---------------------------') 
-
+    
     //-------------------------------------------
     //                PARSEOS                   |
-    const floatTransaction = parseFloat(transaction) // convierto el numero a decimal
-    const floatBalance = parseFloat(userFromWallet.dataValues.balance)
+    const floatTransaction = Number(transaction) // convierto el numero a decimal
+    const floatBalance = Number(userFromWallet.dataValues.balance)
     //-------------------------------------------
 
     let nuevoSaldo;
@@ -55,18 +47,21 @@ server.post("/to/:CVUfriend", estaAutenticado, async (req, res) => {
     else {    
         //-----------------------------------
         //     SI PASA TODOS LOS FILTROS
-        //-----------------------------------   
+        //-----------------------------------  
         await Transaction.create({
-                debit: userFromAccount.accountId, 
-                deposit: userToAccount.accountId, 
-                value: floatTransaction
-            })
+            debit: userFromAccount.accountId, 
+            deposit: userToAccount.accountId, 
+            value: floatTransaction
+        })
+
         nuevoSaldo = await userFromWallet.update({ // descuento el saldo de la transaccion
-                balance:(parseFloat(userFromWallet.dataValues.balance) - floatTransaction)
+                balance:(Number(userFromWallet.dataValues.balance) - floatTransaction)
             })
         await userToWallet.update({
-            balance:(parseFloat(userFromWallet.dataValues.balance) + floatTransaction)
+                balance:(Number(userToWallet.dataValues.balance) + floatTransaction)
             })
+        
+
         res.send(nuevoSaldo.dataValues)
     }
 })
@@ -87,7 +82,7 @@ server.put('/recarge/wallet', estaAutenticado, async (req, res) => {
             .then(() => user.getWallet())
             .then(wallet => {
                 wallet.update({
-                    balance: balance + parseFloat(wallet.dataValues.balance)
+                    balance: Number(balance) + Number(wallet.dataValues.balance)
                 })
             .then((actualizo) => {
                 res.send(actualizo 

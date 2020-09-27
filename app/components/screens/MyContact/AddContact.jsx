@@ -12,16 +12,16 @@ import styles from './styles/AddContact_Styles'
 import Background from '../../../assets/background.png'
 
 export default ({route, navigation}) =>{
-
-    const dispatch = useDispatch()
-    const {update} = route.params
+    const {setChange} = route.params
 
     /////////>> STATES <<//////////
     const [contact, setContact] = useState({
         nickName: '',
         email: ''
     })
-     
+    
+    const [friend, setFriend] = useState(false)
+
     const [error, setError] = useState({
         nickName: '*',
         email: '*'
@@ -44,7 +44,7 @@ export default ({route, navigation}) =>{
     }   
 
     const withoutErrors = ()=>{
-        if(error.nickName || error.email) return true
+        if(error.email) return true
         else return false
     }
 
@@ -65,31 +65,38 @@ export default ({route, navigation}) =>{
     //////////>> DISPATCH <<////////////
     const addFriend = () =>{
         try {
-            dispatch(add_friend(contact))
-            update('POST')
+            add_friend(contact, setFriend)
+            setChange('POsTTTTT')
         } catch (err) {
             console.log(err)
         }
     }
 
+    const Separator = () => <View style={styles.separator} />;
+
     return(
         <ImageBackground source={Background} style={styles.background}>
-            <View style={styles.container}>
+            {friend && navigation.navigate('MyContact')}
+            <View >
                 {/*/////////>> TITLE <</////////*/}
                 <Text style={styles.title}>Add Contact</Text>
 
-                {/*/////////>> NAME <</////////*/}
-                <Text style={styles.label}>Name</Text>
-                <TextInput style={styles.inputs} name='nickName' onChange={hOnCh_Contact}/>
+                <Separator/>
 
                 {/*/////////>> EMAIL <</////////*/}
                 <Text style={styles.label}>Email</Text>
-                <TextInput style={styles.inputs} name='email' onChange={hOnCh_Contact}/>
+                <TextInput style={styles.inputs} name='email' placeholder="Enter email..." onChange={hOnCh_Contact}/>
+
+                {/*/////////>> NAME <</////////*/}
+                <Text style={styles.label}>Name</Text>
+                <TextInput style={styles.inputs} name='nickName' onChange={hOnCh_Contact} />
+                
+                <Separator/>
 
                 {/*/////////>> ADD BUTTON <</////////*/}
                 <TouchableHighlight disabled={withoutErrors()} style={styles.btn} 
                 onPress={addFriend}>
-                    <Text style={styles.appButtonText}>+Add</Text>
+                    <Text style={styles.appButtonText}>+ADD</Text>
                 </TouchableHighlight>
             </View>
         </ImageBackground>

@@ -1,5 +1,6 @@
 import * as cons from "./constants";
 import axios from "axios";
+import { set } from "react-native-reanimated";
 
 const url = "http://localhost:9000/";
 
@@ -106,17 +107,25 @@ export const transactions_get = () => {
 };   
 
 //////>> SEND MONEY <</////
-export const send_money = (CVUfriend, transaction) => {
-  return () => {
-    instance.post(`transactions/to/${CVUfriend}`, transaction)
+export const send_money = async (CVUfriend, transaction, setChange) => {
+  try{
+    await instance.post(`transactions/to/${CVUfriend}`, transaction)
+    setChange(true)
+  }
+  catch(err){
+    console.log(err)
   }
 }
 
 ///////>> RECHARGE WALLET <<////////
-export const recharge_wallet = (balance) => {
-  return () => {
-    instance.put("transactions/recarge/wallet", balance)
+export const recharge_wallet = async (balance, setChange) => {
+  try{
+    await instance.put("transactions/recarge/wallet", balance)
+    setChange(true)
   }
+  catch(err){
+    console.log(err)
+  }    
 }
 
 //##############>>> ¡CONTACTS! <<<##############//
@@ -143,10 +152,14 @@ export const get_one_friend = (idFriend) => {
 }
 
 ///////>> ADD FRIEND <<////////
-export const add_friend = (friend) => {
-  return () => {
-    instance.post('friend/add' , friend)
+export const add_friend = async (friend, setFriend) => {
+  try{
+    const amigo = await instance.post('friend/add' , friend)
+    setFriend(true)
+  } catch(err){
+    setFriend(false)
   }
+  
 }
 
 //////>> EDIT FRIEND <<///////
@@ -164,8 +177,12 @@ export const delete_friend = (idFriend) => {
 }
 
 /////////>> EDIT USER <<//////////
-export const edit_user = (user, id) => {
-  return () => {
-    instance.put(`user/edit/${id}`, user)
+export const edit_user = async (user, id, setChange) => {
+  try{
+    await instance.put(`user/edit/${id}`, user)
+    setChange(true)
+  }
+  catch(err){
+    console.log(err)
   }
 }

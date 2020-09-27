@@ -16,29 +16,24 @@ export default ({ route, navigation }) => {
     setAmount(e.target.value)
   }
 
-  const {chng} = route.params
-
+  
 
   return (
 
     <ImageBackground source={Background} style={style.container}>
-      <View>
-        <Text style={style.title}>Recargar Dinero</Text>   
-      </View> 
-
       
-          <View style={style.containerInput}>
-            <Text style={style.text}>Ingrese el monto que desea cargar</Text>
+      <View style={style.containerInput}>
+        <Text style={style.text}>Enter the amount you wish to charge</Text>
 
-            <TextInput style={style.inputMoney} onChange={handleChange}  keyboardType="numeric" placeholder="Ingrese el monto"/>
+        <TextInput style={style.inputMoney} onChange={handleChange}  keyboardType="numeric" placeholder="Enter the amount o money..."/>
 
-            <Text style={style.text2}>A continuación será redirigido al código que deberá mostrar en un RapiPago o PagoFacil</Text>
+        <Text style={style.text2}>You will then be redirected to the code to be displayed on a RapiPago or PagoFacil</Text>
 
-            <TouchableHighlight onPress={()=> navigation.navigate("ValidateCharge", {chng, balance:amount})} style={style.btn}>
-                <Text style={style.appButtonText}> Siguiente </Text>
-            </TouchableHighlight>
+        <TouchableHighlight onPress={()=> navigation.navigate("ValidateCharge", {chng: ()=>{}, balance:amount})} style={style.btn}>
+            <Text style={style.appButtonText}> NEXT </Text>
+        </TouchableHighlight>
 
-          </View>  
+      </View>  
           
     </ImageBackground>
   )

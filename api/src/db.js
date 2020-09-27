@@ -63,8 +63,8 @@ User.hasOne(Location) // busca userId en Address
 Location.belongsTo(User) // crea userId
 
 // un usuario tiene muchos usuarios (contactos)
-User.belongsToMany(User, { as: "friend", foreignKey: "friended", through: Contact })
-User.belongsToMany(User, { as: "friended", foreignKey: "friend", through: Contact })
+User.belongsToMany(User, { as: "friend", through: Contact })
+User.belongsToMany(User, { as: "friended", through: Contact })
 
 
 // un usuario tiene muchas transacciones 

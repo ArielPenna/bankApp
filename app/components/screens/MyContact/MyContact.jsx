@@ -17,7 +17,6 @@ export default ({ route, navigation }) => {
   ////////>> REDUX <<//////////
   const dispatch = useDispatch()
   const contact = useSelector(state => state.contacts)
-  const user = useSelector(state => state.user)
 
   ////////>> STATES <<////////
   const [search, setSearch] = useState('')
@@ -53,14 +52,14 @@ export default ({ route, navigation }) => {
           <View style={style.searchContainer}>
               <View style={style.btnSearch}>
                 {/*/////////>> ICON <</////////*/}
-                <Icon raised name='search'
-                type='font-awesome' color='black'/>
+            <Icon raised name='search'
+              type='font-awesome' color='black' style={style.ico}/>
               </View>
             <TextInput style={style.inputStyle} onChangeText={hOnCh_Search} placeholder="Search contact..."/>  
           </View>
 
         {/*/////////>> ADD CONTACT BUTTON <</////////*/}
-        <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact', { update: setChange })}>
+        <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact', { setChange })}>
             <Text style={style.appButtonText}> +Add Contact </Text>
         </TouchableHighlight>
 

@@ -28,8 +28,8 @@ export default ({ route, navigation }) => {
     }, [])
 
     return (
-        <ImageBackground source={Background} style={{flex:1}}>
-            <View>
+        <ImageBackground source={Background} style={style.container}>
+            <View style={style.container}>
                 {/*/////////>> TITLE <</////////*/}
                 <Text style={style.title}>Send Money</Text>
 
