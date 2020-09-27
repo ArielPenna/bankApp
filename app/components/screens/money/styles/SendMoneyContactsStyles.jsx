@@ -1,35 +1,23 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-    title:{
-        textAlign: "center",
-        fontSize:35,
-        color:"#fff",
-        padding:5,
-        marginBottom:10
-     },
+	container:
+		{ flex: 1, justifyContent:"center" },
 
-     searchContainer: {
-        flexDirection: 'row',
-        backgroundColor:"#C2C8E2",
-        borderRadius:15,
-        width:327,
-        marginLeft:21
-     },
+	title:
+		{ textAlign: "center", fontSize: 22, color: "#fff", padding: 5, marginBottom: 10 },
 
-     inputStyle: {
-        flex: 1,
-        marginLeft:10,
-        fontSize:25,
-        color:"black",
-     },
+	searchContainer:
+		{ flexDirection: 'row', backgroundColor: "#fff", borderRadius: 2, width: 327, marginLeft: 21 },
+	
 
-     cardTitle:{
-        fontSize:25
-     },
+	inputStyle:
+		{ flex: 1, marginLeft: 10, fontSize: 25, color: "black" },
+	
 
-     cardText:{
-        fontSize:20,
-        textAlign:"center"
-     },
+	cardTitle:
+		{ fontSize: 25 },
+
+	cardText:
+		{ fontSize: 20, textAlign: "center", color: "#fff" },
 })

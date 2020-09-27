@@ -106,17 +106,25 @@ export const transactions_get = () => {
 };   
 
 //////>> SEND MONEY <</////
-export const send_money = (CVUfriend, transaction) => {
-  return () => {
-    instance.post(`transactions/to/${CVUfriend}`, transaction)
+export const send_money = async (CVUfriend, transaction, setChange) => {
+  try{
+    await instance.post(`transactions/to/${CVUfriend}`, transaction)
+    setChange(true)
+  }
+  catch(err){
+    console.log(err)
   }
 }
 
 ///////>> RECHARGE WALLET <<////////
-export const recharge_wallet = (balance) => {
-  return () => {
-    instance.put("transactions/recarge/wallet", balance)
+export const recharge_wallet = async (balance, setChange) => {
+  try{
+    await instance.put("transactions/recarge/wallet", balance)
+    setChange(true)
   }
+  catch(err){
+    console.log(err)
+  }    
 }
 
 //##############>>> ¡CONTACTS! <<<##############//
@@ -168,8 +176,12 @@ export const delete_friend = (idFriend) => {
 }
 
 /////////>> EDIT USER <<//////////
-export const edit_user = (user, id) => {
-  return () => {
-    instance.put(`user/edit/${id}`, user)
+export const edit_user = async (user, id, setChange) => {
+  try{
+    await instance.put(`user/edit/${id}`, user)
+    setChange(true)
+  }
+  catch(err){
+    console.log(err)
   }
 }
