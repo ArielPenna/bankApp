@@ -1,4 +1,6 @@
 const estaAutenticado = require("../../Suppliers/authenticateFunction")
+const services = require('../../Suppliers/services')
+const capitalize = require('../../Suppliers/Capitalize')
 const server = require("express").Router();
 const { Op } = require("sequelize");
 const { User, Transaction, Account } = require("../../db.js");
@@ -29,6 +31,8 @@ server.post("/to/:CVUfriend", estaAutenticado, async (req, res) => {
     const floatBalance = Number(userFromWallet.dataValues.balance)
     //-------------------------------------------
 
+    console.log(userTo)
+
     let nuevoSaldo;
 
     if(!userFromAccount) 
@@ -44,13 +48,17 @@ server.post("/to/:CVUfriend", estaAutenticado, async (req, res) => {
     else if(!(floatBalance > floatTransaction)) 
         res.send('saldo insuficiente')
 
+
     else {    
         //-----------------------------------
         //     SI PASA TODOS LOS FILTROS
         //-----------------------------------  
+        const userData = userTo.dataValues
+
         await Transaction.create({
             debit: userFromAccount.accountId, 
             deposit: userToAccount.accountId, 
+            name: `${capitalize(userData.firstName)} ${capitalize(userData.lastName)}`,
             value: floatTransaction
         })
 
@@ -63,6 +71,48 @@ server.post("/to/:CVUfriend", estaAutenticado, async (req, res) => {
         
 
         res.send(nuevoSaldo.dataValues)
+    }
+})
+
+// GET SERVICIOS
+server.get('/get/services', async (req, res) => {
+    res.send(services)
+})
+
+// PAGAR SERVICIO
+server.put('/pay/service', estaAutenticado, async (req, res) => {
+    const { balance, serviceId } = req.body; // me traigo el monto y el servicio al que le pago
+    const { id } = req.user; // me traigo el id del usuario activo
+
+    const user = await User.findByPk(id)    // Busco el usuario logeado
+    const userAccount = (await user.getAccount()).dataValues // me traigo toda la data de la cuenta
+    const userWallet = await user.getWallet() // me traigo toda la data de la billetera
+
+    const exist = (services.filter((serv) => serv.id === serviceId))[0] // filtro para ver si existe el servicio
+
+
+    if(!Number(serviceId)) res.send('debe especificar un servicio')
+    else if(!exist) res.send('el servicio no existe')
+    else if(!(Number(userWallet.dataValues.balance) > balance)) res.send('saldo insuficiente')
+    else if(!(balance >= 100)) res.send('el monto minimo es de 100$')
+
+    else {
+        // genero la transaccion
+        await Transaction.create(
+            { 
+                debit: userAccount.accountId, 
+                deposit: exist.id,
+                name: exist.name,
+                value: balance, 
+                transactions_type: 'transferencia bancaria'
+            })
+        // actualizo la billetera
+        await userWallet.update({
+            balance: Number(userWallet.dataValues.balance) - balance
+        })
+
+        res.send(`Transaccion exitosa, se le tranfirieron ${balance}$ a ${exist.name}.
+                    Quedan ${userWallet.dataValues.balance}$ en su cuenta.`)
     }
 })
 

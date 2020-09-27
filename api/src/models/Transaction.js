@@ -13,6 +13,9 @@ module.exports = (sequelize) => {
         deposit: {
             type: S.TEXT
         },
+        name: {
+            type: S.TEXT
+        },
         value: {
             type: S.DECIMAL(1000, 2),
             defaultValue: 0.0,
