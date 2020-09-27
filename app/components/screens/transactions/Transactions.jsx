@@ -1,25 +1,20 @@
 /////////////>> MODULES <<//////////////
-import React, {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux'; 
-import { View, Text, ImageBackground} from 'react-native';
+import React from 'react';
+import {useSelector} from 'react-redux'; 
+import { View, Text, Image, ImageBackground} from 'react-native';
 import {Card} from 'react-native-elements';
-
-/////////////>> SCRIPTS <<//////////////
-import {transactions_get} from '../../../redux/actions';
 
 /////////////>> IMGS <<//////////////
 import Background from '../../../assets/background.png'
+import '../../../assets/transacciones.png'
+import '../../../assets/mitarjeta.png'
+import '../../../assets/enviarDinero.png'
+import '../../../assets/favicon.png'
 
 export default ({ navigation }) => {
 
-  const dispatch= useDispatch()
-
-  /////////>> STATE REDUX <<///////
-  const transactions= useSelector(state => state.transactions) 
-  
-  useEffect(()=>{
-    dispatch (transactions_get())// Bringing the transactions from the user
-  },[])
+/////////>> STATE REDUX <<///////
+const transactions= useSelector(state => state.transactions) 
 
   return (    
     <ImageBackground source={Background} style={{flex:1}}>      
@@ -29,16 +24,45 @@ export default ({ navigation }) => {
         
         {/*////////>> CARD TRANSACTION <</////////*/}        
         {transactions.length ? transactions.map((tran)=>{
-        return (
-            <Card>
-              <Card.Title>My transactions</Card.Title>
-              <Card.Divider/>
-              <View >
-                <Text>{tran.debit ? '-' + tran.value : '+' + tran.value}</Text>
-              </View>
-            </Card> 
-          )
-        }) :         
+              switch (tran.transactions_type) {
+                case 'transferencia bancaria':
+                  return (
+                    <Card>
+                      <Card.Title>Transference:</Card.Title>
+                      <Card.Image source={require('../../../assets/transacciones.png')} />
+                      <Text>{'-' + tran.value}</Text>
+                    </Card>
+                    );
+                case 'pago comercio':
+                  return (
+                    <Card>
+                      <Card.Title>Payment:</Card.Title>
+                      <Card.Image source={require('../../../assets/mitarjeta.png')} />
+                      <Text>{'-' + tran.value}</Text>
+                    </Card>
+                    );
+                case 'transferencia a usuario':
+                  return (
+                    <Card>
+                      <Card.Title>Send to a friend:</Card.Title>
+                      <Image source={{uri:require('../../../assets/enviarDinero.png'),
+                      width: 50,
+                      height: 50}} />
+                      <Text>{'-' + tran.value}</Text>
+                    </Card>
+                    );
+                case 'recarga billetera':
+                  return (
+                    <Card>
+                      <Card.Title>Recharge:</Card.Title>
+                      <Image source={{uri:require('../../../assets/favicon.png'),
+                      width: 50,
+                      height: 50}} />
+                      <Text>{'+' + tran.value}</Text>
+                    </Card>
+                  );
+              }
+            }) :         
         <Text>You haven't made any transactions yet</Text>}
         {/* If the transactions.length is equal to 0 print this message */}
         
