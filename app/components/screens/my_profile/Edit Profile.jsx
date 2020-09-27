@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux'; 
-import { View, Text, Image, ImageBackground, TouchableHighlight} from 'react-native';
+import { View, Text, ImageBackground, TouchableHighlight} from 'react-native';
 import {edit_user} from '../../../redux/actions';
 import Background from '../../../assets/background.png';
 import { Button } from 'react-native-elements';

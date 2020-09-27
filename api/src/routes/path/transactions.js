@@ -115,7 +115,6 @@ server.get('/get', estaAutenticado, async (req, res) => {
 
     })
         .then(transactions=>res.send(transactions))
-        console.log(transactions_type)
         .catch(err=>res.send(err))
 })
 
