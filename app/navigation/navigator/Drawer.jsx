@@ -141,7 +141,8 @@ const DrawerContent = props => {
                 }}/>)}}
                 onPress={()=> props.navigation.navigate("Statistics", {
                     fullBalance: state.fullBalance, 
-                    user:state.user
+                    user:state.user,
+                    transactions:state.transactions
                 })}
                 />
 

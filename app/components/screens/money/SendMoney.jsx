@@ -94,10 +94,10 @@ export default ({ route, navigation }) => {
             styles.appButtonTextFalse : styles.appButtonText}> 
             Send </Text>
           </TouchableHighlight> 
+          </View>
         </View>
-        
         : ////////IF YOU PRESS THE BUTTON SEND WILL APPEAR ALL THIS ///////////
-
+        
           <View style={styles.containerConfirm}>
             {/*/////////>> SUB TITLE <<///////////*/}
             <Text style={styles.subTitleConfirm}>Are you sure send</Text>
