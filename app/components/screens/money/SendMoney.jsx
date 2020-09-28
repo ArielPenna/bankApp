@@ -76,7 +76,6 @@ export default ({ route, navigation }) => {
           <TextInput editable style={styles.inputs} name='send' 
           keyboardType='numeric' onChangeText={hOnCh_Send} 
           placeholder={send.transaction ? `$${send.transaction}` : '$$$$$$'}/> 
-
           
           {/*////////////>> BUTTONS TO SEND <<///////////////*/}
           <TouchableHighlight onPress={hOnCh_Sure}
