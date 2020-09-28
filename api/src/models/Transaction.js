@@ -1,7 +1,5 @@
 const S = require("sequelize").DataTypes;
 
-let value = 4572
-
 module.exports = (sequelize) => {
     sequelize.define( 'transaction', {
         id: {
@@ -9,14 +7,13 @@ module.exports = (sequelize) => {
             autoIncrement: true,
             primaryKey: true
         },
-        ticket: {
-            type: S.INTEGER,
-            unique: true
-        },
         debit: {
             type: S.TEXT
         },
         deposit: {
+            type: S.TEXT
+        },
+        name: {
             type: S.TEXT
         },
         value: {
@@ -33,10 +30,6 @@ module.exports = (sequelize) => {
             ]),
             defaultValue: "transferencia a usuario"
         },
-    }, {
-        hooks: {
-            beforeCreate: (transaction) => transaction.dataValues.ticket = value++
-        }
     });
 };
 

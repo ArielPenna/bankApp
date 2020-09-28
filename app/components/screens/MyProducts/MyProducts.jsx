@@ -1,6 +1,7 @@
 /////////>> MODULES <<///////
 import React from "react";
 import { View, Text, Image, ImageBackground, TouchableHighlight } from "react-native";
+import { useRoute } from '@react-navigation/native'
 
 ///////>> SCRIPTS <<///////
 import styles from "./styles/MyProductsStyles";
@@ -25,11 +26,6 @@ export default ({ navigation, route }) => {
   return (
     <ImageBackground source={Background} style={styles.container}>
       <View>
-        {/*///////////////>> TITLE <</////////////*/}
-        <Text style={styles.centerText}>Mis Productos</Text>
-        {console.log(user)}
-        <Separator />
-
         <View style={styles.misproductos}>
           {/*///////////////>> BUTTON MY ACCOUNT <</////////////*/}
           <TouchableHighlight onPress={() => navigation.navigate("Account", toMyAccount)}>

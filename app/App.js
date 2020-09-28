@@ -1,24 +1,18 @@
+/////////////>> MODULES <<//////////
 import React from "react";
 import { Provider } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+
+////////////>> SCRIPTS <<//////////
 import store from "./redux/store";
-import * as render from "./components/imports/AppImports";
+import Drawer from "./navigation/navigator/Drawer"
 
-const Stack = createStackNavigator();
-
-const headerOptions = {
-  headerTintColor: "#752667",
-  headerStyle: {
-    backgroundColor: "#f7b700",
-    height: 50,
-  },
-};
-
-export default function App() {
+export default function App({navigation}) {
+  console.log(navigation)
   return (
     <Provider store={store}>
       <NavigationContainer>
+<<<<<<< HEAD
       
         <Stack.Navigator>
           {/*/////////////////////>> HOME <</////////////////////*/}          
@@ -74,7 +68,10 @@ export default function App() {
 
         </Stack.Navigator>
       
+=======
+        <Drawer/>  
+>>>>>>> 427deb4cff0738be3b63d2f0560b1de64296ba6f
       </NavigationContainer>
-      </Provider>
+    </Provider>
   );
 }
