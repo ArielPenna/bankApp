@@ -39,6 +39,9 @@ import AddContact from '../screens/MyContact/AddContact'
 import OnlyContact from '../screens/MyContact/OnlyContact'
 import EditContact from '../screens/MyContact/EditContact'
 
+///////////////> QUOTES </////////////////
+import Quotes from '../screens/Quotes/Quotes'
+
 ///////////////>>>>>> RECHARGE <<<<<<</////////////////////////
 import Recharge from '../screens/money/Recharge'
 import ValidateCharge from '../screens/money/ValidateCharge'
@@ -88,6 +91,9 @@ export {MyContact}
 export {AddContact}
 export {OnlyContact}
 export {EditContact}
+
+//// QUOTES ////
+export {Quotes}
 
 //// RECHARGES ////
 export {Recharge}

@@ -61,6 +61,9 @@ export default function App() {
           <Stack.Screen name="Add Contact" component={render.AddContact} options={headerOptions}/>
           <Stack.Screen name="Edit Contact" component={render.EditContact} options={headerOptions}/>
 
+          {/*//--> QUOTES <--//*/}
+          <Stack.Screen name="Quotes" component={render.Quotes} options={headerOptions}/>
+
           {/*///////-> RECHARGE <-////////*/}
           <Stack.Screen name="Recharge" component={render.Recharge} options={headerOptions}/>
           <Stack.Screen name='ValidateCharge' component={render.ValidateCharge} options={headerOptions}/>
