@@ -37,6 +37,9 @@ module.exports = (sequelize) => {
                 }}
             },
         },
+        img: {
+            type: S.STRING
+        },
         phoneNumber: {
             type: S.TEXT, // S.INTEGER(11).UNSIGNED | numero de telefono sin +54
             allowNull: false
