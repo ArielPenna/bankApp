@@ -25,14 +25,14 @@ const styles = StyleSheet.create({
     mainTitle:{
       fontSize: 40,
       color:"#fff",
-      fontWeight: '8',
+      fontWeight: 'bold',
       textAlign:"center",
     },
 
     subTitle:{
       fontSize: 20,
       color:"#fff",
-      fontWeight: '8',
+      fontWeight: 'bold',
       textAlign:"center",
       marginTop: 150
     },
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     subTitleX:{
       fontSize: 25,
       color:"#fff",
-      fontWeight: '8',
+      fontWeight: 'bold',
       textAlign:"center",
       marginTop: 50
     },

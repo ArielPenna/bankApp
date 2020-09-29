@@ -5,7 +5,7 @@ import styles from "./styles/HomeStyle";
 ///////////////////>> IMAGES <<///////////////////
 import Background from "../../../assets/background.png";
 import Logo from "../../../assets/logo.png";
-import Firm from "../../../assets/name.png";
+import Firm from "../../../assets/name.png"
 
 const Separator = () => <View style={styles.separator} />;
 

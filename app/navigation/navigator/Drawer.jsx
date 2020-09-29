@@ -23,6 +23,8 @@ import Recharge from '../../assets/saldo.png'
 import Menu from '../../assets/list.png'
 import Logout from '../../assets/logout.png'
 
+import styles from "./drawerStyles";
+
 ////////////>> VARS <</////////
 const Drawer = createDrawerNavigator()
 const Stack = createStackNavigator()
@@ -38,13 +40,7 @@ const DrawerContent = props => {
 
             {/*////////////>> IMG <</////////////////*/}
             <Block flex={0.4} margin={20}>
-                <Image source={{
-                    uri: Logo,
-                    height:60,
-                    width:60
-                }}
-                resizeMode='center'
-                />
+                <Image source={Logo} style={styles.logo} resizeMode='center'/>
                 <Text title>BankApp</Text>
                 <Text size={9}>Your security, your relax</Text>
             </Block>
@@ -54,22 +50,14 @@ const DrawerContent = props => {
                 <DrawerItem 
                     label="Main"
                     labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={{
-                        uri: Main,
-                        height: 25,
-                        width: 25
-                    }}/>)}}
+                    icon={()=>{return (<Image source={Main} style={styles.img}/>)}}
                     onPress={()=> props.navigation.navigate("Main", {change, setChange})}
                 />
 
                 <DrawerItem 
                     label="Profile"
                     labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={{
-                        uri: MyAccount,
-                        height: 25,
-                        width: 25
-                    }}/>)}}
+                    icon={()=>{return (<Image source={MyAccount} style={styles.img}/>)}}
                     onPress={()=> props.navigation.navigate("MyProfile", {
                         myProfile: state.user,
                         editProfile: setChange
@@ -79,44 +67,28 @@ const DrawerContent = props => {
                 <DrawerItem 
                     label="Contacts"
                     labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={{
-                        uri: MyContacts,
-                        height: 20,
-                        width: 20
-                    }}/>)}}
+                    icon={()=>{return (<Image source={MyContacts} style={styles.img}/>)}}
                     onPress={()=> props.navigation.navigate("MyContact",{chng: setChange, total: state.fullBalance?.total})}
                 />
 
                 <DrawerItem 
                     label="Card"
                     labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={{
-                        uri: MyCard,
-                        height: 25,
-                        width: 25
-                    }}/>)}}
+                    icon={()=>{return (<Image source={MyCard} style={styles.img}/>)}}
                     onPress={()=> props.navigation.navigate("MyCard", {user: state.user})}
                 />
 
                 <DrawerItem 
                     label="Transactions"
                     labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={{
-                        uri: Transactions,
-                        height: 25,
-                        width: 25
-                    }}/>)}}
+                    icon={()=>{return (<Image source={Transactions} style={styles.img}/>)}}
                     onPress={()=> props.navigation.navigate("Transactions")}
                 />
 
                 <DrawerItem 
                     label="Recharge"
                     labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={{
-                        uri: Recharge,
-                        height: 25,
-                        width: 25
-                    }}/>)}}
+                    icon={()=>{return (<Image source={Recharge} style={styles.img}/>)}}
                     onPress={()=> props.navigation.navigate("Recharge", {chng: setChange})}
                 />
 
@@ -134,22 +106,14 @@ const DrawerContent = props => {
                 <DrawerItem 
                 label="Send Money"
                 labelStyle = {{marginLeft: -20}}
-                icon={()=>{return (<Image source={{
-                    uri: SendMoney,
-                    height: 25,
-                    width: 25
-                }}/>)}}
+                icon={()=>{return (<Image source={SendMoney} style={styles.img}/>)}}
                 onPress={()=> props.navigation.navigate("Send Money to Contacts", {chng: setChange, total: state.fullBalance?.total})}
                 />
 
                 <DrawerItem 
                 label="Statistics"
                 labelStyle = {{marginLeft: -20}}
-                icon={()=>{return (<Image source={{
-                    uri: Statistics,
-                    height: 25,
-                    width: 25
-                }}/>)}}
+                icon={()=>{return (<Image source={Statistics} style={styles.img}/>)}}
                 onPress={()=> props.navigation.navigate("Statistics", {
                     fullBalance: state.fullBalance, 
                     user:state.user,
@@ -164,11 +128,7 @@ const DrawerContent = props => {
                 <DrawerItem 
                     label="Logout"
                     labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={{
-                        uri: Logout,
-                        height: 25,
-                        width: 25
-                    }}/>)}}
+                    icon={()=>{return (<Image source={Logout} style={styles.img}/>)}}
                     onPress={()=> {
                         dispatch(logout())
                         props.navigation.navigate("Home")

@@ -90,10 +90,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     width: 280,
     height: 150,
-    justifycontent: "space around",
+    justifyContent: "space-around",
     padding: 10,
-    alignitems: "center",
-    textalignlast: "left",
+    alignItems: "center",
+    textAlign: "left",
   },
   textaccount: {
     fontSize: 20,
