@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
       { backgroundColor: "white", width: 350, borderRadius: 2, marginBottom: 30, padding: 5 },
 
    titulo:
-      { fontSize: 20, marginY: 5, fontFamily: "monospace", fontWeight: "bold", marginLeft: 15, padding: 5 },
+      { fontSize: 20, marginVertical: 5, fontFamily: "monospace", fontWeight: "bold", marginLeft: 15, padding: 5 },
    
    btn:
       { backgroundColor: "#f7b700", justifyContent: "space-around", alignItems: "center", borderRadius: 2, height: 35, shadowColor: "#000", shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.30, shadowRadius: 4.65, elevation: 8 },
