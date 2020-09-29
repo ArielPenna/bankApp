@@ -115,7 +115,7 @@ export default ({ route, navigation }) => {
 
         {/*//////////////--->>>> BUTTON RECHARGE <<<<---///////////*/}
         <View style={styles.row}>
-          <TouchableHighlight onPress={() => navigation.navigate("Recharge", {chng:setChange})}>
+          <TouchableHighlight onPress={() => navigation.navigate("Recharge", {chng:setChangeTran})}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={Saldo} />
               <Text style={styles.small}>Recharge</Text>
