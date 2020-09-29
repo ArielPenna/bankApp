@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     { fontSize: 9 },
 
   cvuaccount:
-    { margin: 30, backgroundColor: "#FFFFFF", width: 280, height: 150, justifyContent: "space-around", padding: 10, alignitems: "center", textalignlast: "left", borderRadius: 2 },
+    { margin: 30, backgroundColor: "#FFFFFF", width: 280, height: 150, justifyContent: "space-around", padding: 10, alignItems: "center", textAlign: "left", borderRadius: 2 },
   
   textaccount:
     { fontSize: 20, fontWeight: "bold" },

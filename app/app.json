@@ -4,28 +4,19 @@
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.png",
+    "sdkVersion": "38.0.0",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "cover",
+      "resizeMode": "contain",
       "backgroundColor": "#f7b700"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
+    },   
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "android": {
-      "package": "tk.bankappme.app",
-      "versionCode": 1,      
-      "icon": "./assets/logo.png"
+      "package": "com.bankappme.bankapp",
+      "versionCode": 1
     }
   }
 }

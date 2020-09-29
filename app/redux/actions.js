@@ -2,7 +2,7 @@ import * as cons from "./constants";
 import axios from "axios";
 import { set } from "react-native-reanimated";
 
-const url = "https://bankappme.tk/";
+const url = "https://bankappme.tk/api/";
 
 //Llamar en lugar de axios
 //en baseURL ya esta cargada el localhost
