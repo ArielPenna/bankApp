@@ -84,6 +84,7 @@ server.post('/register', (req, res) => {
 //           RUTA LOGIN               |
 //-------------------------------------
 server.post('/login', passport.authenticate("local"), (req, res) => {
+    console.log("/login",req.user);
     res.send(req.user);
 })
 
@@ -99,6 +100,7 @@ server.post("/logout", estaAutenticado, (req, res) => {
 //       RUTA GET USER LOGUEADO       |
 //-------------------------------------
 server.get("/me", estaAutenticado, function (req, res) {
+    console.log("/me",req.user);
     User.findByPk(req.user.id,
         {include: [
             { model: Wallet },

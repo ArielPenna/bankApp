@@ -4,6 +4,7 @@ import { set } from "react-native-reanimated";
 
 const url = "https://bankappme.tk/api/";
 
+
 //Llamar en lugar de axios
 //en baseURL ya esta cargada el localhost
 //al llamarla hay que hacer Ej.: instance.post('user/register')
