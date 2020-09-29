@@ -2,7 +2,11 @@ import * as cons from "./constants";
 import axios from "axios";
 import { set } from "react-native-reanimated";
 
+<<<<<<< HEAD
+const url = "https://www.bankappme.tk/api";
+=======
 const url = "https://bankappme.tk/api/";
+>>>>>>> master
 
 
 //Llamar en lugar de axios

@@ -1,10 +1,10 @@
 const estaAutenticado = require("../../Suppliers/authenticateFunction")
+const avataaarsGen = require("../../Suppliers/avataaarsGen")
+const alphCodeGen = require("../../Suppliers/alphanumericCodeGen")
 const server = require("express").Router();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-const { User, Wallet, Account, Location } = require("../../db.js");
-
-const characters = "abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ1234567890";
+const { User, Wallet, Account } = require("../../db.js");
 
 //-------------------------------------
 //           CREAR USUARIO            |
@@ -42,12 +42,12 @@ server.post('/register', (req, res) => {
         phoneNumber,
         password: hash,
         address,
-        access
+        access,
+        img: avataaarsGen()
     })
         .then(async (user) => {
             do {
-                let code = '' // genero un codigo VVV
-                for (i=0; i<10; i++) code += characters.charAt(Math.floor(Math.random() * characters.length));
+                let code = alphCodeGen(10)
                 // lo busco para asegurarme de que no se repita
                 const existe = await Account.findByPk(code)
                 // si no existe lo creo
@@ -84,7 +84,6 @@ server.post('/register', (req, res) => {
 //           RUTA LOGIN               |
 //-------------------------------------
 server.post('/login', passport.authenticate("local"), (req, res) => {
-    console.log("/login",req.user);
     res.send(req.user);
 })
 
@@ -100,7 +99,6 @@ server.post("/logout", estaAutenticado, (req, res) => {
 //       RUTA GET USER LOGUEADO       |
 //-------------------------------------
 server.get("/me", estaAutenticado, function (req, res) {
-    console.log("/me",req.user);
     User.findByPk(req.user.id,
         {include: [
             { model: Wallet },
