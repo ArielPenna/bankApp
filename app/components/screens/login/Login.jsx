@@ -110,7 +110,7 @@ export default ({navigation}) => {
             <TextInput style={style.inputR} secureTextEntry={true} editable placeholder='Contraseña' name='password' onChange={hOnCh_Login}/>
 
           {/*///////////////////////>> LOGIN <<///////////////////////*/}
-           
+          
             <Button title='ENTER' onPress={onLogin} disabled={withoutError()} loading={loading}
             disabledStyle={style.buttonFalse} 
             disabledTitleStyle={style.buttonTextFalse}
