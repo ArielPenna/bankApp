@@ -32,7 +32,7 @@ router.use('/api/email', emailPath)
 
 //--------API-Rest----------//
 
-router.use('/api/location', apiLocationPath)
+router.use('/api/api/location', apiLocationPath)
 
 //-------------------------//
 

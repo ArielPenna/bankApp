@@ -8,6 +8,7 @@ const url = "https://www.bankappme.tk/api";
 const url = "https://bankappme.tk/api/";
 >>>>>>> master
 
+
 //Llamar en lugar de axios
 //en baseURL ya esta cargada el localhost
 //al llamarla hay que hacer Ej.: instance.post('user/register')
