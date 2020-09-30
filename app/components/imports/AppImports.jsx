@@ -104,4 +104,3 @@ export {SendMoney}
 
 //// PAY SERVICE ////
 export {PayService}
-
