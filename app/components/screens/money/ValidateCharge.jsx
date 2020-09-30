@@ -34,7 +34,7 @@ export default ({ route ,navigation }) => {
     
     <View style={style.container2}>
       
-        <Text style={style.text}>Use this code whenever you want to deposit money in your Account.
+        <Text style={style.text}>Use this code whenever you want to deposit money into your account.
           The minimum amount is $50.
         </Text>
 
@@ -43,7 +43,7 @@ export default ({ route ,navigation }) => {
         </Text>
     
         <Text style={style.text2}>
-        Show this code to the cashier at RapiPago or PagoFácil
+        Show this code to the cashier at the payment center.
         </Text>
         <TouchableHighlight onPress={updateWallet} style={style.btn}>
                 <Text style={style.appButtonText}> NEXT </Text>

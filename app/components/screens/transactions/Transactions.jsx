@@ -36,7 +36,7 @@ const transactions= useSelector(state => state.transactions)
                 case 'pago comercio':
                   return (
                     <Card>
-                      <Card.Title>Payment:</Card.Title>
+                      <Card.Title>Payments:</Card.Title>
                       <Card.Image source={require('../../../assets/mitarjeta.png')} />
                       <Text>{'-' + tran.value}</Text>
                     </Card>

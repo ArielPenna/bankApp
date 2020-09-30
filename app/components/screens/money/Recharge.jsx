@@ -23,11 +23,11 @@ export default ({ route, navigation }) => {
     <ImageBackground source={Background} style={style.container}>
       
       <View style={style.containerInput}>
-        <Text style={style.text}>Enter the amount you wish to charge</Text>
+        <Text style={style.text}>Enter the desired amount to recharge</Text>
 
-        <TextInput style={style.inputMoney} onChange={handleChange}  keyboardType="numeric" placeholder="Enter the amount o money..."/>
+        <TextInput style={style.inputMoney} onChange={handleChange}  keyboardType="numeric" placeholder="Enter the amount of money..."/>
 
-        <Text style={style.text2}>You will then be redirected to the code to be displayed on a RapiPago or PagoFacil</Text>
+        <Text style={style.text2}>Then you will be redirected to the code to be used in your nearest payment center</Text>
 
         <TouchableHighlight onPress={()=> navigation.navigate("ValidateCharge", {chng: ()=>{}, balance:amount})} style={style.btn}>
             <Text style={style.appButtonText}> NEXT </Text>

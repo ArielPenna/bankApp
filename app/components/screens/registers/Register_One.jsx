@@ -157,7 +157,7 @@ export default ({route, navigation})=>{
             <View style={style.docContainer}>
                 {/*//////////////->DOCUMENT TYPE<-//////////////*/}
                 <View style={style.doc}>
-                    <Text style={style.label}>Doc. Type</Text>
+                    <Text style={style.label}>ID Type</Text>
                     <Picker style={style.inputDoc}
                     name='documentType' onValueChange={hOnCh_NewUser}>
                         <Picker.Item key={1} label='DNI' value='DNI'/>

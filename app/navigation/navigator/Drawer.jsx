@@ -41,8 +41,8 @@ const DrawerContent = props => {
             {/*////////////>> IMG <</////////////////*/}
             <Block flex={0.4} margin={20}>
                 <Image source={Logo} style={styles.logo} resizeMode='center'/>
-                <Text title>BankApp</Text>
-                <Text size={9}>Your security, your relax</Text>
+                <Text title>BankApp Me</Text>
+                <Text size={9}>The better way to bank</Text>
             </Block>
             
             {/*////////////>> DRAWER ITEM LIST //////////////////*/}
