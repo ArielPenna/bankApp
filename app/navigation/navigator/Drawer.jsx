@@ -50,8 +50,8 @@ const DrawerContent = props => {
             <Block>
                 <DrawerItem 
                     label="Main"
-                    labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={Main} style={styles.img}/>)}}
+                    labelStyle = {{marginLeft: -15}}
+                    icon={()=>{return (<Image source={Main} style={styles.img2}/>)}}
                     onPress={()=> props.navigation.navigate("Main", {change, setChange})}
                 />
 
@@ -67,8 +67,8 @@ const DrawerContent = props => {
 
                 <DrawerItem 
                     label="Contacts"
-                    labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={MyContacts} style={styles.img}/>)}}
+                    labelStyle = {{marginLeft: -15}}
+                    icon={()=>{return (<Image source={MyContacts} style={styles.img2}/>)}}
                     onPress={()=> props.navigation.navigate("MyContact",{chng: setChange, total: state.fullBalance?.total})}
                 />
 
@@ -83,7 +83,9 @@ const DrawerContent = props => {
                     label="Transactions"
                     labelStyle = {{marginLeft: -20}}
                     icon={()=>{return (<Image source={Transactions} style={styles.img}/>)}}
-                    onPress={()=> props.navigation.navigate("Transactions")}
+                    onPress={()=> props.navigation.navigate("Transactions", {
+                        user: state.user
+                    })}
                 />
 
                 <DrawerItem 
@@ -121,7 +123,7 @@ const DrawerContent = props => {
             </Block>
 
             {/*/////////////>> LOGOUT <<//////////////*/}
-            <Block>
+            <Block style={{marginTop: 120}}>
                 <DrawerItem 
                     label="Logout"
                     labelStyle = {{marginLeft: -20}}
@@ -148,7 +150,8 @@ const Screens = ({navigation})=>{
             </Button>
         )
     }}>
-
+        
+        {/*options={{headerShown: false}} */}
         {/*/////////////////////>> HOME <</////////////////////*/}
         <Stack.Screen name="Home" component={render.Home} options={{headerShown: false}}/>{/* NOT HEADER */}
 
@@ -172,7 +175,7 @@ const Screens = ({navigation})=>{
         {/*/////////////////////>> MAIN <</////////////////////*/}
         <Stack.Screen name="Main" component={render.Main}/>
         {/*///////-> TRANSACTIONS <-////////*/}
-        <Stack.Screen name="Transactions" component={render.Transactions}/>
+        {<Stack.Screen name="Transactions" component={render.Transactions}/>}
         
         {/*///////-> STATISTICS <-////////*/}
         <Stack.Screen name="Statistics" component={render.Statistics}/>
@@ -227,7 +230,7 @@ export default () => {
     initialRouteName="Home" 
     drawerType="slide"
     overlayColor="transparent"
-    drawerStyle={{width: "55%", backgroundColor: "#f7b700"}}
+    drawerStyle={{width: "56%", backgroundColor: "#f7b700"}}
     contentContainerStyle={{flex: 1}}
     sceneContainerStyle={{backgroundColor: 'red'}}
     drawerContent={props => <DrawerContent {...props}/>}>
