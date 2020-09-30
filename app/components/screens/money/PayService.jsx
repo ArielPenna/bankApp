@@ -18,21 +18,21 @@ const [change, setChange] = useState(false)
 
  //////////>> STATES <<///////////
 const [send, setSend] = useState({
-  balance:0,
-  serviceId:""
+   balance:0,
+   serviceId:""
 })
 
 const [confirm, setConfirm] = useState(false)
 
  //////////>> HANDLER ON CHANGE (hOnCh) <<////////////
 const handleChange = e =>{
-     setSend({
-     ...send, 
+    setSend({
+    ...send, 
       balance:e.target.value})
   }
 const handleOnChange = e =>{
-     setSend({
-     ...send, 
+    setSend({
+    ...send, 
       serviceId:e })
   }
 
