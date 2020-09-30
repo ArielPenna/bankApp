@@ -68,7 +68,7 @@ const hOnCh = ()=>{
       
       <View style={style.containerInput}>
 
-        <Text style={style.text}>Pay Service</Text>
+        <Text style={style.text}>Pay Services</Text>
             
           {!confirm ?
 

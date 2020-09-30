@@ -44,12 +44,12 @@ export default ({ route, navigation }) => {
         <View style={styles.row}>
 
           {/*/////------->> ASSOCIATE CVU <<-------////*/}   
-          <TouchableHighlight onPress={() => navigation.navigate("")}>
+          {/* <TouchableHighlight onPress={() => navigation.navigate("")}>
             <View style={styles.touch}>
               <Image style={styles.ico} source={AssociateCVU} />
               <Text style={styles.small}>Associated CVU</Text>
             </View>
-          </TouchableHighlight>
+          </TouchableHighlight> */}
 
           {/*/////------->> SHARE CVU <<-------////*/} 
           <TouchableHighlight onPress={ copyToClipboard }>        

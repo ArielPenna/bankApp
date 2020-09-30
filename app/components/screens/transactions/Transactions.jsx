@@ -69,7 +69,7 @@ const Separator = () => <View style={styles.separator} />;
                   );
               }
             }) :         
-        <Text style={styles.amount}>You haven't made any transactions yet</Text>}
+        <Text>You haven't made any transactions yet</Text>}
         {/* If the transactions.length is equal to 0 print this message */}
         
       </View>   

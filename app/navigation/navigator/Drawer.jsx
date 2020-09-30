@@ -94,7 +94,7 @@ const DrawerContent = props => {
                 />
 
                 <DrawerItem 
-                    label="Pay Service"
+                    label="Pay Services"
                     labelStyle = {{marginLeft: -20}}
                     icon={()=>{return (<Image source={Services} style={styles.img}/>)}}
                     onPress={()=> props.navigation.navigate("PayService", {chng: setChange})}
