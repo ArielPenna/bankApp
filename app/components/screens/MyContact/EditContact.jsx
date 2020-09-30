@@ -44,7 +44,7 @@ export default ({route, navigation}) => {
 	return(
 		<ImageBackground source={Background} style={style.container}>
 			<View>
-				<Text style={style.title}>Update Friend</Text>
+				<Text style={style.title}>Update Friend's Info</Text>
 				<TextInput style={style.input} editable placeholder={friend.nickName} onChangeText={hOnCh_Friend}/>
 				<TouchableHighlight style={style.btn} onPress={updateFriend}>
 					<Text style={style.appButtonText}>UPDATE</Text>

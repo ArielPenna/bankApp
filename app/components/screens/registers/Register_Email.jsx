@@ -74,7 +74,7 @@ export default ({navigation}) => {
             {typeof send === 'string' && navigation.navigate('Code', mail)}
             <View>
                 {/*///////////////////>> TITLE <<///////////////*/}
-                <Text style={style.mainTitle}>Register your email</Text>
+                <Text style={style.mainTitle}>Register your e-mail</Text>
 
                 {/*///////////////////>> INPUT <<///////////////*/}
                 <TextInput onChange={hOnCh_Mail} editable name='documentNumber' style={style.input}/>
@@ -89,10 +89,10 @@ export default ({navigation}) => {
                 {/*///////////////////>> IF THE USER IS REGISTER <<///////////////*/}
                 {!send && 
                 <View>
-                    <Text style={style.subTitleX}>This mail is already in use</Text>
+                    <Text style={style.subTitleX}>This e-mail is already in use</Text>
                     <TouchableHighlight onPress={()=>{navigation.navigate('Login')}}
                     style={style.appButtonContainer}>
-                    <Text style={style.appButtonText}>LogIn</Text>
+                    <Text style={style.appButtonText}>LOGIN</Text>
                     </TouchableHighlight>
                 </View>}
 

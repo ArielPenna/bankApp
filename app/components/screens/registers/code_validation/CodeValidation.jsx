@@ -61,7 +61,7 @@ export default ({route, navigation}) => {
 
 
             {/*////////////>> BUTTON SEND AGAIN <</////////////*/}
-            <Text style={style.subTitle}>You didn't get the code?</Text>
+            <Text style={style.subTitle}>Didn't you get the code?</Text>
             <Button title='Send Code Again' onPress={sendAgainEmail} loading={loading}
             titleStyle={style.appButtonTextAgain}
             buttonStyle={style.appButtonContainerAgain}/>
