@@ -5,7 +5,7 @@ export const LOGOUT = "LOGOUT__GET";
 /////////////////////>> MONEY <</////////////////////
 export const TRANSACTIONS_GET = "TRANSACTIONS_GET";
 export const FULL_BALANCE_GET = "FULL_BALANCE_GET";
-
+export const GET_SERVICE = "GET_SERVICE"
 
 /////////////////////>> CONTACTS <</////////////////////
 export const GET_FRIENDS = "GET_FRIENDS"

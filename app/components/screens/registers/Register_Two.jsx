@@ -66,7 +66,7 @@ export default ({route, navigation}) => {
     return(
         <ImageBackground source={Background} style={style.background}>
             {regis && navigation.navigate('Login')}
-            <Text style={style.mainTitle}>Almost</Text>
+            <Text style={style.mainTitle}>Almost there</Text>
         <View>           
 
 {/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
