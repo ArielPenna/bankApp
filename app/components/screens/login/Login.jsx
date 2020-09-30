@@ -53,7 +53,7 @@ export default ({navigation}) => {
             error.email = '*';
         }
         else if(!regex_email.test(input.email)){
-            error.email = 'Email invalido *';
+            error.email = 'E-mail invalido *';
         }
         if (!input.password) {
           error.password = '*';
@@ -102,8 +102,8 @@ export default ({navigation}) => {
           source={Logo} />
         <View >
           {/*///////////////////////>> EMAIL <<///////////////////////*/}
-            <Text style={style.label}>Email</Text>
-            <TextInput style={style.inputR} placeholder= 'E-mail' editable name='email' onChange= {hOnCh_Login}/>
+            <Text style={style.label}>E-mail</Text>
+            <TextInput style={style.inputR} placeholder= 'E-mail' editable name='e-mail' onChange= {hOnCh_Login}/>
 
           {/*///////////////////////>> PASSWORD <<///////////////////////*/}  
             <Text style={style.label}> Password </Text>
