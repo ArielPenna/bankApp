@@ -83,7 +83,9 @@ const DrawerContent = props => {
                     label="Transactions"
                     labelStyle = {{marginLeft: -20}}
                     icon={()=>{return (<Image source={Transactions} style={styles.img}/>)}}
-                    onPress={()=> props.navigation.navigate("Transactions")}
+                    onPress={()=> props.navigation.navigate("Transactions", {
+                        user: state.user
+                    })}
                 />
 
                 <DrawerItem 
@@ -148,6 +150,7 @@ const Screens = ({navigation})=>{
             </Button>
         )
     }}>
+        
         {/*options={{headerShown: false}} */}
         {/*/////////////////////>> HOME <</////////////////////*/}
         <Stack.Screen name="Home" component={render.Home} options={{headerShown: false}}/>{/* NOT HEADER */}
@@ -172,7 +175,7 @@ const Screens = ({navigation})=>{
         {/*/////////////////////>> MAIN <</////////////////////*/}
         <Stack.Screen name="Main" component={render.Main}/>
         {/*///////-> TRANSACTIONS <-////////*/}
-        <Stack.Screen name="Transactions" component={render.Transactions}/>
+        {<Stack.Screen name="Transactions" component={render.Transactions}/>}
         
         {/*///////-> STATISTICS <-////////*/}
         <Stack.Screen name="Statistics" component={render.Statistics}/>

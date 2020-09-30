@@ -6,15 +6,16 @@ import {Card} from 'react-native-elements';
 
 /////////////>> IMGS <<//////////////
 import Background from '../../../assets/background.png'
-import '../../../assets/transacciones.png'
-import '../../../assets/mitarjeta.png'
-import '../../../assets/enviarDinero.png'
-import '../../../assets/favicon.png'
+import Transactions from '../../../assets/transacciones.png'
+import MyCard from '../../../assets/mitarjeta.png'
+import SendMoney from '../../../assets/enviarDinero.png'
+import Favicon from '../../../assets/favicon.png'
 
 import styles from "./styles/Transactions";
 
-export default ({ navigation }) => {
+export default ({ route }) => {
 
+  //const { user } = route.params
 /////////>> STATE REDUX <<///////
 const transactions= useSelector(state => state.transactions) 
 const Separator = () => <View style={styles.separator} />;
@@ -23,16 +24,16 @@ const Separator = () => <View style={styles.separator} />;
     <ImageBackground source={Background} style={styles.container}>      
       <View>
         <Separator />        
-        
+
         {/*////////>> CARD TRANSACTION <</////////*/}        
         {transactions.length ? transactions.map((tran)=>{
               switch (tran.transactions_type) {
                 case 'transferencia bancaria':
                   return (
                     <Card>
-                      <Card.Title>Transference:</Card.Title>
+                      <Card.Title style={{marginRight: 200, width:'100%'}}>Transference              {tran?.createdAt.split('T')[0]}</Card.Title>
                       <View style={styles.row}>
-                        <Image source={require('../../../assets/transacciones.png')} style={styles.img}/>
+                        <Image source={Transactions} style={styles.img}/>
                         <Text style={styles.amount}>{'-' + tran.value}</Text>
                       </View>
                     </Card>
@@ -40,38 +41,41 @@ const Separator = () => <View style={styles.separator} />;
                 case 'pago comercio':
                   return (
                     <Card>
-                      <Card.Title>Payments:</Card.Title>
+                      <Card.Title style={{marginRight: 200, width:'100%'}}>Payments              {tran?.createdAt.split('T')[0]}</Card.Title>                      
                       <View style={styles.row}>
-                        <Image source={require('../../../assets/mitarjeta.png')} style={styles.img}/>
+                        <Image source={MyCard} style={styles.img}/>
                         <Text style={styles.amount}>{'-' + tran.value}</Text>
+                        <Text style={styles.amount}>{tran?.name}</Text>
                       </View>
                     </Card>
                     );
                 case 'transferencia a usuario':
+                  var icon = '-'
+                  if(tran.debit !== user?.account.accountId) icon = '+'
                   return (
                     <Card>
-                      <Card.Title>Send to a friend:</Card.Title>
+                      <Card.Title style={{marginRight: 200, width:'100%'}}>Send to a friend              {tran?.createdAt.split('T')[0]}</Card.Title>
                       <View style={styles.row}>
-                        <Image source={require('../../../assets/enviarDinero.png')} style={styles.img} />
-                        <Text style={styles.amount}>{'-' + tran.value}</Text>
+                        <Image source={SendMoney} style={styles.img} />
+                        <Text style={styles.amount}>{icon + tran.value}</Text>
+                        <Text style={styles.amount}>{tran?.name}</Text>
                       </View>
                     </Card>
                     );
                 case 'recarga billetera':
                   return (
                     <Card>
-                      <Card.Title>Recharge:</Card.Title>
+                      <Card.Title style={{marginRight: 200, width:'100%'}}>Recharge              {tran?.createdAt.split('T')[0]}</Card.Title>
                       <View style={styles.row}>
-                        <Image source={require('../../../assets/favicon.png')} style={styles.img} />
+                        <Image source={Favicon} style={styles.img} />
                         <Text style={styles.amount}>{'+' + tran.value}</Text>
                       </View>
                     </Card>
                   );
               }
             }) :         
-        <Text>You haven't made any transactions yet</Text>}
-        {/* If the transactions.length is equal to 0 print this message */}
-        
+        <Text style={styles.withoutTrans}>You haven't made any transactions yet</Text>}
+        {/* If the transactions.length is equal to 0 print this message */}       
       </View>   
     </ImageBackground>
   )
