@@ -49,7 +49,9 @@ export default ({ navigation, route }) => {
               <Text style={styles.textmicuentas}>My Contacts</Text>
             </View>
           </TouchableHighlight>
-          
+
+
+
         </View>
       </View>
     </ImageBackground>
