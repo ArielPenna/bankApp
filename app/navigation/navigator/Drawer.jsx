@@ -92,6 +92,17 @@ const DrawerContent = props => {
                     onPress={()=> props.navigation.navigate("Recharge", {chng: setChange})}
                 />
 
+                 <DrawerItem 
+                    label="Pay Service"
+                    labelStyle = {{marginLeft: -20}}
+                    icon={()=>{return (<Image source={{
+                        uri: Recharge,
+                        height: 25,
+                        width: 25
+                    }}/>)}}
+                    onPress={()=> props.navigation.navigate("PayService", {chng: setChange})}
+                />
+
                 <DrawerItem 
                 label="Send Money"
                 labelStyle = {{marginLeft: -20}}
@@ -204,11 +215,15 @@ const Screens = ({navigation})=>{
         <Stack.Screen name="Recharge" component={render.Recharge}/>
         <Stack.Screen name='ValidateCharge' component={render.ValidateCharge}/>
 
+        {/*///////-> PAY SERVICE <-////////*/}
+        <Stack.Screen name="PayService" component={render.PayService}/>
+
         {/*///////-> SEND MONEY <-////////*/}
         <Stack.Screen name="Send Money to Contacts" component={render.SendMoneyContacts}/>
         <Stack.Screen name="Send Money" component={render.SendMoney} options={{headerLeft:
             ()=> (<HeaderBackButton color="#f7b700" onPress={()=>{navigation.navigate('Send Money to Contacts')}}/>)
         }}/>{/* BACK TO Send Money to Contacts */}
+
 
     </Stack.Navigator>)
 }
