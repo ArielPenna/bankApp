@@ -18,8 +18,8 @@ const [change, setChange] = useState(false)
 
  //////////>> STATES <<///////////
 const [send, setSend] = useState({
-   balance:0,
-   serviceId:""
+  balance:0,
+  serviceId:""
 })
 
 const [confirm, setConfirm] = useState(false)

@@ -102,7 +102,8 @@ export default ({navigation}) => {
           source={Logo} />
         <View >
           {/*///////////////////////>> EMAIL <<///////////////////////*/}
-            <Text style={style.label}>E-mail</Text>
+
+        <Text style={style.label}>E-mail</Text>
             <TextInput style={style.inputR} placeholder= 'E-mail' editable name='email' onChange= {hOnCh_Login}/>
 
           {/*///////////////////////>> PASSWORD <<///////////////////////*/}  
@@ -115,8 +116,11 @@ export default ({navigation}) => {
             disabledStyle={style.buttonFalse} 
             disabledTitleStyle={style.buttonTextFalse}
             titleStyle={style.buttonText}
-            buttonStyle={style.button}/>
-
+              buttonStyle={style.button} />
+            
+            <Button title='prueba' onPress={onLogin}/>
+            
+            
             {!auth &&
               <View>
                 <Text>An error occurred when logging in</Text>
