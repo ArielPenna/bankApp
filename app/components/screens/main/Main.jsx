@@ -109,12 +109,14 @@ export default ({ route, navigation }) => {
               <Image style={styles.ico} source={Productos} />
               <Text style={styles.small}>My Products</Text>
             </View>
-          </TouchableHighlight>
-        </View> */}
+          </TouchableHighlight> */}
+        </View>
 
         <Separator />
 
         {/*//////////////--->>>> BUTTON RECHARGE <<<<---///////////*/}
+
+        <View style={styles.row}>
 
         {/* <View style={styles.row}>
           >>>>>>> master
