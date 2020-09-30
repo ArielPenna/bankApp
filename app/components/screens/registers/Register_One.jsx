@@ -1,7 +1,7 @@
 ///////////////////>> MODULS <<///////////////////
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
-import {View, Text, TextInput, Picker, ImageBackground, TouchableHighlight} from 'react-native'
+import {View, Text, TextInput, ImageBackground, TouchableHighlight} from 'react-native'
 import { Button } from 'react-native-elements'
 
 ///////////////////>> SCRIPTS <<///////////////////
@@ -156,14 +156,7 @@ export default ({route, navigation})=>{
 {/*///////////////////////////////////>>> DOCUMENT <<<///////////////////////////////////*/}
             <View style={style.docContainer}>
                 {/*//////////////->DOCUMENT TYPE<-//////////////*/}
-                <View style={style.doc}>
-                    <Text style={style.label}>Doc. Type</Text>
-                    <Picker style={style.inputDoc}
-                    name='documentType' onValueChange={hOnCh_NewUser}>
-                        <Picker.Item key={1} label='DNI' value='DNI'/>
-                        <Picker.Item key={2} label='Pas' value='Pasaporte'/>
-                    </Picker> 
-                </View>
+                
                 {/*//////////////->DOCUMENT NUMBER<-//////////////*/}
                 <View style={style.docN}>
                     <Text style={error.documentNumber ? style.error : style.label}>Number</Text>
@@ -173,30 +166,7 @@ export default ({route, navigation})=>{
 
 {/*///////////////////////////////////>>> BIRTH <<<///////////////////////////////////*/}
             <Text style={style.label}>Birth date</Text>
-            <View style={style.birth}>
-                {/*//////--> DAY <--//////*/}
-                <Picker style={style.date} onValueChange={hOnCh_Birth}>
-                    {D.daysTotal(date.month).map(day =>{
-                        return <Picker.Item key={day} label={day.toString()} value={'1-' + day}/>
-                    })}
-                </Picker> 
-                {/*//////--> MONTH <--//////*/}
-                <Picker style={style.date} onValueChange={hOnCh_Birth}>
-                    {D.months.map(month => {
-                        return(
-                            //month[0] name's month
-                            //month[1] position's month 
-                            <Picker.Item key={month[1]} label={month[0]} value={'2-' + month[1]}/>
-                        )
-                    })} 
-                </Picker> 
-                {/*//////--> YEAR <--//////*/}
-                <Picker style={style.date} onValueChange={hOnCh_Birth}>
-                    {D.yearTotal().map(year => {
-                        return <Picker.Item key={year} label={year.toString()} value={'3-' + year}/>
-                    })}
-                </Picker> 
-            </View>
+            
 
 {/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}
             <Text style={error.address ? style.error : style.label}>Address</Text>

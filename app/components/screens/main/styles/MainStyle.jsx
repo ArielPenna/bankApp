@@ -10,11 +10,11 @@ const styles = StyleSheet.create({
 
   img:{    
     alignSelf:"center",
-    width:70,
-    height: 70,
+    width:100,
+    height: 100,
     shadowColor: "#000",
-    shadowOffset: {width: 0, height: 4},
-    shadowOpacity: 0.30,
+    shadowOffset: {width: 0, height: 6},
+    shadowOpacity: 2,
     shadowRadius: 4.65
   },
 
@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     height:50    
   },
   mainTitle:{
-    fontSize: 12,
+    fontSize: 25,
+    marginBottom:15,
     color:"#fff",    
     textAlign:"left",
   },
@@ -34,16 +35,19 @@ const styles = StyleSheet.create({
     alignItems:"center",
   }, 
   money:{
-    color:"#fff",
+    color:"#000",
     marginHorizontal:25,
+    textAlign:"center",
     fontSize:30,
+    marginTop:5
   },
   generalView:{
     backgroundColor:"white",
     width: "100%",
     shadowColor: "#000",
+    borderRadius:8,
     shadowOffset: {width: 0, height: 4},
-    shadowOpacity: 0.30,
+    shadowOpacity: 1.30,
     shadowRadius: 4.65,
     elevation: 8,
   },

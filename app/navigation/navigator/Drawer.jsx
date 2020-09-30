@@ -41,8 +41,8 @@ const DrawerContent = props => {
             {/*////////////>> IMG <</////////////////*/}
             <Block flex={0.4} margin={20}>
                 <Image source={Logo} style={styles.logo} resizeMode='center'/>
-                <Text title>BankApp</Text>
-                <Text size={9}>Your security, your relax</Text>
+                <Text title>BankApp Me</Text>
+                <Text size={9}>The better way to bank</Text>
             </Block>
             
             {/*////////////>> DRAWER ITEM LIST //////////////////*/}
@@ -93,6 +93,13 @@ const DrawerContent = props => {
                 />
 
                 <DrawerItem 
+                    label="Pay Service"
+                    labelStyle = {{marginLeft: -20}}
+                    icon={()=>{return (<Image source={Recharge} style={styles.img}/>)}}
+                    onPress={()=> props.navigation.navigate("PayService", {chng: setChange})}
+                />
+
+                <DrawerItem 
                 label="Send Money"
                 labelStyle = {{marginLeft: -20}}
                 icon={()=>{return (<Image source={SendMoney} style={styles.img}/>)}}
@@ -136,11 +143,7 @@ const Screens = ({navigation})=>{
         headerTitle: null,
         headerLeft: ()=>(
             <Button primary padding color={"#f7b700"} marginHorizontal onPress={()=>{navigation.openDrawer()}}>
-                <Image source={{
-                    uri: Menu,
-                    height:20,
-                    width:20,                    
-                }}/>
+                <Image source={Menu} style={styles.img}/>
             </Button>
         )
     }}>
@@ -204,11 +207,15 @@ const Screens = ({navigation})=>{
         <Stack.Screen name="Recharge" component={render.Recharge}/>
         <Stack.Screen name='ValidateCharge' component={render.ValidateCharge}/>
 
+        {/*///////-> PAY SERVICE <-////////*/}
+        <Stack.Screen name="PayService" component={render.PayService}/>
+
         {/*///////-> SEND MONEY <-////////*/}
         <Stack.Screen name="Send Money to Contacts" component={render.SendMoneyContacts}/>
         <Stack.Screen name="Send Money" component={render.SendMoney} options={{headerLeft:
             ()=> (<HeaderBackButton color="#f7b700" onPress={()=>{navigation.navigate('Send Money to Contacts')}}/>)
         }}/>{/* BACK TO Send Money to Contacts */}
+
 
     </Stack.Navigator>)
 }

@@ -84,8 +84,8 @@ export default ({route, navigation}) =>{
                 <Separator/>
 
                 {/*/////////>> EMAIL <</////////*/}
-                <Text style={styles.label}>Email</Text>
-                <TextInput style={styles.inputs} name='email' placeholder="Enter email..." onChange={hOnCh_Contact}/>
+                <Text style={styles.label}>E-mail</Text>
+                <TextInput style={styles.inputs} name='email' placeholder="Enter e-mail..." onChange={hOnCh_Contact}/>
 
                 {/*/////////>> NAME <</////////*/}
                 <Text style={styles.label}>Name</Text>
