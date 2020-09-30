@@ -107,7 +107,7 @@ export default ({navigation}) => {
             <TextInput style={style.inputR} placeholder= 'E-mail' editable name='email' onChange= {hOnCh_Login}/>
 
           {/*///////////////////////>> PASSWORD <<///////////////////////*/}  
-            <Text style={style.label}> Password </Text>
+            <Text style={style.label}>Password </Text>
             <TextInput style={style.inputR} secureTextEntry={true} editable placeholder='Contraseña' name='password' onChange={hOnCh_Login}/>
 
           {/*///////////////////////>> LOGIN <<///////////////////////*/}
@@ -116,20 +116,15 @@ export default ({navigation}) => {
             disabledStyle={style.buttonFalse} 
             disabledTitleStyle={style.buttonTextFalse}
             titleStyle={style.buttonText}
-              buttonStyle={style.button} />
-            
-            <Button title='prueba' onPress={onLogin}/>
-            
-            
+              buttonStyle={style.button} />           
+                        
             {!auth &&
               <View>
                 <Text>An error occurred when logging in</Text>
                 <Text>Please try again</Text>
               </View>
-            }
-            
-          {/*//////////////////////////////////////////////////////////*/}
-          
+            }     
+
         </View>
       </View>      
     </ImageBackground>

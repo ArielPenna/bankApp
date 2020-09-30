@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector} from 'react-redux'
-import {View, Text, TextInput, Image, ImageBackground, TouchableHighlight, Picker} from 'react-native';
+import {View, Text, TextInput, ImageBackground, TouchableHighlight, Picker} from 'react-native';
 import {get_service, pay_service, transactions_get, get_user__me} from '../../../redux/actions.js'
 
 import style from '../money/styles/PayServiceStyles'
@@ -26,13 +26,13 @@ const [confirm, setConfirm] = useState(false)
 
  //////////>> HANDLER ON CHANGE (hOnCh) <<////////////
 const handleChange = e =>{
-     setSend({
-     ...send, 
+    setSend({
+    ...send, 
       balance:e.target.value})
   }
 const handleOnChange = e =>{
-     setSend({
-     ...send, 
+    setSend({
+    ...send, 
       serviceId:e })
   }
 
@@ -70,10 +70,10 @@ const hOnCh = ()=>{
 
         <Text style={style.text}>Pay Service</Text>
             
-         {!confirm ?
+          {!confirm ?
 
-         <View>
-         <Picker 
+          <View>
+          <Picker 
             style={style.service}
             name='serviceId'
             onValueChange={handleOnChange}>
@@ -83,7 +83,7 @@ const hOnCh = ()=>{
               value="Select Service..." 
               enabled={false}/>
               
-               {services.map((service) => {
+                {services.map((service) => {
                   return (
                   <Picker.Item 
                   label={service.name}
@@ -100,9 +100,9 @@ const hOnCh = ()=>{
         </TouchableHighlight>
         </View>
           :
-        <View>
-          <Text style={style.subTitleConfirm}>Are you sure send</Text>
-          <Text style={style.moneyConfirm}>${send.balance}</Text>
+        <View style={style.confirmData}>
+          <Text style={style.subTitleConfirm}>Are you sure pay</Text>
+          <Text style={style.moneyConfirm}>${send.balance}</Text>           
 
         <TouchableHighlight onPress={payService} style={style.btn}>
             <Text style={style.appButtonText}> YES </Text>
