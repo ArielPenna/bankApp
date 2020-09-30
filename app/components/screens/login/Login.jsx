@@ -103,7 +103,7 @@ export default ({navigation}) => {
         <View >
           {/*///////////////////////>> EMAIL <<///////////////////////*/}
             <Text style={style.label}>E-mail</Text>
-            <TextInput style={style.inputR} placeholder= 'E-mail' editable name='e-mail' onChange= {hOnCh_Login}/>
+            <TextInput style={style.inputR} placeholder= 'E-mail' editable name='email' onChange= {hOnCh_Login}/>
 
           {/*///////////////////////>> PASSWORD <<///////////////////////*/}  
             <Text style={style.label}> Password </Text>

@@ -46,7 +46,7 @@ export default ({ route, navigation }) => {
               <Image style={styles.img} source={user?.img} />
             </View>
             {/*//////////////--->>>> TOTAL WALLET <<<<---///////////*/}
-           
+          
           </View>
         </View>
 
