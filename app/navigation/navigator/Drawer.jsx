@@ -22,6 +22,7 @@ import Statistics from '../../assets/estadisticas.png'
 import Recharge from '../../assets/saldo.png'
 import Menu from '../../assets/list.png'
 import Logout from '../../assets/logout.png'
+import Services from '../../assets/servicios.png'
 
 import styles from "./drawerStyles";
 
@@ -92,14 +93,10 @@ const DrawerContent = props => {
                     onPress={()=> props.navigation.navigate("Recharge", {chng: setChange})}
                 />
 
-                 <DrawerItem 
+                <DrawerItem 
                     label="Pay Service"
                     labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={{
-                        uri: Recharge,
-                        height: 25,
-                        width: 25
-                    }}/>)}}
+                    icon={()=>{return (<Image source={Services} style={styles.img}/>)}}
                     onPress={()=> props.navigation.navigate("PayService", {chng: setChange})}
                 />
 
@@ -147,11 +144,7 @@ const Screens = ({navigation})=>{
         headerTitle: null,
         headerLeft: ()=>(
             <Button primary padding color={"#f7b700"} marginHorizontal onPress={()=>{navigation.openDrawer()}}>
-                <Image source={{
-                    uri: Menu,
-                    height:20,
-                    width:20,                    
-                }}/>
+                <Image source={Menu} style={styles.img}/>
             </Button>
         )
     }}>
