@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     { width: "94%", marginLeft: 5, padding: 10, height: "auto", borderRadius: 2, backgroundColor: "white", marginBottom: 10 },
 
   label:
-    { marginLeft: 15, color: "#f0f3bd", fontSize: 25 },
+    { marginLeft: 5, color: "#f0f3bd", fontSize: 25},
 
   btn:
     { marginTop: 15 },

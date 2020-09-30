@@ -29,11 +29,7 @@
     "react-native-reanimated": "^1.9.0",
     "react-native-safe-area-context": "~3.0.7",
     "react-native-screens": "~2.9.0",
-<<<<<<< HEAD
-    "react-native-svg": "12.1.0",
-=======
     "react-native-svg": "^12.1.0",
->>>>>>> 3cbf6ccee20d97944bf9e008ddd127ba4a2a8369
     "react-native-svg-charts": "^5.4.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.11.7",
