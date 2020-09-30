@@ -91,7 +91,7 @@ server.put('/pay/service', estaAutenticado, async (req, res) => {
     const exist = (services.filter((serv) => serv.id === serviceId))[0] // filtro para ver si existe el servicio
 
 
-    if(!Number(serviceId)) res.send('debe especificar un servicio')
+    if(!serviceId) res.send('debe especificar un servicio')
     else if(!exist) res.send('el servicio no existe')
     else if(!(Number(userWallet.dataValues.balance) > balance)) res.send('saldo insuficiente')
     else if(!(balance >= 100)) res.send('el monto minimo es de 100$')

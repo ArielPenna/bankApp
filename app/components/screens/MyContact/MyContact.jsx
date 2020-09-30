@@ -60,7 +60,7 @@ export default ({ route, navigation }) => {
 
         {/*/////////>> ADD CONTACT BUTTON <</////////*/}
         <TouchableHighlight style={style.btn} onPress={()=> navigation.navigate('Add Contact', { setChange })}>
-            <Text style={style.appButtonText}> +Add Contact </Text>
+            <Text style={style.appButtonText}> +ADD CONTACT </Text>
         </TouchableHighlight>
 
         {/*/////////>> CARDS <</////////*/}

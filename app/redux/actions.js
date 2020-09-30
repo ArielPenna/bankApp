@@ -2,7 +2,7 @@ import * as cons from "./constants";
 import axios from "axios";
 import { set } from "react-native-reanimated";
 
-const url = "http://localhost:9000/";
+const url = "https://bankappme.tk/api/";
 
 //Llamar en lugar de axios
 //en baseURL ya esta cargada el localhost
@@ -116,6 +116,30 @@ export const send_money = async (CVUfriend, transaction, setChange) => {
     console.log(err)
   }
 }
+
+///////>> PAY SERVICE <<////////
+export const pay_service = async (balance, setChange) => {
+  try {
+   const res = await instance.put('transactions/pay/service', balance)
+   setChange(true)
+  }
+  catch(err){
+    console.log(err)
+  }
+}
+
+///////>> SERVICE <<////////
+export const get_service = () =>{
+  return (dispatch) =>{
+    instance.get('transactions/get/services')
+    .then(res =>{
+      dispatch({type: cons.GET_SERVICE, payload: res.data})
+    })
+  }
+}
+
+
+
 
 ///////>> RECHARGE WALLET <<////////
 export const recharge_wallet = async (balance, setChange) => {

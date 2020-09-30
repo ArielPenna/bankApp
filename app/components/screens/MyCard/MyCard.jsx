@@ -26,7 +26,7 @@ export default ({ navigation, route }) => {
         <Image style={styles.img} source={Tarjeta} />        
         <View style={styles.dataView}>
           <Text style={styles.cardNumber} color="white">{numCard}</Text>
-          <Text style={styles.cardNumber} color="white">Expiration: 10/24</Text>
+          <Text style={styles.cardNumber} color="white">Expiration date: 10/24</Text>
           <Text style={styles.cardNumber} color="white">{user.firstName +" "+user.lastName}</Text>
         </View>        
       </View>      
@@ -34,7 +34,7 @@ export default ({ navigation, route }) => {
       <TouchableHighlight onPress={() => navigation.navigate("Recharge", {chng:setChange})}>
         <View style={styles.touch}>
           <Image style={styles.ico} source={Saldo} />
-          <Text >Recharge</Text>
+          <Text>Recharge</Text>
         </View>
       </TouchableHighlight>
     </ImageBackground>

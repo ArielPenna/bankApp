@@ -70,7 +70,7 @@ export default ({route, navigation}) => {
         <View>           
 
 {/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
-            <Text style={error.phoneNumber ? style.error : style.label}>Tel/Cel</Text>
+            <Text style={error.phoneNumber ? style.error : style.label}>Phone N°</Text>
             <TextInput style={style.inputR} keyboardType='numeric' editable name='phoneNumber' onChange={hOnCh_NewUser}/>
 
 {/*///////////////////////////////////>>> PASSWORD <<<///////////////////////////////////*/}
