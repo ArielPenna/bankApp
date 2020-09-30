@@ -22,6 +22,7 @@ import Statistics from '../../assets/estadisticas.png'
 import Recharge from '../../assets/saldo.png'
 import Menu from '../../assets/list.png'
 import Logout from '../../assets/logout.png'
+import Services from '../../assets/servicios.png'
 
 import styles from "./drawerStyles";
 
@@ -95,7 +96,7 @@ const DrawerContent = props => {
                 <DrawerItem 
                     label="Pay Service"
                     labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={Recharge} style={styles.img}/>)}}
+                    icon={()=>{return (<Image source={Services} style={styles.img}/>)}}
                     onPress={()=> props.navigation.navigate("PayService", {chng: setChange})}
                 />
 

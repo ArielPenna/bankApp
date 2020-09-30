@@ -116,18 +116,14 @@ export default ({navigation}) => {
             disabledStyle={style.buttonFalse} 
             disabledTitleStyle={style.buttonTextFalse}
             titleStyle={style.buttonText}
-              buttonStyle={style.button} />
-            
-            <Button title='prueba' onPress={onLogin}/>
+              buttonStyle={style.button} />           
                         
             {!auth &&
               <View>
                 <Text>An error occurred when logging in</Text>
                 <Text>Please try again</Text>
               </View>
-            }
-            
-          {/*//////////////////////////////////////////////////////////*/}
+            }     
 
         </View>
       </View>      
