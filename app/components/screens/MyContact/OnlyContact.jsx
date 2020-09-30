@@ -67,7 +67,7 @@ export default ({ route, navigation }) => {
             <Divider style={{ backgroundColor: 'grey', width:280, marginLeft:25 } } />
 
             {/*///////////--> DNI <--///////////*/}
-            <Text style={style.titulo}>DNI: {friend.documentNumber}</Text>  
+            <Text style={style.titulo}>ID N°: {friend.documentNumber}</Text>  
             <Divider style={{ backgroundColor: 'grey', width:280, marginLeft:25 } } />
             
             {/*///////////--> CVU <--///////////*/}

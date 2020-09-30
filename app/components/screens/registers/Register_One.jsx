@@ -161,7 +161,7 @@ export default ({route, navigation})=>{
                     <Picker style={style.inputDoc}
                     name='documentType' onValueChange={hOnCh_NewUser}>
                         <Picker.Item key={1} label='DNI' value='DNI'/>
-                        <Picker.Item key={2} label='Pas' value='Pasaporte'/>
+                        <Picker.Item key={2} label='PASSPORT' value='Pasaporte'/>
                     </Picker> 
                 </View>
                 {/*//////////////->DOCUMENT NUMBER<-//////////////*/}
