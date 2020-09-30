@@ -40,9 +40,6 @@ import AddContact from '../screens/MyContact/AddContact'
 import OnlyContact from '../screens/MyContact/OnlyContact'
 import EditContact from '../screens/MyContact/EditContact'
 
-///////////////> QUOTES </////////////////
-import Quotes from '../screens/Quotes/Quotes'
-
 ///////////////>>>>>> RECHARGE <<<<<<</////////////////////////
 import Recharge from '../screens/money/Recharge'
 import ValidateCharge from '../screens/money/ValidateCharge'
@@ -50,6 +47,9 @@ import ValidateCharge from '../screens/money/ValidateCharge'
 ///////////////>>>>>> SEND MONEY <<<<<<</////////////////////////
 import SendMoneyContacts from '../screens/money/SendMoneyContacts'
 import SendMoney from '../screens/money/SendMoney'
+
+///////////////>>>>>> PAY SERVICE <<<<<<</////////////////////////
+import PayService from '../screens/money/PayService'
 
 
 //##############################>>  EXPORTS  <<################################//
@@ -94,9 +94,6 @@ export {AddContact}
 export {OnlyContact}
 export {EditContact}
 
-//// QUOTES ////
-export {Quotes}
-
 //// RECHARGES ////
 export {Recharge}
 export {ValidateCharge}
@@ -105,5 +102,5 @@ export {ValidateCharge}
 export {SendMoneyContacts}
 export {SendMoney}
 
-
-
+//// PAY SERVICE ////
+export {PayService}

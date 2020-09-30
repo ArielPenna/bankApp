@@ -11,7 +11,6 @@ import Background from "../../../assets/background.png";
 import MyAccount from "../../../assets/micuenta.png"
 import MyCard from "../../../assets/mitarjeta.png"
 import MyContacts from "../../../assets/miscontactos.png"
-import Cotizaciones from "../../../assets/Cotizaciones.png"
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -51,13 +50,6 @@ export default ({ navigation, route }) => {
             </View>
           </TouchableHighlight>
 
-          {/*///////////////>> BUTTON QUOTES <</////////////*/}
-          <TouchableHighlight onPress={() => navigation.navigate("Quotes")}>
-            <View style={styles.misproductosrectangulo}>
-              <Image style={styles.imgmiscuentas} source={Cotizaciones} />
-              <Text style={styles.textmicuentas}>Cotizaciones</Text>
-            </View>
-          </TouchableHighlight>
 
 
         </View>
