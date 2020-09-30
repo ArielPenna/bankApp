@@ -12,6 +12,7 @@ let codToCreateUser = [];
 server.post('/sendmail', async (req, res) => {
 
     const { email } = req.body
+    const [name] = email.split('@');
     const encontrado = await User.findOne({
         where : { email }
     })
@@ -35,7 +36,7 @@ server.post('/sendmail', async (req, res) => {
         secure: false,
         auth: {
             user: "BankApp.team@gmail.com",
-            pass: "HenryBank12"//process.env.PASS
+            pass: process.env.PASS
         } 
     })     
 
@@ -46,7 +47,7 @@ server.post('/sendmail', async (req, res) => {
         html:  `<html>
                 <head>
                     <body>
-                        <h1>¡Hola futuro esclavo para continuar enviar el siguiente codigo! </h1>
+                        <h1>¡Hola ${name} para continuar enviar el siguiente codigo! </h1>
                         <h2>Codigo: ${constCod} </h2>
                         <h2>Gracias por elegirnos como tu billetera personal </h2>   
                         <h2>Team BankApp </h2>   
