@@ -11,16 +11,18 @@ import '../../../assets/mitarjeta.png'
 import '../../../assets/enviarDinero.png'
 import '../../../assets/favicon.png'
 
+import styles from "./styles/Transactions";
+
 export default ({ navigation }) => {
 
 /////////>> STATE REDUX <<///////
 const transactions= useSelector(state => state.transactions) 
+const Separator = () => <View style={styles.separator} />;
 
   return (    
-    <ImageBackground source={Background} style={{flex:1}}>      
+    <ImageBackground source={Background} style={styles.container}>      
       <View>
-        {/*////////>> TITLE <</////////*/}
-        <Text>Transactions</Text>         
+        <Separator />        
         
         {/*////////>> CARD TRANSACTION <</////////*/}        
         {transactions.length ? transactions.map((tran)=>{
@@ -29,36 +31,40 @@ const transactions= useSelector(state => state.transactions)
                   return (
                     <Card>
                       <Card.Title>Transference:</Card.Title>
-                      <Card.Image source={require('../../../assets/transacciones.png')} />
-                      <Text>{'-' + tran.value}</Text>
+                      <View style={styles.row}>
+                        <Image source={require('../../../assets/transacciones.png')} style={styles.img}/>
+                        <Text style={styles.amount}>{'-' + tran.value}</Text>
+                      </View>
                     </Card>
                     );
                 case 'pago comercio':
                   return (
                     <Card>
                       <Card.Title>Payments:</Card.Title>
-                      <Card.Image source={require('../../../assets/mitarjeta.png')} />
-                      <Text>{'-' + tran.value}</Text>
+                      <View style={styles.row}>
+                        <Image source={require('../../../assets/mitarjeta.png')} style={styles.img}/>
+                        <Text style={styles.amount}>{'-' + tran.value}</Text>
+                      </View>
                     </Card>
                     );
                 case 'transferencia a usuario':
                   return (
                     <Card>
                       <Card.Title>Send to a friend:</Card.Title>
-                      <Image source={{uri:require('../../../assets/enviarDinero.png'),
-                      width: 50,
-                      height: 50}} />
-                      <Text>{'-' + tran.value}</Text>
+                      <View style={styles.row}>
+                        <Image source={require('../../../assets/enviarDinero.png')} style={styles.img} />
+                        <Text style={styles.amount}>{'-' + tran.value}</Text>
+                      </View>
                     </Card>
                     );
                 case 'recarga billetera':
                   return (
                     <Card>
                       <Card.Title>Recharge:</Card.Title>
-                      <Image source={{uri:require('../../../assets/favicon.png'),
-                      width: 50,
-                      height: 50}} />
-                      <Text>{'+' + tran.value}</Text>
+                      <View style={styles.row}>
+                        <Image source={require('../../../assets/favicon.png')} style={styles.img} />
+                        <Text style={styles.amount}>{'+' + tran.value}</Text>
+                      </View>
                     </Card>
                   );
               }

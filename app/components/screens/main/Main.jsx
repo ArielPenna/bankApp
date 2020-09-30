@@ -37,6 +37,8 @@ export default ({ route, navigation }) => {
   return (
     <ImageBackground source={Background} style={styles.container}>
       <View>
+        <Separator />
+        <Separator />
         {/*////////////////////>> TOP <<////////////////*/}
         <View style={styles.top}>
           <View style={styles.row}>
@@ -46,7 +48,7 @@ export default ({ route, navigation }) => {
               <Image style={styles.img} source={user?.img} />
             </View>
             {/*//////////////--->>>> TOTAL WALLET <<<<---///////////*/}
-           
+          
           </View>
         </View>
 
