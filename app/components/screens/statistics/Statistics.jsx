@@ -36,7 +36,7 @@ export default ({ navigation, route }) => {
     {value, svg: {fill: color[index]}, key: `pie-${index}`}));   
 
   const months = (m, type, indexC ) => {
-   const value = transactions.map( t => {
+    const value = transactions.map( t => {
     const month = parseInt(t.updatedAt.split("-")[1])
     
     if (t[type] === user?.account.accountId && month >= m) {
@@ -58,9 +58,7 @@ export default ({ navigation, route }) => {
   return (
     <ImageBackground source={Background} style={styles.container}>
       <View>
-        
-        {/*///////////////>> TITLE <<////////////*/}
-        <Text style={styles.centerText}>Statistics</Text>
+      <Separator />       
 
         {/*///////////////>> BUTTONS TIME <<////////////*/}
         <View style={[styles.row, styles.top]}>
@@ -96,7 +94,8 @@ export default ({ navigation, route }) => {
         {/*///////////////>> STATISTIC <<////////////*/}
         <View style={styles.generalView}>
           <PieChart style={{ height: 200 }} data={pie}/>
-          <Text style={styles.centerText}>Income ${fullBalance.credit ? fullBalance.credit : '0000'}   Outcome ${fullBalance.debit} </Text>
+          <Text style={styles.income}>Income ${fullBalance.credit ? fullBalance.credit : '0000'}</Text>
+          <Text style={styles.outcome}>Outcome ${fullBalance.debit} </Text>
         </View>
 
         <Separator />
