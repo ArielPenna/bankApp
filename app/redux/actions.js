@@ -56,9 +56,15 @@ export const location_get = (location, newUser, setNewUser, error, setError, set
 
 ///////>> REGISTER <<////////
 export const register_user__post = async (user, setRegister, setLoading)=>{
+  try{
     const res = await instance.post('user/auth/register', user)    
     setRegister(true)
     setLoading(false)
+  }
+  catch(err){
+    console.log(err)
+  }
+    
 }
 
 //##############>>> ¡LOGIN! <<<##############//
@@ -71,6 +77,7 @@ export const login_user__post = async (user, setAuth, setLoading) => {
     setLoading(false)
   }
   catch(err){
+    console.log(err)
     setAuth(false)
     setLoading(false)
   }  
@@ -79,9 +86,10 @@ export const login_user__post = async (user, setAuth, setLoading) => {
 ///////>> GET USER <<////////
 export const get_user__me = () => {
   return (dispatch) => {
-    instance.get("user/auth/me").then((res) => {
-      dispatch({ type: cons.GET_USER_ME, payload: res.data });
-    });
+      instance.get("user/auth/me").then((res) => {
+        console.log(res.data)
+        dispatch({ type: cons.GET_USER_ME, payload: res.data });
+      }); 
   };
 };
 
@@ -120,8 +128,8 @@ export const send_money = async (CVUfriend, transaction, setChange) => {
 ///////>> PAY SERVICE <<////////
 export const pay_service = async (balance, setChange) => {
   try {
-   const res = await instance.put('transactions/pay/service', balance)
-   setChange(true)
+    const res = await instance.put('transactions/pay/service', balance)
+    setChange(true)
   }
   catch(err){
     console.log(err)
@@ -137,9 +145,6 @@ export const get_service = () =>{
     })
   }
 }
-
-
-
 
 ///////>> RECHARGE WALLET <<////////
 export const recharge_wallet = async (balance, setChange) => {
@@ -179,6 +184,7 @@ export const get_one_friend = (idFriend) => {
 export const add_friend = async (friend, setFriend) => {
   try{
     const amigo = await instance.post('friend/add' , friend)
+    console.log(amigo)
     setFriend(true)
   } catch(err){
     setFriend(false)

@@ -94,7 +94,7 @@ export default ({route, navigation}) =>{
                 <Separator/>
 
                 {/*/////////>> ADD BUTTON <</////////*/}
-                <TouchableHighlight disabled={withoutErrors()} style={styles.btn} 
+                <TouchableHighlight style={styles.btn} 
                 onPress={addFriend}>
                     <Text style={styles.appButtonText}>+ADD</Text>
                 </TouchableHighlight>
