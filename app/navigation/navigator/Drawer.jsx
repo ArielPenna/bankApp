@@ -56,6 +56,16 @@ const DrawerContent = props => {
                 />
 
                 <DrawerItem 
+                    label="My Account"
+                    labelStyle = {{marginLeft: -20}}
+                    icon={()=>{return (<Image source={MyAccount} style={styles.img}/>)}}
+                    onPress={()=> props.navigation.navigate("Account", {
+                        name: `${state.user.firstName} ${state.user.lastName}`, 
+                        cvu: state.user.account.cvu
+                    })}
+                />
+
+                <DrawerItem 
                     label="Profile"
                     labelStyle = {{marginLeft: -20}}
                     icon={()=>{return (<Image source={MyAccount} style={styles.img}/>)}}

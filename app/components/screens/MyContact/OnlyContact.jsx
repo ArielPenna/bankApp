@@ -51,7 +51,6 @@ export default ({ route, navigation }) => {
   return (
     <ImageBackground source={Background} style={style.container}>
       <View>      
-        {console.log(friend)}
         {/*///////////-->>>> TITLE <<<<--///////////*/}
         <Text style={style.name}>{nickName}</Text>  
 

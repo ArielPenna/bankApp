@@ -135,8 +135,6 @@ export default ({route, navigation})=>{
             ...newUser,
             birth: new Date(date.year, date.month, date.day)
         })
-
-        console.log(newUser.birth)
     }  
     
     const hOnCh_Adress = (e)=>{

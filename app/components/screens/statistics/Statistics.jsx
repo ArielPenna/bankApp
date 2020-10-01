@@ -14,7 +14,7 @@ import MyProducts from "../../../assets/productos.png"
 const Separator = () => <View style={styles.separator} />;
 
 export default ({ navigation, route }) => {
- 
+
   /////////>> PARAMS <</////////////
   const { fullBalance, user, transactions } = route.params;
   ////////>> STATE <<//////////
@@ -99,26 +99,6 @@ export default ({ navigation, route }) => {
         </View>
 
         <Separator />
-
-        {/*///////////////>> BUTTONS <<////////////*/}
-        <View style={styles.row}>
-
-          {/*///---------->> TRANSACTIONS <<----------///*/}
-          <TouchableHighlight onPress={() => navigation.navigate("Transactions")}>
-            <View style={styles.touch}>
-              <Image style={styles.ico} source={Transactions}/>
-              <Text style={styles.small}>Transactions</Text>
-            </View>
-          </TouchableHighlight>
-
-          {/*///---------->> MY PRODUCTS <<----------///*/}
-          <TouchableHighlight onPress={() => navigation.navigate("MyProducts", {user:user})}>
-            <View style={styles.touch}>
-              <Image style={styles.ico} source={MyProducts} />
-              <Text style={styles.small}>My Products</Text>
-            </View>
-          </TouchableHighlight>
-        </View>
 
         {/*/////////////////////////////////////////*/}
       </View>
