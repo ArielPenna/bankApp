@@ -6,7 +6,6 @@ import {Card, Icon} from 'react-native-elements'
 
 /////////////>> SCRIPTS <<//////////////
 import {get_friends} from '../../../redux/actions.js'
-import {contacts} from './prueba/prueba.js'
 import style from './styles/MyContactStyles'
 
 ////////////>> IMGS <<////////////////
