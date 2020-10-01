@@ -62,7 +62,7 @@ passport.deserializeUser((id, done) => {
 //-------------------------------//
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
-server.use(morgan("dev"));
+server.use(morgan("common"));
 server.use(cookieParser());
 server.use(
     session({
