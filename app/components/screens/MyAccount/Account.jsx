@@ -9,7 +9,7 @@ import styles from "./styles/AccountStyle";
 import Background from "../../../assets/background.png";
 import ShareCVU from "../../../assets/compartircvu.png"
 
-export default ({ route, navigation }) => {
+export default ({ route }) => {
 
   /////////>> PARAMS <<///////////
   const { name, cvu } = route.params
