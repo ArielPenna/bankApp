@@ -14,7 +14,7 @@ import MyProducts from "../../../assets/productos.png"
 const Separator = () => <View style={styles.separator} />;
 
 export default ({ navigation, route }) => {
-
+ 
   /////////>> PARAMS <</////////////
   const { fullBalance, user, transactions } = route.params;
   ////////>> STATE <<//////////
@@ -22,11 +22,14 @@ export default ({ navigation, route }) => {
 
   ///////>> SUPPORT <<////////////
 
-  const sixMonth = new Date().getMonth()-5
+  //const sixMonth = new Date().getMonth()-5
+  const sixMonth = new Date().getHours() - 6
 
-  const threeMonth = new Date().getMonth()-2
+  //const threeMonth = new Date().getMonth()-2
+  const threeMonth = new Date().getHours() - 3
 
-  const oneMonth = new Date().getMonth()
+  //const oneMonth = new Date().getMonth()
+  const oneMonth = new Date().getHours() - 1 
 
   ///-------> VARS <-------///
   const color = ["green", "red"]
@@ -39,11 +42,16 @@ export default ({ navigation, route }) => {
     const value = transactions.map( t => {
     const month = parseInt(t.updatedAt.split("-")[1])
     
-    if (t[type] === user?.account.accountId && month >= m) {
+    if (t[type] === user?.account.accountId && month <= m) {
       return parseFloat(t.value)
     }
+    else if(t[type] === user?.account.accountId && month >= m){
+      return parseFloat(t.value)
+    }
+
     return 0
   }).reduce((e, f) => e + f)
+
   return {value, svg: {fill: color[indexC]}, key: `pie-${indexC}`}
   }
   
@@ -99,6 +107,26 @@ export default ({ navigation, route }) => {
         </View>
 
         <Separator />
+
+        {/*///////////////>> BUTTONS <<////////////*/}
+        <View style={styles.row}>
+
+          {/*///---------->> TRANSACTIONS <<----------///*/}
+          <TouchableHighlight onPress={() => navigation.navigate("Transactions")}>
+            <View style={styles.touch}>
+              <Image style={styles.ico} source={Transactions}/>
+              <Text style={styles.small}>Transactions</Text>
+            </View>
+          </TouchableHighlight>
+
+          {/*///---------->> MY PRODUCTS <<----------///*/}
+          <TouchableHighlight onPress={() => navigation.navigate("MyProducts", {user:user})}>
+            <View style={styles.touch}>
+              <Image style={styles.ico} source={MyProducts} />
+              <Text style={styles.small}>My Products</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
 
         {/*/////////////////////////////////////////*/}
       </View>
