@@ -7,7 +7,6 @@ import styles from "./styles/AccountStyle";
 
 ////////////>> IMGS <<//////////
 import Background from "../../../assets/background.png";
-import AssociateCVU from "../../../assets/asociarcvu.png"
 import ShareCVU from "../../../assets/compartircvu.png"
 
 export default ({ route, navigation }) => {
@@ -42,15 +41,6 @@ export default ({ route, navigation }) => {
 
         {/*/////////////>> BUTTONS <<///////////////*/}
         <View style={styles.row}>
-
-          {/*/////------->> ASSOCIATE CVU <<-------////*/}   
-          {/* <TouchableHighlight onPress={() => navigation.navigate("")}>
-            <View style={styles.touch}>
-              <Image style={styles.ico} source={AssociateCVU} />
-              <Text style={styles.small}>Associated CVU</Text>
-            </View>
-          </TouchableHighlight> */}
-
           {/*/////------->> SHARE CVU <<-------////*/} 
           <TouchableHighlight onPress={ copyToClipboard }>        
             <View style={styles.touch}>
