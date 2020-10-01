@@ -12,7 +12,6 @@ export default ({ navigation }) => {
 
 const dispatch = useDispatch()
 const services = useSelector(state => state.services)
-console.log(services)
 
 const [change, setChange] = useState(false)
 
@@ -46,7 +45,6 @@ const hOnCh = ()=>{
     } catch (err) {
       console.log(err)
     }
-    console.log(send)
   }
   
   useEffect(() => {

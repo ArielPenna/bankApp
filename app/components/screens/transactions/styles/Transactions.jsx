@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
   
   amount:
     { fontWeight: "bold", fontSize: 25, marginTop: 5 },
+
+  name:
+    { fontWeight: "bold", fontSize: 15, marginTop: 5 },
   
   withoutTrans:
     { fontWeight: "bold", fontSize: 45, marginTop: 80, color:'white', marginLeft: 15 },
