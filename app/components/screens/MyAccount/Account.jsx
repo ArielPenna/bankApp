@@ -10,7 +10,7 @@ import Background from "../../../assets/background.png";
 import AssociateCVU from "../../../assets/asociarcvu.png"
 import ShareCVU from "../../../assets/compartircvu.png"
 
-export default ({ route, navigation }) => {
+export default ({ route }) => {
 
   /////////>> PARAMS <<///////////
   const { name, cvu } = route.params
