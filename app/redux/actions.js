@@ -204,7 +204,7 @@ export const delete_friend = (idFriend) => {
 /////////>> EDIT USER <<//////////
 export const edit_user = async (user, id, setChange) => {
   try{
-    await instance.put(`user/edit/${id}`, user)
+    const res = await instance.put(`user/edit/${id}`, user)
     setChange(true)
   }
   catch(err){
