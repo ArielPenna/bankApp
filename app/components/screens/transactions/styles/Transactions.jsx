@@ -22,6 +22,11 @@ const styles = StyleSheet.create({
   separator:
     { marginVertical: 30 },
   
+  income:
+    { textAlign: "center", justifyContent: "center", margin: 5, color:"green", fontWeight: "bold" },
+
+  outcome:
+    { textAlign: "center", justifyContent: "center", margin: 5, color: "red", fontWeight: "bold" }
 });
   
 export default styles
