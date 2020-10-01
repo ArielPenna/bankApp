@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     { alignSelf: "center", width: 300, height: 188, marginTop: 50, marginBottom: 80 },
 
   cardNumber:
-    { fontSize: 18, color: "white", zIndex: 1 },
+    { fontSize: 18, color: "black", zIndex: 1 },
   
   dataView:
     { position: "absolute", flex: 1, marginTop: 80, marginBottom: 0, justifyContent: "flex-start", alignItems: "center", zIndex: 1 },

@@ -23,9 +23,9 @@ export default ({ navigation, route }) => {
       <View style={styles.mainView}>        
         <Image style={styles.img} source={Tarjeta} />        
         <View style={styles.dataView}>
-          <Text style={styles.cardNumber} color="black">{numCard}</Text>
-          <Text style={styles.cardNumber} color="black">Expiration date: 10/24</Text>
-          <Text style={styles.cardNumber} color="black">{user.firstName +" "+user.lastName}</Text>
+          <Text style={styles.cardNumber}>{numCard}</Text>
+          <Text style={styles.cardNumber}>Expiration date: 10/24</Text>
+          <Text style={styles.cardNumber}>{user.firstName +" "+user.lastName}</Text>
         </View>        
       </View>      
       {/* <Separator/> */}
