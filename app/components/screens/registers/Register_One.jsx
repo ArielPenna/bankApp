@@ -164,7 +164,7 @@ export default ({route, navigation})=>{
                 {/*//////////////->DOCUMENT TYPE<-//////////////*/}
                 <View style={style.docType}>
                     <Text style={style.label2}>{error?.documentType ?? 'Type'}</Text>
-                    <TextInput style={style.inputDoc} placeholder='DNI/PASS  '/>
+                    <TextInput style={style.inputDoc} name='documentType' onChange={hOnCh_NewUser} placeholder='DNI/PASS  '/>
                 </View>
                 {/*//////////////->DOCUMENT NUMBER<-//////////////*/}
                 <View style={style.docN}>
