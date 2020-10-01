@@ -1,9 +1,6 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-	container:
-		{ flex: 1, justifyContent:"center" },
-
 	title:
 		{ textAlign: "center", fontSize: 22, color: "#fff", padding: 5, marginBottom: 10 },
 
@@ -19,5 +16,5 @@ export default StyleSheet.create({
 		{ fontSize: 25 },
 
 	cardText:
-		{ fontSize: 20, textAlign: "center", color: "#fff" },
+		{ fontSize: 20, textAlign: "center", color: "black" },
 })
