@@ -62,7 +62,7 @@ passport.deserializeUser((id, done) => {
 //-------------------------------//
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
-server.use(morgan("dev"));
+server.use(morgan("common"));
 server.use(cookieParser());
 server.use(
     session({
@@ -85,11 +85,11 @@ server.use(
     res.header("Access-Control-Allow-Methods", "HEAD, GET, POST, PATCH, OPTIONS, PUT, DELETE");
     next();
 }); */
-/* const whiteList = ['http://localhost:19006'] */
+ const whiteList = ['http://localhost:19006', '192.168.0.4:9000', 'https://bankappme.tk/', 'ffff:127.0.0.1']; 
 
 server.use(cors({
     credentials: true,
-    origin: 'http://localhost:19006',
+    origin: whiteList,
     allowedHeaders: "Origin, X-Requested-With, Content-Type, X-Auth-Token, X-PINGOTHER, Accept",
     methods: "GET,HEAD,PUT,PATCH,OPTIONS,POST,DELETE"
 }))
