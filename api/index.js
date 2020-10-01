@@ -41,7 +41,7 @@ const { conn } = require("./src/db.js");
 //---------vvvvvvvvvvvvvvvvv--------------------------------------------------//
 
 // Sync de la api
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(9000, () => {
     console.log("|||||||||||||||||||||||||||||||||||||");
     console.log("|    CORRIENDO HENRYBANK EN 9000    |");
