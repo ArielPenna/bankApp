@@ -85,11 +85,11 @@ server.use(
     res.header("Access-Control-Allow-Methods", "HEAD, GET, POST, PATCH, OPTIONS, PUT, DELETE");
     next();
 }); */
-/* const whiteList = ['http://localhost:19006'] */
+ const whiteList = ['http://localhost:19006', 'https://bankappme.tk/', 'https://www.bankappme.tk/']; 
 
 server.use(cors({
     credentials: true,
-    origin: 'http://localhost:19006',
+    origin: whiteList,
     allowedHeaders: "Origin, X-Requested-With, Content-Type, X-Auth-Token, X-PINGOTHER, Accept",
     methods: "GET,HEAD,PUT,PATCH,OPTIONS,POST,DELETE"
 }))

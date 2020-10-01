@@ -56,6 +56,16 @@ const DrawerContent = props => {
                 />
 
                 <DrawerItem 
+                    label="My Account"
+                    labelStyle = {{marginLeft: -20}}
+                    icon={()=>{return (<Image source={MyAccount} style={styles.img}/>)}}
+                    onPress={()=> props.navigation.navigate("Account", {
+                        name: `${state.user.firstName} ${state.user.lastName}`, 
+                        cvu: state.user.account.cvu
+                    })}
+                />
+
+                <DrawerItem 
                     label="Profile"
                     labelStyle = {{marginLeft: -20}}
                     icon={()=>{return (<Image source={MyAccount} style={styles.img}/>)}}
@@ -151,6 +161,7 @@ const Screens = ({navigation})=>{
         )
     }}>
         
+    
         {/*options={{headerShown: false}} */}
         {/*/////////////////////>> HOME <</////////////////////*/}
         <Stack.Screen name="Home" component={render.Home} options={{headerShown: false}}/>{/* NOT HEADER */}
@@ -162,7 +173,9 @@ const Screens = ({navigation})=>{
         <Stack.Screen name="Code" component={render.Code} options={{headerLeft:
             ()=> (<HeaderBackButton color="#f7b700"  onPress={()=>{navigation.navigate('Register')}}/>)
         }}/>{/* BACK TO REGISTER */}
+        
         <Stack.Screen name="Register Info" component={render.Register_One} options={{headerShown:false}}/>{/* NOT HEADER */}
+
         <Stack.Screen name="Next Register" component={render.Register_Two} options={{headerLeft:
             ()=> (<HeaderBackButton color="#f7b700"  onPress={()=>{navigation.navigate('Register Info')}}/>)
         }}/>{/* BACK TO REGISTER INFO */}

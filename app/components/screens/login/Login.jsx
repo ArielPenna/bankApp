@@ -58,9 +58,6 @@ export default ({navigation}) => {
         if (!input.password) {
           error.password = '*';
         }
-        else if(!regex_pass.test(input.password)){
-          error.password = '*'
-        }
 
         return error
     }  

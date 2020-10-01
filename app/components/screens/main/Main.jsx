@@ -13,12 +13,8 @@ export default ({ route}) => {
 
   const dispatch = useDispatch()
 
-  console.log(route.params)
-
-
   ///////>> STATE REDUX <<///////////
   const user = useSelector((state) => state.user);   
-  {console.log(user)}
   const fullBalance = useSelector((state) => state.fullBalance);
 
   /////>> USE EFFECT <<///////

@@ -34,7 +34,7 @@ export default ({route, navigation})=>{
         firstName: '',
         lastName: '',
         email: route.params.email,
-        documentType: 'DNI',
+        documentType: '',
         documentNumber: 0,
         birth: new Date((new Date().getFullYear() - 16), 0, 1),
         phoneNumber: 0,
@@ -43,10 +43,12 @@ export default ({route, navigation})=>{
     })
 //THIS STATE IS TO HELP US VALIDATE THE INPUTS OF THE USERS
     const [error, setError] = useState({
-        firstName: '*',
-        lastName:'*',
-        documentNumber:'*',
-        address:'*'
+        firstName: 'Name *',
+        lastName:'Surname *',
+        documentType:'Type *',
+        documentNumber:'Number *',
+        birth: 'Birth date *',
+        address:'Address *'
     })
 
 //THIS STATE IS TO HELP US IN THE DATES
@@ -86,7 +88,8 @@ export default ({route, navigation})=>{
 
     //WHITOUT ERROR CAN WE GO TO THE NEXT REGISTER
     const withoutError = ()=>{
-        if(error.firstName || error.lastName || error.documentNumber || error.address) return true
+        if(error.firstName || error.lastName || error.docType
+            || error.documentNumber || error.address || error.birthDay) return true
         else return false
     }
 
@@ -116,6 +119,7 @@ export default ({route, navigation})=>{
                 break;
             case 2:
                 type = 'month';
+                id[1] = parseInt(id[1]) - 1
                 break;
             case 3:
                 type = 'year';
@@ -146,34 +150,42 @@ export default ({route, navigation})=>{
             <Text style={style.mainTitle}>Client Register</Text>
 {/*///////////////////////////////////>>> NAME <<<///////////////////////////////////*/}
             {/*//////////////->FIRST NAME<-//////////////*/}
-            <Text style={error.firstName ? style.error : style.label}>Name</Text>
+            <Text style={style.label}>{error?.firstName ?? 'Name'}</Text>
             <TextInput style={style.inputR} editable name='firstName' onChange={hOnCh_NewUser}/>
             {/*//////////////->LAST NAME<-//////////////*/}
-            <Text style={error.lastName ? style.error : style.label}>Surname</Text>
+            <Text style={style.label}>{error?.lastName ?? 'Surname'}</Text>
             <TextInput style={style.inputR} editable name='lastName' onChange={hOnCh_NewUser}/>         
             
 
 {/*///////////////////////////////////>>> DOCUMENT <<<///////////////////////////////////*/}
             <View style={style.docContainer}>
                 {/*//////////////->DOCUMENT TYPE<-//////////////*/}
-                
+                <View style={style.docType}>
+                    <Text style={style.label2}>{error?.documentType ?? 'Type'}</Text>
+                    <TextInput style={style.inputDoc} name='documentType' onChange={hOnCh_NewUser} placeholder='DNI/PASS  '/>
+                </View>
                 {/*//////////////->DOCUMENT NUMBER<-//////////////*/}
                 <View style={style.docN}>
-                    <Text style={error.documentNumber ? style.error : style.label}>Number</Text>
+                    <Text style={style.label2}>{error?.documentNumber ?? 'Number'}</Text>
                     <TextInput style={style.inputDocNum} keyboardType='numeric' editable name='documentNumber' onChange={hOnCh_NewUser}/>
                 </View>
             </View>
 
 {/*///////////////////////////////////>>> BIRTH <<<///////////////////////////////////*/}
-            <Text style={style.label}>Birth date</Text>
-            
+            <Text style={style.label}>{error?.birth ?? 'Birth date'}</Text>
+            <View style={style.birth}>
+                <TextInput style={style.date} placeholder='DD ' keyboardType='numeric' onChangeText={(e)=>hOnCh_Birth('1-' + e)}/>
+                <TextInput style={style.date} placeholder='MM ' keyboardType='numeric' onChangeText={(e)=>hOnCh_Birth('2-' + e)}/>
+                <TextInput style={style.date} placeholder='YYYY ' keyboardType='numeric' onChangeText={(e)=>hOnCh_Birth('3-' + e)}/>
+            </View>            
 
 {/*///////////////////////////////////>>> ADDRESS <<<///////////////////////////////////*/}
-            <Text style={error.address ? style.error : style.label}>Address</Text>
+            <Text style={style.label}>{error?.address ?? 'Address'}</Text>
             <View style={style.adressContainer}>
             <Text style={style.subLabel}>Street</Text>
                 <View style={style.streetPrincipal}>                    
-                    <TextInput style={style.inputStreet} editable name='street1' onChange={hOnCh_Adress}/>
+                    <TextInput style={style.inputStreet} editable name='street1' 
+                    onChange={hOnCh_Adress} placeholder='  Principal'/>
                     <TextInput style={style.inputSubStreet} keyboardType='numeric' 
                     editable name='number' onChange={hOnCh_Adress} placeholder='N°'/>
                 </View>

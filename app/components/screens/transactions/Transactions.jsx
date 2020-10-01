@@ -15,7 +15,7 @@ import styles from "./styles/Transactions";
 
 export default ({ route }) => {
 
-  //const { user } = route.params
+  const { user } = route.params
 /////////>> STATE REDUX <<///////
 const transactions= useSelector(state => state.transactions) 
 const Separator = () => <View style={styles.separator} />;
@@ -58,7 +58,8 @@ const Separator = () => <View style={styles.separator} />;
                       <View style={styles.row}>
                         <Image source={SendMoney} style={styles.img} />
                         <Text style={styles.amount}>{icon + tran.value}</Text>
-                        <Text style={styles.amount}>{tran?.name}</Text>
+                        {tran?.name !== user.name && 
+                        <Text style={styles.name}>{tran?.name}</Text>}
                       </View>
                     </Card>
                     );
