@@ -96,7 +96,7 @@ export const get_user__me = () => {
 ///////>> LOGOUT <<////////
 export const logout = () => {
   return (dispatch) => {
-    instance.get("user/auth/logout").then((res) => {
+    instance.post("user/auth/logout").then((res) => {
       dispatch({ type: cons.LOGOUT, payload: undefined });
     });
   };
