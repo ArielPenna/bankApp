@@ -79,10 +79,10 @@ export default ({ route, navigation }) => {
           
           {/*////////////>> BUTTONS TO SEND <<///////////////*/}
           <TouchableHighlight onPress={hOnCh_Sure}
-          disabled={send.transaction > total || send.transaction < 100}
-          style={send.transaction > total || send.transaction < 100 ? 
+          disabled={send.transaction > total || send.transaction <= 100}
+          style={send.transaction > total || send.transaction <= 100 ? 
           styles.appButtonContainerFalse : styles.appButtonContainer} >
-            <Text style={send.transaction > total || send.transaction < 100 ?
+            <Text style={send.transaction > total || send.transaction <= 100 ?
             styles.appButtonTextFalse : styles.appButtonText}> 
             SEND </Text>
           </TouchableHighlight> 

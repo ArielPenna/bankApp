@@ -11,8 +11,6 @@ export default ({ navigation, route }) => {
   const [change, setChange] = useState("")   
   const { user } = route.params;
 
-  console.log("userCard", user)
-
   const NumCardJoin = user.account.numCard;
   var numCard = NumCardJoin.slice(0, 4) + " " + NumCardJoin.slice(4, 8) + " " + NumCardJoin.slice(8, 12) + " " + NumCardJoin.slice(12, 16);
   

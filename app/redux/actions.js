@@ -33,7 +33,6 @@ export const location_get = (location, newUser, setNewUser, error, setError, set
   return ()=>{
     instance.post('api/location/get', location)
       .then(res => {
-        console.log(res)
         
         ///////---> SET ADDRESS <------////
 
@@ -87,7 +86,6 @@ export const login_user__post = async (user, setAuth, setLoading) => {
 export const get_user__me = () => {
   return (dispatch) => {
       instance.get("user/auth/me").then((res) => {
-        console.log(res.data)
         dispatch({ type: cons.GET_USER_ME, payload: res.data });
       }); 
   };
@@ -109,7 +107,6 @@ export const transactions_get = () => {
   return (dispatch) => {
     instance.get("transactions/get").then((res) => {
       dispatch({ type: cons.TRANSACTIONS_GET, payload: res.data });
-      console.log(res.data)
     });
   };
 };   
@@ -183,7 +180,6 @@ export const get_one_friend = (idFriend) => {
 export const add_friend = async (friend, setFriend) => {
   try{
     const amigo = await instance.post('friend/add' , friend)
-    console.log(amigo)
     setFriend(true)
   } catch(err){
     setFriend(false)
