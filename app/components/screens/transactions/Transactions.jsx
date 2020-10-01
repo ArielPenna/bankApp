@@ -45,7 +45,7 @@ const Separator = () => <View style={styles.separator} />;
                       <View style={styles.row}>
                         <Image source={MyCard} style={styles.img}/>
                         <Text style={styles.amount}>{'-' + tran.value}</Text>
-                        <Text style={styles.amount}>{tran?.name}</Text>
+                        <Text style={styles.amount}>{tran?.debitName}</Text>
                       </View>
                     </Card>
                     );
@@ -58,8 +58,9 @@ const Separator = () => <View style={styles.separator} />;
                       <View style={styles.row}>
                         <Image source={SendMoney} style={styles.img} />
                         <Text style={styles.amount}>{icon + tran.value}</Text>
-                        {tran?.name !== user.name && 
-                        <Text style={styles.name}>{tran?.name}</Text>}
+                        {tran?.depositName !== user.name 
+                        ? <Text style={styles.name}>{tran?.depositName}</Text>
+                        : <Text style={styles.name}>{tran?.debitName}</Text>}
                       </View>
                     </Card>
                     );
