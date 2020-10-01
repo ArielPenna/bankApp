@@ -58,6 +58,8 @@ server.post("/to/:CVUfriend", estaAutenticado, async (req, res) => {
         await Transaction.create({
             debit: userFromAccount.accountId, 
             deposit: userToAccount.accountId, 
+            debitName: userFrom.name,
+            depositName: userTo.name,
             name: `${capitalize(userData.firstName)} ${capitalize(userData.lastName)}`,
             value: floatTransaction
         })
@@ -102,7 +104,8 @@ server.put('/pay/service', estaAutenticado, async (req, res) => {
             { 
                 debit: userAccount.accountId, 
                 deposit: exist.id,
-                name: exist.name,
+                debitName: userAccount.name,
+                depositName: exist.name,
                 value: balance, 
                 transactions_type: 'transferencia bancaria'
             })
@@ -157,7 +160,6 @@ server.get('/get', estaAutenticado, async (req, res) => {
                 {deposit: userAccount.accountId }
             ]
         }
-
     })
         .then(transactions=>res.send(transactions))
         .catch(err=>res.send(err))

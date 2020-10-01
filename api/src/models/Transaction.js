@@ -13,7 +13,10 @@ module.exports = (sequelize) => {
         deposit: {
             type: S.TEXT
         },
-        name: {
+        debitName: {
+            type: S.TEXT
+        },
+        depositName: {
             type: S.TEXT
         },
         value: {
