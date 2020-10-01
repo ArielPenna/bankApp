@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, View, SafeAreaView, Text, Image, ImageBackground, TouchableHighlight} from "react-native";
+import { View, Text, Image, ImageBackground, TouchableHighlight} from "react-native";
 import styles from "./styles/HomeStyle";
 
 ///////////////////>> IMAGES <<///////////////////

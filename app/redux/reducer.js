@@ -6,7 +6,9 @@ const initialState = {
   transactions: {},
   fullBalance: {},
   contacts:[],
-  oneFriend: {}
+  oneFriend: {},
+  services:[]
+
 };
 
 ///////>> SUPPORTS <<////////
@@ -41,6 +43,16 @@ export default (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
+
+//--------------------------------------------------------------//    
+    /////>> SERVICE <</////     
+case cons.GET_SERVICE:{
+  return{
+    ...state,
+    services: action.payload
+  }
+}
+
 //--------------------------------------------------------------//    
     /////>> MONEY <</////
     case cons.TRANSACTIONS_GET:

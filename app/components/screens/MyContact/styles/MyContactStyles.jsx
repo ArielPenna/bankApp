@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
       { fontSize: 25 },
 
    cardText:
-      { fontSize: 20, textAlign: "center" },
+      { fontSize: 20, textAlign: "center", color:  "#fff" },
 
 })
 

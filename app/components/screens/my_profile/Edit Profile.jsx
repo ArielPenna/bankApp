@@ -125,7 +125,7 @@ export default ({ navigation, route}) => {
         <TextInput style={styles.inputR} placeholder= {user.phoneNumber} name= "phoneNumber" onChange= {handlerOnChange}/>
         <Text style={styles.label}>Address:</Text>
         <View style={styles.adressContainer}>
-          <Text style={styles.subLabel}>Street</Text>
+          <Text style={styles.label}>Street</Text>
           <View style={styles.streetPrincipal}>                    
             <TextInput style={styles.inputStreet} editable name='street1' placeholder= {location('street 1')} onChange={hOnCh_Adress}/>
             <TextInput style={styles.inputSubStreet} keyboardType='numeric' 
@@ -134,20 +134,20 @@ export default ({ navigation, route}) => {
 
           {/*///>>>>>>> STREET 2 <<<<<<<<///*/}
           <View>
-            <Text style={styles.subLabel}>And</Text>
+            <Text style={styles.label}>And</Text>
             <TextInput style={styles.inputR} editable name='street2' placeholder= {location('street 2')} onChange={hOnCh_Adress}/>
           </View>
 
           <Button title='Search' onPress={searchDirection} disabled={withoutErrorLocation()} loading={loading}
-          disabledStyle={styles.appButtonContainerFalse} 
-          disabledTitleStyle={styles.appButtonTextFalse}
-          titleStyle={styles.appButtonText}
-          buttonStyle={styles.appButtonContainer}/>
+          disabledStyle={styles.buttonFalse} 
+          disabledTitleStyle={styles.buttonTextFalse}
+          titleStyle={styles.buttonText}
+          buttonStyle={styles.button}/>
         </View> 
 
         <Separator />        
 
-        <Text style={update.address ? styles.locationY : styles.locationX}>{error.address ? 'City' : location()}</Text>   
+        <Text style={update.address ? styles.label : styles.locationX}>{error.address ? 'City' : location()}</Text>   
             
       <Separator />
         

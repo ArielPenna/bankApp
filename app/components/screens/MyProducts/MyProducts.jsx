@@ -30,7 +30,7 @@ export default ({ navigation, route }) => {
           <TouchableHighlight onPress={() => navigation.navigate("Account", toMyAccount)}>
             <View style={styles.misproductosrectangulo}>
               <Image style={styles.imgmiscuentas} source={MyAccount} />
-              <Text style={styles.textmicuentas}>Mi Cuenta</Text>
+              <Text style={styles.textmicuentas}>My Account</Text>
             </View>
           </TouchableHighlight>
         
@@ -38,7 +38,7 @@ export default ({ navigation, route }) => {
           <TouchableHighlight onPress={() => navigation.navigate("MyCard",{user:user})}>
             <View style={styles.misproductosrectangulo}>
               <Image style={styles.imgmiscuentas} source={MyCard} />
-              <Text style={styles.textmicuentas}>Mi tarjeta</Text>
+              <Text style={styles.textmicuentas}>My card</Text>
             </View>
           </TouchableHighlight>
 
@@ -46,10 +46,12 @@ export default ({ navigation, route }) => {
           <TouchableHighlight onPress={() => navigation.navigate("MyContact", {chng, total})}>
             <View style={styles.misproductosrectangulo}>
               <Image style={styles.imgmiscuentas} source={MyContacts} />
-              <Text style={styles.textmicuentas}>Mis Contactos</Text>
+              <Text style={styles.textmicuentas}>My Contacts</Text>
             </View>
           </TouchableHighlight>
-          
+
+
+
         </View>
       </View>
     </ImageBackground>

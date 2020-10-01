@@ -66,11 +66,11 @@ export default ({route, navigation}) => {
     return(
         <ImageBackground source={Background} style={style.background}>
             {regis && navigation.navigate('Login')}
-            <Text style={style.mainTitle}>Almost</Text>
+            <Text style={style.mainTitle}>Almost there</Text>
         <View>           
 
 {/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
-            <Text style={error.phoneNumber ? style.error : style.label}>Tel/Cel</Text>
+            <Text style={error.phoneNumber ? style.error : style.label}>Phone N°</Text>
             <TextInput style={style.inputR} keyboardType='numeric' editable name='phoneNumber' onChange={hOnCh_NewUser}/>
 
 {/*///////////////////////////////////>>> PASSWORD <<<///////////////////////////////////*/}

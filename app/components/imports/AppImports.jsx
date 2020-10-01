@@ -48,6 +48,9 @@ import ValidateCharge from '../screens/money/ValidateCharge'
 import SendMoneyContacts from '../screens/money/SendMoneyContacts'
 import SendMoney from '../screens/money/SendMoney'
 
+///////////////>>>>>> PAY SERVICE <<<<<<</////////////////////////
+import PayService from '../screens/money/PayService'
+
 
 //##############################>>  EXPORTS  <<################################//
 
@@ -99,5 +102,5 @@ export {ValidateCharge}
 export {SendMoneyContacts}
 export {SendMoney}
 
-
-
+//// PAY SERVICE ////
+export {PayService}
