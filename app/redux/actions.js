@@ -96,7 +96,7 @@ export const get_user__me = () => {
 ///////>> LOGOUT <<////////
 export const logout = () => {
   return (dispatch) => {
-    instance.get("user/auth/logout").then((res) => {
+    instance.post("user/auth/logout").then((res) => {
       dispatch({ type: cons.LOGOUT, payload: undefined });
     });
   };
@@ -171,7 +171,6 @@ export const get_friends = () => {
 
 //////>> GET ONE CONTACT <<//////
 export const get_one_friend = (idFriend) => {
-  console.log(idFriend)
   return (dispatch) => {
     instance.get(`friend/${idFriend}`)
       .then(res => {

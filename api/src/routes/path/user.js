@@ -1,4 +1,5 @@
 const server = require("express").Router();
+const estaAutenticado = require("../../Suppliers/authenticateFunction")
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const { Op } = require("sequelize");
@@ -42,6 +43,35 @@ server.delete("/delete/:id", (req, res) =>{
         : 'no se encontro el usuario'))
     .catch(err=> res.send(err))
 })
+
+//-------------------------------
+//      PUT AVATAR BY ID        |
+//-------------------------------
+/* server.put("/avatar", estaAutenticado, async (req, res) => {
+    const { id } = req.user;
+    const {
+        topType,
+        accessoriesType,
+        hatColor,
+        facialHairType,
+        facialHairColor,
+        clotheType,
+        eyeType,
+        eyebrowType,
+        mouthType,
+        skinColor
+    } = req.body;
+
+    const user = await User.findByPk(Number(id));
+    const props = (user.dataValues.img).split('&');
+    const newProps = {};
+    for (let i = 1; i < props.length; i++) {
+        newProps[props[i].split('=')[0]] = true
+    }
+    console.log(newProps)
+    
+    res.send(user.dataValues.img)
+}) */
 
 //-------------------------------
 //        PUT USER BY ID        |
@@ -111,14 +141,21 @@ server.get("/:id/location", (req, res) => {
 //---------------------------------------------
 //        BUSCA USER POR NOMBRE Y EMAIL       |
 //---------------------------------------------
-//http://localhost:9000/user/search/?query={valor a buscar}
+//http://localhost:9000/api/user/search/?query={valor a buscar}
 server.get("/search", (req, res) => {
+    console.log(req.query)
+    let { email, firstName, lastName } = req.query;
+
+    email = email && email.toLowerCase()
+    firstName = firstName && firstName.toLowerCase()
+    lastName = lastName && lastName.toLowerCase()
+
     User.findAll({
             where: {
                 [Op.or]: [
-                    {email: {[Op.like]: `%${req.query.query.toLowerCase()}%` }},
-                    {firstName: {[Op.like]: `%${req.query.query.toLowerCase()}%` }},
-                    {lastName: {[Op.like]: `%${req.query.query.toLowerCase()}%` }}
+                    {email: {[Op.like]: `%${email}%` }},
+                    {firstName: {[Op.like]: `%${firstName}%` }},
+                    {lastName: {[Op.like]: `%${lastName}%` }}
                 ]
             }
         })
@@ -128,6 +165,5 @@ server.get("/search", (req, res) => {
         })
         .catch(err => res.send(err));
 });
-
 
 module.exports = server;
