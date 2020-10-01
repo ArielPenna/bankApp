@@ -23,6 +23,7 @@ import Recharge from '../../assets/saldo.png'
 import Menu from '../../assets/list.png'
 import Logout from '../../assets/logout.png'
 import Services from '../../assets/servicios.png'
+import Account from '../../assets/cuenta.png'
 
 import styles from "./drawerStyles";
 
@@ -58,7 +59,7 @@ const DrawerContent = props => {
                 <DrawerItem 
                     label="My Account"
                     labelStyle = {{marginLeft: -20}}
-                    icon={()=>{return (<Image source={MyAccount} style={styles.img}/>)}}
+                    icon={()=>{return (<Image source={Account} style={styles.img}/>)}}
                     onPress={()=> props.navigation.navigate("Account", {
                         name: `${state.user.firstName} ${state.user.lastName}`, 
                         cvu: state.user.account.cvu
@@ -133,7 +134,7 @@ const DrawerContent = props => {
             </Block>
 
             {/*/////////////>> LOGOUT <<//////////////*/}
-            <Block style={{marginTop: 120}}>
+            <Block style={{marginTop: 80}}>
                 <DrawerItem 
                     label="Logout"
                     labelStyle = {{marginLeft: -20}}
