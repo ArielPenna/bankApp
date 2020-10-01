@@ -53,11 +53,6 @@ const validate = (input)=>{
     if(!input.phoneNumber){
       errors.phoneNumber = 'Phone N° *'
     }
-
-/////////////>>DOCUMENT NUMBER<</////////////   
-    if(!regex_dni.test(input.documentNumber)){
-      errors.documentNumber='*'
-    }
     
 /////////////>>EMAIL<</////////////  
     if(!input.email){
