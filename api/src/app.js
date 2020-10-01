@@ -25,8 +25,6 @@ passport.use(new LocalStrategy({
     usernameField: 'email',
     passReqToCallback: true
     },(req, email, password, done) => {
-//        console.log(email)
-//        console.log(password)
         User.findOne({ where:{ email } })
             .then(user => {
                 if(!user) 

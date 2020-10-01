@@ -91,7 +91,8 @@ server.post('/login', passport.authenticate("local"), (req, res) => {
 //           RUTA LOGOUT               |
 //-------------------------------------
 server.post("/logout", estaAutenticado, (req, res) => {
-    req.logout();
+    req.session.destroy();
+    req.logOut()
     res.send("se deslogueo");
 });
 
