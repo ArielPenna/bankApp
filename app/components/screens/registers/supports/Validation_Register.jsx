@@ -21,27 +21,37 @@ const validate = (input)=>{
 
 /////////////>>FIRS NAME<</////////////
     if(!input.firstName ){
-      errors.firstName = '*';
+      errors.firstName = 'Name *';
     }
 
 /////////////>>LAST NAME<</////////////
     if(!input.lastName){
-        errors.lastName = '*';
+        errors.lastName = 'Surname *';
     }
 
 /////////////>>ADRESS<</////////////
     if(!input.address){
-      errors.address = '*'
+      errors.address = 'Address *'
+    }
+
+/////////////>>DOC TYPE<</////////////
+    if(!input.documentType){
+      errors.documentType = 'Type *'
     }
 
 /////////////>>DOC NUMBER<</////////////
     if(!input.documentNumber){
-      errors.documentNumber = '*'
+      errors.documentNumber = 'Number *'
+    }
+
+/////////////>>BIRTH DATE<</////////////
+    if(!input.birth){
+      errors.birth = 'Birth date *'
     }
 
 /////////////>>TEL/CEL<</////////////
     if(!input.phoneNumber){
-      errors.phoneNumber = '*'
+      errors.phoneNumber = 'Phone N° *'
     }
 
 /////////////>>DOCUMENT NUMBER<</////////////   
@@ -67,18 +77,18 @@ const validate = (input)=>{
 
 /////////////>>PASSWORD<</////////////    
     if(!input.password){
-      errors.password = '*';
+      errors.password = 'Password *';
     }
     else if(!regex_pass.test(input.password)){
-      errors.password = "Password mínimo de 8 digitos, una mayuscula, un numero*";
+      errors.password = 'Password *';
     }
 
 /////////////>>CONFIRM PASSWORD<</////////////
     if(!input.confirmPassword){
-        errors.confirmPassword = '*';
+        errors.confirmPassword = 'Confirm Password *';
     }
     else if(input.confirmPassword != input.password){
-        errors.confirmPassword = 'La password es diferente *'
+        errors.confirmPassword = 'Confirm Password *'
     }
 
     return errors;

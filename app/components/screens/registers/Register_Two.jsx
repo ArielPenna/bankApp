@@ -21,9 +21,9 @@ export default ({route, navigation}) => {
     
     //THIS STATE IS TO HELP US VALIDATE THE INPUTS OF THE USERS
     const [error, setError] = useState({
-        phoneNumber:'*',
-        password:'*',
-        confirmPassword:'*'
+        phoneNumber:'Phone N° *',
+        password:'Password *',
+        confirmPassword:'Confirm Password *'
     })    
     
 
@@ -66,21 +66,25 @@ export default ({route, navigation}) => {
     return(
         <ImageBackground source={Background} style={style.background}>
             {regis && navigation.navigate('Login')}
-            <Text style={style.mainTitle}>Almost there</Text>
+            <Text style={style.mainTitle2}>Almost there</Text>
         <View>           
 
 {/*///////////////////////////////////>>> PHONE NUMBER <<<///////////////////////////////////*/}
-            <Text style={error.phoneNumber ? style.error : style.label}>Phone N°</Text>
+            <Text style={style.label}>{error?.phoneNumber ?? 'Phone N°'}</Text>
             <TextInput style={style.inputR} keyboardType='numeric' editable name='phoneNumber' onChange={hOnCh_NewUser}/>
 
 {/*///////////////////////////////////>>> PASSWORD <<<///////////////////////////////////*/}
             {/*//////////////->PASSWORD<-//////////////*/}
-            <Text style={error.password ? style.error : style.label}>Password</Text>
+            <Text style={style.label}>{error?.password ?? 'Password'}</Text>
             <TextInput style={style.inputR} secureTextEntry={true} editable name='password' onChange={hOnCh_NewUser}/>
+            <View style={style.warn}>
+            <Text style={style.warning}>The password must be at least 8 to 16 characters long, at least one digit, at least one lower case, and at least one upper case. It can NOT have other symbols.</Text>
+            </View>
             {/* /////////////->CONFIRM PASSWORD<-/////////// */}
-            <Text style={error.confirmPassword ? style.error : style.label}>Confirm Password</Text>
-            <TextInput style={style.inputR} secureTextEntry={true} editable name='confirmPassword' onChange={hOnCh_NewUser}/>
+            <Text style={style.label}>{error?.confirmPassword ?? 'Confirm Password'}</Text>
+            <TextInput style={style.inputConfirmPass} secureTextEntry={true} editable name='confirmPassword' onChange={hOnCh_NewUser}/>
 
+            
 {/*/////////////////////////////////>> SEND BUTTON <<////////////////////////////////////////////////*/}
             <Button title='SEND' onPress={register} disabled={withoutError()} loading={loading}
             disabledStyle={style.appButtonContainerFalse} 

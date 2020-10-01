@@ -15,7 +15,7 @@ import styles from "./styles/Transactions";
 
 export default ({ route }) => {
 
-  //const { user } = route.params
+  const { user } = route.params
 /////////>> STATE REDUX <<///////
 const transactions= useSelector(state => state.transactions) 
 const Separator = () => <View style={styles.separator} />;

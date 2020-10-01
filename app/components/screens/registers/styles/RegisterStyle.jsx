@@ -22,14 +22,21 @@ const styles = StyleSheet.create({
       marginBottom: 5,
       paddingLeft: 10     
    },
+   docType:{
+      width: '48%',
+      height: 80,
+      marginLeft: 20
+   },
+   docN:{
+      width: '40%',
+      height: 80
+   },
    inputDoc:{
-      width:"66%",
+      width:"64%",
       height:40,
-      paddingVertical: 10,
-      padding:10,
       borderRadius:2,
       backgroundColor:"white",
-      marginLeft:15, 
+      textAlign: 'center'
    },
    inputDocNum:{
       width:"120%",
@@ -45,17 +52,19 @@ const styles = StyleSheet.create({
       height: 10,
       flex:1,
       flexDirection: 'row',
-      marginBottom: -200
+      marginBottom: -240
    },
    doc:{
       flex:1,
       flexDirection:'column'
    },
-   docN:{
-      marginRight:25
-   },
    label:{
       marginLeft:20,
+      color:"#f0f3bd",
+      fontSize:20
+   },
+   label2:{
+      marginLeft: 5,
       color:"#f0f3bd",
       fontSize:20
    },
@@ -79,7 +88,11 @@ const styles = StyleSheet.create({
       width:'25%',
       height: '40px',
       borderRadius: 2,
-      paddingLeft:20
+      textAlign: 'center',
+      paddingLeft: 20,
+      fontSize: 20,
+      paddingLeft: 20,
+      backgroundColor:'white'
    },
    adressContainer:{
       flex:1,
@@ -148,12 +161,20 @@ const styles = StyleSheet.create({
       marginLeft:20
    },
    mainTitle:{
-   fontSize: 40,
-   color:"#fff",
-   fontWeight: "bold",
-   textAlign:"center",
-   marginTop: 30,
-   marginBottom: 10
+      fontSize: 40,
+      color:"#fff",
+      fontWeight: "bold",
+      textAlign:"center",
+      marginTop: 50,
+      marginBottom: 10
+   },
+   mainTitle2:{
+      fontSize: 40,
+      color:"#fff",
+      fontWeight: "bold",
+      textAlign:"center",
+      marginTop: 50,
+      marginBottom: 50
    },
    locationX:{
       textAlign:'center',
@@ -168,6 +189,28 @@ const styles = StyleSheet.create({
       color:"#f7b700",
       position: 'relative',
       bottom: 35
+   },
+   warning:{
+      color: 'white',   
+      fontSize: 14,
+   },
+   warn:{
+      width: '90%',
+      height: 'auto',
+      marginLeft: 20,
+      marginBottom: 10
+   },
+   inputConfirmPass:{
+      width:"90%",
+      marginLeft:20,
+      marginRight:15,
+      padding:10,
+      height:40,
+      borderRadius:2,
+      backgroundColor:"white",
+      marginBottom: 5,
+      paddingLeft: 10 ,
+      marginBottom: 290
    }
 })
 
