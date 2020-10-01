@@ -171,7 +171,6 @@ export const get_friends = () => {
 
 //////>> GET ONE CONTACT <<//////
 export const get_one_friend = (idFriend) => {
-  console.log(idFriend)
   return (dispatch) => {
     instance.get(`friend/${idFriend}`)
       .then(res => {
