@@ -106,12 +106,12 @@ const DrawerContent = props => {
                     onPress={()=> props.navigation.navigate("Recharge", {chng: setChange})}
                 />
 
-                <DrawerItem 
+                {/* <DrawerItem 
                     label="Pay Services"
                     labelStyle = {{marginLeft: -20}}
                     icon={()=>{return (<Image source={Services} style={styles.img}/>)}}
                     onPress={()=> props.navigation.navigate("PayService", {chng: setChange})}
-                />
+                /> */}
 
                 <DrawerItem 
                 label="Send Money"
@@ -134,7 +134,7 @@ const DrawerContent = props => {
             </Block>
 
             {/*/////////////>> LOGOUT <<//////////////*/}
-            <Block style={{marginTop: 80}}>
+            <Block style={{marginTop: 120}}>
                 <DrawerItem 
                     label="Logout"
                     labelStyle = {{marginLeft: -20}}
@@ -226,7 +226,7 @@ const Screens = ({navigation})=>{
         <Stack.Screen name='ValidateCharge' component={render.ValidateCharge}/>
 
         {/*///////-> PAY SERVICE <-////////*/}
-        <Stack.Screen name="PayService" component={render.PayService}/>
+        {/* <Stack.Screen name="PayService" component={render.PayService}/> */}
 
         {/*///////-> SEND MONEY <-////////*/}
         <Stack.Screen name="Send Money to Contacts" component={render.SendMoneyContacts}/>
