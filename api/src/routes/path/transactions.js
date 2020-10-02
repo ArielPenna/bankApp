@@ -101,7 +101,7 @@ server.put('/pay/service', estaAutenticado, async (req, res) => {
             { 
                 debit: userAccount.accountId, 
                 deposit: exist.id,
-                debitName: `${userAccount.dataValues.firstName} ${userAccount.dataValues.lastName}`,
+                debitName: `${userAccount.firstName} ${userAccount.lastName}`,
                 depositName: exist.name,
                 value: balance, 
                 transactions_type: 'transferencia bancaria'

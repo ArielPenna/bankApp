@@ -7,6 +7,7 @@ import {Card, Icon} from 'react-native-elements'
 /////////////>> SCRIPTS <<//////////////
 import {get_friends} from '../../../redux/actions.js'
 import style from './styles/MyContactStyles'
+import Pagination from '../../support/Pagination'
 
 ////////////>> IMGS <<////////////////
 import Background from '../../../assets/background.png'
@@ -36,6 +37,24 @@ export default ({ route, navigation }) => {
     setSearch(e)
   }
 
+ /////-->> PAGINATION <<--//////// 
+  ////////>> STATES <<//////////
+const [currentPage, setCurrent] = useState(1)
+const [ByPage] = useState(4)
+
+///////>> VARS <</////////
+const total = filter.length
+const last = currentPage * ByPage
+const first = last - ByPage
+const current = filter.slice(first, last)
+
+//////>> FUNCTIONS  <<//////
+const changePage = (e) => {
+  setCurrent(e)
+}
+
+//////---------------------------//////////////
+
   useEffect(() => {
     dispatch(get_friends())
     setChange('')
@@ -63,7 +82,7 @@ export default ({ route, navigation }) => {
         </TouchableHighlight>
 
         {/*/////////>> CARDS <</////////*/}
-        {contact.length ? filter.map(c => {
+        {current.length ? current.map(c => {
           //THIS IS THE OBJ WE SEND TO ONLY CONTACT
           const onlyContact = {
             idFriend: c.friended, 
@@ -88,7 +107,7 @@ export default ({ route, navigation }) => {
           :
           <Text style={style.cardText}> You haven't added any friends yet </Text>
         }
-
+        {current.length > 4 && <Pagination value={{total, ByPage, changePage}}/>}
       </View>      
     </ImageBackground>
   )
