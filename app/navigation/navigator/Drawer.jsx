@@ -1,5 +1,5 @@
 ///////////>> MODULES <<////////////
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Image } from 'react-native'
 import { Block, Text, Button } from 'expo-ui-kit'
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer"
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 ///////////>> SCRIPTS <<////////////
 import * as render from '../../components/imports/AppImports'
-import { logout, get_user__me, transactions_get } from '../../redux/actions'
+import { logout } from '../../redux/actions'
 
 ///////////>> IMGS <<////////////
 import Logo from '../../assets/logo.png'
@@ -39,7 +39,6 @@ const DrawerContent = props => {
 
     return (
         <DrawerContentScrollView {...props}>
-
             {/*////////////>> IMG <</////////////////*/}
             <Block flex={0.4} margin={20}>
                 <Image source={Logo} style={styles.logo} resizeMode='center'/>
@@ -145,7 +144,6 @@ const DrawerContent = props => {
                     }}
                 />
             </Block>
-
         </DrawerContentScrollView>
     )
 }
@@ -162,7 +160,7 @@ const Screens = ({navigation})=>{
         )
     }}>
         
-    
+        
         {/*options={{headerShown: false}} */}
         {/*/////////////////////>> HOME <</////////////////////*/}
         <Stack.Screen name="Home" component={render.Home} options={{headerShown: false}}/>{/* NOT HEADER */}
@@ -188,8 +186,9 @@ const Screens = ({navigation})=>{
 
         {/*/////////////////////>> MAIN <</////////////////////*/}
         <Stack.Screen name="Main" component={render.Main}/>
+        
         {/*///////-> TRANSACTIONS <-////////*/}
-        {<Stack.Screen name="Transactions" component={render.Transactions}/>}
+        <Stack.Screen name="Transactions" component={render.Transactions}/>
         
         {/*///////-> STATISTICS <-////////*/}
         <Stack.Screen name="Statistics" component={render.Statistics}/>
@@ -243,7 +242,7 @@ export default () => {
     <Drawer.Navigator 
     initialRouteName="Home" 
     drawerType="slide"
-    overlayColor="transparent"
+    overlayColor="#0000005F"
     drawerStyle={{width: "56%", backgroundColor: "#f7b700"}}
     contentContainerStyle={{flex: 1}}
     sceneContainerStyle={{backgroundColor: 'red'}}
