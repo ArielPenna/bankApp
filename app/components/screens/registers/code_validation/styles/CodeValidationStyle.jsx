@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     appButtonContainerAgain: {
       width: '60%',
       marginLeft: '75px',
-      marginBottom: '10px',
-      marginTop: '20px',
+      marginBottom: 10,
+      marginTop: 20,
       elevation: 8,
       backgroundColor: "#f7b700",       
       borderRadius: 5,
@@ -67,9 +67,9 @@ const styles = StyleSheet.create({
 
     appButtonContainer: {
       width: '90%',
-      marginLeft: '20px',
-      marginBottom: '10px',
-      marginTop: '20px',
+      marginLeft: 20,
+      marginBottom: 10,
+      marginTop: 20,
       elevation: 8,
       backgroundColor: "#f7b700",
       borderRadius: 5,
@@ -79,9 +79,9 @@ const styles = StyleSheet.create({
 
     appButtonContainerFalse: {
       width: '90%',
-      marginLeft: '20px',
-      marginBottom: '10px',
-      marginTop: '20px',
+      marginLeft: 20,
+      marginBottom: 10,
+      marginTop: 20,
       elevation: 8,
       backgroundColor: "#752667",       
       borderRadius: 5,

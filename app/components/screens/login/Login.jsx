@@ -114,6 +114,7 @@ export default ({navigation}) => {
             disabledTitleStyle={style.buttonTextFalse}
             titleStyle={style.buttonText}
               buttonStyle={style.button} />           
+            <Button title='ENTER' onPress={onLogin}/>           
                         
             {!auth &&
               <View>
