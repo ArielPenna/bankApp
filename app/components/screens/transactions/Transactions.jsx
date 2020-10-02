@@ -31,10 +31,10 @@ const [ByPage] = useState(5)
 
 const tran = [1,2,3,4,5,6,7,8,9,1,2,3,5,6,7,8,6,7,8,9,7,6,5,4,3,2,3,4,5,6,1,2,3,4,5,6,7,8,6]
 ///////>> VARS <</////////
-const total = tran.length
+const total = transactions.length
 const last = currentPage * ByPage
 const first = last - ByPage
-const current = tran.slice(first, last)
+const current = transactions.slice(first, last)
 
 //////>> FUNCTIONS  <<//////
 const changePage = (e) => {
