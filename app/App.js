@@ -7,8 +7,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import store from "./redux/store";
 import Drawer from "./navigation/navigator/Drawer"
 
-export default function App({navigation}) {
-  console.log(navigation)
+export default function App() {
+
   return (
     <Provider store={store}>
       <NavigationContainer>
