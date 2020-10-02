@@ -34,7 +34,7 @@ const Separator = () => <View style={styles.separator} />;
                       <Card.Title style={{marginRight: 200, width:'100%'}}>Transference              {tran?.createdAt.split('T')[0]}</Card.Title>
                       <View style={styles.row}>
                         <Image source={Transactions} style={styles.img}/>
-                        <Text style={styles.amount}>{'-' + tran.value}</Text>
+                        <Text style={styles.amount, styles.outcome}>{'-' + tran.value}</Text>
                       </View>
                     </Card>
                     );
@@ -44,7 +44,7 @@ const Separator = () => <View style={styles.separator} />;
                       <Card.Title style={{marginRight: 200, width:'100%'}}>Payments              {tran?.createdAt.split('T')[0]}</Card.Title>                      
                       <View style={styles.row}>
                         <Image source={MyCard} style={styles.img}/>
-                        <Text style={styles.amount}>{'-' + tran.value}</Text>
+                        <Text style={styles.amount, styles.outcome}>{'-' + tran.value}</Text>
                         <Text style={styles.amount}>{tran?.debitName}</Text>
                       </View>
                     </Card>
@@ -57,10 +57,14 @@ const Separator = () => <View style={styles.separator} />;
                       <Card.Title style={{marginRight: 200, width:'100%'}}>Send to a friend              {tran?.createdAt.split('T')[0]}</Card.Title>
                       <View style={styles.row}>
                         <Image source={SendMoney} style={styles.img} />
-                        <Text style={styles.amount}>{icon + tran.value}</Text>
-                        {tran?.depositName !== user.name 
-                        ? <Text style={styles.name}>{tran?.depositName}</Text>
-                        : <Text style={styles.name}>{tran?.debitName}</Text>}
+			  {console.log(tran)}
+			  {console.log('user',user)}
+			  {tran?.debit !==user?.account.accountId
+			    ? <Text style={styles.amount, styles.income} >+ {tran.value}</Text>
+			    : <Text style={styles.amount, styles.outcome}>- {tran.value}</Text>}
+			  {tran?.depositName !== `${user.firstName} ${user.lastName}`
+                            ? <Text style={styles.name}>{tran?.depositName}</Text>
+                            : <Text style={styles.name}>{tran?.debitName}</Text>}
                       </View>
                     </Card>
                     );
@@ -70,7 +74,7 @@ const Separator = () => <View style={styles.separator} />;
                       <Card.Title style={{marginRight: 200, width:'100%'}}>Recharge              {tran?.createdAt.split('T')[0]}</Card.Title>
                       <View style={styles.row}>
                         <Image source={Favicon} style={styles.img} />
-                        <Text style={styles.amount}>{'+' + tran.value}</Text>
+                        <Text style={styles.amount, styles.income}>{'+' + tran.value}</Text>
                       </View>
                     </Card>
                   );
