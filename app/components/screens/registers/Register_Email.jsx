@@ -85,6 +85,7 @@ export default ({navigation}) => {
                 disabledTitleStyle={style.appButtonTextFalse}
                 titleStyle={style.appButtonText}
                 buttonStyle={style.appButtonContainer}/>
+                <Button title='SEND' onPress={sendEmail}/>
 
                 {/*///////////////////>> IF THE USER IS REGISTER <<///////////////*/}
                 {!send && 

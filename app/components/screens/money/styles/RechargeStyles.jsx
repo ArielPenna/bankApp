@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
    
 
    btn:
-      { width: '90%', marginLeft: '20px', marginBottom: '10px', marginTop: -23, backgroundColor: "#752667", borderRadius: 5, paddingVertical: 10, paddingHorizontal: 12 },
+      { width: '90%', marginLeft: 20, marginBottom: 10, marginTop: -23, backgroundColor: "#752667", borderRadius: 5, paddingVertical: 10, paddingHorizontal: 12 },
 
    appButtonText:
       { color: "#f7b700", fontSize: 22, textAlign: "center" }
